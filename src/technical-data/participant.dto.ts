@@ -1,6 +1,6 @@
-﻿declare namespace bluesky.core.models.technicalData {
+﻿ namespace bluesky.core.models.technicalData {
 	/** A participant of a conference is related to a meet me secure access. */
-	interface ParticipantDto extends ResourceBase {
+	export interface ParticipantDto extends ResourceBase {
 		/** Gets or sets the unique identifier. */
 		id: number;
 		/** Identifier of the participant in the technical inventory. */

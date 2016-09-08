@@ -1,6 +1,6 @@
-﻿declare namespace bluesky.core.models.account {
+﻿ namespace bluesky.core.models.account {
 	/** Dto of a Dispatching view.Contains attributes related to account segmentation and dispatching. */
-	interface DispatchingViewDto extends ResourceBase {
+	export interface DispatchingViewDto extends ResourceBase {
 		/** Gets or sets the cost center. */
 		costCenter: string;
 		/** Gets or sets the first free criterion. */

@@ -1,5 +1,5 @@
-﻿declare namespace bluesky.core.models {
-    interface PagedResourceList<T extends ResourceBase> extends ResourceBase {
+﻿ namespace bluesky.core.models {
+    export interface PagedResourceList<T extends ResourceBase> extends ResourceBase {
 		/** La liste interne concrète des ressources de type T de cette liste non paginée. */
 		items: T[];
 		firstItemOnPage: number;

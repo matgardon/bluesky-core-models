@@ -1,5 +1,5 @@
-﻿declare namespace bluesky.core.models.technicalData {
+﻿ namespace bluesky.core.models.technicalData {
 	/** Integrated audio access */
-	interface IntegratedAudioAccessDto extends BaseIntegratedAudioAccessDto {
+	export interface IntegratedAudioAccessDto extends BaseIntegratedAudioAccessDto {
 	}
 }

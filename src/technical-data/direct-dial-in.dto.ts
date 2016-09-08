@@ -1,6 +1,6 @@
-﻿declare namespace bluesky.core.models.technicalData {
+﻿ namespace bluesky.core.models.technicalData {
 	/** DDIs (Direct Dial In) correspond to external conference number which permits tothe customer to access an audio conference. */
-	interface DirectDialInDto extends ResourceBase {
+	export interface DirectDialInDto extends ResourceBase {
 		/** Gets or sets the unique identifier. */
 		id: number;
 		/** Gets or sets Unique identifier of a DDI */

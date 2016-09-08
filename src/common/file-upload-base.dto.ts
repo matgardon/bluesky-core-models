@@ -1,6 +1,6 @@
-﻿declare namespace bluesky.core.models {
+﻿namespace bluesky.core.models {
 	/** Base information for a file upload. */
-	interface FileUploadBaseDto {
+	export interface FileUploadBaseDto {
 		/** File encoded in base 64. */
 		fileBase64Url: string;
 		/** Name of the file. */

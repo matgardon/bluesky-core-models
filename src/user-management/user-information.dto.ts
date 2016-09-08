@@ -1,6 +1,6 @@
-﻿declare namespace bluesky.core.models.userManagement {
+﻿ namespace bluesky.core.models.userManagement {
 	/** Informations about a user. */
-	interface UserInformationDto {
+	export interface UserInformationDto {
 		/** File Name. */
 		firstName: string;
 		/** Last Name. */

@@ -1,6 +1,6 @@
-﻿declare namespace bluesky.core.models.technicalData {
+﻿ namespace bluesky.core.models.technicalData {
 	/** Service Platform is a physical resource in Arkadin network. It can groupseveral Technical Elements.Different kinds of service platform can be created: AVAYA 6200, AVAYA 7000,SEP/VIPER, AnyWhere, WebEx, WebEx Gateway, Vidyo, COBRA. */
-	interface ServicePlatformDto extends ResourceBase {
+	export interface ServicePlatformDto extends ResourceBase {
 		/** Gets or sets the unique identifier. */
 		id: number;
 		/** Gets or sets Name of the Service Platform. */

@@ -1,6 +1,6 @@
-﻿declare namespace bluesky.core.models.technicalData {
+﻿ namespace bluesky.core.models.technicalData {
 	/** This entity contains the information necessary to configure, modify an access web conference for a user. Web Conference can be Anywhere, Livemeeting or WebEx. */
-	interface WebAccessDto extends TechnicalAccessDto {
+	export interface WebAccessDto extends TechnicalAccessDto {
 		/** Name of access whose category is audio */
 		audioAccessName: string;
 		/** Password to access to the web conference.Usually, it is the participant or moderator PIN Code. */

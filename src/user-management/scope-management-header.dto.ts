@@ -1,6 +1,6 @@
-﻿declare namespace bluesky.core.models.userManagement {
+﻿ namespace bluesky.core.models.userManagement {
 	/** DTO Header of a scope management (Aggregation of the BME CountryReference, SubsidiaryReference andCurrencyReference, defined in MN). */
-	interface ScopeManagementHeaderDto extends ResourceBase {
+	export interface ScopeManagementHeaderDto extends ResourceBase {
 		/** Gets or sets the unique identifier. */
 		id: number;
 		/** Gets or sets the country name value. */

@@ -1,6 +1,6 @@
-﻿declare namespace bluesky.core.models.technicalData {
+﻿ namespace bluesky.core.models.technicalData {
 	/** Defines specifications (templates) for TechnicalOptions. */
-	interface TechnicalOptionSpecDto extends ResourceBase {
+	export interface TechnicalOptionSpecDto extends ResourceBase {
 		/** Gets or sets the unique identifier. */
 		id: number;
 		/** Gets or sets Name of the TechnicalOptionSpecification. */

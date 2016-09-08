@@ -1,6 +1,6 @@
-﻿declare namespace bluesky.core.models.technicalData {
+﻿ namespace bluesky.core.models.technicalData {
 	/** DTO of a branding profile.A branding profile contains the technical data about a welcome pack email template. */
-	interface BrandingProfileDto extends ResourceBase {
+	export interface BrandingProfileDto extends ResourceBase {
 		/** Gets or sets the identifier of the branding profile. */
 		uid: string;
 		/** Gets or sets the name of the branding profile. */

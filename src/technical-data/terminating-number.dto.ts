@@ -1,6 +1,6 @@
-﻿declare namespace bluesky.core.models.technicalData {
+﻿ namespace bluesky.core.models.technicalData {
 	/** TerminatingNumber. */
-	interface TerminatingNumberDto extends ResourceBase {
+	export interface TerminatingNumberDto extends ResourceBase {
 		/** Gets or sets the unique identifier. */
 		id: number;
 		/** Platform Number */

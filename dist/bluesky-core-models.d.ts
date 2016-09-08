@@ -1,3 +1,65 @@
+declare namespace bluesky.core.models {
+    /** Base information for a file upload. */
+    interface FileUploadBaseDto {
+        /** File encoded in base 64. */
+        fileBase64Url: string;
+        /** Name of the file. */
+        fileName: string;
+        /** Content Type. */
+        contentType: string;
+    }
+}
+
+declare namespace bluesky.core.models {
+    /** Json wrapper for boolean responses.TODO MGA: it must be made clear to external consumers how to read the value of the boolean response. */
+    interface JsonBooleanResponseDto {
+        /** the status of the flag. */
+        booleanResponse: boolean;
+    }
+}
+
+declare namespace bluesky.core.models {
+    /** Base DTO class to give the Id of an entity existing in the OrderManagement Database. */
+    interface OrderManagementEntityDto extends ResourceBase {
+        /** Entity Id of the item existing in OM DB. */
+        orderManagementEntityId: number;
+    }
+}
+
+declare namespace bluesky.core.models {
+    interface PagedResourceList<T extends ResourceBase> extends ResourceBase {
+        /** La liste interne concrète des ressources de type T de cette liste non paginée. */
+        items: T[];
+        firstItemOnPage: number;
+        hasNextPage: boolean;
+        hasPreviousPage: boolean;
+        isFirstPage: boolean;
+        isLastPage: boolean;
+        lastItemOnPage: number;
+        pageCount: number;
+        pageNumber: number;
+        pageSize: number;
+        totalItemCount: number;
+    }
+}
+
+declare namespace bluesky.core.models {
+    /** Base class for all resources.TODO MGA : Move this class in a base API project */
+    interface ResourceBase {
+        /** Links to related resources. */
+        links: any[];
+    }
+}
+
+declare namespace bluesky.core.models {
+    interface ResourceList<T extends ResourceBase> extends ResourceBase {
+        /** La liste interne concrète des ressources de type T de cette liste non paginée. */
+        items: T[];
+        /** Le nombre d'éléments retournés dans cette liste non paginée. */
+        totalCount: number;
+    }
+}
+
 declare namespace bluesky.core.models.systemInfo {
     /** DTO of the API version. */
     interface ApiVersionDto extends ResourceBase {
@@ -13,6 +75,129 @@ declare namespace bluesky.core.models.systemInfo {
         version: string;
         /** Gets or sets date of the specified version of the [OrderManagement] Database. */
         startDate: Date;
+    }
+}
+
+declare namespace bluesky.core.models.userManagement {
+    /** Dto of an application work items summary.The summary contains for a specific application a summarized view of the work items.Each work item contains the number of the elements to monitor for a specific type of action to perform. */
+    interface ApplicationWorkItemsSummaryDto extends ResourceBase {
+        /** Gets or sets the list of work items to track. */
+        workItemHeaders: WorkItemHeaderDto[];
+        /** Gets or sets the total number of monitored elements. */
+        totalCount: number;
+    }
+}
+
+declare namespace bluesky.core.models.userManagement {
+    /** DTO Header of a scope management (Aggregation of the BME CountryReference, SubsidiaryReference andCurrencyReference, defined in MN). */
+    interface ScopeManagementHeaderDto extends ResourceBase {
+        /** Gets or sets the unique identifier. */
+        id: number;
+        /** Gets or sets the country name value. */
+        countryNameValue: string;
+        /** Geo region enum value (EMEA, ...) from the BME CountryReference.  We miss this MetraNet enum, so for now, it is a string. */
+        geoRegion: string;
+        /** Gets or sets the silo name from the BME SubsidiaryReference. */
+        siloName: string;
+        /** Gets or sets the subsidiary code from the BME SubsidiaryReference. */
+        subsidiaryCode: string;
+        /** Gets or sets the subsidiary name value. */
+        subsidiaryNameValue: string;
+        /** Gets or sets the management subsidiary name value. */
+        managementSubsidiaryNameValue: string;
+    }
+}
+
+declare namespace bluesky.core.models.userManagement {
+    /** DTO of a scope management (Aggregation of the BME CountryReference, SubsidiaryReference andCurrencyReference, defined in MN). */
+    interface ScopeManagementDto extends ResourceBase {
+        /** Gets or sets the unique identifier. */
+        id: number;
+        /** Gets or sets the country name. */
+        countryName: string;
+        /** Gets or sets the country name value. */
+        countryNameValue: number;
+        /** Gets or sets the currency. */
+        currency: string;
+        /** Gets or sets the currency value. */
+        currencyValue: number;
+        /** Geo region enum value (EMEA, ...) from the BME CountryReference.  We miss this MetraNet enum, so for now, it is a string. */
+        geoRegion: string;
+        /** Gets or sets the management's subsidiary name. */
+        managementSubsidiaryName: string;
+        /** Gets or sets the management's subsidiary name value. */
+        managementSubsidiaryNameValue: number;
+        /** Gets or sets the navision instance. */
+        navisionInstance: string;
+        /** Gets or sets the navision instance value. */
+        navisionInstanceValue: number;
+        /** Gets or sets the partner account name from the BME SubsidiaryReference. */
+        partnerAccountName: string;
+        /** Gets or sets the silo name from the BME SubsidiaryReference. */
+        siloName: string;
+        /** Gets or sets the subsidiary code from the BME SubsidiaryReference. */
+        subsidiaryCode: string;
+        /** Gets or sets the subsidiary name. */
+        subsidiaryName: string;
+        /** Gets or sets the subsidiary name value. */
+        subsidiaryNameValue: number;
+        /** Gets or sets the tax vendor.. */
+        taxVendor: string;
+        /** Gets or sets the tax vendor value. */
+        taxVendorValue: number;
+    }
+}
+
+declare namespace bluesky.core.models.userManagement {
+    /** Informations about a user. */
+    interface UserInformationDto {
+        /** File Name. */
+        firstName: string;
+        /** Last Name. */
+        lastName: string;
+        /** DisplayName. */
+        displayName: string;
+        /** Identifier of the User. */
+        userIdentifier: string;
+        /** Email. */
+        email: string;
+        /** Phoe number. */
+        phoneNumber: string;
+    }
+}
+
+declare namespace bluesky.core.models.userManagement {
+    interface UserRoleEntryDto {
+        name: string;
+        role: string;
+        silo: string;
+    }
+}
+
+declare namespace bluesky.core.models.userManagement {
+    interface UserSsoDto extends ResourceBase {
+        subsidiary: string;
+        owners: string[];
+        userRoleEntry: UserRoleEntryDto;
+        activeDirectoryGroups: UserRoleEntryDto[];
+        regions: string[];
+        userDisplayName: string;
+        /** Gets or sets the user's identifier in the active directory. */
+        userIdentifier: string;
+        countries: string[];
+        subsidiaries: string[];
+    }
+}
+
+declare namespace bluesky.core.models.userManagement {
+    /** Header Dto of a work item.A work item contains a type and number of elements to be monitored for a connected user (e.g.: 7 quotes to approve). */
+    interface WorkItemHeaderDto extends ResourceBase {
+        /** Gets or sets the identifier of the work item.Used to identify the action to be performed by the user. */
+        identifier: string;
+        /** Gets or sets the name of the work item.The name is the displayed value of the identifier. */
+        name: string;
+        /** Gets or sets the number of monitored elements. */
+        count: number;
     }
 }
 
@@ -172,7 +357,7 @@ declare namespace bluesky.core.models.technicalData {
 
 declare namespace bluesky.core.models.technicalData {
     import ManagementSubsidiaryDto = models.account.ManagementSubsidiaryDto;
-    /** Domain is the parent class and should be abstract for interface purpose.A Domain corresponds to a technical environment set up for a Sales Channel /Subsidiary, on which the customer will be provisioned: it is hosted byone/several Service Platforms, uses subset of logical resources which can bespecifically branded, and defines a default set of options. */
+    /** Domain is the parent class and should be abstract for export interface purpose.A Domain corresponds to a technical environment set up for a Sales Channel /Subsidiary, on which the customer will be provisioned: it is hosted byone/several Service Platforms, uses subset of logical resources which can bespecifically branded, and defines a default set of options. */
     interface ServicePlatformDomainDto extends ResourceBase {
         /** Gets or sets the unique identifier. */
         id: number;
@@ -476,188 +661,186 @@ declare namespace bluesky.core.models.technicalData {
     }
 }
 
-declare namespace bluesky.core.models.userManagement {
-    /** Dto of an application work items summary.The summary contains for a specific application a summarized view of the work items.Each work item contains the number of the elements to monitor for a specific type of action to perform. */
-    interface ApplicationWorkItemsSummaryDto extends ResourceBase {
-        /** Gets or sets the list of work items to track. */
-        workItemHeaders: WorkItemHeaderDto[];
-        /** Gets or sets the total number of monitored elements. */
-        totalCount: number;
+declare namespace bluesky.core.models.account {
+    /** Dto of an access.The AccessAccount is the customer hierarchy node that represents the instance of asubscribed product for a given user (i.e. the use  of a particular Arkadin orArkadin's supplier resource).It holds access identifier that allows connection, CDR guidance.It is linked to a unique service platform.It represents service end point - access to Arkadin conferencing infrastructure,provisioned in the network. */
+    interface AccessAccountDto extends AccountDto {
+        /** Gets or sets the Alias of the access. */
+        alias: string;
+        /** The AccessAccount view contains attributes storing technical information for each UserAccount's AccessAccount instance. */
+        accessView: AccessViewDto;
     }
 }
 
-declare namespace bluesky.core.models.userManagement {
-    /** DTO Header of a scope management (Aggregation of the BME CountryReference, SubsidiaryReference andCurrencyReference, defined in MN). */
-    interface ScopeManagementHeaderDto extends ResourceBase {
-        /** Gets or sets the unique identifier. */
-        id: number;
-        /** Gets or sets the country name value. */
-        countryNameValue: string;
-        /** Geo region enum value (EMEA, ...) from the BME CountryReference.  We miss this MetraNet enum, so for now, it is a string. */
-        geoRegion: string;
-        /** Gets or sets the silo name from the BME SubsidiaryReference. */
-        siloName: string;
-        /** Gets or sets the subsidiary code from the BME SubsidiaryReference. */
-        subsidiaryCode: string;
-        /** Gets or sets the subsidiary name value. */
-        subsidiaryNameValue: string;
-        /** Gets or sets the management subsidiary name value. */
-        managementSubsidiaryNameValue: string;
+declare namespace bluesky.core.models.account {
+    /** Header DTO of an accountTODO MGA : inheriting from OrderManagementEntityDto is a hack, as we do not have custom DTOs for Accounts comming from OrderManagement DB. TOFIX when we don't have these entities saved in OM. */
+    interface AccountHeaderDto extends OrderManagementEntityDto {
+        /** Gets or sets the user name assigned to the account.TODO MGA : to be renamed to Uid : impacts on Proxies / HUB ? Is it acceptable or not ? */
+        userName: string;
+        /** Gets or sets the account type. */
+        accountType: string;
+        /** Gets or sets the customer node name. */
+        customerNodeName: string;
+        /** TODO MGA : to be renamed to Uid : impacts on Proxies / HUB ? Is it acceptable or not ? */
+        payerUserName: string;
+        /** TODO MGA : to be renamed to Uid : impacts on Proxies / HUB ? Is it acceptable or not ? */
+        logoUserName: string;
+        /** The status of the account. */
+        accountStatus: string;
     }
 }
 
-declare namespace bluesky.core.models.userManagement {
-    /** DTO of a scope management (Aggregation of the BME CountryReference, SubsidiaryReference andCurrencyReference, defined in MN). */
-    interface ScopeManagementDto extends ResourceBase {
+declare namespace bluesky.core.models.account {
+    /** DTO of an account.Base class holding MetraNet core account properties and identifiers.TODO MGA : inheriting from OrderManagementEntityDto is a hack, as we do not have custom DTOs for Accounts comming from OrderManagement DB. TOFIX when we don't have these entities saved in OM. */
+    interface AccountDto extends OrderManagementEntityDto {
+        /** Gets or sets the account type. */
+        accountType: string;
+        /** Gets or sets the MetraNet identifier of the account. */
+        mNId: number;
+        /** Gets or sets the user name assigned to the account.TODO MGA : to be renamed to Uid : impacts on Proxies / HUB ? Is it acceptable or not ? */
+        userName: string;
+        /** Gets or sets the parent account.TODO MGA : to be renamed to AncestorAccountUid : impacts on Proxies / HUB ? Is it acceptable or not ? */
+        ancestorAccountUserName: string;
+        /** Gets or sets the account status value. */
+        accountStatus: string;
+        /** Gets or sets the payer username.TODO MGA : to be renamed to PayerUid : impacts on Proxies / HUB ? Is it acceptable or not ? */
+        payerUserName: string;
+        /** Gets or sets the start date of the account. */
+        accountStartDate: Date;
+        /** Gets or sets the end date of the account. */
+        accountEndDate: Date;
+        /** Gets or sets the start date of the association with the current parent account (ancestor). */
+        hierarchyStartDate: Date;
+        /** Gets or sets the end date of the association with the current parent account (ancestor). */
+        hierarchyEndDate: Date;
+        /** Gets or sets the password used by the account to access MetraView site. */
+        password: string;
+        /** Gets or sets the start date of the payment redirection with the current payer account. */
+        paymentStartDate: Date;
+        /** Gets or sets the end date of the payment redirection with the current payer account. */
+        paymentEndDate: Date;
+        /** Gets or sets the Internal view contains the Internal account information.It is required for all types of accounts. */
+        internalView: InternalViewDto;
+        /** Gets or sets the Common view gathers attributes shared by all of the Accounts. */
+        commonView: CommonViewDto;
+    }
+}
+
+declare namespace bluesky.core.models.account {
+    /** Dto of a billing account.The Billing Account represents the billing point in the hierarchy.This is the account which collects all charges from itself and all sub-accounts.Billing account defines invoice currency, billing frequency and receives theinvoice.It is linked to an Arkadin subsidiary (this allows to identify the uniqueNavision instance that support the Billing Account).By default the Billing Account is the entity that support the subscriptions(exception for Event, trial accounts ...).Please note that in the Wholesaler case, the Billing Account is a dummy(unknown by Navision, no invoice sent).Please note that in the trial account case, the Billing Account is a dummy (forinternal use only). */
+    interface BillingAccountDto extends AccountDto {
+        /** Billing Account view */
+        billingView: BillingViewDto;
+        /** The Contact view of type Bill-to contains the contact and address of a billable entity. */
+        billToView: BillToContactViewDto;
+        /** The  Contact view of type Ship-to contains the contact and address where the invoice is sent to. */
+        shipToView: ContactViewDto;
+        /** The Contact view of type Technical-Admin contains the contact and address of a technical administrator, responsible for a group of Users. */
+        technicalAdminContactView: TechnicalAdminContactViewDto;
+        /** The Contact view of type invoice carbon copy contains the additional contacts who will receive the invoice. */
+        invoiceCarbonCopyRecipients: ContactViewDto[];
+        /** The Contact view of type welcome pack carbon copy contains the additional contacts who will receive the welcome packs. */
+        welcomePackCarbonCopyRecipients: ContactViewDto[];
+    }
+}
+
+declare namespace bluesky.core.models.account {
+    /** Dto of a group.The Group is an optional node in the customer hierarchy.It is used for invoicing structure and reporting purposes. */
+    interface GroupDto extends AccountDto {
+        /** The Primary Group view contains attributes specific to Group and Primary Group account. These attributes include specifics of physical platform to which children accounts (Users and their Accesses) were provisioned. */
+        primaryGroupView: PrimaryGroupViewDto;
+        /** The Contact view of type Technical-Admin contains the contact and address of a technical administrator, responsible for a group of Users. */
+        technicalAdminContactView: TechnicalAdminContactViewDto;
+    }
+}
+
+declare namespace bluesky.core.models.account {
+    /** Dto of a Legal Entity.The Legal Entity is a node acting as a Payer template for the Billing Account. */
+    interface LegalEntityDto extends AccountDto {
+        /** The Contact view of type Bill-to contains the contact and address of a billable entity. */
+        billToView: BillToContactViewDto;
+        /** The Legal Entity view contains attributes related to Legal Entity setup. */
+        legalEntityView: LegalEntityViewDto;
+    }
+}
+
+declare namespace bluesky.core.models.account {
+    /** Dto of a local logo.The Local Logo is an optional node in the customer hierarchy, used for groupingor representing subsidiaries or geolocations of the Customer organization. */
+    interface LocalLogoDto extends AccountDto {
+        /** The Local Logo view contains attributes related to Local Logo setup. */
+        localLogoView: LocalLogoViewDto;
+        /** The Contact view of type Technical-Admin contains the contact and address of a technical administrator, responsible for a group of Users. */
+        technicalAdminContactView: TechnicalAdminContactViewDto;
+    }
+}
+
+declare namespace bluesky.core.models.account {
+    /** Dto of a logo.A Logo represents the Customer which is in relation with Arkadin or Arkadin'spartner. It's the root of any customer hierarchy.In the case of WholeSale the Logo is a dummy node (Arkadin IS hasn't got thecomplete view of the wholesaler's customer).In the case of trial account the Logo is a dummy node.A logo is associated to a Arkadin subsidiary (or to Arkadin SAS). */
+    interface LogoDto extends AccountDto {
+        /** Logo view */
+        logoView: LogoViewDto;
+        /** The Contact view of type Technical-Admin contains the contact and address of a technical administrator, responsible for a group of Users. */
+        technicalAdminContactView: TechnicalAdminContactViewDto;
+    }
+}
+
+declare namespace bluesky.core.models.account {
+    /** Management Subsidiaries are used in the Platform Selection algorithms. */
+    interface ManagementSubsidiaryDto extends ResourceBase {
         /** Gets or sets the unique identifier. */
         id: number;
-        /** Gets or sets the country name. */
-        countryName: string;
-        /** Gets or sets the country name value. */
-        countryNameValue: number;
-        /** Gets or sets the currency. */
-        currency: string;
-        /** Gets or sets the currency value. */
-        currencyValue: number;
-        /** Geo region enum value (EMEA, ...) from the BME CountryReference.  We miss this MetraNet enum, so for now, it is a string. */
-        geoRegion: string;
-        /** Gets or sets the management's subsidiary name. */
-        managementSubsidiaryName: string;
-        /** Gets or sets the management's subsidiary name value. */
-        managementSubsidiaryNameValue: number;
-        /** Gets or sets the navision instance. */
-        navisionInstance: string;
-        /** Gets or sets the navision instance value. */
-        navisionInstanceValue: number;
-        /** Gets or sets the partner account name from the BME SubsidiaryReference. */
-        partnerAccountName: string;
-        /** Gets or sets the silo name from the BME SubsidiaryReference. */
-        siloName: string;
-        /** Gets or sets the subsidiary code from the BME SubsidiaryReference. */
+        /** Flag to identify the Management Subsidiary at Logo level. */
+        isMain: boolean;
+        /** Subsidiary code. */
         subsidiaryCode: string;
-        /** Gets or sets the subsidiary name. */
+        /** Name of the management subsidiary to be used for AudioClassicplatform selection. */
         subsidiaryName: string;
-        /** Gets or sets the subsidiary name value. */
-        subsidiaryNameValue: number;
-        /** Gets or sets the tax vendor.. */
-        taxVendor: string;
-        /** Gets or sets the tax vendor value. */
-        taxVendorValue: number;
     }
 }
 
-declare namespace bluesky.core.models.userManagement {
-    /** Informations about a user. */
-    interface UserInformationDto {
-        /** File Name. */
-        firstName: string;
-        /** Last Name. */
-        lastName: string;
-        /** DisplayName. */
-        displayName: string;
-        /** Identifier of the User. */
-        userIdentifier: string;
-        /** Email. */
+declare namespace bluesky.core.models.account {
+    /** Dto of a primary group.The Primary group is a mandatory group of Users.It represents Customer's organizational physical Site, Department, Office orLocation or used purely for grouping purposes.The Primary group is linked to all services platforms used by the users. */
+    interface PrimaryGroupDto extends AccountDto {
+        /** The Primary Group view contains attributes specific to Group and Primary Group account. These attributes include specifics of physical platform to which children accounts (Users and their Accesses) were provisioned. */
+        primaryGroupView: PrimaryGroupViewDto;
+        /** Dispatching viewContains attributes related to account segmentation and dispatching. */
+        dispatchingView: DispatchingViewDto;
+        /** The Contact view of type Technical-Admin contains the contact and address of a technical administrator, responsible for a group of Users. */
+        technicalAdminContactView: TechnicalAdminContactViewDto;
+    }
+}
+
+declare namespace bluesky.core.models.account {
+    /** Dto of a reporting group 1.The Reporting Group has no functional requirement for billing, rating,...It is only used for Reporting issues. */
+    interface ReportingGroup1Dto extends AccountDto {
+    }
+}
+
+declare namespace bluesky.core.models.account {
+    /** Dto of a reporting group 2.The Reporting Group has no functional requirement for billing, rating,...It is only used for Reporting issues. */
+    interface ReportingGroup2Dto extends AccountDto {
+    }
+}
+
+declare namespace bluesky.core.models.account {
+    /** Header DTO of a UserAccount. */
+    interface UserAccountHeaderDto extends AccountHeaderDto {
         email: string;
-        /** Phoe number. */
-        phoneNumber: string;
+        login: string;
+        selfCareRelation: string;
+        selfCareRole: string;
+        hasExtendedScope: boolean;
     }
 }
 
-declare namespace bluesky.core.models.userManagement {
-    interface UserRoleEntryDto {
-        name: string;
-        role: string;
-        silo: string;
-    }
-}
-
-declare namespace bluesky.core.models.userManagement {
-    interface UserSsoDto extends ResourceBase {
-        subsidiary: string;
-        owners: string[];
-        userRoleEntry: UserRoleEntryDto;
-        activeDirectoryGroups: UserRoleEntryDto[];
-        regions: string[];
-        userDisplayName: string;
-        /** Gets or sets the user's identifier in the active directory. */
-        userIdentifier: string;
-        countries: string[];
-        subsidiaries: string[];
-    }
-}
-
-declare namespace bluesky.core.models.userManagement {
-    /** Header Dto of a work item.A work item contains a type and number of elements to be monitored for a connected user (e.g.: 7 quotes to approve). */
-    interface WorkItemHeaderDto extends ResourceBase {
-        /** Gets or sets the identifier of the work item.Used to identify the action to be performed by the user. */
-        identifier: string;
-        /** Gets or sets the name of the work item.The name is the displayed value of the identifier. */
-        name: string;
-        /** Gets or sets the number of monitored elements. */
-        count: number;
-    }
-}
-
-declare namespace bluesky.core.models {
-    /** Base information for a file upload. */
-    interface FileUploadBaseDto {
-        /** File encoded in base 64. */
-        fileBase64Url: string;
-        /** Name of the file. */
-        fileName: string;
-        /** Content Type. */
-        contentType: string;
-    }
-}
-
-declare namespace bluesky.core.models {
-    /** Json wrapper for boolean responses.TODO MGA: it must be made clear to external consumers how to read the value of the boolean response. */
-    interface JsonBooleanResponseDto {
-        /** the status of the flag. */
-        booleanResponse: boolean;
-    }
-}
-
-declare namespace bluesky.core.models {
-    /** Base DTO class to give the Id of an entity existing in the OrderManagement Database. */
-    interface OrderManagementEntityDto extends ResourceBase {
-        /** Entity Id of the item existing in OM DB. */
-        orderManagementEntityId: number;
-    }
-}
-
-declare namespace bluesky.core.models {
-    interface PagedResourceList<T extends ResourceBase> extends ResourceBase {
-        /** La liste interne concrète des ressources de type T de cette liste non paginée. */
-        items: T[];
-        firstItemOnPage: number;
-        hasNextPage: boolean;
-        hasPreviousPage: boolean;
-        isFirstPage: boolean;
-        isLastPage: boolean;
-        lastItemOnPage: number;
-        pageCount: number;
-        pageNumber: number;
-        pageSize: number;
-        totalItemCount: number;
-    }
-}
-
-declare namespace bluesky.core.models {
-    /** Base class for all resources.TODO MGA : Move this class in a base API project */
-    interface ResourceBase {
-        /** Links to related resources. */
-        links: any[];
-    }
-}
-
-declare namespace bluesky.core.models {
-    interface ResourceList<T extends ResourceBase> extends ResourceBase {
-        /** La liste interne concrète des ressources de type T de cette liste non paginée. */
-        items: T[];
-        /** Le nombre d'éléments retournés dans cette liste non paginée. */
-        totalCount: number;
+declare namespace bluesky.core.models.account {
+    /** DTO of a user.The UserAccount represents individual (person) or inanimate entity that that receivesand consumes services provided by Arkadin. */
+    interface UserAccountDto extends AccountDto {
+        /** The UserAccount-Contact view contains the contact and address of a physical user of Arkadin services. */
+        userContactView: UserContactViewDto;
+        /** The UserAccount view contains attributes related to UserAccount setup. */
+        userView: UserViewDto;
+        /** The Contact view of type Technical-Admin contains the contact and address of a technical administrator, responsible for a group of Users. */
+        technicalAdminContactView: TechnicalAdminContactViewDto;
     }
 }
 
@@ -1042,188 +1225,5 @@ declare namespace bluesky.core.models.account {
         selfCareRole: string;
         /** If specified, gets or sets the list of the identifiers of the accounts for which the user has admin privileges. */
         additionalAdministrationLevels: string[];
-    }
-}
-
-declare namespace bluesky.core.models.account {
-    /** Dto of an access.The AccessAccount is the customer hierarchy node that represents the instance of asubscribed product for a given user (i.e. the use  of a particular Arkadin orArkadin's supplier resource).It holds access identifier that allows connection, CDR guidance.It is linked to a unique service platform.It represents service end point - access to Arkadin conferencing infrastructure,provisioned in the network. */
-    interface AccessAccountDto extends AccountDto {
-        /** Gets or sets the Alias of the access. */
-        alias: string;
-        /** The AccessAccount view contains attributes storing technical information for each UserAccount's AccessAccount instance. */
-        accessView: AccessViewDto;
-    }
-}
-
-declare namespace bluesky.core.models.account {
-    /** Header DTO of an accountTODO MGA : inheriting from OrderManagementEntityDto is a hack, as we do not have custom DTOs for Accounts comming from OrderManagement DB. TOFIX when we don't have these entities saved in OM. */
-    interface AccountHeaderDto extends OrderManagementEntityDto {
-        /** Gets or sets the user name assigned to the account.TODO MGA : to be renamed to Uid : impacts on Proxies / HUB ? Is it acceptable or not ? */
-        userName: string;
-        /** Gets or sets the account type. */
-        accountType: string;
-        /** Gets or sets the customer node name. */
-        customerNodeName: string;
-        /** TODO MGA : to be renamed to Uid : impacts on Proxies / HUB ? Is it acceptable or not ? */
-        payerUserName: string;
-        /** TODO MGA : to be renamed to Uid : impacts on Proxies / HUB ? Is it acceptable or not ? */
-        logoUserName: string;
-        /** The status of the account. */
-        accountStatus: string;
-    }
-}
-
-declare namespace bluesky.core.models.account {
-    /** DTO of an account.Base class holding MetraNet core account properties and identifiers.TODO MGA : inheriting from OrderManagementEntityDto is a hack, as we do not have custom DTOs for Accounts comming from OrderManagement DB. TOFIX when we don't have these entities saved in OM. */
-    interface AccountDto extends OrderManagementEntityDto {
-        /** Gets or sets the account type. */
-        accountType: string;
-        /** Gets or sets the MetraNet identifier of the account. */
-        mNId: number;
-        /** Gets or sets the user name assigned to the account.TODO MGA : to be renamed to Uid : impacts on Proxies / HUB ? Is it acceptable or not ? */
-        userName: string;
-        /** Gets or sets the parent account.TODO MGA : to be renamed to AncestorAccountUid : impacts on Proxies / HUB ? Is it acceptable or not ? */
-        ancestorAccountUserName: string;
-        /** Gets or sets the account status value. */
-        accountStatus: string;
-        /** Gets or sets the payer username.TODO MGA : to be renamed to PayerUid : impacts on Proxies / HUB ? Is it acceptable or not ? */
-        payerUserName: string;
-        /** Gets or sets the start date of the account. */
-        accountStartDate: Date;
-        /** Gets or sets the end date of the account. */
-        accountEndDate: Date;
-        /** Gets or sets the start date of the association with the current parent account (ancestor). */
-        hierarchyStartDate: Date;
-        /** Gets or sets the end date of the association with the current parent account (ancestor). */
-        hierarchyEndDate: Date;
-        /** Gets or sets the password used by the account to access MetraView site. */
-        password: string;
-        /** Gets or sets the start date of the payment redirection with the current payer account. */
-        paymentStartDate: Date;
-        /** Gets or sets the end date of the payment redirection with the current payer account. */
-        paymentEndDate: Date;
-        /** Gets or sets the Internal view contains the Internal account information.It is required for all types of accounts. */
-        internalView: InternalViewDto;
-        /** Gets or sets the Common view gathers attributes shared by all of the Accounts. */
-        commonView: CommonViewDto;
-    }
-}
-
-declare namespace bluesky.core.models.account {
-    /** Dto of a billing account.The Billing Account represents the billing point in the hierarchy.This is the account which collects all charges from itself and all sub-accounts.Billing account defines invoice currency, billing frequency and receives theinvoice.It is linked to an Arkadin subsidiary (this allows to identify the uniqueNavision instance that support the Billing Account).By default the Billing Account is the entity that support the subscriptions(exception for Event, trial accounts ...).Please note that in the Wholesaler case, the Billing Account is a dummy(unknown by Navision, no invoice sent).Please note that in the trial account case, the Billing Account is a dummy (forinternal use only). */
-    interface BillingAccountDto extends AccountDto {
-        /** Billing Account view */
-        billingView: BillingViewDto;
-        /** The Contact view of type Bill-to contains the contact and address of a billable entity. */
-        billToView: BillToContactViewDto;
-        /** The  Contact view of type Ship-to contains the contact and address where the invoice is sent to. */
-        shipToView: ContactViewDto;
-        /** The Contact view of type Technical-Admin contains the contact and address of a technical administrator, responsible for a group of Users. */
-        technicalAdminContactView: TechnicalAdminContactViewDto;
-        /** The Contact view of type invoice carbon copy contains the additional contacts who will receive the invoice. */
-        invoiceCarbonCopyRecipients: ContactViewDto[];
-        /** The Contact view of type welcome pack carbon copy contains the additional contacts who will receive the welcome packs. */
-        welcomePackCarbonCopyRecipients: ContactViewDto[];
-    }
-}
-
-declare namespace bluesky.core.models.account {
-    /** Dto of a group.The Group is an optional node in the customer hierarchy.It is used for invoicing structure and reporting purposes. */
-    interface GroupDto extends AccountDto {
-        /** The Primary Group view contains attributes specific to Group and Primary Group account. These attributes include specifics of physical platform to which children accounts (Users and their Accesses) were provisioned. */
-        primaryGroupView: PrimaryGroupViewDto;
-        /** The Contact view of type Technical-Admin contains the contact and address of a technical administrator, responsible for a group of Users. */
-        technicalAdminContactView: TechnicalAdminContactViewDto;
-    }
-}
-
-declare namespace bluesky.core.models.account {
-    /** Dto of a Legal Entity.The Legal Entity is a node acting as a Payer template for the Billing Account. */
-    interface LegalEntityDto extends AccountDto {
-        /** The Contact view of type Bill-to contains the contact and address of a billable entity. */
-        billToView: BillToContactViewDto;
-        /** The Legal Entity view contains attributes related to Legal Entity setup. */
-        legalEntityView: LegalEntityViewDto;
-    }
-}
-
-declare namespace bluesky.core.models.account {
-    /** Dto of a local logo.The Local Logo is an optional node in the customer hierarchy, used for groupingor representing subsidiaries or geolocations of the Customer organization. */
-    interface LocalLogoDto extends AccountDto {
-        /** The Local Logo view contains attributes related to Local Logo setup. */
-        localLogoView: LocalLogoViewDto;
-        /** The Contact view of type Technical-Admin contains the contact and address of a technical administrator, responsible for a group of Users. */
-        technicalAdminContactView: TechnicalAdminContactViewDto;
-    }
-}
-
-declare namespace bluesky.core.models.account {
-    /** Dto of a logo.A Logo represents the Customer which is in relation with Arkadin or Arkadin'spartner. It's the root of any customer hierarchy.In the case of WholeSale the Logo is a dummy node (Arkadin IS hasn't got thecomplete view of the wholesaler's customer).In the case of trial account the Logo is a dummy node.A logo is associated to a Arkadin subsidiary (or to Arkadin SAS). */
-    interface LogoDto extends AccountDto {
-        /** Logo view */
-        logoView: LogoViewDto;
-        /** The Contact view of type Technical-Admin contains the contact and address of a technical administrator, responsible for a group of Users. */
-        technicalAdminContactView: TechnicalAdminContactViewDto;
-    }
-}
-
-declare namespace bluesky.core.models.account {
-    /** Management Subsidiaries are used in the Platform Selection algorithms. */
-    interface ManagementSubsidiaryDto extends ResourceBase {
-        /** Gets or sets the unique identifier. */
-        id: number;
-        /** Flag to identify the Management Subsidiary at Logo level. */
-        isMain: boolean;
-        /** Subsidiary code. */
-        subsidiaryCode: string;
-        /** Name of the management subsidiary to be used for AudioClassicplatform selection. */
-        subsidiaryName: string;
-    }
-}
-
-declare namespace bluesky.core.models.account {
-    /** Dto of a primary group.The Primary group is a mandatory group of Users.It represents Customer's organizational physical Site, Department, Office orLocation or used purely for grouping purposes.The Primary group is linked to all services platforms used by the users. */
-    interface PrimaryGroupDto extends AccountDto {
-        /** The Primary Group view contains attributes specific to Group and Primary Group account. These attributes include specifics of physical platform to which children accounts (Users and their Accesses) were provisioned. */
-        primaryGroupView: PrimaryGroupViewDto;
-        /** Dispatching viewContains attributes related to account segmentation and dispatching. */
-        dispatchingView: DispatchingViewDto;
-        /** The Contact view of type Technical-Admin contains the contact and address of a technical administrator, responsible for a group of Users. */
-        technicalAdminContactView: TechnicalAdminContactViewDto;
-    }
-}
-
-declare namespace bluesky.core.models.account {
-    /** Dto of a reporting group 1.The Reporting Group has no functional requirement for billing, rating,...It is only used for Reporting issues. */
-    interface ReportingGroup1Dto extends AccountDto {
-    }
-}
-
-declare namespace bluesky.core.models.account {
-    /** Dto of a reporting group 2.The Reporting Group has no functional requirement for billing, rating,...It is only used for Reporting issues. */
-    interface ReportingGroup2Dto extends AccountDto {
-    }
-}
-
-declare namespace bluesky.core.models.account {
-    /** Header DTO of a UserAccount. */
-    interface UserAccountHeaderDto extends AccountHeaderDto {
-        email: string;
-        login: string;
-        selfCareRelation: string;
-        selfCareRole: string;
-        hasExtendedScope: boolean;
-    }
-}
-
-declare namespace bluesky.core.models.account {
-    /** DTO of a user.The UserAccount represents individual (person) or inanimate entity that that receivesand consumes services provided by Arkadin. */
-    interface UserAccountDto extends AccountDto {
-        /** The UserAccount-Contact view contains the contact and address of a physical user of Arkadin services. */
-        userContactView: UserContactViewDto;
-        /** The UserAccount view contains attributes related to UserAccount setup. */
-        userView: UserViewDto;
-        /** The Contact view of type Technical-Admin contains the contact and address of a technical administrator, responsible for a group of Users. */
-        technicalAdminContactView: TechnicalAdminContactViewDto;
     }
 }

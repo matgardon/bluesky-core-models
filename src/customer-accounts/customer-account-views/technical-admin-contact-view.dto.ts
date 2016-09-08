@@ -1,4 +1,4 @@
-﻿declare namespace bluesky.core.models.account {
-	interface TechnicalAdminContactViewDto extends ContactViewDto {
+﻿ namespace bluesky.core.models.account {
+	export interface TechnicalAdminContactViewDto extends ContactViewDto {
 	}
 }

@@ -1,5 +1,5 @@
-﻿declare namespace bluesky.core.models.userManagement {
-	interface UserSsoDto extends ResourceBase {
+﻿ namespace bluesky.core.models.userManagement {
+	export interface UserSsoDto extends ResourceBase {
 		subsidiary: string;
 		owners: string[];
 		userRoleEntry: UserRoleEntryDto;
