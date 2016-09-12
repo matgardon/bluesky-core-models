@@ -60,51 +60,6 @@ declare namespace bluesky.core.models {
     }
 }
 
-declare namespace bluesky.core.models.auth {
-    interface AjaxClientEndpointConfigurationDto {
-        endpointBaseURL: string;
-        endpointSuffix: string;
-        authToken: string;
-        authTokenValidityEndDate: Date;
-    }
-}
-
-declare namespace bluesky.core.models.auth {
-    import UserSsoDto = bluesky.core.models.userManagement.UserSsoDto;
-    interface BlueskyAjaxClientConfigurationDto {
-        coreApiConfiguration: AjaxClientEndpointConfigurationDto;
-        marketingApiConfiguration: AjaxClientEndpointConfigurationDto;
-        selfcareApiConfiguration: AjaxClientEndpointConfigurationDto;
-        quoteWizardConfiguration: AjaxClientEndpointConfigurationDto;
-        orderEntryConfiguration: AjaxClientEndpointConfigurationDto;
-        orderTrackingConfiguration: AjaxClientEndpointConfigurationDto;
-        technicalInventoryConfiguration: AjaxClientEndpointConfigurationDto;
-        metranetConfiguration: AjaxClientEndpointConfigurationDto;
-        salesforceConfiguration: AjaxClientEndpointConfigurationDto;
-        templateGeneratorConfiguration: AjaxClientEndpointConfigurationDto;
-        defaultUserRole: string;
-        currentUser?: UserSsoDto;
-    }
-}
-
-declare namespace bluesky.core.models.systemInfo {
-    /** DTO of the API version. */
-    interface ApiVersionDto extends ResourceBase {
-        /** Version's number. */
-        version: string;
-    }
-}
-
-declare namespace bluesky.core.models.systemInfo {
-    /** DTO of the Order Management Database Version. */
-    interface DatabaseVersionDto {
-        /** Gets or sets version of the [OrderManagement] Database at a current date. */
-        version: string;
-        /** Gets or sets date of the specified version of the [OrderManagement] Database. */
-        startDate: Date;
-    }
-}
-
 declare namespace bluesky.core.models.userManagement {
     /** Dto of an application work items summary.The summary contains for a specific application a summarized view of the work items.Each work item contains the number of the elements to monitor for a specific type of action to perform. */
     interface ApplicationWorkItemsSummaryDto extends ResourceBase {
@@ -225,6 +180,79 @@ declare namespace bluesky.core.models.userManagement {
         name: string;
         /** Gets or sets the number of monitored elements. */
         count: number;
+    }
+}
+
+declare namespace bluesky.core.models.clientConfig {
+    interface AjaxClientEndpointConfigurationDto {
+        endpointBaseURL: string;
+        endpointSuffix: string;
+        authToken: string;
+        authTokenValidityEndDate: Date;
+    }
+}
+
+declare namespace bluesky.core.models.clientConfig {
+    import UserSsoDto = bluesky.core.models.userManagement.UserSsoDto;
+    interface AjaxClientConfigurationDictionnary {
+        /**
+         * Dictionnary of client configuration per-endpoint.
+         * @param endpointType : of EndpoinTypeEnum type, but it cannot be strongly typed due too TS not implementing it atm: https://github.com/Microsoft/TypeScript/issues/2491
+         * @returns {}
+         */
+        [endpointType: number]: AjaxClientEndpointConfigurationDto;
+    }
+    interface BlueskyAjaxClientConfigurationDto {
+        /**
+         * As provided by the server, the dictionnary of client config per endpoint.
+         */
+        endpointConfigurationDictionnary: AjaxClientConfigurationDictionnary;
+        defaultUserRole: string;
+        currentUser?: UserSsoDto;
+    }
+}
+
+declare namespace bluesky.core.models.clientConfig {
+    /**
+     * Enum generated from the server to know the list of supported endpoint configuration.
+     */
+    enum EndpointTypeEnum {
+        /**
+         * Origin domain from which the current client was loaded.
+         */
+        CurrentDomain = 0,
+        CoreApi = 1,
+        MarketingApi = 2,
+        SelfcareApi = 3,
+        QuoteWizard = 4,
+        OrderEntry = 5,
+        OrderTracking = 6,
+        Metranet = 7,
+        TechnicalInventory = 8,
+        TemplateGenerator = 9,
+        Salesforce = 10,
+        /**
+         * External URLs (not treatment applied, rejected if URL is not full)
+         */
+        External = 11,
+    }
+}
+
+declare namespace bluesky.core.models.systemInfo {
+    /** DTO of the API version. */
+    interface ApiVersionDto extends ResourceBase {
+        /** Version's number. */
+        version: string;
+    }
+}
+
+declare namespace bluesky.core.models.systemInfo {
+    /** DTO of the Order Management Database Version. */
+    interface DatabaseVersionDto {
+        /** Gets or sets version of the [OrderManagement] Database at a current date. */
+        version: string;
+        /** Gets or sets date of the specified version of the [OrderManagement] Database. */
+        startDate: Date;
     }
 }
 

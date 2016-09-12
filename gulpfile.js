@@ -28,24 +28,25 @@ gulp.task('ts-lint', function () {
 });
 
 gulp.task('compile-ts', ['clean'], function () {
-    return gulp.src([tsSrc, tsExternalDefinitions])
+    var tsResults = gulp.src([tsSrc, tsExternalDefinitions])
                .pipe(sourcemaps.init()) // This means sourcemaps will be generated
                .pipe(ts(tsProject))
-               .dts.pipe(concat('bluesky-core-models.d.ts'))
-               .pipe(gulp.dest('dist'));
+               //.dts.pipe(concat('bluesky-core-models.d.ts'))
+               //.pipe(gulp.dest('dist'));
 
-    //TODO MGA: only publish dts files for the moment
-    //return merge([
-    //    tsResults.dts.pipe(concat('bluesky-core-models.d.ts'))
-    //                 .pipe(gulp.dest('dist/definitions')),
+    return merge([
+        tsResults.dts.pipe(concat('bluesky-core-models.d.ts'))
+                     .pipe(gulp.dest('dist')),
 
-    //    tsResults.js.pipe(concat('bluesky-core-models.js'))
-    //                .pipe(ngAnnotate())//TODO MGA : check if it breaks sourcemaps ?
-    //                //.pipe(uglify()) //Uncomment to activate minification
-    //                .pipe(sourcemaps.write())// Now the sourcemaps are added to the .js file //TODO MGA: sourcemaps keeps track of original .ts files + the concatenated .js file : how to only have the 2 original ts files ?
-    //                //.pipe(rename({ suffix: '.min' }))
-    //                .pipe(gulp.dest('dist/js'))
-    //]);
+        tsResults.js.pipe(concat('bluesky-core-models.js'))
+                    .pipe(ngAnnotate())//TODO MGA : check if it breaks sourcemaps ?
+
+                    //TODO MGA: leave concatenation & minification to consumer apps
+                    //.pipe(uglify()) //Uncomment to activate minification
+                    .pipe(sourcemaps.write())// Now the sourcemaps are added to the .js file //TODO MGA: sourcemaps keeps track of original .ts files + the concatenated .js file : how to only have the 2 original ts files ?
+                    //.pipe(rename({ suffix: '.min' }))
+                    .pipe(gulp.dest('dist'))
+    ]);
 });
 
 //TODO MGA: fix ts-lint step
