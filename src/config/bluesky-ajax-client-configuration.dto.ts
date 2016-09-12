@@ -16,7 +16,7 @@
          */
         endpointConfigurationDictionnary: AjaxClientConfigurationDictionnary;
 
-        defaultUserRole: string;
+        currentUserRole: string;
 
         //TODO MGA: only used by the hub ATM, and not strongly typed to other apps: to factorize or change ?
         currentUser?: UserSsoDto;

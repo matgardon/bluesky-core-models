@@ -1,188 +1,3 @@
-declare namespace bluesky.core.models {
-    /** Base information for a file upload. */
-    interface FileUploadBaseDto {
-        /** File encoded in base 64. */
-        fileBase64Url: string;
-        /** Name of the file. */
-        fileName: string;
-        /** Content Type. */
-        contentType: string;
-    }
-}
-
-declare namespace bluesky.core.models {
-    /** Json wrapper for boolean responses.TODO MGA: it must be made clear to external consumers how to read the value of the boolean response. */
-    interface JsonBooleanResponseDto {
-        /** the status of the flag. */
-        booleanResponse: boolean;
-    }
-}
-
-declare namespace bluesky.core.models {
-    /** Base DTO class to give the Id of an entity existing in the OrderManagement Database. */
-    interface OrderManagementEntityDto extends ResourceBase {
-        /** Entity Id of the item existing in OM DB. */
-        orderManagementEntityId: number;
-    }
-}
-
-declare namespace bluesky.core.models {
-    interface PagedResourceList<T extends ResourceBase> extends ResourceBase {
-        /** La liste interne concrète des ressources de type T de cette liste non paginée. */
-        items: T[];
-        firstItemOnPage: number;
-        hasNextPage: boolean;
-        hasPreviousPage: boolean;
-        isFirstPage: boolean;
-        isLastPage: boolean;
-        lastItemOnPage: number;
-        pageCount: number;
-        pageNumber: number;
-        pageSize: number;
-        totalItemCount: number;
-    }
-}
-
-declare namespace bluesky.core.models {
-    /** Base class for all resources.TODO MGA : Move this class in a base API project */
-    interface ResourceBase {
-        /** Links to related resources. */
-        links: any[];
-    }
-}
-
-declare namespace bluesky.core.models {
-    interface ResourceList<T extends ResourceBase> extends ResourceBase {
-        /** La liste interne concrète des ressources de type T de cette liste non paginée. */
-        items: T[];
-        /** Le nombre d'éléments retournés dans cette liste non paginée. */
-        totalCount: number;
-    }
-}
-
-declare namespace bluesky.core.models.userManagement {
-    /** Dto of an application work items summary.The summary contains for a specific application a summarized view of the work items.Each work item contains the number of the elements to monitor for a specific type of action to perform. */
-    interface ApplicationWorkItemsSummaryDto extends ResourceBase {
-        /** Gets or sets the list of work items to track. */
-        workItemHeaders: WorkItemHeaderDto[];
-        /** Gets or sets the total number of monitored elements. */
-        totalCount: number;
-    }
-}
-
-declare namespace bluesky.core.models.userManagement {
-    /** DTO Header of a scope management (Aggregation of the BME CountryReference, SubsidiaryReference andCurrencyReference, defined in MN). */
-    interface ScopeManagementHeaderDto extends ResourceBase {
-        /** Gets or sets the unique identifier. */
-        id: number;
-        /** Gets or sets the country name value. */
-        countryNameValue: string;
-        /** Geo region enum value (EMEA, ...) from the BME CountryReference.  We miss this MetraNet enum, so for now, it is a string. */
-        geoRegion: string;
-        /** Gets or sets the silo name from the BME SubsidiaryReference. */
-        siloName: string;
-        /** Gets or sets the subsidiary code from the BME SubsidiaryReference. */
-        subsidiaryCode: string;
-        /** Gets or sets the subsidiary name value. */
-        subsidiaryNameValue: string;
-        /** Gets or sets the management subsidiary name value. */
-        managementSubsidiaryNameValue: string;
-    }
-}
-
-declare namespace bluesky.core.models.userManagement {
-    /** DTO of a scope management (Aggregation of the BME CountryReference, SubsidiaryReference andCurrencyReference, defined in MN). */
-    interface ScopeManagementDto extends ResourceBase {
-        /** Gets or sets the unique identifier. */
-        id: number;
-        /** Gets or sets the country name. */
-        countryName: string;
-        /** Gets or sets the country name value. */
-        countryNameValue: number;
-        /** Gets or sets the currency. */
-        currency: string;
-        /** Gets or sets the currency value. */
-        currencyValue: number;
-        /** Geo region enum value (EMEA, ...) from the BME CountryReference.  We miss this MetraNet enum, so for now, it is a string. */
-        geoRegion: string;
-        /** Gets or sets the management's subsidiary name. */
-        managementSubsidiaryName: string;
-        /** Gets or sets the management's subsidiary name value. */
-        managementSubsidiaryNameValue: number;
-        /** Gets or sets the navision instance. */
-        navisionInstance: string;
-        /** Gets or sets the navision instance value. */
-        navisionInstanceValue: number;
-        /** Gets or sets the partner account name from the BME SubsidiaryReference. */
-        partnerAccountName: string;
-        /** Gets or sets the silo name from the BME SubsidiaryReference. */
-        siloName: string;
-        /** Gets or sets the subsidiary code from the BME SubsidiaryReference. */
-        subsidiaryCode: string;
-        /** Gets or sets the subsidiary name. */
-        subsidiaryName: string;
-        /** Gets or sets the subsidiary name value. */
-        subsidiaryNameValue: number;
-        /** Gets or sets the tax vendor.. */
-        taxVendor: string;
-        /** Gets or sets the tax vendor value. */
-        taxVendorValue: number;
-    }
-}
-
-declare namespace bluesky.core.models.userManagement {
-    /** Informations about a user. */
-    interface UserInformationDto {
-        /** File Name. */
-        firstName: string;
-        /** Last Name. */
-        lastName: string;
-        /** DisplayName. */
-        displayName: string;
-        /** Identifier of the User. */
-        userIdentifier: string;
-        /** Email. */
-        email: string;
-        /** Phoe number. */
-        phoneNumber: string;
-    }
-}
-
-declare namespace bluesky.core.models.userManagement {
-    interface UserRoleEntryDto {
-        name: string;
-        role: string;
-        silo: string;
-    }
-}
-
-declare namespace bluesky.core.models.userManagement {
-    interface UserSsoDto extends ResourceBase {
-        subsidiary: string;
-        owners: string[];
-        userRoleEntry: UserRoleEntryDto;
-        activeDirectoryGroups: UserRoleEntryDto[];
-        regions: string[];
-        userDisplayName: string;
-        /** Gets or sets the user's identifier in the active directory. */
-        userIdentifier: string;
-        countries: string[];
-        subsidiaries: string[];
-    }
-}
-
-declare namespace bluesky.core.models.userManagement {
-    /** Header Dto of a work item.A work item contains a type and number of elements to be monitored for a connected user (e.g.: 7 quotes to approve). */
-    interface WorkItemHeaderDto extends ResourceBase {
-        /** Gets or sets the identifier of the work item.Used to identify the action to be performed by the user. */
-        identifier: string;
-        /** Gets or sets the name of the work item.The name is the displayed value of the identifier. */
-        name: string;
-        /** Gets or sets the number of monitored elements. */
-        count: number;
-    }
-}
-
 declare namespace bluesky.core.models.clientConfig {
     interface AjaxClientEndpointConfigurationDto {
         endpointBaseURL: string;
@@ -207,7 +22,7 @@ declare namespace bluesky.core.models.clientConfig {
          * As provided by the server, the dictionnary of client config per endpoint.
          */
         endpointConfigurationDictionnary: AjaxClientConfigurationDictionnary;
-        defaultUserRole: string;
+        currentUserRole: string;
         currentUser?: UserSsoDto;
     }
 }
@@ -235,24 +50,6 @@ declare namespace bluesky.core.models.clientConfig {
          * External URLs (not treatment applied, rejected if URL is not full)
          */
         External = 11,
-    }
-}
-
-declare namespace bluesky.core.models.systemInfo {
-    /** DTO of the API version. */
-    interface ApiVersionDto extends ResourceBase {
-        /** Version's number. */
-        version: string;
-    }
-}
-
-declare namespace bluesky.core.models.systemInfo {
-    /** DTO of the Order Management Database Version. */
-    interface DatabaseVersionDto {
-        /** Gets or sets version of the [OrderManagement] Database at a current date. */
-        version: string;
-        /** Gets or sets date of the specified version of the [OrderManagement] Database. */
-        startDate: Date;
     }
 }
 
@@ -713,6 +510,209 @@ declare namespace bluesky.core.models.technicalData {
         participantOneClickURL: string;
         /** List of integrated audio accesses. */
         integratedAudioAccesses: IntegratedAudioAccessDto[];
+    }
+}
+
+declare namespace bluesky.core.models.userManagement {
+    /** Dto of an application work items summary.The summary contains for a specific application a summarized view of the work items.Each work item contains the number of the elements to monitor for a specific type of action to perform. */
+    interface ApplicationWorkItemsSummaryDto extends ResourceBase {
+        /** Gets or sets the list of work items to track. */
+        workItemHeaders: WorkItemHeaderDto[];
+        /** Gets or sets the total number of monitored elements. */
+        totalCount: number;
+    }
+}
+
+declare namespace bluesky.core.models.userManagement {
+    /** DTO Header of a scope management (Aggregation of the BME CountryReference, SubsidiaryReference andCurrencyReference, defined in MN). */
+    interface ScopeManagementHeaderDto extends ResourceBase {
+        /** Gets or sets the unique identifier. */
+        id: number;
+        /** Gets or sets the country name value. */
+        countryNameValue: string;
+        /** Geo region enum value (EMEA, ...) from the BME CountryReference.  We miss this MetraNet enum, so for now, it is a string. */
+        geoRegion: string;
+        /** Gets or sets the silo name from the BME SubsidiaryReference. */
+        siloName: string;
+        /** Gets or sets the subsidiary code from the BME SubsidiaryReference. */
+        subsidiaryCode: string;
+        /** Gets or sets the subsidiary name value. */
+        subsidiaryNameValue: string;
+        /** Gets or sets the management subsidiary name value. */
+        managementSubsidiaryNameValue: string;
+    }
+}
+
+declare namespace bluesky.core.models.userManagement {
+    /** DTO of a scope management (Aggregation of the BME CountryReference, SubsidiaryReference andCurrencyReference, defined in MN). */
+    interface ScopeManagementDto extends ResourceBase {
+        /** Gets or sets the unique identifier. */
+        id: number;
+        /** Gets or sets the country name. */
+        countryName: string;
+        /** Gets or sets the country name value. */
+        countryNameValue: number;
+        /** Gets or sets the currency. */
+        currency: string;
+        /** Gets or sets the currency value. */
+        currencyValue: number;
+        /** Geo region enum value (EMEA, ...) from the BME CountryReference.  We miss this MetraNet enum, so for now, it is a string. */
+        geoRegion: string;
+        /** Gets or sets the management's subsidiary name. */
+        managementSubsidiaryName: string;
+        /** Gets or sets the management's subsidiary name value. */
+        managementSubsidiaryNameValue: number;
+        /** Gets or sets the navision instance. */
+        navisionInstance: string;
+        /** Gets or sets the navision instance value. */
+        navisionInstanceValue: number;
+        /** Gets or sets the partner account name from the BME SubsidiaryReference. */
+        partnerAccountName: string;
+        /** Gets or sets the silo name from the BME SubsidiaryReference. */
+        siloName: string;
+        /** Gets or sets the subsidiary code from the BME SubsidiaryReference. */
+        subsidiaryCode: string;
+        /** Gets or sets the subsidiary name. */
+        subsidiaryName: string;
+        /** Gets or sets the subsidiary name value. */
+        subsidiaryNameValue: number;
+        /** Gets or sets the tax vendor.. */
+        taxVendor: string;
+        /** Gets or sets the tax vendor value. */
+        taxVendorValue: number;
+    }
+}
+
+declare namespace bluesky.core.models.userManagement {
+    /** Informations about a user. */
+    interface UserInformationDto {
+        /** File Name. */
+        firstName: string;
+        /** Last Name. */
+        lastName: string;
+        /** DisplayName. */
+        displayName: string;
+        /** Identifier of the User. */
+        userIdentifier: string;
+        /** Email. */
+        email: string;
+        /** Phoe number. */
+        phoneNumber: string;
+    }
+}
+
+declare namespace bluesky.core.models.userManagement {
+    interface UserRoleEntryDto {
+        name: string;
+        role: string;
+        silo: string;
+    }
+}
+
+declare namespace bluesky.core.models.userManagement {
+    interface UserSsoDto extends ResourceBase {
+        subsidiary: string;
+        owners: string[];
+        userRoleEntry: UserRoleEntryDto;
+        activeDirectoryGroups: UserRoleEntryDto[];
+        regions: string[];
+        userDisplayName: string;
+        /** Gets or sets the user's identifier in the active directory. */
+        userIdentifier: string;
+        countries: string[];
+        subsidiaries: string[];
+    }
+}
+
+declare namespace bluesky.core.models.userManagement {
+    /** Header Dto of a work item.A work item contains a type and number of elements to be monitored for a connected user (e.g.: 7 quotes to approve). */
+    interface WorkItemHeaderDto extends ResourceBase {
+        /** Gets or sets the identifier of the work item.Used to identify the action to be performed by the user. */
+        identifier: string;
+        /** Gets or sets the name of the work item.The name is the displayed value of the identifier. */
+        name: string;
+        /** Gets or sets the number of monitored elements. */
+        count: number;
+    }
+}
+
+declare namespace bluesky.core.models {
+    /** Base information for a file upload. */
+    interface FileUploadBaseDto {
+        /** File encoded in base 64. */
+        fileBase64Url: string;
+        /** Name of the file. */
+        fileName: string;
+        /** Content Type. */
+        contentType: string;
+    }
+}
+
+declare namespace bluesky.core.models {
+    /** Json wrapper for boolean responses.TODO MGA: it must be made clear to external consumers how to read the value of the boolean response. */
+    interface JsonBooleanResponseDto {
+        /** the status of the flag. */
+        booleanResponse: boolean;
+    }
+}
+
+declare namespace bluesky.core.models {
+    /** Base DTO class to give the Id of an entity existing in the OrderManagement Database. */
+    interface OrderManagementEntityDto extends ResourceBase {
+        /** Entity Id of the item existing in OM DB. */
+        orderManagementEntityId: number;
+    }
+}
+
+declare namespace bluesky.core.models {
+    interface PagedResourceList<T extends ResourceBase> extends ResourceBase {
+        /** La liste interne concrète des ressources de type T de cette liste non paginée. */
+        items: T[];
+        firstItemOnPage: number;
+        hasNextPage: boolean;
+        hasPreviousPage: boolean;
+        isFirstPage: boolean;
+        isLastPage: boolean;
+        lastItemOnPage: number;
+        pageCount: number;
+        pageNumber: number;
+        pageSize: number;
+        totalItemCount: number;
+    }
+}
+
+declare namespace bluesky.core.models {
+    /** Base class for all resources.TODO MGA : Move this class in a base API project */
+    interface ResourceBase {
+        /** Links to related resources. */
+        links: any[];
+    }
+}
+
+declare namespace bluesky.core.models {
+    interface ResourceList<T extends ResourceBase> extends ResourceBase {
+        /** La liste interne concrète des ressources de type T de cette liste non paginée. */
+        items: T[];
+        /** Le nombre d'éléments retournés dans cette liste non paginée. */
+        totalCount: number;
+    }
+}
+
+declare namespace bluesky.core.models.systemInfo {
+    /** DTO of the API version. */
+    interface ApiVersionDto extends ResourceBase {
+        /** Version's number. */
+        version: string;
+    }
+}
+
+declare namespace bluesky.core.models.systemInfo {
+    /** DTO of the Order Management Database Version. */
+    interface DatabaseVersionDto {
+        /** Gets or sets version of the [OrderManagement] Database at a current date. */
+        version: string;
+        /** Gets or sets date of the specified version of the [OrderManagement] Database. */
+        startDate: Date;
     }
 }
 
