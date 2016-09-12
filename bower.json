@@ -1,12 +1,14 @@
 {
   "name": "bluesky-core-models",  
   "description": "BS models, as a TypeScript definition file.",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "authors": [
     "Mathis Gardon"
   ],
   "license": "MIT",
-  "main": [  ],
+  "main": [
+    "dist/bluesky-core-models.js"
+  ],
   "typescript": {
     "definition": [
       "dist/bluesky-core-models.d.ts"

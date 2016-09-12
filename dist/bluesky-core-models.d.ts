@@ -53,6 +53,68 @@ declare namespace bluesky.core.models.clientConfig {
     }
 }
 
+declare namespace bluesky.core.models {
+    /** Base information for a file upload. */
+    interface FileUploadBaseDto {
+        /** File encoded in base 64. */
+        fileBase64Url: string;
+        /** Name of the file. */
+        fileName: string;
+        /** Content Type. */
+        contentType: string;
+    }
+}
+
+declare namespace bluesky.core.models {
+    /** Json wrapper for boolean responses.TODO MGA: it must be made clear to external consumers how to read the value of the boolean response. */
+    interface JsonBooleanResponseDto {
+        /** the status of the flag. */
+        booleanResponse: boolean;
+    }
+}
+
+declare namespace bluesky.core.models {
+    /** Base DTO class to give the Id of an entity existing in the OrderManagement Database. */
+    interface OrderManagementEntityDto extends ResourceBase {
+        /** Entity Id of the item existing in OM DB. */
+        orderManagementEntityId: number;
+    }
+}
+
+declare namespace bluesky.core.models {
+    interface PagedResourceList<T extends ResourceBase> extends ResourceBase {
+        /** La liste interne concrète des ressources de type T de cette liste non paginée. */
+        items: T[];
+        firstItemOnPage: number;
+        hasNextPage: boolean;
+        hasPreviousPage: boolean;
+        isFirstPage: boolean;
+        isLastPage: boolean;
+        lastItemOnPage: number;
+        pageCount: number;
+        pageNumber: number;
+        pageSize: number;
+        totalItemCount: number;
+    }
+}
+
+declare namespace bluesky.core.models {
+    /** Base class for all resources.TODO MGA : Move this class in a base API project */
+    interface ResourceBase {
+        /** Links to related resources. */
+        links: any[];
+    }
+}
+
+declare namespace bluesky.core.models {
+    interface ResourceList<T extends ResourceBase> extends ResourceBase {
+        /** La liste interne concrète des ressources de type T de cette liste non paginée. */
+        items: T[];
+        /** Le nombre d'éléments retournés dans cette liste non paginée. */
+        totalCount: number;
+    }
+}
+
 declare namespace bluesky.core.models.technicalData {
     /** AccessAccount characteristics */
     interface AccessCharacteristicDto extends OrderManagementEntityDto {
@@ -513,6 +575,24 @@ declare namespace bluesky.core.models.technicalData {
     }
 }
 
+declare namespace bluesky.core.models.systemInfo {
+    /** DTO of the API version. */
+    interface ApiVersionDto extends ResourceBase {
+        /** Version's number. */
+        version: string;
+    }
+}
+
+declare namespace bluesky.core.models.systemInfo {
+    /** DTO of the Order Management Database Version. */
+    interface DatabaseVersionDto {
+        /** Gets or sets version of the [OrderManagement] Database at a current date. */
+        version: string;
+        /** Gets or sets date of the specified version of the [OrderManagement] Database. */
+        startDate: Date;
+    }
+}
+
 declare namespace bluesky.core.models.userManagement {
     /** Dto of an application work items summary.The summary contains for a specific application a summarized view of the work items.Each work item contains the number of the elements to monitor for a specific type of action to perform. */
     interface ApplicationWorkItemsSummaryDto extends ResourceBase {
@@ -633,86 +713,6 @@ declare namespace bluesky.core.models.userManagement {
         name: string;
         /** Gets or sets the number of monitored elements. */
         count: number;
-    }
-}
-
-declare namespace bluesky.core.models {
-    /** Base information for a file upload. */
-    interface FileUploadBaseDto {
-        /** File encoded in base 64. */
-        fileBase64Url: string;
-        /** Name of the file. */
-        fileName: string;
-        /** Content Type. */
-        contentType: string;
-    }
-}
-
-declare namespace bluesky.core.models {
-    /** Json wrapper for boolean responses.TODO MGA: it must be made clear to external consumers how to read the value of the boolean response. */
-    interface JsonBooleanResponseDto {
-        /** the status of the flag. */
-        booleanResponse: boolean;
-    }
-}
-
-declare namespace bluesky.core.models {
-    /** Base DTO class to give the Id of an entity existing in the OrderManagement Database. */
-    interface OrderManagementEntityDto extends ResourceBase {
-        /** Entity Id of the item existing in OM DB. */
-        orderManagementEntityId: number;
-    }
-}
-
-declare namespace bluesky.core.models {
-    interface PagedResourceList<T extends ResourceBase> extends ResourceBase {
-        /** La liste interne concrète des ressources de type T de cette liste non paginée. */
-        items: T[];
-        firstItemOnPage: number;
-        hasNextPage: boolean;
-        hasPreviousPage: boolean;
-        isFirstPage: boolean;
-        isLastPage: boolean;
-        lastItemOnPage: number;
-        pageCount: number;
-        pageNumber: number;
-        pageSize: number;
-        totalItemCount: number;
-    }
-}
-
-declare namespace bluesky.core.models {
-    /** Base class for all resources.TODO MGA : Move this class in a base API project */
-    interface ResourceBase {
-        /** Links to related resources. */
-        links: any[];
-    }
-}
-
-declare namespace bluesky.core.models {
-    interface ResourceList<T extends ResourceBase> extends ResourceBase {
-        /** La liste interne concrète des ressources de type T de cette liste non paginée. */
-        items: T[];
-        /** Le nombre d'éléments retournés dans cette liste non paginée. */
-        totalCount: number;
-    }
-}
-
-declare namespace bluesky.core.models.systemInfo {
-    /** DTO of the API version. */
-    interface ApiVersionDto extends ResourceBase {
-        /** Version's number. */
-        version: string;
-    }
-}
-
-declare namespace bluesky.core.models.systemInfo {
-    /** DTO of the Order Management Database Version. */
-    interface DatabaseVersionDto {
-        /** Gets or sets version of the [OrderManagement] Database at a current date. */
-        version: string;
-        /** Gets or sets date of the specified version of the [OrderManagement] Database. */
-        startDate: Date;
     }
 }
 
