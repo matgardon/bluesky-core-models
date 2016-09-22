@@ -1,39 +1,39 @@
 ﻿ namespace bluesky.core.models.userManagement {
 	/** DTO of a scope management (Aggregation of the BME CountryReference, SubsidiaryReference andCurrencyReference, defined in MN). */
-	export interface ScopeManagementDto extends ResourceBase {
+	export interface IScopeManagementDto extends models.IResourceBase {
 		/** Gets or sets the unique identifier. */
-		id: number;
+		Id: number;
 		/** Gets or sets the country name. */
-		countryName: string;
+		CountryName: string;
 		/** Gets or sets the country name value. */
-		countryNameValue: number;
+		CountryNameValue: number;
 		/** Gets or sets the currency. */
-		currency: string;
+		Currency: string;
 		/** Gets or sets the currency value. */
-		currencyValue: number;
+		CurrencyValue: number;
 		/** Geo region enum value (EMEA, ...) from the BME CountryReference.  We miss this MetraNet enum, so for now, it is a string. */
-		geoRegion: string;
+		GeoRegion: string;
 		/** Gets or sets the management's subsidiary name. */
-		managementSubsidiaryName: string;
+		ManagementSubsidiaryName: string;
 		/** Gets or sets the management's subsidiary name value. */
-		managementSubsidiaryNameValue: number;
+		ManagementSubsidiaryNameValue: number;
 		/** Gets or sets the navision instance. */
-		navisionInstance: string;
+		NavisionInstance: string;
 		/** Gets or sets the navision instance value. */
-		navisionInstanceValue: number;
+		NavisionInstanceValue: number;
 		/** Gets or sets the partner account name from the BME SubsidiaryReference. */
-		partnerAccountName: string;
+		PartnerAccountName: string;
 		/** Gets or sets the silo name from the BME SubsidiaryReference. */
-		siloName: string;
+		SiloName: string;
 		/** Gets or sets the subsidiary code from the BME SubsidiaryReference. */
-		subsidiaryCode: string;
+		SubsidiaryCode: string;
 		/** Gets or sets the subsidiary name. */
-		subsidiaryName: string;
+		SubsidiaryName: string;
 		/** Gets or sets the subsidiary name value. */
-		subsidiaryNameValue: number;
+		SubsidiaryNameValue: number;
 		/** Gets or sets the tax vendor.. */
-		taxVendor: string;
+		TaxVendor: string;
 		/** Gets or sets the tax vendor value. */
-		taxVendorValue: number;
+		TaxVendorValue: number;
 	}
 }

@@ -1,3 +1,3 @@
 ﻿ namespace bluesky.core.models.account {
-	export interface BillToContactViewDto extends ContactViewDto {}
+	export interface IBillToContactViewDto extends models.account.IContactViewDto {}
 }

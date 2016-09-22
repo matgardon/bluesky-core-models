@@ -1,9 +1,9 @@
 ﻿ namespace bluesky.core.models.technicalData {
 	/** This entity contains the information needed to configure, modify an access generic conference for a user. */
-	export interface GenericAccessDto extends TechnicalAccessDto {
+	export interface IGenericAccessDto extends technicalData.ITechnicalAccessDto {
 		/** Login to access the generic conference. */
-		login: string;
+		Login: string;
 		/** Password to access to the generic conference. */
-		password: string;
+		Password: string;
 	}
 }

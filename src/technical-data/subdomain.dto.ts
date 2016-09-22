@@ -1,23 +1,23 @@
 ﻿ namespace bluesky.core.models.technicalData {
 	/** A Subdomain is instantiated for a given Customer when subscribing to aTechnicalProduct.It is dedicated to a Customer and inherits the characteristics of the parentDomain.It can be of type Audio, Web or Video. */
-	export interface SubdomainDto extends ResourceBase {
+	export interface ISubdomainDto extends models.IResourceBase {
 		/** Gets or sets the unique identifier. */
-		id: number;
+		Id: number;
 		/** Gets or sets Unique name of the Subdomain */
-		name: string;
+		Name: string;
 		/** Gets or sets a flag indicates if the subdomain was created at the same time as the technical product.This value is returned by the Technical Inventory */
-		isNew: boolean;
+		IsNew: boolean;
 		/** Gets or sets Company identifier. */
-		companyIdentifier: string;
+		CompanyIdentifier: string;
 		/** Description */
-		description: string;
+		Description: string;
 		/** Gets or sets DomainSpecName of the user */
-		domainSpecName: string;
+		DomainSpecName: string;
 		/** Subdomain belongs to a domain. */
-		servicePlatformDomain: ServicePlatformDomainDto;
+		ServicePlatformDomain: technicalData.IServicePlatformDomainDto;
 		/** This resource describes microsites for WebEx. */
-		url: UrlDto;
+		Url: technicalData.IUrlDto;
 		/** DDIs list. */
-		directDialIns: DirectDialInDto[];
+		DirectDialIns: technicalData.IDirectDialInDto[];
 	}
 }

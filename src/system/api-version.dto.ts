@@ -1,7 +1,7 @@
 ﻿ namespace bluesky.core.models.systemInfo {
 	/** DTO of the API version. */
-	export interface ApiVersionDto extends ResourceBase {
+	export interface IApiVersionDto extends models.IResourceBase {
 		/** Version's number. */
-		version: string;
+		Version: string;
 	}
 }

@@ -1,15 +1,15 @@
 ﻿ namespace bluesky.core.models.technicalData {
 	/** TerminatingNumber. */
-	export interface TerminatingNumberDto extends ResourceBase {
+	export interface ITerminatingNumberDto extends models.IResourceBase {
 		/** Gets or sets the unique identifier. */
-		id: number;
+		Id: number;
 		/** Platform Number */
-		platformNumber: string;
+		PlatformNumber: string;
 		/** Gets or sets the service platform name */
-		servicePlatformName: string;
+		ServicePlatformName: string;
 		/** Gets or sets the service platform spec name */
-		servicePlatformSpecName: string;
+		ServicePlatformSpecName: string;
 		/** Gets or sets the phone kind */
-		phoneKind: string;
+		PhoneKind: string;
 	}
 }

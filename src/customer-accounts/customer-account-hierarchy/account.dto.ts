@@ -1,35 +1,35 @@
 ﻿ namespace bluesky.core.models.account {
 	/** DTO of an account.Base class holding MetraNet core account properties and identifiers.TODO MGA : inheriting from OrderManagementEntityDto is a hack, as we do not have custom DTOs for Accounts comming from OrderManagement DB. TOFIX when we don't have these entities saved in OM. */
-	export interface AccountDto extends OrderManagementEntityDto {
+	export interface IAccountDto extends models.IOrderManagementEntityDto {
 		/** Gets or sets the account type. */
-		accountType: string;
+		AccountType: string;
 		/** Gets or sets the MetraNet identifier of the account. */
-		mNId: number;
+		MNId: number;
 		/** Gets or sets the user name assigned to the account.TODO MGA : to be renamed to Uid : impacts on Proxies / HUB ? Is it acceptable or not ? */
-		userName: string;
+		UserName: string;
 		/** Gets or sets the parent account.TODO MGA : to be renamed to AncestorAccountUid : impacts on Proxies / HUB ? Is it acceptable or not ? */
-		ancestorAccountUserName: string;
+		AncestorAccountUserName: string;
 		/** Gets or sets the account status value. */
-		accountStatus: string;
+		AccountStatus: string;
 		/** Gets or sets the payer username.TODO MGA : to be renamed to PayerUid : impacts on Proxies / HUB ? Is it acceptable or not ? */
-		payerUserName: string;
+		PayerUserName: string;
 		/** Gets or sets the start date of the account. */
-		accountStartDate: Date;
+		AccountStartDate: Date;
 		/** Gets or sets the end date of the account. */
-		accountEndDate: Date;
+		AccountEndDate: Date;
 		/** Gets or sets the start date of the association with the current parent account (ancestor). */
-		hierarchyStartDate: Date;
+		HierarchyStartDate: Date;
 		/** Gets or sets the end date of the association with the current parent account (ancestor). */
-		hierarchyEndDate: Date;
+		HierarchyEndDate: Date;
 		/** Gets or sets the password used by the account to access MetraView site. */
-		password: string;
+		Password: string;
 		/** Gets or sets the start date of the payment redirection with the current payer account. */
-		paymentStartDate: Date;
+		PaymentStartDate: Date;
 		/** Gets or sets the end date of the payment redirection with the current payer account. */
-		paymentEndDate: Date;
+		PaymentEndDate: Date;
 		/** Gets or sets the Internal view contains the Internal account information.It is required for all types of accounts. */
-		internalView: InternalViewDto;
+		InternalView: account.IInternalViewDto;
 		/** Gets or sets the Common view gathers attributes shared by all of the Accounts. */
-		commonView: CommonViewDto;
+		CommonView: account.ICommonViewDto;
 	}
 }

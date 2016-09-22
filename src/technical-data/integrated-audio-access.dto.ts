@@ -1,5 +1,5 @@
 ﻿ namespace bluesky.core.models.technicalData {
 	/** Integrated audio access */
-	export interface IntegratedAudioAccessDto extends BaseIntegratedAudioAccessDto {
+	export interface IIntegratedAudioAccessDto extends technicalData.IBaseIntegratedAudioAccessDto {
 	}
 }

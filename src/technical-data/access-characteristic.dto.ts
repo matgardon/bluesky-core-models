@@ -1,13 +1,13 @@
 ﻿ namespace bluesky.core.models.technicalData {
 	/** AccessAccount characteristics */
-	export interface AccessCharacteristicDto extends OrderManagementEntityDto {
+	export interface IAccessCharacteristicDto extends models.IOrderManagementEntityDto {
 		/** Gets or sets the name of the characteristic. */
-		name: string;
+		Name: string;
 		/** Gets or sets the value of the characteristic. */
-		value: string;
+		Value: string;
 		/** Technical option specification name. */
-		technicalOptionSpecName: string;
+		TechnicalOptionSpecName: string;
 		/** Business Value of the access characteristic. */
-		businessValue: string;
+		BusinessValue: string;
 	}
 }

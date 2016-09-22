@@ -1,8 +1,8 @@
 ﻿ namespace bluesky.core.models.account {
-	export interface UserContactViewDto extends ContactViewDto {
+	export interface IUserContactViewDto extends account.IContactViewDto {
 		/** Gets or sets the external language, needed by the TI and the Provisioning. */
-		externalLanguage: string;
+		ExternalLanguage: string;
 		/** Gets or sets the external timezone, needed by the TI and the Provisioning. */
-		externalTimeZone: string;
+		ExternalTimeZone: string;
 	}
 }

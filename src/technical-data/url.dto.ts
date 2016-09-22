@@ -1,23 +1,23 @@
 ﻿ namespace bluesky.core.models.technicalData {
 	/** This resource describes microsites for WebEx.It may be shared between several Logos or dedicated to one Logo. */
-	export interface UrlDto extends ResourceBase {
+	export interface IUrlDto extends models.IResourceBase {
 		/** Gets or sets the unique identifier. */
-		id: number;
+		Id: number;
 		/** Gets or sets value of the URL. */
-		urlValue: string;
+		UrlValue: string;
 		/** Gets or sets the administrator login to connect to the URL. */
-		login: string;
+		Login: string;
 		/** Gets or sets administrator password to connect to the URL. */
-		password: string;
+		Password: string;
 		/** Gets or sets URL type. */
-		urlType: string;
+		UrlType: string;
 		/** Gets or sets site name. */
-		siteName: string;
+		SiteName: string;
 		/** Gets or sets the expiration date. */
-		expirationDate: Date;
+		ExpirationDate: Date;
 		/** Gets or sets the provider. */
-		provider: string;
+		Provider: string;
 		/** Gets or sets required action on URL. */
-		urlAction: string;
+		UrlAction: string;
 	}
 }

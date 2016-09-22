@@ -1,9 +1,9 @@
 ﻿ namespace bluesky.core.models.systemInfo {
 	/** DTO of the Order Management Database Version. */
-	export interface DatabaseVersionDto {
+	export interface IDatabaseVersionDto {
 		/** Gets or sets version of the [OrderManagement] Database at a current date. */
-		version: string;
+		Version: string;
 		/** Gets or sets date of the specified version of the [OrderManagement] Database. */
-		startDate: Date;
+		StartDate: Date;
 	}
 }

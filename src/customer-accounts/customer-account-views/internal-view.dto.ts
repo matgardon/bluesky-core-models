@@ -1,51 +1,51 @@
 ﻿ namespace bluesky.core.models.account {
 	/** Dto of an internal view.Contains the internal account information. */
-	export interface InternalViewDto extends ResourceBase {
+	export interface IInternalViewDto extends models.IResourceBase {
 		/** Gets or sets a value indicating whether the is billable. */
-		isBillable: boolean;
+		IsBillable: boolean;
 		/** Gets or sets the name of the division associated with the account. */
-		division: string;
+		Division: string;
 		/** Gets or sets a value indicating whether the  is a folder. */
-		isFolder: boolean;
+		IsFolder: boolean;
 		/** Gets or sets the answer to the security question. */
-		securityAnswer: string;
+		SecurityAnswer: string;
 		/** Gets or sets the status reason text. */
-		statusReasonOther: string;
+		StatusReasonOther: string;
 		/** Gets or sets a value indicating whether the  is tax exempt. */
-		isTaxExempt: boolean;
+		IsTaxExempt: boolean;
 		/** Gets or sets the tax exempt identifier. */
-		taxExemptId: string;
+		TaxExemptId: string;
 		/** Gets or sets the tax exemption start date. */
-		taxExemptStartDate: Date;
+		TaxExemptStartDate: Date;
 		/** Gets or sets the tax exemption end date. */
-		taxExemptEndDate: Date;
+		TaxExemptEndDate: Date;
 		/** Gets or sets the tax service address Pcode. */
-		taxServiceAddressPcode: number;
+		TaxServiceAddressPcode: number;
 		/** Gets or sets the additional tax information */
-		additionalTaxInformation: string;
+		AdditionalTaxInformation: string;
 		/** Gets or sets the Additional tax exemption. */
-		additionalTax: boolean;
+		AdditionalTax: boolean;
 		/** Gets the currency. */
-		currency: string;
+		Currency: string;
 		/** Gets the invoice delivery method. */
-		invoiceDeliveryMethod: string;
+		InvoiceDeliveryMethod: string;
 		/** Gets the language. */
-		language: string;
+		Language: string;
 		/** Gets the MetraTax country eligiblity. */
-		metraTaxCountryEligibility: string;
+		MetraTaxCountryEligibility: string;
 		/** Gets the MetraTax country zone. */
-		metraTaxCountryZone: string;
+		MetraTaxCountryZone: string;
 		/** Gets the MetraTax override band. */
-		metraTaxOverrideBand: string;
+		MetraTaxOverrideBand: string;
 		/** Gets the payment method. */
-		paymentMethod: string;
+		PaymentMethod: string;
 		/** Gets the security question. */
-		securityQuestion: string;
+		SecurityQuestion: string;
 		/** Gets the status reason. */
-		statusReason: string;
+		StatusReason: string;
 		/** Gets the tax vendor. */
-		taxVendor: string;
+		TaxVendor: string;
 		/** Gets the time zone identifier. */
-		timeZoneId: string;
+		TimeZoneId: string;
 	}
 }

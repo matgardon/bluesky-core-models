@@ -1,11 +1,11 @@
 ﻿namespace bluesky.core.models {
 	/** Base information for a file upload. */
-	export interface FileUploadBaseDto {
+	export interface IFileUploadBaseDto {
 		/** File encoded in base 64. */
-		fileBase64Url: string;
+		FileBase64Url: string;
 		/** Name of the file. */
-		fileName: string;
+		FileName: string;
 		/** Content Type. */
-		contentType: string;
+		ContentType: string;
 	}
 }

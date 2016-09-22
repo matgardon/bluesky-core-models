@@ -1,13 +1,13 @@
 ﻿ namespace bluesky.core.models.account {
 	/** Management Subsidiaries are used in the Platform Selection algorithms. */
-	export interface ManagementSubsidiaryDto extends ResourceBase {
+	export interface IManagementSubsidiaryDto extends bluesky.core.models.IResourceBase {
 		/** Gets or sets the unique identifier. */
-		id: number;
+		Id: number;
 		/** Flag to identify the Management Subsidiary at Logo level. */
-		isMain: boolean;
+		IsMain: boolean;
 		/** Subsidiary code. */
-		subsidiaryCode: string;
+		SubsidiaryCode: string;
 		/** Name of the management subsidiary to be used for AudioClassicplatform selection. */
-		subsidiaryName: string;
+		SubsidiaryName: string;
 	}
 }

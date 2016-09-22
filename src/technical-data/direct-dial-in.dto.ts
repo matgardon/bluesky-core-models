@@ -1,55 +1,55 @@
 ﻿ namespace bluesky.core.models.technicalData {
 	/** DDIs (Direct Dial In) correspond to external conference number which permits tothe customer to access an audio conference. */
-	export interface DirectDialInDto extends ResourceBase {
+	export interface IDirectDialInDto extends models.IResourceBase {
 		/** Gets or sets the unique identifier. */
-		id: number;
+		Id: number;
 		/** Gets or sets Unique identifier of a DDI */
-		internationalDirectDialIn: string;
+		InternationalDirectDialIn: string;
 		/** Identifies the carrier of a DDI */
-		carrier: string;
+		Carrier: string;
 		/** Identifies the City of a DDI */
-		city: string;
+		City: string;
 		/** Identifies the Country of a DDI */
-		country: string;
+		Country: string;
 		/** Description of a DDI */
-		description: string;
+		Description: string;
 		/** Identifies the spoken language of a DDI */
-		language: string;
+		Language: string;
 		/** Displayed Number of a DDI */
-		presentedVisualDirectDialIn: string;
+		PresentedVisualDirectDialIn: string;
 		/** Identifies the Reference Order of a DDI */
-		referenceOrder: string;
+		ReferenceOrder: string;
 		/** Server address of the bridge AMG on which a DDI is provisioned */
-		aMGAddress: string;
+		AMGAddress: string;
 		/** Server port of the bridge AMG on which a DDI is provisioned */
-		aMGPort: number;
+		AMGPort: number;
 		/** Identifies the DDI country in ISO 3166-2 format */
-		isoCountryCode: string;
+		IsoCountryCode: string;
 		/** Regional area code of the visual DDI */
-		telephoneAreaCode: string;
+		TelephoneAreaCode: string;
 		/** Telephone Country Code */
-		telephoneCountryCode: string;
+		TelephoneCountryCode: string;
 		/** Welcome Message */
-		welcomeMessage: string;
+		WelcomeMessage: string;
 		/** Waiting Music */
-		waitingMusic: string;
+		WaitingMusic: string;
 		/** Flag indicating whether the DDI is dedicated.True if the field Role is equal to Dedicated. False if Role is equal to Shared. */
-		isDedicated: boolean;
+		IsDedicated: boolean;
 		/** Flag indicating whether the DDI is branded. */
-		isBranded: boolean;
+		IsBranded: boolean;
 		/** When a DDI is returned in the list of access' DDIs, this flag indicates if the DDI is chosen by the Technical Inventory as the priorized one for a given type and a given usage.The Technical Inventory chooses a DDI based on its role, the user's primary group and country, and the service platform's country. */
-		isLocal: boolean;
+		IsLocal: boolean;
 		/** Gets or sets Required action on DDI */
-		directDialInAction: string;
+		DirectDialInAction: string;
 		/** Gets or sets Role of the DDI */
-		directDialInRole: string;
+		DirectDialInRole: string;
 		/** Type of conference that is assigned to the DDI */
-		conferenceType: string;
+		ConferenceType: string;
 		/** Booking status of a DDI */
-		status: string;
+		Status: string;
 		/** Type of the DDI */
-		directDialInType: string;
+		DirectDialInType: string;
 		/** List of TerminatingNumbers */
-		terminatingNumbers: TerminatingNumberDto[];
+		TerminatingNumbers: technicalData.ITerminatingNumberDto[];
 	}
 }

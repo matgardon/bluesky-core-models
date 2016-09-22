@@ -1,39 +1,39 @@
 ﻿ namespace bluesky.core.models.account {
 	/** Dto of an access view.Contains technical information for each user's access instance. */
-	export interface AccessViewDto extends ResourceBase {
+	export interface IAccessViewDto extends core.models.IResourceBase {
 		/** Gets or sets the login for Web products. */
-		accessLogin: string;
+		AccessLogin: string;
 		/** Gets or sets the password for credential requirements on service platform (= pin moderator). */
-		accessPassword: string;
+		AccessPassword: string;
 		/** Gets or sets AccessAccount personal information numberUsed by user to access the service. */
-		audioModeratorPIN: string;
+		AudioModeratorPIN: string;
 		/** Gets or sets the Personal Information Number for the audio participant. */
-		audioParticipantPIN: string;
+		AudioParticipantPIN: string;
 		/** Gets or sets the information provided by the customer at creation date. */
-		billingCode: string;
+		BillingCode: string;
 		/** Gets or sets the billing reference, additional information at access level to be displayed in the invoice. */
-		billingRef: string;
+		BillingRef: string;
 		/** Gets or sets the comment. */
-		comment: string;
+		Comment: string;
 		/** Gets or sets the external conference reference. */
-		externalConferenceReference: string;
+		ExternalConferenceReference: string;
 		/** Gets or sets the conference reference external name for audio. */
-		networkElementAccessName: string;
+		NetworkElementAccessName: string;
 		/** Gets or sets the conference reference for audio access, microsite and login for WebEx. */
-		networkElementAccessReference: string;
+		NetworkElementAccessReference: string;
 		/** Gets or sets the bridge number (if audio), WebEx platform, ANW platform. */
-		networkElementReference: string;
+		NetworkElementReference: string;
 		/** Gets or sets the technical environment. */
-		networkElementTechnicalEnvironment: string;
+		NetworkElementTechnicalEnvironment: string;
 		/** Gets or sets the Topic. */
-		topic: string;
+		Topic: string;
 		/** Gets or sets the access product name. */
-		accessProductName: string;
+		AccessProductName: string;
 		/** Gets the access category. */
-		accessCategory: string;
+		AccessCategory: string;
 		/** Gets the access type. */
-		accessType: string;
+		AccessType: string;
 		/** Gets the conference type. */
-		conferenceType: string;
+		ConferenceType: string;
 	}
 }

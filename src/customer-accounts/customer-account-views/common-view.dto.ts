@@ -1,33 +1,33 @@
 ﻿ namespace bluesky.core.models.account {
 	/** Dto of a common view.Contains attributes shared by all of the accounts. */
-	export interface CommonViewDto extends ResourceBase {
+	export interface ICommonViewDto extends bluesky.core.models.IResourceBase {
 		/** Gets or sets the comment to be manually filled by CSR, SalesAdmin... to provide whatever additional information required. */
-		comment: string;
+		Comment: string;
 		/** Gets or sets the requester to be manually filled by CSR, SalesAdmin... to provide whatever additional information required. */
-		statusRequestedBy: string;
+		StatusRequestedBy: string;
 		/** Gets or sets the user who created the account. */
-		createdBy: string;
+		CreatedBy: string;
 		/** Gets or sets the account creation date. */
-		createdDate: Date;
+		CreatedDate: Date;
 		/** Gets or sets the customer node name. */
-		customerNodeName: string;
+		CustomerNodeName: string;
 		/** Gets or sets the user name of the logo present in the account hierarchy. */
-		logoUserName: string;
+		LogoUserName: string;
 		/** Gets or sets the user who last modified the account. */
-		modifiedBy: string;
+		ModifiedBy: string;
 		/** Gets or sets the account last modification date. */
-		modifiedDate: Date;
+		ModifiedDate: Date;
 		/** Gets or sets the assigned sales account. */
-		salesAccountAssigned: string;
+		SalesAccountAssigned: string;
 		/** Gets or sets the display name of the assigned sales account. */
-		salesAccountDisplayName: string;
+		SalesAccountDisplayName: string;
 		/** Gets or sets the communication Opt-in. Used to sign-up to receive email notifications. */
-		communicationOptIn: boolean;
+		CommunicationOptIn: boolean;
 		/** Gets or sets the partner external ID. */
-		partnerExternalId: string;
+		PartnerExternalId: string;
 		/** Gets theorder status. */
-		orderStatus: string;
+		OrderStatus: string;
 		/** Gets the effective management subsidiary. */
-		effectiveManagementSubsidiary: string;
+		EffectiveManagementSubsidiary: string;
 	}
 }

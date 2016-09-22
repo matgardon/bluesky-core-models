@@ -1,17 +1,17 @@
 ﻿ namespace bluesky.core.models.userManagement {
 	/** Informations about a user. */
-	export interface UserInformationDto {
+	export interface IUserInformationDto {
 		/** File Name. */
-		firstName: string;
+		FirstName: string;
 		/** Last Name. */
-		lastName: string;
+		LastName: string;
 		/** DisplayName. */
-		displayName: string;
+		DisplayName: string;
 		/** Identifier of the User. */
-		userIdentifier: string;
+		UserIdentifier: string;
 		/** Email. */
-		email: string;
+		Email: string;
 		/** Phoe number. */
-		phoneNumber: string;
+		PhoneNumber: string;
 	}
 }
