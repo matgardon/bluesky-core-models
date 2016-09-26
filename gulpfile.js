@@ -29,8 +29,8 @@ gulp.task('ts-lint', function () {
 
 gulp.task('compile-ts', ['clean'], function () {
     var tsResults = gulp.src([tsSrc, tsExternalDefinitions])
-               .pipe(sourcemaps.init()) // This means sourcemaps will be generated
-               .pipe(ts(tsProject))
+        .pipe(sourcemaps.init()) // This means sourcemaps will be generated
+        .pipe(ts(tsProject));
                //.dts.pipe(concat('bluesky-core-models.d.ts'))
                //.pipe(gulp.dest('dist'));
 
