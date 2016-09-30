@@ -81,6 +81,181 @@ declare namespace bluesky.core.models {
     }
 }
 
+declare namespace bluesky.core.models.clientConfig {
+    interface IAjaxClientEndpointConfigurationDto {
+        EndpointBaseURL: string;
+        EndpointSuffix: string;
+        AuthToken: string;
+        AuthTokenValidityEndDate: Date;
+    }
+}
+
+declare namespace bluesky.core.models.clientConfig {
+    import UserSsoDto = models.userManagement.IUserSsoDto;
+    interface IBlueskyAjaxClientConfigurationDto {
+        /**
+         * Dictionnary of client configuration per-endpoint.
+         * @param endpointType : EndpoinTypeEnum type string representation. It cannot be strongly typed to the related enum (EndpointTypeEnum) due to TS not implementing it atm: https://github.com/Microsoft/TypeScript/issues/2491. So we use the string representation of the enum as key.
+         * @returns {}
+         *
+         * TODO MGA: C# json native json serializer doesn't handle dictionnaries with enum keys, so we use an array of endpoint config based on string representation. http://stackoverflow.com/questions/2892910/problems-with-json-serialize-dictionaryenum-int32
+         */
+        EndpointConfigurationDictionnary: {
+            [endpointType: string]: clientConfig.IAjaxClientEndpointConfigurationDto;
+        };
+        CurrentUserRole: string;
+        CurrentUser?: UserSsoDto;
+    }
+}
+
+declare namespace bluesky.core.models.clientConfig {
+    /**
+     * Enum generated from the server to know the list of supported endpoint configuration.
+     */
+    enum EndpointTypeEnum {
+        /**
+         * Origin domain from which the current client was loaded.
+         */
+        CurrentDomain = 0,
+        CoreApi = 1,
+        MarketingApi = 2,
+        SelfcareApi = 3,
+        QuoteWizard = 4,
+        OrderEntry = 5,
+        OrderTracking = 6,
+        Metranet = 7,
+        TechnicalInventory = 8,
+        TemplateGenerator = 9,
+        Salesforce = 10,
+        /**
+         * External URLs (not treatment applied, rejected if URL is not full)
+         */
+        External = 11,
+    }
+}
+
+declare namespace bluesky.core.commands.emailTemplates {
+    interface IEmailTemplateBrandingData {
+        Value: string;
+    }
+}
+
+declare namespace bluesky.core.commands.emailTemplates {
+    interface IEmailTemplateSearchCommand {
+        Name: string;
+        Company: string;
+        Skeleton: string;
+        Start: number;
+        Limit: number;
+    }
+}
+
+declare namespace bluesky.core.models.emailTemplates {
+    interface IEmailTemplateSkeletonDto {
+        Id: number;
+        Name: string;
+        Description: string;
+        Type: string;
+        EloquaEmailTemplateId: string;
+        EloquaEmailTemplateName: string;
+    }
+}
+
+declare namespace bluesky.core.models.emailTemplates {
+    interface IMarketingApiResponseBase {
+        Status: "Ok";
+    }
+}
+
+declare namespace bluesky.core.models.technicalData {
+    interface IEmailTemplateUpdateIdCommand {
+        NewTemplateId: string;
+        OldTemplateId: string;
+    }
+}
+
+declare namespace bluesky.core.models.emailTemplates {
+    interface IEmailTemplateUpdateIdResponse extends IMarketingApiResponseBase {
+        NewTemplateId: string;
+    }
+}
+
+declare namespace bluesky.core.models.emailTemplates {
+    interface IWelcomePackTemplateDto extends IResourceBase {
+        ID: string;
+        Name: string;
+        Company: string;
+        Create_Date?: Date;
+        Modified_Date?: Date;
+        Owner_ID?: string;
+        Preview: string;
+        BrandData: string;
+        TopLeftCompanyLogo: string;
+        TopRightBanner: string;
+        TopTitle: string;
+        DearText: string;
+        YACPTitleFont: string;
+        YACPTitleBG: string;
+        YACPTitleUL: string;
+        YACPSentence: string;
+        OnePassTopLeftLogo: string;
+        OnePassTopRightTitle: string;
+        OnePassProdCombination: string;
+        OnePassProd1: string;
+        OnePassProd2: string;
+        SYCTitleFont: string;
+        SYCTitleBG: string;
+        SYCTitleUL: string;
+        Product1: string;
+        Product2: string;
+        MYALoungeTitleFont: string;
+        MYALoungeTitleBG: string;
+        MYALoungeTitleUL: string;
+        NHTitleFont: string;
+        NHTitleBG: string;
+        NHTitleUL: string;
+        Footer: string;
+        TopRightBannerAlt: string;
+        TopLeftCompanyLogoAlt: string;
+        OnePassTopLeftLogoAlt: string;
+        FooterAlt: string;
+        Branding: string;
+        Skeleton: string;
+        Master?: boolean;
+        OnePortal?: boolean;
+        ToolBarBlock: string;
+        Salutation: string;
+        WP___COMPANY_NAME: string;
+        CLIENT_NAME: string;
+        ASD_NUMBER: string;
+        ARKADIN_COUNTRY: string;
+        Arkadin_CS_Phone: string;
+        Arladin_CS_EMail: string;
+        T_NUMBER: string;
+        TF_NUMBER: string;
+        MOD_PIN: string;
+        PART_PIN: string;
+        WP___CONF_PB_NUM: string;
+        CONF_PB_REF: string;
+        WEBEX_USER: string;
+        WEBEX_PSWD: string;
+        NEED_Help: string;
+        Language: string;
+        TG___NHBlock1: string;
+        TG___NHBlock2: string;
+        TG___NHBlock3: string;
+        TG___NHBlock4: string;
+        IsAdmin?: boolean;
+        WP___PROD2_URL: string;
+        WP___PROD1_URL: string;
+        WP___PROD1_USER: string;
+        WP___PROD1_PSWD: string;
+        Product3: string;
+        Playback?: boolean;
+        SendingStrategy: string;
+    }
+}
+
 declare namespace bluesky.core.models.quote {
     /** Model for the approval decision definition */
     interface IApprovalDecisionDefinition {
@@ -665,59 +840,6 @@ declare namespace bluesky.core.models.quote {
     }
 }
 
-declare namespace bluesky.core.models.clientConfig {
-    interface IAjaxClientEndpointConfigurationDto {
-        EndpointBaseURL: string;
-        EndpointSuffix: string;
-        AuthToken: string;
-        AuthTokenValidityEndDate: Date;
-    }
-}
-
-declare namespace bluesky.core.models.clientConfig {
-    import UserSsoDto = models.userManagement.IUserSsoDto;
-    interface IBlueskyAjaxClientConfigurationDto {
-        /**
-         * Dictionnary of client configuration per-endpoint.
-         * @param endpointType : EndpoinTypeEnum type string representation. It cannot be strongly typed to the related enum (EndpointTypeEnum) due to TS not implementing it atm: https://github.com/Microsoft/TypeScript/issues/2491. So we use the string representation of the enum as key.
-         * @returns {}
-         *
-         * TODO MGA: C# json native json serializer doesn't handle dictionnaries with enum keys, so we use an array of endpoint config based on string representation. http://stackoverflow.com/questions/2892910/problems-with-json-serialize-dictionaryenum-int32
-         */
-        EndpointConfigurationDictionnary: {
-            [endpointType: string]: clientConfig.IAjaxClientEndpointConfigurationDto;
-        };
-        CurrentUserRole: string;
-        CurrentUser?: UserSsoDto;
-    }
-}
-
-declare namespace bluesky.core.models.clientConfig {
-    /**
-     * Enum generated from the server to know the list of supported endpoint configuration.
-     */
-    enum EndpointTypeEnum {
-        /**
-         * Origin domain from which the current client was loaded.
-         */
-        CurrentDomain = 0,
-        CoreApi = 1,
-        MarketingApi = 2,
-        SelfcareApi = 3,
-        QuoteWizard = 4,
-        OrderEntry = 5,
-        OrderTracking = 6,
-        Metranet = 7,
-        TechnicalInventory = 8,
-        TemplateGenerator = 9,
-        Salesforce = 10,
-        /**
-         * External URLs (not treatment applied, rejected if URL is not full)
-         */
-        External = 11,
-    }
-}
-
 declare namespace bluesky.core.models.subscription {
     /** This entity links a quote, a billing account, and the resulting subscription */
     interface IQuoteSubscriptionDto extends IResourceBase {
@@ -850,6 +972,9 @@ declare namespace bluesky.core.models.technicalData {
         /** Gets or sets the version of the branding profile. */
         Version: number;
     }
+}
+
+declare namespace bluesky.core.models.technicalData {
 }
 
 declare namespace bluesky.core.models.technicalData {
@@ -1256,242 +1381,6 @@ declare namespace bluesky.core.models.technicalData {
     }
 }
 
-declare namespace bluesky.core.models.welcomePacks {
-    interface ICountryDdisDto {
-        Country: string;
-        TollDdis: string[];
-        TollFreeDdis: string[];
-        TollPlaybackDdis: string[];
-        TollFreePlaybackDdis: string[];
-    }
-}
-
-declare namespace bluesky.core.models.welcomePacks {
-    interface IEmailTemplateSkeletonDto {
-        Id: number;
-        Name: string;
-        Description: string;
-        Type: string;
-        EloquaEmailTemplateId: string;
-        EloquaEmailTemplateName: string;
-    }
-}
-
-declare namespace bluesky.core.models.welcomePacks {
-    interface IHierarchyDto {
-        BillingAccountDisplayName: string;
-        BillingAccountUid: string;
-        GlobalLogoDisplayName: string;
-        GlobalLogoUid: string;
-        LocalLogoDisplayName: string;
-        LocalLogoUid: string;
-    }
-}
-
-declare namespace bluesky.core.models.welcomePacks {
-    interface IProductUrlDto {
-        Url: string;
-        Type: string;
-    }
-}
-
-declare namespace bluesky.core.models.welcomePacks {
-    interface IProductDto {
-        TechnicalName: string;
-        TechnicalType: string;
-        ModeratorPin: string;
-        ParticipantPin: string;
-        ConferenceRef: string;
-        Login: string;
-        Password: string;
-        Urls: IProductUrlDto[];
-        LocalDdis: ICountryDdisDto;
-        OtherDdis: ICountryDdisDto[];
-    }
-}
-
-declare namespace bluesky.core.models.welcomePacks {
-    interface IUserRecipientDto {
-        Country: string;
-        EmailAddress: string;
-        Language: string;
-        TimeZone: string;
-    }
-}
-
-declare namespace bluesky.core.models.welcomePacks {
-    interface IWelcomePackDefinitionDto extends IWelcomePackDto {
-        WelcomePackCount: number;
-        SubmittedDate: Date;
-        Source: string;
-        SubscriptionMemberShipId: string;
-        SubmittedBy: string;
-        IsTrial: boolean;
-        TimeZone: string;
-        UserLanguage: string;
-        UserLocalSalutation: string;
-        CarbonCopyRecipients: string[];
-    }
-}
-
-declare namespace bluesky.core.models.welcomePacks {
-    interface IWelcomePackHeaderDto {
-        Id: string;
-        TemplateId: string;
-        TemplateName: string;
-        EmailAddress: string;
-        State: string;
-        Queue: string;
-        ReceivedDate: Date;
-        SendingPriority: string;
-        AdminEmailAddress: string;
-        IsAdminRecipient: boolean;
-        ContactId: string;
-        Data: {
-            [key: string]: string;
-        };
-        LogoName: string;
-        OrderId: string;
-    }
-}
-
-declare namespace bluesky.core.models.welcomePacks {
-    interface IWelcomePackTemplateDto {
-        ID: any;
-        Name: string;
-        Company: string;
-        Create_Date?: Date;
-        Modified_Date?: Date;
-        Owner_ID?: string;
-        Preview: string;
-        BrandData: string;
-        TopLeftCompanyLogo: string;
-        TopRightBanner: string;
-        TopTitle: string;
-        DearText: string;
-        YACPTitleFont: string;
-        YACPTitleBG: string;
-        YACPTitleUL: string;
-        YACPSentence: string;
-        OnePassTopLeftLogo: string;
-        OnePassTopRightTitle: string;
-        OnePassProdCombination: string;
-        OnePassProd1: string;
-        OnePassProd2: string;
-        SYCTitleFont: string;
-        SYCTitleBG: string;
-        SYCTitleUL: string;
-        Product1: string;
-        Product2: string;
-        MYALoungeTitleFont: string;
-        MYALoungeTitleBG: string;
-        MYALoungeTitleUL: string;
-        NHTitleFont: string;
-        NHTitleBG: string;
-        NHTitleUL: string;
-        Footer: string;
-        TopRightBannerAlt: string;
-        TopLeftCompanyLogoAlt: string;
-        OnePassTopLeftLogoAlt: string;
-        FooterAlt: string;
-        Branding: string;
-        Skeleton: string;
-        Master?: boolean;
-        OnePortal?: boolean;
-        ToolBarBlock: string;
-        Salutation: string;
-        WP___COMPANY_NAME: string;
-        CLIENT_NAME: string;
-        ASD_NUMBER: string;
-        ARKADIN_COUNTRY: string;
-        Arkadin_CS_Phone: string;
-        Arladin_CS_EMail: string;
-        T_NUMBER: string;
-        TF_NUMBER: string;
-        MOD_PIN: string;
-        PART_PIN: string;
-        WP___CONF_PB_NUM: string;
-        CONF_PB_REF: string;
-        WEBEX_USER: string;
-        WEBEX_PSWD: string;
-        NEED_Help: string;
-        Language: string;
-        TG___NHBlock1: string;
-        TG___NHBlock2: string;
-        TG___NHBlock3: string;
-        TG___NHBlock4: string;
-        IsAdmin?: boolean;
-        WP___PROD2_URL: string;
-        WP___PROD1_URL: string;
-        WP___PROD1_USER: string;
-        WP___PROD1_PSWD: string;
-        Product3: string;
-        Playback?: boolean;
-        SendingStrategy: string;
-    }
-}
-
-declare namespace bluesky.core.models.welcomePacks {
-    enum WelcomePackStateEnum {
-        Submitted = 0,
-        Bounced = 1,
-        Success = 2,
-        Error = 3,
-        Empty = 4,
-        AwaitingAdmin = 5,
-        Unsubscribed = 6,
-        GlobalUnsubscribed = 7,
-        Excluded = 8,
-        Unknown = 9,
-    }
-    enum WelcomePackQueueEnum {
-        Submitted = 0,
-        Rejected = 1,
-        Pending = 2,
-        Read = 3,
-        Waiting = 4,
-        Imported = 5,
-        Complete = 6,
-        Empty = 7,
-        Unknown = 8,
-        Excluded = 9,
-    }
-    interface IWelcomePackDto {
-        Id: string;
-        TemplateId: string;
-        OrderManagementId: string;
-        TemplateName: string;
-        EmailAddress: string;
-        State: string;
-        Queue: string;
-        Message: string;
-        ReceivedDate: Date;
-        SendingDate: Date;
-        AdminEmailAddress: string;
-        IsAdminRecipient: boolean;
-        ContactId: string;
-        UserCountry: string;
-        Subsidiary: string;
-        XmlString: string;
-        FirstName: string;
-        LastName: string;
-        SendingPriority: string;
-        SelfCareRole: string;
-        BillingAccountName: string;
-        LogoName: string;
-        UserId: string;
-        Login: string;
-        OrderId: string;
-        CustomerServicePhone: string;
-        CustomerServiceEmail: string;
-        Hierarchy: IHierarchyDto;
-        UserRecipient: IUserRecipientDto;
-        Products: IProductDto[];
-        OfferName: string;
-        RecipientType: string;
-    }
-}
-
 declare namespace bluesky.core.models.systemInfo {
     /** DTO of the API version. */
     interface IApiVersionDto extends models.IResourceBase {
@@ -1630,6 +1519,155 @@ declare namespace bluesky.core.models.userManagement {
         Name: string;
         /** Gets or sets the number of monitored elements. */
         Count: number;
+    }
+}
+
+declare namespace bluesky.core.models.welcomePacks {
+    interface ICountryDdisDto {
+        Country: string;
+        TollDdis: string[];
+        TollFreeDdis: string[];
+        TollPlaybackDdis: string[];
+        TollFreePlaybackDdis: string[];
+    }
+}
+
+declare namespace bluesky.core.models.welcomePacks {
+    interface IHierarchyDto {
+        BillingAccountDisplayName: string;
+        BillingAccountUid: string;
+        GlobalLogoDisplayName: string;
+        GlobalLogoUid: string;
+        LocalLogoDisplayName: string;
+        LocalLogoUid: string;
+    }
+}
+
+declare namespace bluesky.core.models.welcomePacks {
+    interface IProductUrlDto {
+        Url: string;
+        Type: string;
+    }
+}
+
+declare namespace bluesky.core.models.welcomePacks {
+    interface IProductDto {
+        TechnicalName: string;
+        TechnicalType: string;
+        ModeratorPin: string;
+        ParticipantPin: string;
+        ConferenceRef: string;
+        Login: string;
+        Password: string;
+        Urls: IProductUrlDto[];
+        LocalDdis: ICountryDdisDto;
+        OtherDdis: ICountryDdisDto[];
+    }
+}
+
+declare namespace bluesky.core.models.welcomePacks {
+    interface IUserRecipientDto {
+        Country: string;
+        EmailAddress: string;
+        Language: string;
+        TimeZone: string;
+    }
+}
+
+declare namespace bluesky.core.models.welcomePacks {
+    interface IWelcomePackDefinitionDto extends IWelcomePackDto {
+        WelcomePackCount: number;
+        SubmittedDate: Date;
+        Source: string;
+        SubscriptionMemberShipId: string;
+        SubmittedBy: string;
+        IsTrial: boolean;
+        TimeZone: string;
+        UserLanguage: string;
+        UserLocalSalutation: string;
+        CarbonCopyRecipients: string[];
+    }
+}
+
+declare namespace bluesky.core.models.welcomePacks {
+    interface IWelcomePackHeaderDto {
+        Id: string;
+        TemplateId: string;
+        TemplateName: string;
+        EmailAddress: string;
+        State: string;
+        Queue: string;
+        ReceivedDate: Date;
+        SendingPriority: string;
+        AdminEmailAddress: string;
+        IsAdminRecipient: boolean;
+        ContactId: string;
+        Data: {
+            [key: string]: string;
+        };
+        LogoName: string;
+        OrderId: string;
+    }
+}
+
+declare namespace bluesky.core.models.welcomePacks {
+    enum WelcomePackStateEnum {
+        Submitted = 0,
+        Bounced = 1,
+        Success = 2,
+        Error = 3,
+        Empty = 4,
+        AwaitingAdmin = 5,
+        Unsubscribed = 6,
+        GlobalUnsubscribed = 7,
+        Excluded = 8,
+        Unknown = 9,
+    }
+    enum WelcomePackQueueEnum {
+        Submitted = 0,
+        Rejected = 1,
+        Pending = 2,
+        Read = 3,
+        Waiting = 4,
+        Imported = 5,
+        Complete = 6,
+        Empty = 7,
+        Unknown = 8,
+        Excluded = 9,
+    }
+    interface IWelcomePackDto {
+        Id: string;
+        TemplateId: string;
+        OrderManagementId: string;
+        TemplateName: string;
+        EmailAddress: string;
+        State: string;
+        Queue: string;
+        Message: string;
+        ReceivedDate: Date;
+        SendingDate: Date;
+        AdminEmailAddress: string;
+        IsAdminRecipient: boolean;
+        ContactId: string;
+        UserCountry: string;
+        Subsidiary: string;
+        XmlString: string;
+        FirstName: string;
+        LastName: string;
+        SendingPriority: string;
+        SelfCareRole: string;
+        BillingAccountName: string;
+        LogoName: string;
+        UserId: string;
+        Login: string;
+        OrderId: string;
+        CustomerServicePhone: string;
+        CustomerServiceEmail: string;
+        Hierarchy: IHierarchyDto;
+        UserRecipient: IUserRecipientDto;
+        Products: IProductDto[];
+        OfferName: string;
+        RecipientType: string;
     }
 }
 

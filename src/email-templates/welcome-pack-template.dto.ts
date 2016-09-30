@@ -1,6 +1,6 @@
-﻿namespace bluesky.core.models.welcomePacks {
-    export interface IWelcomePackTemplateDto {
-        ID: any;
+﻿namespace bluesky.core.models.emailTemplates {
+    export interface IWelcomePackTemplateDto extends IResourceBase {
+        ID: string;
         Name: string;
         Company: string;
         Create_Date?: Date;
