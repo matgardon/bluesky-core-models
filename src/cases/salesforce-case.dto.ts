@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.cases {
+﻿namespace bluesky.core.models.userCase {
     /** Dto of a sales force case.
     * A case is a description of a customer's feedback, problem, or question.
     * Cases are used to track and solve customers' issues. */
