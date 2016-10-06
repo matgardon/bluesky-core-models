@@ -6,6 +6,6 @@
 		/** Order check status. */
 		OrderCheckStatus: string;
 		/** Concurrent order, when the current order is frozen. */
-		ConcurrentOrder: number;
+		ConcurrentOrder?: number;
 	}
 }

@@ -6,7 +6,7 @@
 		/** Gets or sets Name of the Service Platform. */
 		Name: string;
 		/** Gets or sets Primary Bridge for an AccessAccount */
-		IsPrimary: boolean;
+		IsPrimary?: boolean;
 		/** Gets or sets Code of the language known by the Service Platform. */
 		ServicePlatformCode: string;
 		/** Gets or sets Language name known by the Service Platform. */

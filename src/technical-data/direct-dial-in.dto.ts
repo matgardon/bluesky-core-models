@@ -36,7 +36,7 @@
 		/** Flag indicating whether the DDI is dedicated.True if the field Role is equal to Dedicated. False if Role is equal to Shared. */
 		IsDedicated: boolean;
 		/** Flag indicating whether the DDI is branded. */
-		IsBranded: boolean;
+		IsBranded?: boolean;
 		/** When a DDI is returned in the list of access' DDIs, this flag indicates if the DDI is chosen by the Technical Inventory as the priorized one for a given type and a given usage.The Technical Inventory chooses a DDI based on its role, the user's primary group and country, and the service platform's country. */
 		IsLocal: boolean;
 		/** Gets or sets Required action on DDI */

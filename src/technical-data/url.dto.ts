@@ -14,7 +14,7 @@
 		/** Gets or sets site name. */
 		SiteName: string;
 		/** Gets or sets the expiration date. */
-		ExpirationDate: Date;
+		ExpirationDate?: Date;
 		/** Gets or sets the provider. */
 		Provider: string;
 		/** Gets or sets required action on URL. */

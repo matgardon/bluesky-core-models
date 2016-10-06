@@ -1,7 +1,7 @@
 {
   "name": "bluesky-core-models",  
   "description": "BS models, as a TypeScript definition file.",
-  "version": "2.3.3",
+  "version": "2.3.4",
   "authors": [
     "Mathis Gardon"
   ],

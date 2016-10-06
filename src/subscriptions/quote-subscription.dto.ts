@@ -8,7 +8,7 @@
 		/** Subscription identifier */
 		SubscriptionId: number;
 		/** GroupSubscription identifier */
-		GroupSubId: number;
+		GroupSubId?: number;
 		/** BillingAccount identifier */
 		BillingAccountUserName: string;
 		/** BillingAccount customer node name */

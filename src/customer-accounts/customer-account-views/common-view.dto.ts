@@ -22,7 +22,7 @@
 		/** Gets or sets the display name of the assigned sales account. */
 		SalesAccountDisplayName: string;
 		/** Gets or sets the communication Opt-in. Used to sign-up to receive email notifications. */
-		CommunicationOptIn: boolean;
+		CommunicationOptIn?: boolean;
 		/** Gets or sets the partner external ID. */
 		PartnerExternalId: string;
 		/** Gets theorder status. */

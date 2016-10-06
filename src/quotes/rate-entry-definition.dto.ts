@@ -14,9 +14,9 @@
 		/** Gets or sets the rate entry audit. */
 		Audit: number;
 		/** Gets or sets the atomic target name priceable item id. */
-		AtomicTargetNameId: number;
+		AtomicTargetNameId?: number;
 		/** Gets or sets the compound target name product offering id. */
-		CompoundTargetNameId: number;
+		CompoundTargetNameId?: number;
 		/** Gets or sets the AuxiliaryPricingModel enumeration value */
 		AuxiliaryPricingModelValue: string;
 		/** Gets or sets the ParameterDataType enumeration value */
@@ -30,7 +30,7 @@
 		/** Gets or sets the element name. */
 		ElementName: string;
 		/** Gets or sets the display order. */
-		DisplayOrder: number;
+		DisplayOrder?: number;
 		/** Gets or sets the is required flag. */
 		IsRequired: boolean;
 		/** Gets or sets the is selected flag. */
@@ -42,33 +42,33 @@
 		/** Gets or sets the Parameter Default Value. */
 		ParameterDefaultValue: string;
 		/** Gets or sets Is Value Required.selected */
-		IsValueRequired: boolean;
+		IsValueRequired?: boolean;
 		/** Gets or sets Parameter Value. */
 		ParameterValue: string;
 		/** Gets or sets Is User Displayed. */
-		IsUserDisplayed: boolean;
+		IsUserDisplayed?: boolean;
 		/** Gets or sets Is User Over Writable. */
-		IsUserOverWritable: boolean;
+		IsUserOverWritable?: boolean;
 		/** Gets or sets Is Selfcare Manageable. */
-		IsSelfcareManageable: boolean;
+		IsSelfcareManageable?: boolean;
 		/** Gets or sets the IsSelfcareDisplayable. */
-		IsSelfcareDisplayable: boolean;
+		IsSelfcareDisplayable?: boolean;
 		/** Gets or sets IsAdminSelfcareManageable. */
-		IsAdminSelfcareManageable: boolean;
+		IsAdminSelfcareManageable?: boolean;
 		/** Gets or sets  Is Invoice Printable. */
-		IsInvoicePrintable: boolean;
+		IsInvoicePrintable?: boolean;
 		/** Gets or sets Is Welcome Pack Printable. */
-		IsWelcomePackPrintable: boolean;
+		IsWelcomePackPrintable?: boolean;
 		/** Gets or sets the Technical Spec. */
 		TechnicalSpec: string;
 		/** Gets or sets Technical Instance ID. */
 		TechnicalInstanceId: string;
 		/** Gets or sets ODPInfo */
-		ODpInfo: bluesky.core.models.quote.IOdpInfoDefinition;
+		ODPInfo: quote.IOdpInfoDefinition;
 		/** Gets or sets the SubsidiaryName value. */
 		SubsidiaryNameValue: string;
 		/** Gets or sets Number of PO. */
-		Number: number;
+		Number?: number;
 		/** Gets or sets the Currency value. */
 		CurrencyValue: string;
 		/** Gets or sets the BusinessUnit value. */
@@ -96,11 +96,11 @@
 		/** Gets or sets the DurationRoundingStrategy value. */
 		DurationRoundingStrategyValue: string;
 		/** Gets or sets the Retail Product Group Name Rate Entry */
-		RetailProductGroupNameRateEntryId: number;
+		RetailProductGroupNameRateEntryId?: number;
 		/** Gets or sets is retail selected */
 		IsRetailSelected: boolean;
 		/** Gets or sets the Partner Product Group Name Rate Entry */
-		PartnerProductGroupNameRateEntryId: number;
+		PartnerProductGroupNameRateEntryId?: number;
 		/** Gets or sets is partner selected */
 		IsPartnerSelected: boolean;
 		/** Gets or sets the SourceCountryCode value. */
@@ -122,17 +122,17 @@
 		/** Gets or sets Use Tariff Group Retail / Partner Rate. */
 		IsUseTariffGroupRetailRate: boolean;
 		/** Gets or sets Tariff Group Retail / Partner Band Rate Per Minute. */
-		TGPartnerBandRatePerMinute: number;
+		TGPartnerBandRatePerMinute?: number;
 		/** Gets or sets Use Tariff Group Retail / Partner Rate. */
 		IsUseTariffGroupPartnerRate: boolean;
 		/** Gets or sets Retail band rate per minute */
-		RetailBandRatePerMinute: number;
+		RetailBandRatePerMinute?: number;
 		/** Gets or sets Partner band rate per minute */
-		PartnerBandRatePerMinute: number;
+		PartnerBandRatePerMinute?: number;
 		/** Gets or sets Retail bridging rate per minute */
-		RetailBridgingRatePerMinute: number;
+		RetailBridgingRatePerMinute?: number;
 		/** Gets or sets Partner bridging rate per minute */
-		PartnerBridgingRatePerMinute: number;
+		PartnerBridgingRatePerMinute?: number;
 		/** Gets or sets the CountryCode value. */
 		CountryCodeValue: string;
 		/** Gets or sets Zone. */
@@ -146,31 +146,31 @@
 		/** Gets or sets Minute threshold end. */
 		MinuteThresholdEnd: number;
 		/** Gets or sets Retail discount percentage */
-		RetailDiscountPercentage: number;
+		RetailDiscountPercentage?: number;
 		/** Gets or sets Partner discount percentage */
-		PartnerDiscountPercentage: number;
+		PartnerDiscountPercentage?: number;
 		/** Gets or sets the IncludedCharges value. */
 		IncludedChargesValue: string;
 		/** Gets or sets Number of free minutes */
 		NumberOfFreeMinutes: number;
 		/** Gets or sets Room size */
-		RoomSize: number;
+		RoomSize?: number;
 		/** Gets or sets the billed hosts percentage. */
-		BilledHostsPercentage: number;
+		BilledHostsPercentage?: number;
 		/** Gets or sets is converted. */
-		IsConverted: boolean;
+		IsConverted?: boolean;
 		/** Gets or sets the number of minimum active hosts. */
-		MinimumActiveHosts: number;
+		MinimumActiveHosts?: number;
 		/** Gets or sets the number of purchased licenses. */
-		PurchasedLicenses: number;
+		PurchasedLicenses?: number;
 		/** Gets or sets the port overage rate. */
-		PortOverageRate: number;
+		PortOverageRate?: number;
 		/** Gets or sets the LicenseFeePriceableItemId */
-		LicenseFeePriceableItemId: number;
+		LicenseFeePriceableItemId?: number;
 		/** Gets or sets the LicenseFeeCalculationMode value. */
 		LicenseFeeCalculationModeValue: string;
 		/** Gets or sets Service type group */
-		ServiceTypeGroup: number;
+		ServiceTypeGroup?: number;
 		/** Gets or sets the MiscChargeType value. */
 		MiscChargeTypeValue: string;
 		/** Gets or sets Rate per unit */
@@ -196,23 +196,23 @@
 		/** Gets or sets DiscountPercent */
 		DiscountPercent: number;
 		/** Gets or sets Qualifier condition. */
-		Qualifier: number;
+		Qualifier?: number;
 		/** Gets or sets the QualifierOperator value. */
 		QualifierOperatorValue: string;
 		/** Commitment start date. */
-		CommitmentStartDate: Date;
+		CommitmentStartDate?: Date;
 		/** Gets or sets the CommitmentFrequency value. */
 		CommitmentFrequencyValue: string;
 		/** Commitment amount. */
-		CommitmentAmount: number;
+		CommitmentAmount?: number;
 		/** Gets or sets the CancellationFeePolicy value. */
 		CancellationFeePolicyValue: string;
 		/** Gets or sets the frequency value. */
 		FrequencyValue: string;
 		/** Global discount threshold. */
-		Threshold: number;
+		Threshold?: number;
 		/** Global discount discount percentage. */
-		DiscountPercentage: number;
+		DiscountPercentage?: number;
 		/** Gets or Sets Is Flat Rate Used */
 		IsFlatRateUsed: boolean;
 		/** Gets or Sets Is Unit Rate Used */

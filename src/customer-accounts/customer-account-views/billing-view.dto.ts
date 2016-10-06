@@ -12,7 +12,7 @@
 		/** Gets or sets the username of a legal entity node in the same account hierarchy (children of the same Logo). */
 		MasterLegalEntityUserName: string;
 		/** Gets or sets the expiry date for the customer purchase order. */
-		PurchaseOrderExpiryDate: Date;
+		PurchaseOrderExpiryDate?: Date;
 		/** Gets or sets the customer purchase order reference. */
 		PurchaseOrderReference: string;
 		/** Gets or sets the registration number in the country of the account (i.e. SIRET/RCS numbers in France). */

@@ -12,15 +12,15 @@
         /** Gets or sets Domain name */
         DomainName: string;
         /** Gets or sets a flag indicates if is one time event */
-        IsOneTime: boolean;
+        IsOneTime?: boolean;
         /** Gets or sets Technical product name */
         TechnicalProductName: string;
         /** Gets or sets Technical product specification name */
         TechnicalProductSpecName: string;
         /** Gets or sets Technical access start date */
-        StartDate: Date;
+        StartDate?: Date;
         /** Gets or sets Technical access end date */
-        EndDate: Date;
+        EndDate?: Date;
         /** Gets or sets User reference. */
         UserRef: string;
         /** Gets or sets Billing code. */
@@ -34,7 +34,7 @@
         /** Gets or sets topic of the conference. */
         Topic: string;
         /** Gets or sets the flag indicating whether provisioning is required. */
-        IsProvisioningRequired: boolean;
+        IsProvisioningRequired?: boolean;
         /** Gets or sets the integration link. */
         IntegrationLink: string;
         /** Gets whether this access can be used to create OTP accesses.It is true if the access is permanent and the product supports OTP. */
@@ -44,7 +44,7 @@
         /** Gets or sets Subdomain identifier. Used in mapping referential constraint. */
         SubdomainId: number;
         /** Gets or sets User identifier. Used in mapping referential constraint. */
-        UserId: number;
+        UserId?: number;
         /** Gets or sets Subsidiary of the user */
         UserSubsidiary: string;
         /** Gets or sets DomainSpecName of the user */

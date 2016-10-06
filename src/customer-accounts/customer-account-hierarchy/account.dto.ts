@@ -4,7 +4,7 @@
 		/** Gets or sets the account type. */
 		AccountType: string;
 		/** Gets or sets the MetraNet identifier of the account. */
-		MNId: number;
+		MNId?: number;
 		/** Gets or sets the user name assigned to the account.TODO MGA : to be renamed to Uid : impacts on Proxies / HUB ? Is it acceptable or not ? */
 		UserName: string;
 		/** Gets or sets the parent account.TODO MGA : to be renamed to AncestorAccountUid : impacts on Proxies / HUB ? Is it acceptable or not ? */
@@ -16,17 +16,17 @@
 		/** Gets or sets the start date of the account. */
 		AccountStartDate: Date;
 		/** Gets or sets the end date of the account. */
-		AccountEndDate: Date;
+		AccountEndDate?: Date;
 		/** Gets or sets the start date of the association with the current parent account (ancestor). */
-		HierarchyStartDate: Date;
+		HierarchyStartDate?: Date;
 		/** Gets or sets the end date of the association with the current parent account (ancestor). */
-		HierarchyEndDate: Date;
+		HierarchyEndDate?: Date;
 		/** Gets or sets the password used by the account to access MetraView site. */
 		Password: string;
 		/** Gets or sets the start date of the payment redirection with the current payer account. */
-		PaymentStartDate: Date;
+		PaymentStartDate?: Date;
 		/** Gets or sets the end date of the payment redirection with the current payer account. */
-		PaymentEndDate: Date;
+		PaymentEndDate?: Date;
 		/** Gets or sets the Internal view contains the Internal account information.It is required for all types of accounts. */
 		InternalView: account.IInternalViewDto;
 		/** Gets or sets the Common view gathers attributes shared by all of the Accounts. */

@@ -10,6 +10,6 @@
 		/** Indicates if the order must be submitted. */
 		IsSubmit: boolean;
 		/** When specified, the execution date is the date when the customer order will be executed. */
-		ExecutionDate: Date;
+		ExecutionDate?: Date;
 	}
 }

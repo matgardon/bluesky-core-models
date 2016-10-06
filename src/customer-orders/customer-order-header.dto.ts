@@ -16,7 +16,7 @@
 		/** Gets or sets the Logo display Name. It is the customer node name. */
 		LogoName: string;
 		/** Gets or sets Date of submission of the customer order. */
-		SubmitDate: Date;
+		SubmitDate?: Date;
 		/** Gets or sets Effective date of order execution. */
 		ExecutionDate: Date;
 		/** Gets or sets Name of the Order Manager responsible for the fulfillment of thecustomer order. It is left empty by default, but it can be assigned throughOrder Tracking UI. */

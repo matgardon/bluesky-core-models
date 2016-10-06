@@ -6,25 +6,25 @@
 		/** Gets or sets the name of the division associated with the account. */
 		Division: string;
 		/** Gets or sets a value indicating whether the  is a folder. */
-		IsFolder: boolean;
+		IsFolder?: boolean;
 		/** Gets or sets the answer to the security question. */
 		SecurityAnswer: string;
 		/** Gets or sets the status reason text. */
 		StatusReasonOther: string;
 		/** Gets or sets a value indicating whether the  is tax exempt. */
-		IsTaxExempt: boolean;
+		IsTaxExempt?: boolean;
 		/** Gets or sets the tax exempt identifier. */
 		TaxExemptId: string;
 		/** Gets or sets the tax exemption start date. */
-		TaxExemptStartDate: Date;
+		TaxExemptStartDate?: Date;
 		/** Gets or sets the tax exemption end date. */
-		TaxExemptEndDate: Date;
+		TaxExemptEndDate?: Date;
 		/** Gets or sets the tax service address Pcode. */
-		TaxServiceAddressPcode: number;
+		TaxServiceAddressPcode?: number;
 		/** Gets or sets the additional tax information */
 		AdditionalTaxInformation: string;
 		/** Gets or sets the Additional tax exemption. */
-		AdditionalTax: boolean;
+		AdditionalTax?: boolean;
 		/** Gets the currency. */
 		Currency: string;
 		/** Gets the invoice delivery method. */

@@ -4,9 +4,9 @@
 		/** Product offering MetraNet identifier. */
 		ProductOfferingMnId: number;
 		/** Invoice Suppression Threshold from. */
-		InvoiceSuppressionThresholdFrom: number;
+		InvoiceSuppressionThresholdFrom?: number;
 		/** Invoice Suppression Threshold to. */
-		InvoiceSuppressionThresholdTo: number;
+		InvoiceSuppressionThresholdTo?: number;
 		/** subscription identifier. */
 		SubscriptionId: number;
 	}

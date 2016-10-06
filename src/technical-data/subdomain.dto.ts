@@ -6,7 +6,7 @@
 		/** Gets or sets Unique name of the Subdomain */
 		Name: string;
 		/** Gets or sets a flag indicates if the subdomain was created at the same time as the technical product.This value is returned by the Technical Inventory */
-		IsNew: boolean;
+		IsNew?: boolean;
 		/** Gets or sets Company identifier. */
 		CompanyIdentifier: string;
 		/** Description */

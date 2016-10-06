@@ -11,7 +11,7 @@
         /** Gets or sets the name. */
         Name: string;
         /** Gets or sets the version.The version is updated when it enters an approval process.Mandatory for quote contracts, addendum and migration. */
-        Version: number;
+        Version?: number;
         /** Gets or sets the owner first name. */
         OwnerFirstName: string;
         /** Gets or sets the owner last name. */
@@ -21,7 +21,7 @@
         /** Gets or sets the creation date. */
         CreationDate: Date;
         /** Gets or sets the last modification date. */
-        ModificationDate: Date;
+        ModificationDate?: Date;
         /** Gets the Arkadin.BlueSky.BSIC.Domain.ReferenceData.Enumeration.OM.QuoteStatus. */
         QuoteStatus: IOrderManagementEnumerationDto;
         /** Gets the Arkadin.BlueSky.BSIC.Domain.ReferenceData.Enumeration.OM.QuoteType. */

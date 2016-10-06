@@ -14,9 +14,9 @@
 		/** AccessAccount Name of the permanent Audio AccessAccount */
 		AudioAccessName: string;
 		/** Start Date of the one-time access */
-		StartDate: Date;
+		StartDate?: Date;
 		/** Flag to indicate if the accesses to create are One-Time accesses. */
-		IsOneTime: boolean;
+		IsOneTime?: boolean;
 		/** Billing code. */
 		BillingCode: string;
 		/** Gets or sets the billing reference, additional information at access level to be displayed in the invoice. */
@@ -24,7 +24,7 @@
 		/** Topic. Used by Selfcare. */
 		Topic: string;
 		/** Duration. Used by Selfcare. */
-		Duration: number;
+		Duration?: number;
 		/** Comment. */
 		Comment: string;
 		/** Management subsidiary for the given user. It is filled by OrderEntry before order submission. This attributes corresponds to the Managementsubsidiary specified on the closest direct ascendant of the User node */
