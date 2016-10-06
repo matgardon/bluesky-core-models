@@ -4,6 +4,8 @@
         UserAccountUid: string;
         LogoId: string;
         OrderId: string;
+
+        //TODO MGA: common contract for Start / Limit params of all search commands ?
         Start?: number;
         Limit?:number;
     }
