@@ -1,3 +1,94 @@
+declare namespace bluesky.core.models {
+    /** Base information for a file upload. */
+    interface IFileUploadBaseDto {
+        /** File encoded in base 64. */
+        FileBase64Url: string;
+        /** Name of the file. */
+        FileName: string;
+        /** Content Type. */
+        ContentType: string;
+    }
+}
+
+declare namespace bluesky.core.models {
+    /** Json wrapper for boolean responses.TODO MGA: it must be made clear to external consumers how to read the value of the boolean response. */
+    interface IJsonBooleanResponseDto {
+        /** the status of the flag. */
+        BooleanResponse: boolean;
+    }
+}
+
+declare namespace bluesky.core.models {
+    /** Dto for MetraNet Enumerations */
+    interface IMetraNetEnumerationDto {
+        Key: string;
+        Value: string;
+        DisplayValue: string;
+        ExportCode: string;
+        MetraNetNamespace: string;
+        NaturalEnglish: string;
+    }
+}
+
+declare namespace bluesky.core.models {
+    /** Base DTO class to give the Id of an entity existing in the OrderManagement Database. */
+    interface IOrderManagementEntityDto extends models.IResourceBase {
+        /** Entity Id of the item existing in OM DB. */
+        OrderManagementEntityId: number;
+    }
+}
+
+declare namespace bluesky.core.models {
+    /** DTO for OM Enumerations. */
+    interface IOrderManagementEnumerationDto {
+        Key: number;
+        Value: string;
+        DisplayValue: string;
+    }
+}
+
+declare namespace bluesky.core.models {
+    interface IPagedResourceList<T extends models.IResourceBase> extends models.IResourceBase {
+        /** La liste interne concrète des ressources de type T de cette liste non paginée. */
+        Items: T[];
+        FirstItemOnPage: number;
+        HasNextPage: boolean;
+        HasPreviousPage: boolean;
+        IsFirstPage: boolean;
+        IsLastPage: boolean;
+        LastItemOnPage: number;
+        PageCount: number;
+        PageNumber: number;
+        PageSize: number;
+        TotalItemCount: number;
+    }
+}
+
+declare namespace bluesky.core.models {
+    /** Base class for all resources.TODO MGA : Move this class in a base API project */
+    interface IResourceBase {
+        /** Links to related resources. */
+        Links?: {
+            [key: string]: string;
+        };
+    }
+}
+
+declare namespace bluesky.core.models {
+    interface IResourceList<T extends models.IResourceBase> extends models.IResourceBase {
+        /** La liste interne concrète des ressources de type T de cette liste non paginée. */
+        Items: T[];
+        /** Le nombre d'éléments retournés dans cette liste non paginée. */
+        TotalCount: number;
+    }
+}
+
+declare namespace bluesky.core.models.userCase {
+    interface ICaseCreationUrlDto {
+        CaseUrl: string;
+    }
+}
+
 declare namespace bluesky.core.models.userCase {
     interface IGetCaseCreationUrlCommand {
         UserId: string;
@@ -88,98 +179,15 @@ declare namespace bluesky.core.models.clientConfig {
     }
 }
 
-declare namespace bluesky.core.models {
-    /** Base information for a file upload. */
-    interface IFileUploadBaseDto {
-        /** File encoded in base 64. */
-        FileBase64Url: string;
-        /** Name of the file. */
-        FileName: string;
-        /** Content Type. */
-        ContentType: string;
-    }
-}
-
-declare namespace bluesky.core.models {
-    /** Json wrapper for boolean responses.TODO MGA: it must be made clear to external consumers how to read the value of the boolean response. */
-    interface IJsonBooleanResponseDto {
-        /** the status of the flag. */
-        BooleanResponse: boolean;
-    }
-}
-
-declare namespace bluesky.core.models {
-    /** Dto for MetraNet Enumerations */
-    interface IMetraNetEnumerationDto {
-        Key: string;
-        Value: string;
-        DisplayValue: string;
-        ExportCode: string;
-        MetraNetNamespace: string;
-        NaturalEnglish: string;
-    }
-}
-
-declare namespace bluesky.core.models {
-    /** Base DTO class to give the Id of an entity existing in the OrderManagement Database. */
-    interface IOrderManagementEntityDto extends models.IResourceBase {
-        /** Entity Id of the item existing in OM DB. */
-        OrderManagementEntityId: number;
-    }
-}
-
-declare namespace bluesky.core.models {
-    /** DTO for OM Enumerations. */
-    interface IOrderManagementEnumerationDto {
-        Key: number;
-        Value: string;
-        DisplayValue: string;
-    }
-}
-
-declare namespace bluesky.core.models {
-    interface IPagedResourceList<T extends models.IResourceBase> extends models.IResourceBase {
-        /** La liste interne concrète des ressources de type T de cette liste non paginée. */
-        Items: T[];
-        FirstItemOnPage: number;
-        HasNextPage: boolean;
-        HasPreviousPage: boolean;
-        IsFirstPage: boolean;
-        IsLastPage: boolean;
-        LastItemOnPage: number;
-        PageCount: number;
-        PageNumber: number;
-        PageSize: number;
-        TotalItemCount: number;
-    }
-}
-
-declare namespace bluesky.core.models {
-    /** Base class for all resources.TODO MGA : Move this class in a base API project */
-    interface IResourceBase {
-        /** Links to related resources. */
-        Links?: any[];
-    }
-}
-
-declare namespace bluesky.core.models {
-    interface IResourceList<T extends models.IResourceBase> extends models.IResourceBase {
-        /** La liste interne concrète des ressources de type T de cette liste non paginée. */
-        Items: T[];
-        /** Le nombre d'éléments retournés dans cette liste non paginée. */
-        TotalCount: number;
-    }
-}
-
 declare namespace bluesky.core.models.customerOrder {
     /** Response for a Create users command. */
     interface ICreateOrderResponseDto {
         /** Identifier of the generated Customer Order. */
-        orderId: number;
+        OrderId: number;
         /** Order check status. */
-        orderCheckStatus: string;
+        OrderCheckStatus: string;
         /** Concurrent order, when the current order is frozen. */
-        concurrentOrder: number;
+        ConcurrentOrder: number;
     }
 }
 
@@ -475,602 +483,99 @@ declare namespace bluesky.core.models.emailTemplates {
     }
 }
 
-declare namespace bluesky.core.models.quote {
-    /** Model for the approval decision definition */
-    interface IApprovalDecisionDefinition {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets the approver login. */
-        ApproverLogin: string;
-        /** Gets or sets the approver display name. */
-        ApproverDisplayName: string;
-        /** Gets or sets the approver decision. */
-        Decision: boolean;
-        /** Gets or sets the approval decision date. */
-        Date: Date;
-        /** Gets or sets a decision comment. */
-        Comment: string;
-        /** Gets or sets IsLastIterationDecision flag. */
-        IsLastIterationDecision: boolean;
-        /** Gets the UserRole. */
-        UserRoleValue: number;
+declare namespace bluesky.core.models.systemInfo {
+    /** DTO of the API version. */
+    interface IApiVersionDto extends models.IResourceBase {
+        /** Version's number. */
+        Version: string;
     }
 }
 
-declare namespace bluesky.core.models.quote {
-}
-
-declare namespace bluesky.core.models.quote {
-    /** DTO of an export parameter. */
-    interface IExportParameterDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets the export format. */
-        ExportFormat: string;
-        /** Gets or sets the export language. */
-        ExportLanguage: string;
-        /** Gets or sets the template name. */
-        TemplateName: string;
-        /** Gets or sets the template path. */
-        TemplatePath: string;
-        /** Gets or sets the quote export id. */
-        QuoteExportId: number;
-        /** Gets or sets the quote export. */
-        QuoteExport: IQuoteExportDto;
-    }
-}
-
-declare namespace bluesky.core.models.quote {
-    /** Model for On Demand Information definition */
-    interface IOdpInfoDefinition {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets the Unit. */
-        Unit: number;
-    }
-}
-
-declare namespace bluesky.core.models.quote {
-    /** Model for Quote definition */
-    interface IQuoteDefinition {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets the label. */
-        Label: string;
-        /** Gets or sets the name. */
-        Name: string;
-        /** Gets or sets the owner first name. */
-        OwnerFirstName: string;
-        /** Gets or sets the owner last name. */
-        OwnerLastName: string;
-        /** Gets or sets the owner login. */
-        OwnerLogin: string;
-        /** Gets or sets the quote creation date. */
-        CreationDate: Date;
-        /** Gets or sets the contract start date. */
-        ContractStartDate: Date;
-        /** Gets or sets the duration. */
-        Duration: number;
-        /** Gets or sets the quote status value. */
-        QuoteStatusValue: number;
-        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.QuoteType value. */
-        QuoteTypeValue: number;
-        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.BusinessUnit value. */
-        BusinessUnitValue: string;
-        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.Currency value. */
-        CurrencyValue: string;
-        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.CustomerSize value. */
-        CustomerSizeValue: string;
-        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.SubsidiaryName value. */
-        SubsidiaryNameValue: string;
-        /** Gets or sets the name of the assigned logo. */
-        AssignedLogo: string;
-        /** Gets or sets the display name of the assigned logo. */
-        AssignedLogoName: string;
-        /** Gets or sets the notes. */
-        Notes: string;
-        /** Gets or sets the internal note. */
-        InternalNote: string;
-        /** Gets or sets the origin name, for addendum and migration. */
-        OriginName: string;
-        /** Gets or sets the sfa contract identifier. */
-        SFAContractId: string;
-        /** Gets or sets the name of the SFDC customer. */
-        SFDCCustomerName: string;
-        /** Gets or sets the sales account. */
-        SalesAccount: string;
-        /** Gets or sets the Sales Force Customer Account Id. */
-        SFACustomerAccountId: string;
-        /** Gets or sets the Sales Force Customer Account Name. */
-        SFACustomerAccountName: string;
-        /** Gets or sets the current approver. */
-        CurrentApprover: string;
-        /** Gets or sets the opportunity Id. */
-        OpportunityId: string;
-        /** Gets or sets the SFA quote Id. */
-        SFAQuoteId: string;
-        /** Gets or sets the related export parameter identifier. */
-        ExportParameterId: number;
-        /** Gets or sets the C And C ProductOffering Id. */
-        ConferencingAndCollaborationProductOfferingId: number;
-        /** Gets or sets the customized Rate schedules. */
-        RateSchedules: IRateScheduleDefinition[];
-        /** Gets or sets the Udrc units */
-        UdrcUnits: IUdrcUnitDefinition[];
-        /** Gets the related approval decisions for quote. */
-        ApprovalDecisions: IApprovalDecisionDefinition[];
-        /** Gets or sets the Supporting Product Offering Ids */
-        SupportingProductOfferingIds: number[];
-    }
-}
-
-declare namespace bluesky.core.models.quote {
-    /** DTO of a quote export. */
-    interface IQuoteExportDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets the businessunit. */
-        BusinessUnit: IMetraNetEnumerationDto;
-        /** Gets or sets the subsidiary name. */
-        SubsidiaryName: IMetraNetEnumerationDto;
-    }
-}
-
-declare namespace bluesky.core.models.quote {
-    import QuoteSubscriptionDto = models.subscription.IQuoteSubscriptionDto;
-    /** Header DTO of a quote. */
-    interface IQuoteHeaderDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets the label. */
-        Label: string;
-        /** Gets or sets the name. */
-        Name: string;
-        /** Gets or sets the version.The version is updated when it enters an approval process.Mandatory for quote contracts, addendum and migration. */
-        Version: number;
-        /** Gets or sets the owner first name. */
-        OwnerFirstName: string;
-        /** Gets or sets the owner last name. */
-        OwnerLastName: string;
-        /** Gets or sets the owner login. */
-        OwnerLogin: string;
-        /** Gets or sets the creation date. */
-        CreationDate: Date;
-        /** Gets or sets the last modification date. */
-        ModificationDate: Date;
-        /** Gets the Arkadin.BlueSky.BSIC.Domain.ReferenceData.Enumeration.OM.QuoteStatus. */
-        QuoteStatus: IOrderManagementEnumerationDto;
-        /** Gets the Arkadin.BlueSky.BSIC.Domain.ReferenceData.Enumeration.OM.QuoteType. */
-        QuoteType: IOrderManagementEnumerationDto;
-        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.Currency. */
-        Currency: IMetraNetEnumerationDto;
-        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.SubsidiaryName. */
-        SubsidiaryName: IMetraNetEnumerationDto;
-        /** Gets or sets the sfa contract identifier. */
-        SFAContractId: string;
-        /** Gets or sets the name of the SFDC customer. */
-        SFDCCustomerName: string;
-        /** Gets or sets the C And C ProductOffering Id. */
-        ConferencingAndCollaborationProductOfferingId: number;
-        /** Quote's subscriptions. */
-        QuoteSubscriptions: QuoteSubscriptionDto[];
-    }
-}
-
-declare namespace bluesky.core.models.quote {
-    interface IQuoteSearchCommand {
-        Name: string;
-        Label: string;
-        LogoUid: string;
-        QuoteStatusFilter: string;
-        Subsidiaries: string;
-        Ids: string;
-        IncludeSubscriptions?: boolean;
-        CurrentApprover: string;
-        Start?: number;
-        Limit?: number;
-    }
-}
-
-declare namespace bluesky.core.models.quote {
-    /** Dto for quote work items summary.Returns information about the number of quotes for each type of action to perform. */
-    interface IQuoteWorkItemsSummaryDto extends IResourceBase {
-        /** Gets or sets the number of quotes in pending status. */
-        QuotesPendingCount: number;
-        /** Gets or sets the number of quotes in approval in progress status. */
-        QuotesUnderApprovalCount: number;
-        /** Gets or sets the number of quotes to approve by the authenticated user. */
-        QuotesToApproveCount: number;
-        /** Gets or sets the number of quotes to work on. */
-        TotalCount: number;
-    }
-}
-
-declare namespace bluesky.core.models.quote {
-    /** DTO of a quote. */
-    interface IQuoteDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets the label. */
-        Label: string;
-        /** Gets or sets the name. */
-        Name: string;
-        /** Gets or sets the version.The version is updated when it enters an approval process.Mandatory for quote contracts, addendum and migration. */
-        Version: number;
-        /** Gets or sets the owner first name. */
-        OwnerFirstName: string;
-        /** Gets or sets the owner last name. */
-        OwnerLastName: string;
-        /** Gets or sets the owner login. */
-        OwnerLogin: string;
-        /** Gets or sets the creation date. */
-        CreationDate: Date;
-        /** Gets or sets the last modification date. */
-        ModificationDate: Date;
-        /** Gets or sets the effective date. */
-        EffectiveDate: Date;
-        /** Gets or sets the contract start date. */
-        ContractStartDate: Date;
-        /** Gets or sets the duration. */
-        Duration: number;
-        /** Gets the Arkadin.BlueSky.BSIC.Domain.ReferenceData.Enumeration.OM.QuoteStatus. */
-        QuoteStatus: IOrderManagementEnumerationDto;
-        /** Gets the Arkadin.BlueSky.BSIC.Domain.ReferenceData.Enumeration.OM.QuoteType. */
-        QuoteType: IOrderManagementEnumerationDto;
-        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.BusinessUnit. */
-        BusinessUnit: IMetraNetEnumerationDto;
-        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.Currency. */
-        Currency: IMetraNetEnumerationDto;
-        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.CustomerSize. */
-        CustomerSize: IMetraNetEnumerationDto;
-        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.SubsidiaryName. */
-        SubsidiaryName: IMetraNetEnumerationDto;
-        /** Gets or sets the name of the assigned logo. */
-        AssignedLogo: string;
-        /** Gets or sets the display name of the assigned logo. */
-        AssignedLogoName: string;
-        /** Gets or sets the notes. */
-        Notes: string;
-        /** Gets or sets the internal note. */
-        InternalNote: string;
-        /** Gets or sets the origin name, for addendum and migration. */
-        OriginName: string;
-        /** Gets or sets the sfa contract identifier. */
-        SFAContractId: string;
-        /** Gets or sets the name of the SFDC customer. */
-        SFDCCustomerName: string;
-        /** Gets or sets the sales account. */
-        SalesAccount: string;
-        /** Gets or sets the current approver. */
-        CurrentApprover: string;
-        /** Gets or sets the opportunity Id. */
-        OpportunityId: string;
-        /** Gets or sets the SFA quote Id. */
-        SFAQuoteId: string;
-        /** Gets or sets the Sales Force Customer Account Id. */
-        SFACustomerAccountId: string;
-        /** Gets or sets the Sales Force Customer Account Name. */
-        SFACustomerAccountName: string;
-        /** Gets or sets the C And C ProductOffering Id. */
-        ConferencingAndCollaborationProductOfferingId: number;
-        /** Gets or sets the export parameter id. */
-        ExportParameterId: number;
-    }
-}
-
-declare namespace bluesky.core.models.quote {
-    /** Model for Rate Entry definition */
-    interface IRateEntryDefinition {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets the identifier of the rate schedule linked to the rate entry. */
-        RateScheduleId: number;
-        /** Gets or sets the rate entry type. */
-        RateEntryType: string;
-        /** Gets or sets the rate entry index. */
-        Index: number;
-        /** Gets or sets rating key */
-        RatingKey: string;
-        /** Gets or sets the rate entry audit. */
-        Audit: number;
-        /** Gets or sets the atomic target name priceable item id. */
-        AtomicTargetNameId: number;
-        /** Gets or sets the compound target name product offering id. */
-        CompoundTargetNameId: number;
-        /** Gets or sets the AuxiliaryPricingModel enumeration value */
-        AuxiliaryPricingModelValue: string;
-        /** Gets or sets the ParameterDataType enumeration value */
-        ParameterDataTypeValue: string;
-        /** Gets or sets the ProductCategory enumeration value */
-        ProductCategoryValue: string;
-        /** Gets or sets the OrderEntryDisplayMode enumeration value */
-        OrderEntryDisplayModeValue: string;
-        /** Gets or sets the ElementType enumeration value */
-        ElementTypeValue: string;
-        /** Gets or sets the element name. */
-        ElementName: string;
-        /** Gets or sets the display order. */
-        DisplayOrder: number;
-        /** Gets or sets the is required flag. */
-        IsRequired: boolean;
-        /** Gets or sets the is selected flag. */
-        IsSelected: boolean;
-        /** Gets or sets the is default flag. */
-        IsDefault: boolean;
-        /** Gets or sets the Parameter Enumerator. */
-        ParameterEnumerator: string;
-        /** Gets or sets the Parameter Default Value. */
-        ParameterDefaultValue: string;
-        /** Gets or sets Is Value Required.selected */
-        IsValueRequired: boolean;
-        /** Gets or sets Parameter Value. */
-        ParameterValue: string;
-        /** Gets or sets Is User Displayed. */
-        IsUserDisplayed: boolean;
-        /** Gets or sets Is User Over Writable. */
-        IsUserOverWritable: boolean;
-        /** Gets or sets Is Selfcare Manageable. */
-        IsSelfcareManageable: boolean;
-        /** Gets or sets the IsSelfcareDisplayable. */
-        IsSelfcareDisplayable: boolean;
-        /** Gets or sets IsAdminSelfcareManageable. */
-        IsAdminSelfcareManageable: boolean;
-        /** Gets or sets  Is Invoice Printable. */
-        IsInvoicePrintable: boolean;
-        /** Gets or sets Is Welcome Pack Printable. */
-        IsWelcomePackPrintable: boolean;
-        /** Gets or sets the Technical Spec. */
-        TechnicalSpec: string;
-        /** Gets or sets Technical Instance ID. */
-        TechnicalInstanceId: string;
-        /** Gets or sets ODPInfo */
-        ODpInfo: bluesky.core.models.quote.IOdpInfoDefinition;
-        /** Gets or sets the SubsidiaryName value. */
-        SubsidiaryNameValue: string;
-        /** Gets or sets Number of PO. */
-        Number: number;
-        /** Gets or sets the Currency value. */
-        CurrencyValue: string;
-        /** Gets or sets the BusinessUnit value. */
-        BusinessUnitValue: string;
-        /** Gets or sets the CustomerSize value. */
-        CustomerSizeValue: string;
-        /** Gets or sets the ServiceType value. */
-        ServiceTypeValue: string;
-        /** Gets or sets the ServiceUnit value. */
-        ServiceUnitValue: string;
-        /** Gets or sets User tariff group to band mapping */
-        UseTariffGroupToBandMapping: boolean;
-        /** Gets or sets Use band rates */
-        UseBandRates: boolean;
-        /** Gets or sets  Use  bridging rates */
-        UseBridgingRates: boolean;
-        /** Gets or sets Use surcharge rates */
-        UseSurchargeRates: boolean;
-        /** Gets or sets the MainPricingModel enumeration value */
-        MainPricingModelValue: string;
-        /** Gets or sets product group name. */
-        ProductGroupName: string;
-        /** Gets or sets the ProductName value. */
-        ProductNameValue: string;
-        /** Gets or sets the DurationRoundingStrategy value. */
-        DurationRoundingStrategyValue: string;
-        /** Gets or sets the Retail Product Group Name Rate Entry */
-        RetailProductGroupNameRateEntryId: number;
-        /** Gets or sets is retail selected */
-        IsRetailSelected: boolean;
-        /** Gets or sets the Partner Product Group Name Rate Entry */
-        PartnerProductGroupNameRateEntryId: number;
-        /** Gets or sets is partner selected */
-        IsPartnerSelected: boolean;
-        /** Gets or sets the SourceCountryCode value. */
-        SourceCountryCodeValue: string;
-        /** Gets or sets the DestinationCountryCode value. */
-        DestinationCountryCodeValue: string;
-        /** Gets or sets the DirectDialInType value. */
-        DirectDialInTypeValue: string;
-        /** Gets or sets the PhoneKind value. */
-        PhoneKindValue: string;
-        /** Gets or sets Source region. */
-        SourceRegion: string;
-        /** Gets or sets band. */
-        Band: string;
-        /** Gets or sets Cluster. */
-        Cluster: string;
-        /** Gets or sets Tariff Group Retail / Partner Band Rate Per Minute. */
-        TGRetailBandRatePerMinute: number;
-        /** Gets or sets Use Tariff Group Retail / Partner Rate. */
-        IsUseTariffGroupRetailRate: boolean;
-        /** Gets or sets Tariff Group Retail / Partner Band Rate Per Minute. */
-        TGPartnerBandRatePerMinute: number;
-        /** Gets or sets Use Tariff Group Retail / Partner Rate. */
-        IsUseTariffGroupPartnerRate: boolean;
-        /** Gets or sets Retail band rate per minute */
-        RetailBandRatePerMinute: number;
-        /** Gets or sets Partner band rate per minute */
-        PartnerBandRatePerMinute: number;
-        /** Gets or sets Retail bridging rate per minute */
-        RetailBridgingRatePerMinute: number;
-        /** Gets or sets Partner bridging rate per minute */
-        PartnerBridgingRatePerMinute: number;
-        /** Gets or sets the CountryCode value. */
-        CountryCodeValue: string;
-        /** Gets or sets Zone. */
-        Zone: string;
-        /** Gets or sets Retail surcharge rate per minute */
-        RetailSurchargeRatePerMinute: number;
-        /** Gets or sets Partner surcharge rate per minute */
-        PartnerSurchargeRatePerMinute: number;
-        /** Gets or sets Minute threshold start. */
-        MinuteThresholdStart: number;
-        /** Gets or sets Minute threshold end. */
-        MinuteThresholdEnd: number;
-        /** Gets or sets Retail discount percentage */
-        RetailDiscountPercentage: number;
-        /** Gets or sets Partner discount percentage */
-        PartnerDiscountPercentage: number;
-        /** Gets or sets the IncludedCharges value. */
-        IncludedChargesValue: string;
-        /** Gets or sets Number of free minutes */
-        NumberOfFreeMinutes: number;
-        /** Gets or sets Room size */
-        RoomSize: number;
-        /** Gets or sets the billed hosts percentage. */
-        BilledHostsPercentage: number;
-        /** Gets or sets is converted. */
-        IsConverted: boolean;
-        /** Gets or sets the number of minimum active hosts. */
-        MinimumActiveHosts: number;
-        /** Gets or sets the number of purchased licenses. */
-        PurchasedLicenses: number;
-        /** Gets or sets the port overage rate. */
-        PortOverageRate: number;
-        /** Gets or sets the LicenseFeePriceableItemId */
-        LicenseFeePriceableItemId: number;
-        /** Gets or sets the LicenseFeeCalculationMode value. */
-        LicenseFeeCalculationModeValue: string;
-        /** Gets or sets Service type group */
-        ServiceTypeGroup: number;
-        /** Gets or sets the MiscChargeType value. */
-        MiscChargeTypeValue: string;
-        /** Gets or sets Rate per unit */
-        RatePerUnit: number;
-        /** Gets or sets Flat rate */
-        FlatRate: number;
-        /** Gets or sets the OptionChargeType value. */
-        OptionChargeTypeValue: string;
-        /** Non recurring charge amount */
-        NRcAmount: number;
-        /** Gets or sets Recurring charge amount */
-        RCAmount: number;
-        /** Gets or sets number of units. */
-        UnitValue: number;
-        /** Gets or sets Unit amount */
-        UnitAmount: number;
-        /** Gets or sets base amount */
-        BaseAmount: number;
-        /** Gets or sets Flat unconditional discount amount */
-        FlatUnconditionalDiscountAmount: number;
-        /** Gets or sets Flat discount amount */
-        FlatDiscountAmount: number;
-        /** Gets or sets DiscountPercent */
-        DiscountPercent: number;
-        /** Gets or sets Qualifier condition. */
-        Qualifier: number;
-        /** Gets or sets the QualifierOperator value. */
-        QualifierOperatorValue: string;
-        /** Commitment start date. */
-        CommitmentStartDate: Date;
-        /** Gets or sets the CommitmentFrequency value. */
-        CommitmentFrequencyValue: string;
-        /** Commitment amount. */
-        CommitmentAmount: number;
-        /** Gets or sets the CancellationFeePolicy value. */
-        CancellationFeePolicyValue: string;
-        /** Gets or sets the frequency value. */
-        FrequencyValue: string;
-        /** Global discount threshold. */
-        Threshold: number;
-        /** Global discount discount percentage. */
-        DiscountPercentage: number;
-        /** Gets or Sets Is Flat Rate Used */
-        IsFlatRateUsed: boolean;
-        /** Gets or Sets Is Unit Rate Used */
-        IsUnitRateUsed: boolean;
-    }
-}
-
-declare namespace bluesky.core.models.quote {
-    /** Model for Rate Schedule definition */
-    interface IRateScheduleDefinition {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets the id of the quote. */
-        QuoteId: number;
-        /** Gets or sets the id of a parameter table. */
-        PTId: number;
-        /** Gets or sets the name of the Parameter Table. */
-        PTName: string;
-        /** Gets or sets the rate schedule type. */
-        RateScheduleType: string;
-        /** Gets or sets the start date. */
+declare namespace bluesky.core.models.systemInfo {
+    /** DTO of the Order Management Database Version. */
+    interface IDatabaseVersionDto {
+        /** Gets or sets version of the [OrderManagement] Database at a current date. */
+        Version: string;
+        /** Gets or sets date of the specified version of the [OrderManagement] Database. */
         StartDate: Date;
-        /** Gets or sets the end date. */
-        EndDate: Date;
-        /** Gets or sets the priceable item id. */
-        PriceableItemId: number;
-        /** Gets or sets the rate entries. */
-        RateEntries: IRateEntryDefinition[];
     }
 }
 
-declare namespace bluesky.core.models.quote {
-    /** DTO of an sign off decision. */
-    interface ISignOffDecisionDto extends IResourceBase {
+declare namespace bluesky.core.models.subscription {
+    /** This entity links a quote, a billing account, and the resulting subscription */
+    interface IQuoteSubscriptionDto extends IResourceBase {
         /** Gets or sets the unique identifier. */
         Id: number;
-        /** Gets or sets the approver login. */
-        ApproverLogin: string;
-        /** Gets or sets the approver display name. */
-        ApproverDisplayName: string;
-        /** Gets or sets the approver decision. */
-        Decision: boolean;
-        /** Gets or sets the approval decision date. */
-        SignOffDate: Date;
-        /** Gets or sets a decision comment. */
-        Comment: string;
-        /** Gets the UserRole. */
-        UserRole: IOrderManagementEnumerationDto;
+        /** Quote identifier */
+        QuoteId: number;
+        /** Subscription identifier */
+        SubscriptionId: number;
+        /** GroupSubscription identifier */
+        GroupSubId: number;
+        /** BillingAccount identifier */
+        BillingAccountUserName: string;
+        /** BillingAccount customer node name */
+        BillingAccountCustomerNodeName: string;
     }
 }
 
-declare namespace bluesky.core.models.quote {
-    /** Model for Quote definition */
-    interface ISimpleQuoteCreation {
-        /** Gets or sets the label. */
-        Label: string;
-        /** Gets or sets the contract start date. */
-        ContractStartDate: Date;
-        /** Gets or sets the duration. */
-        Duration: number;
-        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.BusinessUnit value. */
-        BusinessUnitValue: string;
-        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.Currency value. */
-        CurrencyValue: string;
-        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.CustomerSize value. */
-        CustomerSizeValue: string;
-        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.SubsidiaryName value. */
-        SubsidiaryNameValue: string;
-        /** Gets or sets the notes. */
-        Notes: string;
-        /** Gets or sets the name of the SFDC customer. */
-        SFDCCustomerName: string;
-        /** Gets or sets the sales account. */
-        SalesAccount: string;
-        /** Gets or sets the Sales Force Customer Account Id. */
-        SFACustomerAccountId: string;
-        /** Gets or sets the Sales Force Customer Account Name. */
-        SFACustomerAccountName: string;
-        /** Gets or sets the opportunity Id. */
-        OpportunityId: string;
-        /** Gets or sets the SFA quote Id. */
-        SFAQuoteId: string;
-        /** Gets or sets the C And C ProductOffering Id. */
-        ConferencingAndCollaborationProductOfferingId: number;
+declare namespace bluesky.core.models.subscription {
+    /** DTO of an option attached to a subscription. */
+    interface ISubscriptionOptionDto {
+        /** Name of the Option. */
+        Name: string;
+        /** Indicate in which product category the option is defined. */
+        ProductCategory: string;
+        /** Technical spec value of the Technical Option. */
+        TechnicalSpec: string;
+        /** Default value chosen for the option on the subscription. */
+        Value: string;
+        /** Type of the value */
+        ValueType: string;
     }
 }
 
-declare namespace bluesky.core.models.quote {
-    /** Model for udrc unit definition */
-    interface IUdrcUnitDefinition {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Unit name. */
-        UnitName: string;
-        /** Unit value. */
-        UnitValue: number;
-        /** Gets or sets the UnitDependentRecurringCharge (PI) identifier. */
-        UnitDependentRecurringChargePriceableItemId: number;
+declare namespace bluesky.core.models.subscription {
+    /** DTO of a product attached to a subscription. */
+    interface ISubscriptionProductDto {
+        /** Element name of the product. */
+        Name: string;
+        /** Name of the Technical Product Specification. */
+        TechnicalProductSpecName: string;
+        /** Identifier of the Technical Product in the Technical Inventory. */
+        TechnicalProductId: string;
+    }
+}
+
+declare namespace bluesky.core.models.subscription {
+    /** Header DTO of a subscription summary.
+    * A subscription is a product offering sold to a Customer and applied to a single subscriber Billing account. */
+    interface ISubscriptionSummaryHeaderDto extends models.IResourceBase {
+        /** Offer display name of the subscription. */
+        DisplayName: string;
+        /** Identifier of the subscription defined into MetraNet. */
+        GroupSubscriptionId: number;
+        /** List of products linked to the subscription. */
+        Products: subscription.ISubscriptionProductDto[];
+    }
+}
+
+declare namespace bluesky.core.models.subscription {
+    /** DTO of a subscription summary.
+    * A subscription is a product offering sold to a Customer and applied to a single subscriber Billing account. */
+    interface ISubscriptionSummaryDto extends models.IResourceBase {
+        /** Offer display name of the subscription. */
+        DisplayName: string;
+        /** Identifier of the subscription defined into MetraNet. */
+        GroupSubscriptionId: number;
+        /** Identifier of the billing account owner of the subscription. */
+        BillingAccountUid: string;
+        /** Identifier of the billing account's logo. */
+        LogoUid: string;
+        /** List of products linked to the subscription. */
+        Products: subscription.ISubscriptionProductDto[];
+        /** subscription options. */
+        Options: subscription.ISubscriptionOptionDto[];
     }
 }
 
@@ -1820,99 +1325,602 @@ declare namespace bluesky.core.models.welcomePacks {
     }
 }
 
-declare namespace bluesky.core.models.subscription {
-    /** This entity links a quote, a billing account, and the resulting subscription */
-    interface IQuoteSubscriptionDto extends IResourceBase {
+declare namespace bluesky.core.models.quote {
+    /** Model for the approval decision definition */
+    interface IApprovalDecisionDefinition {
         /** Gets or sets the unique identifier. */
         Id: number;
-        /** Quote identifier */
-        QuoteId: number;
-        /** Subscription identifier */
-        SubscriptionId: number;
-        /** GroupSubscription identifier */
-        GroupSubId: number;
-        /** BillingAccount identifier */
-        BillingAccountUserName: string;
-        /** BillingAccount customer node name */
-        BillingAccountCustomerNodeName: string;
+        /** Gets or sets the approver login. */
+        ApproverLogin: string;
+        /** Gets or sets the approver display name. */
+        ApproverDisplayName: string;
+        /** Gets or sets the approver decision. */
+        Decision: boolean;
+        /** Gets or sets the approval decision date. */
+        Date: Date;
+        /** Gets or sets a decision comment. */
+        Comment: string;
+        /** Gets or sets IsLastIterationDecision flag. */
+        IsLastIterationDecision: boolean;
+        /** Gets the UserRole. */
+        UserRoleValue: number;
     }
 }
 
-declare namespace bluesky.core.models.subscription {
-    /** DTO of an option attached to a subscription. */
-    interface ISubscriptionOptionDto {
-        /** Name of the Option. */
+declare namespace bluesky.core.models.quote {
+}
+
+declare namespace bluesky.core.models.quote {
+    /** DTO of an export parameter. */
+    interface IExportParameterDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets the export format. */
+        ExportFormat: string;
+        /** Gets or sets the export language. */
+        ExportLanguage: string;
+        /** Gets or sets the template name. */
+        TemplateName: string;
+        /** Gets or sets the template path. */
+        TemplatePath: string;
+        /** Gets or sets the quote export id. */
+        QuoteExportId: number;
+        /** Gets or sets the quote export. */
+        QuoteExport: IQuoteExportDto;
+    }
+}
+
+declare namespace bluesky.core.models.quote {
+    /** Model for On Demand Information definition */
+    interface IOdpInfoDefinition {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets the Unit. */
+        Unit: number;
+    }
+}
+
+declare namespace bluesky.core.models.quote {
+    /** Model for Quote definition */
+    interface IQuoteDefinition {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets the label. */
+        Label: string;
+        /** Gets or sets the name. */
         Name: string;
-        /** Indicate in which product category the option is defined. */
-        ProductCategory: string;
-        /** Technical spec value of the Technical Option. */
-        TechnicalSpec: string;
-        /** Default value chosen for the option on the subscription. */
-        Value: string;
-        /** Type of the value */
-        ValueType: string;
+        /** Gets or sets the owner first name. */
+        OwnerFirstName: string;
+        /** Gets or sets the owner last name. */
+        OwnerLastName: string;
+        /** Gets or sets the owner login. */
+        OwnerLogin: string;
+        /** Gets or sets the quote creation date. */
+        CreationDate: Date;
+        /** Gets or sets the contract start date. */
+        ContractStartDate: Date;
+        /** Gets or sets the duration. */
+        Duration: number;
+        /** Gets or sets the quote status value. */
+        QuoteStatusValue: number;
+        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.QuoteType value. */
+        QuoteTypeValue: number;
+        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.BusinessUnit value. */
+        BusinessUnitValue: string;
+        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.Currency value. */
+        CurrencyValue: string;
+        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.CustomerSize value. */
+        CustomerSizeValue: string;
+        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.SubsidiaryName value. */
+        SubsidiaryNameValue: string;
+        /** Gets or sets the name of the assigned logo. */
+        AssignedLogo: string;
+        /** Gets or sets the display name of the assigned logo. */
+        AssignedLogoName: string;
+        /** Gets or sets the notes. */
+        Notes: string;
+        /** Gets or sets the internal note. */
+        InternalNote: string;
+        /** Gets or sets the origin name, for addendum and migration. */
+        OriginName: string;
+        /** Gets or sets the sfa contract identifier. */
+        SFAContractId: string;
+        /** Gets or sets the name of the SFDC customer. */
+        SFDCCustomerName: string;
+        /** Gets or sets the sales account. */
+        SalesAccount: string;
+        /** Gets or sets the Sales Force Customer Account Id. */
+        SFACustomerAccountId: string;
+        /** Gets or sets the Sales Force Customer Account Name. */
+        SFACustomerAccountName: string;
+        /** Gets or sets the current approver. */
+        CurrentApprover: string;
+        /** Gets or sets the opportunity Id. */
+        OpportunityId: string;
+        /** Gets or sets the SFA quote Id. */
+        SFAQuoteId: string;
+        /** Gets or sets the related export parameter identifier. */
+        ExportParameterId: number;
+        /** Gets or sets the C And C ProductOffering Id. */
+        ConferencingAndCollaborationProductOfferingId: number;
+        /** Gets or sets the customized Rate schedules. */
+        RateSchedules: IRateScheduleDefinition[];
+        /** Gets or sets the Udrc units */
+        UdrcUnits: IUdrcUnitDefinition[];
+        /** Gets the related approval decisions for quote. */
+        ApprovalDecisions: IApprovalDecisionDefinition[];
+        /** Gets or sets the Supporting Product Offering Ids */
+        SupportingProductOfferingIds: number[];
     }
 }
 
-declare namespace bluesky.core.models.subscription {
-    /** DTO of a product attached to a subscription. */
-    interface ISubscriptionProductDto {
-        /** Element name of the product. */
+declare namespace bluesky.core.models.quote {
+    /** DTO of a quote export. */
+    interface IQuoteExportDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets the businessunit. */
+        BusinessUnit: IMetraNetEnumerationDto;
+        /** Gets or sets the subsidiary name. */
+        SubsidiaryName: IMetraNetEnumerationDto;
+    }
+}
+
+declare namespace bluesky.core.models.quote {
+    import QuoteSubscriptionDto = models.subscription.IQuoteSubscriptionDto;
+    /** Header DTO of a quote. */
+    interface IQuoteHeaderDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets the label. */
+        Label: string;
+        /** Gets or sets the name. */
         Name: string;
-        /** Name of the Technical Product Specification. */
-        TechnicalProductSpecName: string;
-        /** Identifier of the Technical Product in the Technical Inventory. */
-        TechnicalProductId: string;
+        /** Gets or sets the version.The version is updated when it enters an approval process.Mandatory for quote contracts, addendum and migration. */
+        Version: number;
+        /** Gets or sets the owner first name. */
+        OwnerFirstName: string;
+        /** Gets or sets the owner last name. */
+        OwnerLastName: string;
+        /** Gets or sets the owner login. */
+        OwnerLogin: string;
+        /** Gets or sets the creation date. */
+        CreationDate: Date;
+        /** Gets or sets the last modification date. */
+        ModificationDate: Date;
+        /** Gets the Arkadin.BlueSky.BSIC.Domain.ReferenceData.Enumeration.OM.QuoteStatus. */
+        QuoteStatus: IOrderManagementEnumerationDto;
+        /** Gets the Arkadin.BlueSky.BSIC.Domain.ReferenceData.Enumeration.OM.QuoteType. */
+        QuoteType: IOrderManagementEnumerationDto;
+        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.Currency. */
+        Currency: IMetraNetEnumerationDto;
+        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.SubsidiaryName. */
+        SubsidiaryName: IMetraNetEnumerationDto;
+        /** Gets or sets the sfa contract identifier. */
+        SFAContractId: string;
+        /** Gets or sets the name of the SFDC customer. */
+        SFDCCustomerName: string;
+        /** Gets or sets the C And C ProductOffering Id. */
+        ConferencingAndCollaborationProductOfferingId: number;
+        /** Quote's subscriptions. */
+        QuoteSubscriptions: QuoteSubscriptionDto[];
     }
 }
 
-declare namespace bluesky.core.models.subscription {
-    /** Header DTO of a subscription summary.
-    * A subscription is a product offering sold to a Customer and applied to a single subscriber Billing account. */
-    interface ISubscriptionSummaryHeaderDto extends models.IResourceBase {
-        /** Offer display name of the subscription. */
-        DisplayName: string;
-        /** Identifier of the subscription defined into MetraNet. */
-        GroupSubscriptionId: number;
-        /** List of products linked to the subscription. */
-        Products: subscription.ISubscriptionProductDto[];
-    }
-}
-
-declare namespace bluesky.core.models.subscription {
-    /** DTO of a subscription summary.
-    * A subscription is a product offering sold to a Customer and applied to a single subscriber Billing account. */
-    interface ISubscriptionSummaryDto extends models.IResourceBase {
-        /** Offer display name of the subscription. */
-        DisplayName: string;
-        /** Identifier of the subscription defined into MetraNet. */
-        GroupSubscriptionId: number;
-        /** Identifier of the billing account owner of the subscription. */
-        BillingAccountUid: string;
-        /** Identifier of the billing account's logo. */
+declare namespace bluesky.core.models.quote {
+    interface IQuoteSearchCommand {
+        Name: string;
+        Label: string;
         LogoUid: string;
-        /** List of products linked to the subscription. */
-        Products: subscription.ISubscriptionProductDto[];
-        /** subscription options. */
-        Options: subscription.ISubscriptionOptionDto[];
+        QuoteStatusFilter: string;
+        Subsidiaries: string;
+        Ids: string;
+        IncludeSubscriptions?: boolean;
+        CurrentApprover: string;
+        Start?: number;
+        Limit?: number;
     }
 }
 
-declare namespace bluesky.core.models.systemInfo {
-    /** DTO of the API version. */
-    interface IApiVersionDto extends models.IResourceBase {
-        /** Version's number. */
-        Version: string;
+declare namespace bluesky.core.models.quote {
+    /** Dto for quote work items summary.Returns information about the number of quotes for each type of action to perform. */
+    interface IQuoteWorkItemsSummaryDto extends IResourceBase {
+        /** Gets or sets the number of quotes in pending status. */
+        QuotesPendingCount: number;
+        /** Gets or sets the number of quotes in approval in progress status. */
+        QuotesUnderApprovalCount: number;
+        /** Gets or sets the number of quotes to approve by the authenticated user. */
+        QuotesToApproveCount: number;
+        /** Gets or sets the number of quotes to work on. */
+        TotalCount: number;
     }
 }
 
-declare namespace bluesky.core.models.systemInfo {
-    /** DTO of the Order Management Database Version. */
-    interface IDatabaseVersionDto {
-        /** Gets or sets version of the [OrderManagement] Database at a current date. */
-        Version: string;
-        /** Gets or sets date of the specified version of the [OrderManagement] Database. */
+declare namespace bluesky.core.models.quote {
+    /** DTO of a quote. */
+    interface IQuoteDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets the label. */
+        Label: string;
+        /** Gets or sets the name. */
+        Name: string;
+        /** Gets or sets the version.The version is updated when it enters an approval process.Mandatory for quote contracts, addendum and migration. */
+        Version: number;
+        /** Gets or sets the owner first name. */
+        OwnerFirstName: string;
+        /** Gets or sets the owner last name. */
+        OwnerLastName: string;
+        /** Gets or sets the owner login. */
+        OwnerLogin: string;
+        /** Gets or sets the creation date. */
+        CreationDate: Date;
+        /** Gets or sets the last modification date. */
+        ModificationDate: Date;
+        /** Gets or sets the effective date. */
+        EffectiveDate: Date;
+        /** Gets or sets the contract start date. */
+        ContractStartDate: Date;
+        /** Gets or sets the duration. */
+        Duration: number;
+        /** Gets the Arkadin.BlueSky.BSIC.Domain.ReferenceData.Enumeration.OM.QuoteStatus. */
+        QuoteStatus: IOrderManagementEnumerationDto;
+        /** Gets the Arkadin.BlueSky.BSIC.Domain.ReferenceData.Enumeration.OM.QuoteType. */
+        QuoteType: IOrderManagementEnumerationDto;
+        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.BusinessUnit. */
+        BusinessUnit: IMetraNetEnumerationDto;
+        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.Currency. */
+        Currency: IMetraNetEnumerationDto;
+        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.CustomerSize. */
+        CustomerSize: IMetraNetEnumerationDto;
+        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.SubsidiaryName. */
+        SubsidiaryName: IMetraNetEnumerationDto;
+        /** Gets or sets the name of the assigned logo. */
+        AssignedLogo: string;
+        /** Gets or sets the display name of the assigned logo. */
+        AssignedLogoName: string;
+        /** Gets or sets the notes. */
+        Notes: string;
+        /** Gets or sets the internal note. */
+        InternalNote: string;
+        /** Gets or sets the origin name, for addendum and migration. */
+        OriginName: string;
+        /** Gets or sets the sfa contract identifier. */
+        SFAContractId: string;
+        /** Gets or sets the name of the SFDC customer. */
+        SFDCCustomerName: string;
+        /** Gets or sets the sales account. */
+        SalesAccount: string;
+        /** Gets or sets the current approver. */
+        CurrentApprover: string;
+        /** Gets or sets the opportunity Id. */
+        OpportunityId: string;
+        /** Gets or sets the SFA quote Id. */
+        SFAQuoteId: string;
+        /** Gets or sets the Sales Force Customer Account Id. */
+        SFACustomerAccountId: string;
+        /** Gets or sets the Sales Force Customer Account Name. */
+        SFACustomerAccountName: string;
+        /** Gets or sets the C And C ProductOffering Id. */
+        ConferencingAndCollaborationProductOfferingId: number;
+        /** Gets or sets the export parameter id. */
+        ExportParameterId: number;
+    }
+}
+
+declare namespace bluesky.core.models.quote {
+    /** Model for Rate Entry definition */
+    interface IRateEntryDefinition {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets the identifier of the rate schedule linked to the rate entry. */
+        RateScheduleId: number;
+        /** Gets or sets the rate entry type. */
+        RateEntryType: string;
+        /** Gets or sets the rate entry index. */
+        Index: number;
+        /** Gets or sets rating key */
+        RatingKey: string;
+        /** Gets or sets the rate entry audit. */
+        Audit: number;
+        /** Gets or sets the atomic target name priceable item id. */
+        AtomicTargetNameId: number;
+        /** Gets or sets the compound target name product offering id. */
+        CompoundTargetNameId: number;
+        /** Gets or sets the AuxiliaryPricingModel enumeration value */
+        AuxiliaryPricingModelValue: string;
+        /** Gets or sets the ParameterDataType enumeration value */
+        ParameterDataTypeValue: string;
+        /** Gets or sets the ProductCategory enumeration value */
+        ProductCategoryValue: string;
+        /** Gets or sets the OrderEntryDisplayMode enumeration value */
+        OrderEntryDisplayModeValue: string;
+        /** Gets or sets the ElementType enumeration value */
+        ElementTypeValue: string;
+        /** Gets or sets the element name. */
+        ElementName: string;
+        /** Gets or sets the display order. */
+        DisplayOrder: number;
+        /** Gets or sets the is required flag. */
+        IsRequired: boolean;
+        /** Gets or sets the is selected flag. */
+        IsSelected: boolean;
+        /** Gets or sets the is default flag. */
+        IsDefault: boolean;
+        /** Gets or sets the Parameter Enumerator. */
+        ParameterEnumerator: string;
+        /** Gets or sets the Parameter Default Value. */
+        ParameterDefaultValue: string;
+        /** Gets or sets Is Value Required.selected */
+        IsValueRequired: boolean;
+        /** Gets or sets Parameter Value. */
+        ParameterValue: string;
+        /** Gets or sets Is User Displayed. */
+        IsUserDisplayed: boolean;
+        /** Gets or sets Is User Over Writable. */
+        IsUserOverWritable: boolean;
+        /** Gets or sets Is Selfcare Manageable. */
+        IsSelfcareManageable: boolean;
+        /** Gets or sets the IsSelfcareDisplayable. */
+        IsSelfcareDisplayable: boolean;
+        /** Gets or sets IsAdminSelfcareManageable. */
+        IsAdminSelfcareManageable: boolean;
+        /** Gets or sets  Is Invoice Printable. */
+        IsInvoicePrintable: boolean;
+        /** Gets or sets Is Welcome Pack Printable. */
+        IsWelcomePackPrintable: boolean;
+        /** Gets or sets the Technical Spec. */
+        TechnicalSpec: string;
+        /** Gets or sets Technical Instance ID. */
+        TechnicalInstanceId: string;
+        /** Gets or sets ODPInfo */
+        ODpInfo: bluesky.core.models.quote.IOdpInfoDefinition;
+        /** Gets or sets the SubsidiaryName value. */
+        SubsidiaryNameValue: string;
+        /** Gets or sets Number of PO. */
+        Number: number;
+        /** Gets or sets the Currency value. */
+        CurrencyValue: string;
+        /** Gets or sets the BusinessUnit value. */
+        BusinessUnitValue: string;
+        /** Gets or sets the CustomerSize value. */
+        CustomerSizeValue: string;
+        /** Gets or sets the ServiceType value. */
+        ServiceTypeValue: string;
+        /** Gets or sets the ServiceUnit value. */
+        ServiceUnitValue: string;
+        /** Gets or sets User tariff group to band mapping */
+        UseTariffGroupToBandMapping: boolean;
+        /** Gets or sets Use band rates */
+        UseBandRates: boolean;
+        /** Gets or sets  Use  bridging rates */
+        UseBridgingRates: boolean;
+        /** Gets or sets Use surcharge rates */
+        UseSurchargeRates: boolean;
+        /** Gets or sets the MainPricingModel enumeration value */
+        MainPricingModelValue: string;
+        /** Gets or sets product group name. */
+        ProductGroupName: string;
+        /** Gets or sets the ProductName value. */
+        ProductNameValue: string;
+        /** Gets or sets the DurationRoundingStrategy value. */
+        DurationRoundingStrategyValue: string;
+        /** Gets or sets the Retail Product Group Name Rate Entry */
+        RetailProductGroupNameRateEntryId: number;
+        /** Gets or sets is retail selected */
+        IsRetailSelected: boolean;
+        /** Gets or sets the Partner Product Group Name Rate Entry */
+        PartnerProductGroupNameRateEntryId: number;
+        /** Gets or sets is partner selected */
+        IsPartnerSelected: boolean;
+        /** Gets or sets the SourceCountryCode value. */
+        SourceCountryCodeValue: string;
+        /** Gets or sets the DestinationCountryCode value. */
+        DestinationCountryCodeValue: string;
+        /** Gets or sets the DirectDialInType value. */
+        DirectDialInTypeValue: string;
+        /** Gets or sets the PhoneKind value. */
+        PhoneKindValue: string;
+        /** Gets or sets Source region. */
+        SourceRegion: string;
+        /** Gets or sets band. */
+        Band: string;
+        /** Gets or sets Cluster. */
+        Cluster: string;
+        /** Gets or sets Tariff Group Retail / Partner Band Rate Per Minute. */
+        TGRetailBandRatePerMinute: number;
+        /** Gets or sets Use Tariff Group Retail / Partner Rate. */
+        IsUseTariffGroupRetailRate: boolean;
+        /** Gets or sets Tariff Group Retail / Partner Band Rate Per Minute. */
+        TGPartnerBandRatePerMinute: number;
+        /** Gets or sets Use Tariff Group Retail / Partner Rate. */
+        IsUseTariffGroupPartnerRate: boolean;
+        /** Gets or sets Retail band rate per minute */
+        RetailBandRatePerMinute: number;
+        /** Gets or sets Partner band rate per minute */
+        PartnerBandRatePerMinute: number;
+        /** Gets or sets Retail bridging rate per minute */
+        RetailBridgingRatePerMinute: number;
+        /** Gets or sets Partner bridging rate per minute */
+        PartnerBridgingRatePerMinute: number;
+        /** Gets or sets the CountryCode value. */
+        CountryCodeValue: string;
+        /** Gets or sets Zone. */
+        Zone: string;
+        /** Gets or sets Retail surcharge rate per minute */
+        RetailSurchargeRatePerMinute: number;
+        /** Gets or sets Partner surcharge rate per minute */
+        PartnerSurchargeRatePerMinute: number;
+        /** Gets or sets Minute threshold start. */
+        MinuteThresholdStart: number;
+        /** Gets or sets Minute threshold end. */
+        MinuteThresholdEnd: number;
+        /** Gets or sets Retail discount percentage */
+        RetailDiscountPercentage: number;
+        /** Gets or sets Partner discount percentage */
+        PartnerDiscountPercentage: number;
+        /** Gets or sets the IncludedCharges value. */
+        IncludedChargesValue: string;
+        /** Gets or sets Number of free minutes */
+        NumberOfFreeMinutes: number;
+        /** Gets or sets Room size */
+        RoomSize: number;
+        /** Gets or sets the billed hosts percentage. */
+        BilledHostsPercentage: number;
+        /** Gets or sets is converted. */
+        IsConverted: boolean;
+        /** Gets or sets the number of minimum active hosts. */
+        MinimumActiveHosts: number;
+        /** Gets or sets the number of purchased licenses. */
+        PurchasedLicenses: number;
+        /** Gets or sets the port overage rate. */
+        PortOverageRate: number;
+        /** Gets or sets the LicenseFeePriceableItemId */
+        LicenseFeePriceableItemId: number;
+        /** Gets or sets the LicenseFeeCalculationMode value. */
+        LicenseFeeCalculationModeValue: string;
+        /** Gets or sets Service type group */
+        ServiceTypeGroup: number;
+        /** Gets or sets the MiscChargeType value. */
+        MiscChargeTypeValue: string;
+        /** Gets or sets Rate per unit */
+        RatePerUnit: number;
+        /** Gets or sets Flat rate */
+        FlatRate: number;
+        /** Gets or sets the OptionChargeType value. */
+        OptionChargeTypeValue: string;
+        /** Non recurring charge amount */
+        NRcAmount: number;
+        /** Gets or sets Recurring charge amount */
+        RCAmount: number;
+        /** Gets or sets number of units. */
+        UnitValue: number;
+        /** Gets or sets Unit amount */
+        UnitAmount: number;
+        /** Gets or sets base amount */
+        BaseAmount: number;
+        /** Gets or sets Flat unconditional discount amount */
+        FlatUnconditionalDiscountAmount: number;
+        /** Gets or sets Flat discount amount */
+        FlatDiscountAmount: number;
+        /** Gets or sets DiscountPercent */
+        DiscountPercent: number;
+        /** Gets or sets Qualifier condition. */
+        Qualifier: number;
+        /** Gets or sets the QualifierOperator value. */
+        QualifierOperatorValue: string;
+        /** Commitment start date. */
+        CommitmentStartDate: Date;
+        /** Gets or sets the CommitmentFrequency value. */
+        CommitmentFrequencyValue: string;
+        /** Commitment amount. */
+        CommitmentAmount: number;
+        /** Gets or sets the CancellationFeePolicy value. */
+        CancellationFeePolicyValue: string;
+        /** Gets or sets the frequency value. */
+        FrequencyValue: string;
+        /** Global discount threshold. */
+        Threshold: number;
+        /** Global discount discount percentage. */
+        DiscountPercentage: number;
+        /** Gets or Sets Is Flat Rate Used */
+        IsFlatRateUsed: boolean;
+        /** Gets or Sets Is Unit Rate Used */
+        IsUnitRateUsed: boolean;
+    }
+}
+
+declare namespace bluesky.core.models.quote {
+    /** Model for Rate Schedule definition */
+    interface IRateScheduleDefinition {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets the id of the quote. */
+        QuoteId: number;
+        /** Gets or sets the id of a parameter table. */
+        PTId: number;
+        /** Gets or sets the name of the Parameter Table. */
+        PTName: string;
+        /** Gets or sets the rate schedule type. */
+        RateScheduleType: string;
+        /** Gets or sets the start date. */
         StartDate: Date;
+        /** Gets or sets the end date. */
+        EndDate: Date;
+        /** Gets or sets the priceable item id. */
+        PriceableItemId: number;
+        /** Gets or sets the rate entries. */
+        RateEntries: IRateEntryDefinition[];
+    }
+}
+
+declare namespace bluesky.core.models.quote {
+    /** DTO of an sign off decision. */
+    interface ISignOffDecisionDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets the approver login. */
+        ApproverLogin: string;
+        /** Gets or sets the approver display name. */
+        ApproverDisplayName: string;
+        /** Gets or sets the approver decision. */
+        Decision: boolean;
+        /** Gets or sets the approval decision date. */
+        SignOffDate: Date;
+        /** Gets or sets a decision comment. */
+        Comment: string;
+        /** Gets the UserRole. */
+        UserRole: IOrderManagementEnumerationDto;
+    }
+}
+
+declare namespace bluesky.core.models.quote {
+    /** Model for Quote definition */
+    interface ISimpleQuoteCreation {
+        /** Gets or sets the label. */
+        Label: string;
+        /** Gets or sets the contract start date. */
+        ContractStartDate: Date;
+        /** Gets or sets the duration. */
+        Duration: number;
+        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.BusinessUnit value. */
+        BusinessUnitValue: string;
+        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.Currency value. */
+        CurrencyValue: string;
+        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.CustomerSize value. */
+        CustomerSizeValue: string;
+        /** Gets or sets the Arkadin.BlueSky.BSIC.Domain.ContractDataSupport.Quote.SubsidiaryName value. */
+        SubsidiaryNameValue: string;
+        /** Gets or sets the notes. */
+        Notes: string;
+        /** Gets or sets the name of the SFDC customer. */
+        SFDCCustomerName: string;
+        /** Gets or sets the sales account. */
+        SalesAccount: string;
+        /** Gets or sets the Sales Force Customer Account Id. */
+        SFACustomerAccountId: string;
+        /** Gets or sets the Sales Force Customer Account Name. */
+        SFACustomerAccountName: string;
+        /** Gets or sets the opportunity Id. */
+        OpportunityId: string;
+        /** Gets or sets the SFA quote Id. */
+        SFAQuoteId: string;
+        /** Gets or sets the C And C ProductOffering Id. */
+        ConferencingAndCollaborationProductOfferingId: number;
+    }
+}
+
+declare namespace bluesky.core.models.quote {
+    /** Model for udrc unit definition */
+    interface IUdrcUnitDefinition {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Unit name. */
+        UnitName: string;
+        /** Unit value. */
+        UnitValue: number;
+        /** Gets or sets the UnitDependentRecurringCharge (PI) identifier. */
+        UnitDependentRecurringChargePriceableItemId: number;
     }
 }
 
@@ -2110,16 +2118,110 @@ declare namespace bluesky.core.models.account {
 }
 
 declare namespace bluesky.core.models.customerOrder {
-    /** Dto of a Merge Logo information. Contains information about merge logo action. */
-    interface IMergeLogoInformationDto extends IResourceBase {
+    /** Access credential for generic accesses */
+    interface IAccessCredentialsDto {
+        /** Login for generic accesse */
+        Login: string;
+        /** Password for generic accesse */
+        Password: string;
+        /** TechnicalSpecification of generic access */
+        TechnicalSpecification: string;
+    }
+}
+
+declare namespace bluesky.core.models.customerOrder {
+    /** Additional information on a User used for audio and web accesses creation. */
+    interface IAccessInfoDto extends IResourceBase {
         /** Gets or sets the unique identifier. */
         Id: number;
-        /** Identifier of the source logo to merge. */
-        SourceLogoUid: string;
-        /** Identifier of the destination logo, under which all source logo hierarchy must be moved. */
-        DestinationLogoUid: string;
-        /** Indicates if the DDIs configured for the source logo must be merged in the target logo. */
-        MergeConfiguredDDIs: boolean;
+        /** If specified, this is the value of Moderator PIN requested by the customer. */
+        ModeratorPIN: string;
+        /** If specified, this is the value of Participant PIN requested by the customer */
+        ParticipantPIN: string;
+        /** Used for WebEx Product, in case the user specifies a login for itsWebEx access creation. */
+        WebLogin: string;
+        /** Used for WebEx Product, in case the user specifies a password for its Webex access creation. */
+        WebPassword: string;
+        /** AccessAccount Name of the permanent Audio AccessAccount */
+        AudioAccessName: string;
+        /** Start Date of the one-time access */
+        StartDate: Date;
+        /** Flag to indicate if the accesses to create are One-Time accesses. */
+        IsOneTime: boolean;
+        /** Billing code. */
+        BillingCode: string;
+        /** Gets or sets the billing reference, additional information at access level to be displayed in the invoice. */
+        BillingRef: string;
+        /** Topic. Used by Selfcare. */
+        Topic: string;
+        /** Duration. Used by Selfcare. */
+        Duration: number;
+        /** Comment. */
+        Comment: string;
+        /** Management subsidiary for the given user. It is filled by OrderEntry before order submission. This attributes corresponds to the Managementsubsidiary specified on the closest direct ascendant of the User node */
+        Subsidiary: string;
+        /** Value of the conference type. */
+        ConferenceType: string;
+        /** Indicates if the participant PIN must be reset. */
+        IsParticipantPinReset: boolean;
+        /** Indicates if the moderator PIN must be reset. */
+        IsModeratorPinReset: boolean;
+        /** If specified, gets or sets the list of technical specifications for which hidden accesses will be created. */
+        HiddenAccessesTechnicalSpecifications: string[];
+        /** If specified, gets or sets the list of technical specifications for which hidden accesses will be created. */
+        AccessCredentials: IAccessCredentialsDto[];
+    }
+}
+
+declare namespace bluesky.core.models.customerOrder {
+    /** Dto of a custom option.This class represents a customized option for a given User for which accesses are to be created. */
+    interface ICustomOptionDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Name of the Option. */
+        Name: string;
+        /** Customized valued of the Option. */
+        Value: string;
+        /** Technical Specification of the Option. */
+        TechnicalOptionSpec: string;
+    }
+}
+
+declare namespace bluesky.core.models.customerOrder {
+    /** Dto of a movable access. */
+    interface IMovableAccessDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Source access name. */
+        SourceAccessName: string;
+        /** Target access name. */
+        TargetAccessName: string;
+    }
+}
+
+declare namespace bluesky.core.models.customerOrder {
+    /** A participant of a conference is related to a meet me secure access. */
+    interface IParticipantDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Identifier of the participant in the technical inventory. */
+        TechnicalParticipantId: string;
+        /** Identifier of the participant in the service platform. */
+        PlatformParticipantId: string;
+        /** Participant name. */
+        Name: string;
+        /** Meet me secure code, generated by the technical inventory or by the service platform. */
+        MeetMeSecureCode: string;
+        /** Participant email. */
+        Email: string;
+        /** Participant phone number. */
+        PhoneNumber: string;
+        /** Additional comments. */
+        Comments: string;
+        /** Gets or sets the Action for a participant: add, update or delete. */
+        Action: string;
+        /** Gets or sets the Participant type. A participant can have a Moderator or Participant type. */
+        ParticipantType: string;
     }
 }
 
@@ -2499,80 +2601,66 @@ declare namespace bluesky.core.models.account {
 }
 
 declare namespace bluesky.core.models.customerOrder {
-    /** Movable user. */
-    interface IMovableUserDto extends IResourceBase {
+    /** Dto of a Merge Logo information. Contains information about merge logo action. */
+    interface IMergeLogoInformationDto extends IResourceBase {
         /** Gets or sets the unique identifier. */
         Id: number;
-        /** Payer user name. */
+        /** Identifier of the source logo to merge. */
+        SourceLogoUid: string;
+        /** Identifier of the destination logo, under which all source logo hierarchy must be moved. */
+        DestinationLogoUid: string;
+        /** Indicates if the DDIs configured for the source logo must be merged in the target logo. */
+        MergeConfiguredDDIs: boolean;
+    }
+}
+
+declare namespace bluesky.core.models.customerOrder {
+    /** DTO header of a hierarchy order item. */
+    interface IHierarchyOrderItemHeaderDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets Processing status of an OrderItem. */
+        OrderItemStatus: string;
+        /** This describes the action held by the Hierarchy OrderItem */
+        HierarchyAction: string;
+        /** Gets or sets the UserName of the account linked to the hierarchy order item. */
+        AccountUserName: string;
+        /** Gets or sets the Type of the account linked to the hierarchy order item. */
+        AccountType: string;
+        /** Gets or sets the id of the account linked to the hierarchy order item. */
+        AccountId: number;
+        /** Information needed to merge a logo in another one. */
+        MergeLogoInformation: IMergeLogoInformationDto;
+        /** A hierarchy order item contains at most one movable account. */
+        movableAccount: IMovableAccountDto;
+    }
+}
+
+declare namespace bluesky.core.models.customerOrder {
+    /** DTO of a hierarchy subset order. */
+    interface IHierarchySubsetOrderDto extends ISubsetOrderBaseDto {
+        /** A hierarchy subset order is composed of at least one hierarchy order item. */
+        hierarchyOrderItems: IHierarchyOrderItemHeaderDto[];
+    }
+}
+
+declare namespace bluesky.core.models.customerOrder {
+    /** Dto of a Movable account. */
+    interface IMovableAccountDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets the Target payer user name. */
         PayerUserName: string;
-        /** Source name. */
+        /** Gets or sets the User name of the node to move. */
         SourceName: string;
-        /** Target name. */
+        /** Gets or sets the New user name. */
         TargetName: string;
-        /** Target parent name. */
+        /** Gets or sets the User name of the target parent. */
         TargetParentName: string;
+        /** Gets or sets the New password. */
+        NewPassword: string;
         /** Gets or sets new currency */
         NewCurrency: string;
-        /** List of movable accesses. */
-        MovableAccesses: IMovableAccessDto[];
-    }
-}
-
-declare namespace bluesky.core.models.customerOrder {
-    /** DTO header of a user order item. */
-    interface IUserOrderItemHeaderDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets Processing status of an OrderItem. */
-        OrderItemStatus: string;
-        /** This describes the action held by the user OrderItem */
-        UserAction: string;
-        /** Gets or sets the userName of the user linked to the user order item, if any. */
-        UserName: string;
-        /** Gets or sets the userName of the access linked to the user order item, if any. */
-        AccessUserName: string;
-        /** Gets or sets the offerName of the subscription linked to the user order item, if any. */
-        OfferName: string;
-    }
-}
-
-declare namespace bluesky.core.models.customerOrder {
-    import UserAccountDto = bluesky.core.models.account.IUserAccountDto;
-    import AccessAccountDto = bluesky.core.models.account.IAccessAccountDto;
-    /** DTO of a user order item. */
-    interface IUserOrderItemDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets Processing status of an OrderItem. */
-        OrderItemStatus: string;
-        /** This describes the action held by the User OrderItem */
-        UserAction: string;
-        /** UserAccount linked to the User Order Item.The UserAccount represents individual (person) or inanimate entity that receives and consumes services provided by Arkadin. */
-        UserAccount: UserAccountDto;
-        /** AccessAccount linked to the User Order Item.The AccessAccount is the customer hierarchy node that represents the instance of a subscribed product for a given user (i.e. the use  of a particular Arkadin or Arkadin's supplier resource). */
-        AccessAccount: AccessAccountDto;
-        /** Subscription linked to the User Order Item.A subscription is product offering sold to a customer and applied to a single subscriber node. */
-        Subscription: ICustomerOrderSubscriptionDto;
-        /** Additional information on a User used for audio and web accesses creation. */
-        AccessInfo: IAccessInfoDto;
-        /** Additional information for Send Welcome Pack. */
-        WelcomePackInfo: IWelcomePackInfoDto;
-        /** List of custom options. */
-        CustomOptions: ICustomOptionDto[];
-        /** List of movable users. */
-        MovableUsers: IMovableUserDto[];
-        /** List of participants. */
-        Participants: IParticipantDto[];
-    }
-}
-
-declare namespace bluesky.core.models.customerOrder {
-    /** DTO of a user subset order. */
-    interface IUserSubsetOrderDto extends bluesky.core.models.customerOrder.ISubsetOrderBaseDto {
-        /** A user subset order is composed of at least one user order item. */
-        UserOrderItems: IUserOrderItemHeaderDto[];
-        /** List of movable subscriptions */
-        MovableSubscriptions: IMovableSubscriptionDto[];
     }
 }
 
@@ -2695,12 +2783,90 @@ declare namespace bluesky.core.models.customerOrder {
 }
 
 declare namespace bluesky.core.models.customerOrder {
+    /** Movable user. */
+    interface IMovableUserDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Payer user name. */
+        PayerUserName: string;
+        /** Source name. */
+        SourceName: string;
+        /** Target name. */
+        TargetName: string;
+        /** Target parent name. */
+        TargetParentName: string;
+        /** Gets or sets new currency */
+        NewCurrency: string;
+        /** List of movable accesses. */
+        MovableAccesses: IMovableAccessDto[];
+    }
+}
+
+declare namespace bluesky.core.models.customerOrder {
+    /** DTO header of a user order item. */
+    interface IUserOrderItemHeaderDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets Processing status of an OrderItem. */
+        OrderItemStatus: string;
+        /** This describes the action held by the user OrderItem */
+        UserAction: string;
+        /** Gets or sets the userName of the user linked to the user order item, if any. */
+        UserName: string;
+        /** Gets or sets the userName of the access linked to the user order item, if any. */
+        AccessUserName: string;
+        /** Gets or sets the offerName of the subscription linked to the user order item, if any. */
+        OfferName: string;
+    }
+}
+
+declare namespace bluesky.core.models.customerOrder {
+    import UserAccountDto = bluesky.core.models.account.IUserAccountDto;
+    import AccessAccountDto = bluesky.core.models.account.IAccessAccountDto;
+    /** DTO of a user order item. */
+    interface IUserOrderItemDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets Processing status of an OrderItem. */
+        OrderItemStatus: string;
+        /** This describes the action held by the User OrderItem */
+        UserAction: string;
+        /** UserAccount linked to the User Order Item.The UserAccount represents individual (person) or inanimate entity that receives and consumes services provided by Arkadin. */
+        UserAccount: UserAccountDto;
+        /** AccessAccount linked to the User Order Item.The AccessAccount is the customer hierarchy node that represents the instance of a subscribed product for a given user (i.e. the use  of a particular Arkadin or Arkadin's supplier resource). */
+        AccessAccount: AccessAccountDto;
+        /** Subscription linked to the User Order Item.A subscription is product offering sold to a customer and applied to a single subscriber node. */
+        Subscription: ICustomerOrderSubscriptionDto;
+        /** Additional information on a User used for audio and web accesses creation. */
+        AccessInfo: IAccessInfoDto;
+        /** Additional information for Send Welcome Pack. */
+        WelcomePackInfo: IWelcomePackInfoDto;
+        /** List of custom options. */
+        CustomOptions: ICustomOptionDto[];
+        /** List of movable users. */
+        MovableUsers: IMovableUserDto[];
+        /** List of participants. */
+        Participants: IParticipantDto[];
+    }
+}
+
+declare namespace bluesky.core.models.customerOrder {
+    /** DTO of a user subset order. */
+    interface IUserSubsetOrderDto extends bluesky.core.models.customerOrder.ISubsetOrderBaseDto {
+        /** A user subset order is composed of at least one user order item. */
+        UserOrderItems: IUserOrderItemHeaderDto[];
+        /** List of movable subscriptions */
+        MovableSubscriptions: IMovableSubscriptionDto[];
+    }
+}
+
+declare namespace bluesky.core.models.customerOrder {
     /** Command to create a send welcome packs order. */
     interface ICreateSendWelcomePacksCustomerOrderCommand extends IBaseCreateOrderCommand {
         /** For each welcome pack to send, provide information about the user and the subscription. */
         SendWelcomePackInformationList: ISendWelcomePackInformation[];
         /** Welcome pack sending strategy. */
-        WelcomePackSendingStrategy: IWelcomePackSendingStrategyDto;
+        WelcomePackSendingStrategy?: IWelcomePackSendingStrategyDto;
     }
 }
 
@@ -2744,163 +2910,5 @@ declare namespace bluesky.core.models.customerOrder {
         FutureSendDate: Date;
         /** Admin user id to whom the welcome pack is sent if the recipient strategy is technical admin. */
         AdminUserUid: string;
-    }
-}
-
-declare namespace bluesky.core.models.customerOrder {
-    /** DTO header of a hierarchy order item. */
-    interface IHierarchyOrderItemHeaderDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets Processing status of an OrderItem. */
-        OrderItemStatus: string;
-        /** This describes the action held by the Hierarchy OrderItem */
-        HierarchyAction: string;
-        /** Gets or sets the UserName of the account linked to the hierarchy order item. */
-        AccountUserName: string;
-        /** Gets or sets the Type of the account linked to the hierarchy order item. */
-        AccountType: string;
-        /** Gets or sets the id of the account linked to the hierarchy order item. */
-        AccountId: number;
-        /** Information needed to merge a logo in another one. */
-        MergeLogoInformation: IMergeLogoInformationDto;
-        /** A hierarchy order item contains at most one movable account. */
-        movableAccount: IMovableAccountDto;
-    }
-}
-
-declare namespace bluesky.core.models.customerOrder {
-    /** DTO of a hierarchy subset order. */
-    interface IHierarchySubsetOrderDto extends ISubsetOrderBaseDto {
-        /** A hierarchy subset order is composed of at least one hierarchy order item. */
-        hierarchyOrderItems: IHierarchyOrderItemHeaderDto[];
-    }
-}
-
-declare namespace bluesky.core.models.customerOrder {
-    /** Dto of a Movable account. */
-    interface IMovableAccountDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets the Target payer user name. */
-        PayerUserName: string;
-        /** Gets or sets the User name of the node to move. */
-        SourceName: string;
-        /** Gets or sets the New user name. */
-        TargetName: string;
-        /** Gets or sets the User name of the target parent. */
-        TargetParentName: string;
-        /** Gets or sets the New password. */
-        NewPassword: string;
-        /** Gets or sets new currency */
-        NewCurrency: string;
-    }
-}
-
-declare namespace bluesky.core.models.customerOrder {
-    /** Access credential for generic accesses */
-    interface IAccessCredentialsDto {
-        /** Login for generic accesse */
-        Login: string;
-        /** Password for generic accesse */
-        Password: string;
-        /** TechnicalSpecification of generic access */
-        TechnicalSpecification: string;
-    }
-}
-
-declare namespace bluesky.core.models.customerOrder {
-    /** Additional information on a User used for audio and web accesses creation. */
-    interface IAccessInfoDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** If specified, this is the value of Moderator PIN requested by the customer. */
-        ModeratorPIN: string;
-        /** If specified, this is the value of Participant PIN requested by the customer */
-        ParticipantPIN: string;
-        /** Used for WebEx Product, in case the user specifies a login for itsWebEx access creation. */
-        WebLogin: string;
-        /** Used for WebEx Product, in case the user specifies a password for its Webex access creation. */
-        WebPassword: string;
-        /** AccessAccount Name of the permanent Audio AccessAccount */
-        AudioAccessName: string;
-        /** Start Date of the one-time access */
-        StartDate: Date;
-        /** Flag to indicate if the accesses to create are One-Time accesses. */
-        IsOneTime: boolean;
-        /** Billing code. */
-        BillingCode: string;
-        /** Gets or sets the billing reference, additional information at access level to be displayed in the invoice. */
-        BillingRef: string;
-        /** Topic. Used by Selfcare. */
-        Topic: string;
-        /** Duration. Used by Selfcare. */
-        Duration: number;
-        /** Comment. */
-        Comment: string;
-        /** Management subsidiary for the given user. It is filled by OrderEntry before order submission. This attributes corresponds to the Managementsubsidiary specified on the closest direct ascendant of the User node */
-        Subsidiary: string;
-        /** Value of the conference type. */
-        ConferenceType: string;
-        /** Indicates if the participant PIN must be reset. */
-        IsParticipantPinReset: boolean;
-        /** Indicates if the moderator PIN must be reset. */
-        IsModeratorPinReset: boolean;
-        /** If specified, gets or sets the list of technical specifications for which hidden accesses will be created. */
-        HiddenAccessesTechnicalSpecifications: string[];
-        /** If specified, gets or sets the list of technical specifications for which hidden accesses will be created. */
-        AccessCredentials: IAccessCredentialsDto[];
-    }
-}
-
-declare namespace bluesky.core.models.customerOrder {
-    /** Dto of a custom option.This class represents a customized option for a given User for which accesses are to be created. */
-    interface ICustomOptionDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Name of the Option. */
-        Name: string;
-        /** Customized valued of the Option. */
-        Value: string;
-        /** Technical Specification of the Option. */
-        TechnicalOptionSpec: string;
-    }
-}
-
-declare namespace bluesky.core.models.customerOrder {
-    /** Dto of a movable access. */
-    interface IMovableAccessDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Source access name. */
-        SourceAccessName: string;
-        /** Target access name. */
-        TargetAccessName: string;
-    }
-}
-
-declare namespace bluesky.core.models.customerOrder {
-    /** A participant of a conference is related to a meet me secure access. */
-    interface IParticipantDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Identifier of the participant in the technical inventory. */
-        TechnicalParticipantId: string;
-        /** Identifier of the participant in the service platform. */
-        PlatformParticipantId: string;
-        /** Participant name. */
-        Name: string;
-        /** Meet me secure code, generated by the technical inventory or by the service platform. */
-        MeetMeSecureCode: string;
-        /** Participant email. */
-        Email: string;
-        /** Participant phone number. */
-        PhoneNumber: string;
-        /** Additional comments. */
-        Comments: string;
-        /** Gets or sets the Action for a participant: add, update or delete. */
-        Action: string;
-        /** Gets or sets the Participant type. A participant can have a Moderator or Participant type. */
-        ParticipantType: string;
     }
 }

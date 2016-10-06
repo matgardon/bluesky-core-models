@@ -2,10 +2,10 @@
 	/** Response for a Create users command. */
 	export interface ICreateOrderResponseDto {
 		/** Identifier of the generated Customer Order. */
-		orderId: number;
+		OrderId: number;
 		/** Order check status. */
-		orderCheckStatus: string;
+		OrderCheckStatus: string;
 		/** Concurrent order, when the current order is frozen. */
-		concurrentOrder: number;
+		ConcurrentOrder: number;
 	}
 }

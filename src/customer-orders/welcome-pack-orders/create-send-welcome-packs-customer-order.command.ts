@@ -4,6 +4,6 @@
 		/** For each welcome pack to send, provide information about the user and the subscription. */
 		SendWelcomePackInformationList: ISendWelcomePackInformation[];
 		/** Welcome pack sending strategy. */
-		WelcomePackSendingStrategy: IWelcomePackSendingStrategyDto;
+		WelcomePackSendingStrategy?: IWelcomePackSendingStrategyDto;
 	}
 }
