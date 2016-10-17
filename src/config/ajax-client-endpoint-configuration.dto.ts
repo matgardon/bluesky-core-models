@@ -3,6 +3,6 @@
 		EndpointBaseURL: string;
 		EndpointSuffix: string;
 		AuthToken: string;
-		AuthTokenValidityEndDate: Date;
+		AuthTokenValidityEndDate: string;
 	}
 }
