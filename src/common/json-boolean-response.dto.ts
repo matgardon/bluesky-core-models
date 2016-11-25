@@ -3,5 +3,6 @@
 	export interface IJsonBooleanResponseDto {
 		/** the status of the flag. */
 		BooleanResponse: boolean;
+		ErrorMessageList: string[];
 	}
 }
