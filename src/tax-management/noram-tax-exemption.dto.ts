@@ -1,4 +1,4 @@
-namespace bluesky.core.models.taxExemption {
+namespace bluesky.core.models.taxManagement {
     export interface NoramTaxExemptionDto extends IResourceBase {
         Level: TaxExemptTypeEnum;
         Location: number;

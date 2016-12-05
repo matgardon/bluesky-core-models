@@ -3,6 +3,6 @@ namespace bluesky.core.models.location {
     export interface IStateDto extends IResourceBase {
         Name: string;
         Code: string;
-        PCode: number;
+        PCode?: number;
     }
 }

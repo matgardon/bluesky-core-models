@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.taxExemption {
+﻿namespace bluesky.core.models.taxManagement {
 	/** Informations about a PCode. */
 	export interface IPCodeDto extends IResourceBase {
 		/** Gets or sets the code. */

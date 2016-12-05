@@ -18,12 +18,6 @@
 
 
 
-
-
-
-
-
-
 var bluesky;
 (function (bluesky) {
     var core;
@@ -158,6 +152,63 @@ var bluesky;
 
 
 
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var models;
+        (function (models) {
+            var taxManagement;
+            (function (taxManagement) {
+                (function (TaxActionEnum) {
+                    TaxActionEnum[TaxActionEnum["Add"] = 0] = "Add";
+                    TaxActionEnum[TaxActionEnum["Modify"] = 1] = "Modify";
+                    TaxActionEnum[TaxActionEnum["Cease"] = 2] = "Cease";
+                })(taxManagement.TaxActionEnum || (taxManagement.TaxActionEnum = {}));
+                var TaxActionEnum = taxManagement.TaxActionEnum;
+            })(taxManagement = models.taxManagement || (models.taxManagement = {}));
+        })(models = core.models || (core.models = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
+
+
+
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var models;
+        (function (models) {
+            var taxManagement;
+            (function (taxManagement) {
+                (function (TaxExemptTypeEnum) {
+                    TaxExemptTypeEnum[TaxExemptTypeEnum["Federal"] = 0] = "Federal";
+                    TaxExemptTypeEnum[TaxExemptTypeEnum["State"] = 1] = "State";
+                })(taxManagement.TaxExemptTypeEnum || (taxManagement.TaxExemptTypeEnum = {}));
+                var TaxExemptTypeEnum = taxManagement.TaxExemptTypeEnum;
+            })(taxManagement = models.taxManagement || (models.taxManagement = {}));
+        })(models = core.models || (core.models = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -189,71 +240,6 @@ var bluesky;
                 })(technicalData.TechnicalAccessTypeEnum || (technicalData.TechnicalAccessTypeEnum = {}));
                 var TechnicalAccessTypeEnum = technicalData.TechnicalAccessTypeEnum;
             })(technicalData = models.technicalData || (models.technicalData = {}));
-        })(models = core.models || (core.models = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var models;
-        (function (models) {
-            var taxExemption;
-            (function (taxExemption) {
-                (function (TaxActionEnum) {
-                    TaxActionEnum[TaxActionEnum["Add"] = 0] = "Add";
-                    TaxActionEnum[TaxActionEnum["Modify"] = 1] = "Modify";
-                    TaxActionEnum[TaxActionEnum["Cease"] = 2] = "Cease";
-                })(taxExemption.TaxActionEnum || (taxExemption.TaxActionEnum = {}));
-                var TaxActionEnum = taxExemption.TaxActionEnum;
-            })(taxExemption = models.taxExemption || (models.taxExemption = {}));
-        })(models = core.models || (core.models = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
-
-
-
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var models;
-        (function (models) {
-            var taxExemption;
-            (function (taxExemption) {
-                (function (TaxExemptTypeEnum) {
-                    TaxExemptTypeEnum[TaxExemptTypeEnum["Federal"] = 0] = "Federal";
-                    TaxExemptTypeEnum[TaxExemptTypeEnum["State"] = 1] = "State";
-                })(taxExemption.TaxExemptTypeEnum || (taxExemption.TaxExemptTypeEnum = {}));
-                var TaxExemptTypeEnum = taxExemption.TaxExemptTypeEnum;
-            })(taxExemption = models.taxExemption || (models.taxExemption = {}));
         })(models = core.models || (core.models = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
@@ -326,6 +312,20 @@ var bluesky;
         })(models = core.models || (core.models = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

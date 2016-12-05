@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.taxExemption {
+﻿namespace bluesky.core.models.taxManagement {
 	/** Search parameter used to retrieve a list of PCode. */
 	export interface ISearchPCodeCommand {
 		/** Gets or sets the zip or postal code. */
