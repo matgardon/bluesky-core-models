@@ -12,6 +12,10 @@
 		/** Gets or sets the county. */
 		County: string;
 		/** Specify if the search is related to Noram countries. */
-		IsNoram: boolean;
+		IsNoram: boolean; 
+		/** Startng index of paginated search. Defaults to 0. */
+		Start?: number;
+		/** Total number of items to retrieve for the current page. Defaults to 50. */
+		Limit?: number;
 	}
 }
