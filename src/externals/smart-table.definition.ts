@@ -1,4 +1,4 @@
-namespace bluesky.external.models {
+namespace bluesky.externals.smartTable {
 
     /** Internal state of the smart-table component. Should not be exposed but is needed for server-side pagination. */
     export interface ITableState {
