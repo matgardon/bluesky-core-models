@@ -11,8 +11,6 @@
 		CountrySubdivisionCode?: string;
 		/** Gets or sets the county. */
 		County?: string;
-		/** Specify if the search is related to Noram countries. TODO MGA to remove, not used srv-side. */
-		IsNoram?: boolean; 
 		/** Startng index of paginated search. Defaults to 0. */
 		Start?: number;
 		/** Total number of items to retrieve for the current page. Defaults to 50. */
