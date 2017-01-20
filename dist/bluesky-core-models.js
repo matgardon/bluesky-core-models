@@ -2,6 +2,28 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var bluesky;
 (function (bluesky) {
     var core;
@@ -134,6 +156,45 @@ var bluesky;
 
 
 
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var models;
+        (function (models) {
+            var taxManagement;
+            (function (taxManagement) {
+                (function (TaxActionEnum) {
+                    TaxActionEnum[TaxActionEnum["Add"] = 0] = "Add";
+                    TaxActionEnum[TaxActionEnum["Modify"] = 1] = "Modify";
+                    TaxActionEnum[TaxActionEnum["Cease"] = 2] = "Cease";
+                })(taxManagement.TaxActionEnum || (taxManagement.TaxActionEnum = {}));
+                var TaxActionEnum = taxManagement.TaxActionEnum;
+            })(taxManagement = models.taxManagement || (models.taxManagement = {}));
+        })(models = core.models || (core.models = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
+
+
+
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var models;
+        (function (models) {
+            var taxManagement;
+            (function (taxManagement) {
+                (function (TaxExemptTypeEnum) {
+                    TaxExemptTypeEnum[TaxExemptTypeEnum["Federal"] = 0] = "Federal";
+                    TaxExemptTypeEnum[TaxExemptTypeEnum["State"] = 1] = "State";
+                })(taxManagement.TaxExemptTypeEnum || (taxManagement.TaxExemptTypeEnum = {}));
+                var TaxExemptTypeEnum = taxManagement.TaxExemptTypeEnum;
+            })(taxManagement = models.taxManagement || (models.taxManagement = {}));
+        })(models = core.models || (core.models = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
+
 
 
 
@@ -229,20 +290,6 @@ var bluesky;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var bluesky;
 (function (bluesky) {
     var core;
@@ -278,53 +325,6 @@ var bluesky;
                 })(welcomePacks.WelcomePackQueueEnum || (welcomePacks.WelcomePackQueueEnum = {}));
                 var WelcomePackQueueEnum = welcomePacks.WelcomePackQueueEnum;
             })(welcomePacks = models.welcomePacks || (models.welcomePacks = {}));
-        })(models = core.models || (core.models = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
-
-
-
-
-
-
-
-
-
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var models;
-        (function (models) {
-            var taxManagement;
-            (function (taxManagement) {
-                (function (TaxActionEnum) {
-                    TaxActionEnum[TaxActionEnum["Add"] = 0] = "Add";
-                    TaxActionEnum[TaxActionEnum["Modify"] = 1] = "Modify";
-                    TaxActionEnum[TaxActionEnum["Cease"] = 2] = "Cease";
-                })(taxManagement.TaxActionEnum || (taxManagement.TaxActionEnum = {}));
-                var TaxActionEnum = taxManagement.TaxActionEnum;
-            })(taxManagement = models.taxManagement || (models.taxManagement = {}));
-        })(models = core.models || (core.models = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
-
-
-
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var models;
-        (function (models) {
-            var taxManagement;
-            (function (taxManagement) {
-                (function (TaxExemptTypeEnum) {
-                    TaxExemptTypeEnum[TaxExemptTypeEnum["Federal"] = 0] = "Federal";
-                    TaxExemptTypeEnum[TaxExemptTypeEnum["State"] = 1] = "State";
-                })(taxManagement.TaxExemptTypeEnum || (taxManagement.TaxExemptTypeEnum = {}));
-                var TaxExemptTypeEnum = taxManagement.TaxExemptTypeEnum;
-            })(taxManagement = models.taxManagement || (models.taxManagement = {}));
         })(models = core.models || (core.models = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
