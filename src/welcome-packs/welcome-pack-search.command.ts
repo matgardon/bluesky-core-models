@@ -1,5 +1,6 @@
 ﻿namespace bluesky.core.models.welcomePacks {
     export interface ISearchWelcomePackCommand {
+        UserId?: string;
         Email?: string;
         LogoName?: string;
         BillingAccountName?: string;
