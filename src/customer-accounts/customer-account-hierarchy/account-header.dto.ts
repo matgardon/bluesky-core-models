@@ -11,7 +11,8 @@
 		PayerUserName: string;
 		/** TODO MGA : to be renamed to Uid : impacts on Proxies / HUB ? Is it acceptable or not ? */
 		LogoUserName: string;
-		/** The status of the account. */
+		/** The status of the account. 
+			TODO MGA: this should be migrated to an AccountStatusEnum type both here & server-side (enum value serialization works in TS) */
 		AccountStatus: string;
 	}
 }

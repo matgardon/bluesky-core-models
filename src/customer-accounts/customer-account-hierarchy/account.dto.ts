@@ -9,7 +9,8 @@
 		UserName: string;
 		/** Gets or sets the parent account.TODO MGA : to be renamed to AncestorAccountUid : impacts on Proxies / HUB ? Is it acceptable or not ? */
 		AncestorAccountUserName: string;
-		/** Gets or sets the account status value. */
+		/** Gets or sets the account status value.
+			TODO MGA: this should be migrated to an AccountStatusEnum type both here & server-side (enum value serialization works in TS) */
 		AccountStatus: string;
 		/** Gets or sets the payer username.TODO MGA : to be renamed to PayerUid : impacts on Proxies / HUB ? Is it acceptable or not ? */
 		PayerUserName: string;

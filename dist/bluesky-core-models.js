@@ -2,12 +2,6 @@
 
 
 
-
-
-
-
-
-
 var bluesky;
 (function (bluesky) {
     var core;
@@ -47,6 +41,12 @@ var bluesky;
         })(models = core.models || (core.models = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
+
+
+
+
+
+
 
 
 
@@ -209,53 +209,6 @@ var bluesky;
 
 
 
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var models;
-        (function (models) {
-            var technicalData;
-            (function (technicalData) {
-                (function (TechnicalAccessTypeEnum) {
-                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["None"] = 0] = "None";
-                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["AudioAccess"] = 1] = "AudioAccess";
-                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["WebAccess"] = 2] = "WebAccess";
-                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["IntegratedAudioAccess"] = 3] = "IntegratedAudioAccess";
-                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["GenericAccess"] = 4] = "GenericAccess";
-                })(technicalData.TechnicalAccessTypeEnum || (technicalData.TechnicalAccessTypeEnum = {}));
-                var TechnicalAccessTypeEnum = technicalData.TechnicalAccessTypeEnum;
-            })(technicalData = models.technicalData || (models.technicalData = {}));
-        })(models = core.models || (core.models = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -325,6 +278,26 @@ var bluesky;
 
 
 
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var models;
+        (function (models) {
+            var technicalData;
+            (function (technicalData) {
+                (function (TechnicalAccessTypeEnum) {
+                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["None"] = 0] = "None";
+                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["AudioAccess"] = 1] = "AudioAccess";
+                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["WebAccess"] = 2] = "WebAccess";
+                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["IntegratedAudioAccess"] = 3] = "IntegratedAudioAccess";
+                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["GenericAccess"] = 4] = "GenericAccess";
+                })(technicalData.TechnicalAccessTypeEnum || (technicalData.TechnicalAccessTypeEnum = {}));
+                var TechnicalAccessTypeEnum = technicalData.TechnicalAccessTypeEnum;
+            })(technicalData = models.technicalData || (models.technicalData = {}));
+        })(models = core.models || (core.models = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
 
 
 
@@ -348,6 +321,56 @@ var bluesky;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var models;
+        (function (models) {
+            var account;
+            (function (account) {
+                (function (AccountStatusEnum) {
+                    AccountStatusEnum[AccountStatusEnum["Undefined"] = 0] = "Undefined";
+                    AccountStatusEnum[AccountStatusEnum["PendingActiveApproval"] = 1] = "PendingActiveApproval";
+                    AccountStatusEnum[AccountStatusEnum["Active"] = 2] = "Active";
+                    AccountStatusEnum[AccountStatusEnum["Suspended"] = 3] = "Suspended";
+                    AccountStatusEnum[AccountStatusEnum["PendingFinalBill"] = 4] = "PendingFinalBill";
+                    AccountStatusEnum[AccountStatusEnum["Closed"] = 5] = "Closed";
+                    AccountStatusEnum[AccountStatusEnum["Archived"] = 6] = "Archived";
+                })(account.AccountStatusEnum || (account.AccountStatusEnum = {}));
+                var AccountStatusEnum = account.AccountStatusEnum;
+            })(account = models.account || (models.account = {}));
+        })(models = core.models || (core.models = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
 
 
 
