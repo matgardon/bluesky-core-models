@@ -10,6 +10,8 @@
         CreationDateFrom?: string;
         CreationDateTo?: string;
         //TODO MGA: common contract for Start / Limit params of all search commands ?
+
+        SendingDate?: string;
         Start?: number;
         Limit?: number;
     }
