@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.welcomePacks {
+﻿namespace bluesky.core.models.welcomePack {
     export interface IHierarchyDto {
         BillingAccountDisplayName: string;
         BillingAccountUid: string;

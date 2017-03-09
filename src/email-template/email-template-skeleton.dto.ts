@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.emailTemplates {
+﻿namespace bluesky.core.models.emailTemplate {
     export interface IEmailTemplateSkeletonDto {
         Id: number;
         Name: string;

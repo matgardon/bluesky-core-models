@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.welcomePacks {
+﻿namespace bluesky.core.models.welcomePack {
 	export interface ICountryDdisDto {
 		Country: string;
 		TollDdis: string[];

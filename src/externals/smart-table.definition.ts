@@ -1,6 +1,8 @@
 namespace bluesky.externals.smartTable {
 
-    /** Internal state of the smart-table component. Should not be exposed but is needed for server-side pagination. */
+    /** Internal state of the smart-table component. Should not be exposed but is needed for server-side pagination.
+     * TODO MGA ongoing work, might not be needed.
+     */
     export interface ITableState {
         sort?: {
             // TODO MGA

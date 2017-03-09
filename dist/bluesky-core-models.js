@@ -2,6 +2,28 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var bluesky;
 (function (bluesky) {
     var core;
@@ -41,24 +63,6 @@ var bluesky;
         })(models = core.models || (core.models = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -213,61 +217,6 @@ var bluesky;
 
 
 
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var models;
-        (function (models) {
-            var welcomePacks;
-            (function (welcomePacks) {
-                (function (WelcomePackStateEnum) {
-                    WelcomePackStateEnum[WelcomePackStateEnum["Submitted"] = 0] = "Submitted";
-                    WelcomePackStateEnum[WelcomePackStateEnum["Bounced"] = 1] = "Bounced";
-                    WelcomePackStateEnum[WelcomePackStateEnum["Success"] = 2] = "Success";
-                    WelcomePackStateEnum[WelcomePackStateEnum["Error"] = 3] = "Error";
-                    WelcomePackStateEnum[WelcomePackStateEnum["Empty"] = 4] = "Empty";
-                    WelcomePackStateEnum[WelcomePackStateEnum["AwaitingAdmin"] = 5] = "AwaitingAdmin";
-                    WelcomePackStateEnum[WelcomePackStateEnum["Unsubscribed"] = 6] = "Unsubscribed";
-                    WelcomePackStateEnum[WelcomePackStateEnum["GlobalUnsubscribed"] = 7] = "GlobalUnsubscribed";
-                    WelcomePackStateEnum[WelcomePackStateEnum["Excluded"] = 8] = "Excluded";
-                    WelcomePackStateEnum[WelcomePackStateEnum["Unknown"] = 9] = "Unknown";
-                })(welcomePacks.WelcomePackStateEnum || (welcomePacks.WelcomePackStateEnum = {}));
-                var WelcomePackStateEnum = welcomePacks.WelcomePackStateEnum;
-                (function (WelcomePackQueueEnum) {
-                    WelcomePackQueueEnum[WelcomePackQueueEnum["Submitted"] = 0] = "Submitted";
-                    WelcomePackQueueEnum[WelcomePackQueueEnum["Rejected"] = 1] = "Rejected";
-                    WelcomePackQueueEnum[WelcomePackQueueEnum["Pending"] = 2] = "Pending";
-                    WelcomePackQueueEnum[WelcomePackQueueEnum["Read"] = 3] = "Read";
-                    WelcomePackQueueEnum[WelcomePackQueueEnum["Waiting"] = 4] = "Waiting";
-                    WelcomePackQueueEnum[WelcomePackQueueEnum["Imported"] = 5] = "Imported";
-                    WelcomePackQueueEnum[WelcomePackQueueEnum["Complete"] = 6] = "Complete";
-                    WelcomePackQueueEnum[WelcomePackQueueEnum["Empty"] = 7] = "Empty";
-                    WelcomePackQueueEnum[WelcomePackQueueEnum["Unknown"] = 8] = "Unknown";
-                    WelcomePackQueueEnum[WelcomePackQueueEnum["Excluded"] = 9] = "Excluded";
-                })(welcomePacks.WelcomePackQueueEnum || (welcomePacks.WelcomePackQueueEnum = {}));
-                var WelcomePackQueueEnum = welcomePacks.WelcomePackQueueEnum;
-            })(welcomePacks = models.welcomePacks || (models.welcomePacks = {}));
-        })(models = core.models || (core.models = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -343,31 +292,41 @@ var bluesky;
 
 
 
-
-
-
-
-
-
 var bluesky;
 (function (bluesky) {
     var core;
     (function (core) {
         var models;
         (function (models) {
-            var account;
-            (function (account) {
-                (function (AccountStatusEnum) {
-                    AccountStatusEnum[AccountStatusEnum["Undefined"] = 0] = "Undefined";
-                    AccountStatusEnum[AccountStatusEnum["PendingActiveApproval"] = 1] = "PendingActiveApproval";
-                    AccountStatusEnum[AccountStatusEnum["Active"] = 2] = "Active";
-                    AccountStatusEnum[AccountStatusEnum["Suspended"] = 3] = "Suspended";
-                    AccountStatusEnum[AccountStatusEnum["PendingFinalBill"] = 4] = "PendingFinalBill";
-                    AccountStatusEnum[AccountStatusEnum["Closed"] = 5] = "Closed";
-                    AccountStatusEnum[AccountStatusEnum["Archived"] = 6] = "Archived";
-                })(account.AccountStatusEnum || (account.AccountStatusEnum = {}));
-                var AccountStatusEnum = account.AccountStatusEnum;
-            })(account = models.account || (models.account = {}));
+            var welcomePack;
+            (function (welcomePack) {
+                (function (WelcomePackStateEnum) {
+                    WelcomePackStateEnum[WelcomePackStateEnum["Submitted"] = 0] = "Submitted";
+                    WelcomePackStateEnum[WelcomePackStateEnum["Bounced"] = 1] = "Bounced";
+                    WelcomePackStateEnum[WelcomePackStateEnum["Success"] = 2] = "Success";
+                    WelcomePackStateEnum[WelcomePackStateEnum["Error"] = 3] = "Error";
+                    WelcomePackStateEnum[WelcomePackStateEnum["Empty"] = 4] = "Empty";
+                    WelcomePackStateEnum[WelcomePackStateEnum["AwaitingAdmin"] = 5] = "AwaitingAdmin";
+                    WelcomePackStateEnum[WelcomePackStateEnum["Unsubscribed"] = 6] = "Unsubscribed";
+                    WelcomePackStateEnum[WelcomePackStateEnum["GlobalUnsubscribed"] = 7] = "GlobalUnsubscribed";
+                    WelcomePackStateEnum[WelcomePackStateEnum["Excluded"] = 8] = "Excluded";
+                    WelcomePackStateEnum[WelcomePackStateEnum["Unknown"] = 9] = "Unknown";
+                })(welcomePack.WelcomePackStateEnum || (welcomePack.WelcomePackStateEnum = {}));
+                var WelcomePackStateEnum = welcomePack.WelcomePackStateEnum;
+                (function (WelcomePackQueueEnum) {
+                    WelcomePackQueueEnum[WelcomePackQueueEnum["Submitted"] = 0] = "Submitted";
+                    WelcomePackQueueEnum[WelcomePackQueueEnum["Rejected"] = 1] = "Rejected";
+                    WelcomePackQueueEnum[WelcomePackQueueEnum["Pending"] = 2] = "Pending";
+                    WelcomePackQueueEnum[WelcomePackQueueEnum["Read"] = 3] = "Read";
+                    WelcomePackQueueEnum[WelcomePackQueueEnum["Waiting"] = 4] = "Waiting";
+                    WelcomePackQueueEnum[WelcomePackQueueEnum["Imported"] = 5] = "Imported";
+                    WelcomePackQueueEnum[WelcomePackQueueEnum["Complete"] = 6] = "Complete";
+                    WelcomePackQueueEnum[WelcomePackQueueEnum["Empty"] = 7] = "Empty";
+                    WelcomePackQueueEnum[WelcomePackQueueEnum["Unknown"] = 8] = "Unknown";
+                    WelcomePackQueueEnum[WelcomePackQueueEnum["Excluded"] = 9] = "Excluded";
+                })(welcomePack.WelcomePackQueueEnum || (welcomePack.WelcomePackQueueEnum = {}));
+                var WelcomePackQueueEnum = welcomePack.WelcomePackQueueEnum;
+            })(welcomePack = models.welcomePack || (models.welcomePack = {}));
         })(models = core.models || (core.models = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
@@ -433,6 +392,76 @@ var bluesky;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var models;
+        (function (models) {
+            var account;
+            (function (account) {
+                (function (AccountStatusEnum) {
+                    AccountStatusEnum[AccountStatusEnum["Undefined"] = 0] = "Undefined";
+                    AccountStatusEnum[AccountStatusEnum["PendingActiveApproval"] = 1] = "PendingActiveApproval";
+                    AccountStatusEnum[AccountStatusEnum["Active"] = 2] = "Active";
+                    AccountStatusEnum[AccountStatusEnum["Suspended"] = 3] = "Suspended";
+                    AccountStatusEnum[AccountStatusEnum["PendingFinalBill"] = 4] = "PendingFinalBill";
+                    AccountStatusEnum[AccountStatusEnum["Closed"] = 5] = "Closed";
+                    AccountStatusEnum[AccountStatusEnum["Archived"] = 6] = "Archived";
+                })(account.AccountStatusEnum || (account.AccountStatusEnum = {}));
+                var AccountStatusEnum = account.AccountStatusEnum;
+            })(account = models.account || (models.account = {}));
+        })(models = core.models || (core.models = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
+
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var models;
+        (function (models) {
+            var account;
+            (function (account) {
+                (function (AccountTypeEnum) {
+                    AccountTypeEnum[AccountTypeEnum["None"] = 0] = "None";
+                    AccountTypeEnum[AccountTypeEnum["Logo"] = 1] = "Logo";
+                    AccountTypeEnum[AccountTypeEnum["LocalLogo"] = 2] = "LocalLogo";
+                    AccountTypeEnum[AccountTypeEnum["LegalEntity"] = 3] = "LegalEntity";
+                    AccountTypeEnum[AccountTypeEnum["ReportingGroup1"] = 4] = "ReportingGroup1";
+                    AccountTypeEnum[AccountTypeEnum["ReportingGroup2"] = 5] = "ReportingGroup2";
+                    AccountTypeEnum[AccountTypeEnum["BillingAccount"] = 6] = "BillingAccount";
+                    AccountTypeEnum[AccountTypeEnum["Group"] = 7] = "Group";
+                    AccountTypeEnum[AccountTypeEnum["PrimaryGroup"] = 8] = "PrimaryGroup";
+                    AccountTypeEnum[AccountTypeEnum["User"] = 9] = "User";
+                    AccountTypeEnum[AccountTypeEnum["Access"] = 10] = "Access";
+                })(account.AccountTypeEnum || (account.AccountTypeEnum = {}));
+                var AccountTypeEnum = account.AccountTypeEnum;
+            })(account = models.account || (models.account = {}));
+        })(models = core.models || (core.models = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
 
 
 

@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.emailTemplates {
+﻿namespace bluesky.core.models.emailTemplate {
     /**
      * TODO MGA: which fields are mandatory and which aren't ? in hub, we only instantiate a few of them at first.
      */
