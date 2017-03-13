@@ -1,4 +1,4 @@
-namespace bluesky.core.models.account {
+namespace bluesky.core.model.account {
     export enum AccountStatusEnum {
         Undefined = 0,
         PendingActiveApproval = 1,

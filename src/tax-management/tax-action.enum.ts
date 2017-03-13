@@ -1,4 +1,4 @@
-namespace bluesky.core.models.taxManagement {
+namespace bluesky.core.model.taxManagement {
     export enum TaxActionEnum {
         Add = 0,
         Modify = 1,

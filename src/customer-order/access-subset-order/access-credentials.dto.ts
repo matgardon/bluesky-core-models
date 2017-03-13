@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.customerOrder {
+﻿namespace bluesky.core.model.customerOrder {
 	/** Access credential for generic accesses */
 	export interface IAccessCredentialsDto {
 		/** Login for generic accesse */

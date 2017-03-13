@@ -1,4 +1,4 @@
-namespace bluesky.core.models.offer {
+namespace bluesky.core.model.offer {
     /**
      * Product offering.
      */

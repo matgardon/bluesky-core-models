@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.quote {
+﻿namespace bluesky.core.model.quote {
 	/** DTO of an export parameter. */
 	export interface IExportParameterDto extends IResourceBase {
 		/** Gets or sets the unique identifier. */

@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.customerOrder {
+﻿namespace bluesky.core.model.customerOrder {
 	/** Welcome pack sending strategy. */
 	export interface IWelcomePackSendingStrategyDto {
 		/** Welcome Recipient Strategy :- to user (ToUser),- to technical admin ToTechnicalAdmin. */

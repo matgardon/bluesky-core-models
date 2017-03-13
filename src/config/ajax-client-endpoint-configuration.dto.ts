@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.clientConfig {
+﻿namespace bluesky.core.model.clientConfig {
 	export interface IAjaxClientEndpointConfigurationDto {
 		EndpointBaseURL: string;
 		EndpointSuffix: string;

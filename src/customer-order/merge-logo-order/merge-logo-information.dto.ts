@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.customerOrder {
+﻿namespace bluesky.core.model.customerOrder {
 	/** Dto of a Merge Logo information. Contains information about merge logo action. */
 	export interface IMergeLogoInformationDto extends IResourceBase {
 		/** Gets or sets the unique identifier. */

@@ -1,8 +1,8 @@
-﻿ namespace bluesky.core.models.technicalData {
+﻿ namespace bluesky.core.model.technicalData {
     import ManagementSubsidiaryDto = account.IManagementSubsidiaryDto;
 
     /** Domain is the parent class and should be abstract for export interface purpose.A Domain corresponds to a technical environment set up for a Sales Channel /Subsidiary, on which the customer will be provisioned: it is hosted byone/several Service Platforms, uses subset of logical resources which can bespecifically branded, and defines a default set of options. */
-    export interface IServicePlatformDomainDto extends models.IResourceBase {
+    export interface IServicePlatformDomainDto extends IResourceBase {
         /** Gets or sets the unique identifier. */
         Id: number;
         /** Gets or sets the Unique name of the Domain */

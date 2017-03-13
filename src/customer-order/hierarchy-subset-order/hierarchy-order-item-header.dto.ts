@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.customerOrder {
+﻿namespace bluesky.core.model.customerOrder {
 	/** DTO header of a hierarchy order item. */
 	export interface IHierarchyOrderItemHeaderDto extends IResourceBase {
 		/** Gets or sets the unique identifier. */

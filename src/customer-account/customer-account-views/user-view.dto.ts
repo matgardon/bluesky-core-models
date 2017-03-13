@@ -1,6 +1,6 @@
-﻿ namespace bluesky.core.models.account {
+﻿ namespace bluesky.core.model.account {
 	/** Dto of a user view.Contains attributes related to the user setup. */
-	export interface IUserViewDto extends models.IResourceBase {
+	export interface IUserViewDto extends IResourceBase {
 		/** Gets or sets the information provided by the customer at creation date. */
 		BillingCode: string;
 		/** Gets or sets a flag indicating whether the user is a moderator. */

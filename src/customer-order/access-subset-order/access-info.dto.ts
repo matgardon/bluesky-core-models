@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.customerOrder {
+﻿namespace bluesky.core.model.customerOrder {
 	/** Additional information on a User used for audio and web accesses creation. */
 	export interface IAccessInfoDto extends IResourceBase {
 		/** Gets or sets the unique identifier. */

@@ -1,6 +1,6 @@
-﻿ namespace bluesky.core.models.account {
+﻿ namespace bluesky.core.model.account {
 	/** Dto of a billing view.Contains informations related to a billing account and financial processing. */
-	export interface IBillingViewDto extends models.IResourceBase {
+	export interface IBillingViewDto extends IResourceBase {
 		/** Gets or sets the Arkadin bank account details (defined in MT SDD). */
 		ArkadinBankAccountDetailsId: string;
 		/** Gets or sets a value indicating whether the related billing account is a GSA account with a unique central invoice. */

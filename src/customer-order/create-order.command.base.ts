@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.customerOrder {
+﻿namespace bluesky.core.command.customerOrder {
 	/** Contains main information about the order to create. */
 	export interface IBaseCreateOrderCommand {
 		/** Identifier of the company. */

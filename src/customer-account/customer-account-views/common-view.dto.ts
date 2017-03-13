@@ -1,6 +1,6 @@
-﻿ namespace bluesky.core.models.account {
+﻿ namespace bluesky.core.model.account {
 	/** Dto of a common view.Contains attributes shared by all of the accounts. */
-	export interface ICommonViewDto extends bluesky.core.models.IResourceBase {
+	export interface ICommonViewDto extends IResourceBase {
 		/** Gets or sets the comment to be manually filled by CSR, SalesAdmin... to provide whatever additional information required. */
 		Comment: string;
 		/** Gets or sets the requester to be manually filled by CSR, SalesAdmin... to provide whatever additional information required. */

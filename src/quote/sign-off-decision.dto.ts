@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.quote {
+﻿namespace bluesky.core.model.quote {
 	/** DTO of an sign off decision. */
 	export interface ISignOffDecisionDto extends IResourceBase {
 		/** Gets or sets the unique identifier. */

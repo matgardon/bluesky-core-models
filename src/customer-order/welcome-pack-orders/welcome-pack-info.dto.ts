@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.customerOrder {
+﻿namespace bluesky.core.model.customerOrder {
     /** Dto of WelcomePackInfo.
     * It contains information to send to the Template Generator for the user recipient strategy. */
     export interface IWelcomePackInfoDto extends IResourceBase {

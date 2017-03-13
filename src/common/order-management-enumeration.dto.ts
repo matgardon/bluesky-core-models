@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models {
+﻿namespace bluesky.core.model {
 	/** DTO for OM Enumerations. */
 	export interface IOrderManagementEnumerationDto {
 		Key: number;

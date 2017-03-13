@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.clientConfig {
+﻿namespace bluesky.core.model.clientConfig {
     /**
      * Enum generated from the server to know the list of supported endpoint configuration.
      */

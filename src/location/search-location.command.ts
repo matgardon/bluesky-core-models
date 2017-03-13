@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.location {
+﻿namespace bluesky.core.command.location {
 	/** Search parameter used to retrieve a list of location. */
 	export interface ISearchLocationCommand {
 		/** Gets or sets the zip or postal code. */

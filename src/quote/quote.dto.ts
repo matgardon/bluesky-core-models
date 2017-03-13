@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.quote {
+﻿namespace bluesky.core.model.quote {
     /** DTO of a quote. */
     export interface IQuoteDto extends IResourceBase {
         /** Gets or sets the unique identifier. */

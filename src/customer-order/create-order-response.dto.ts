@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.customerOrder {
+﻿namespace bluesky.core.model.customerOrder {
 	/** Response for a Create users command. */
 	export interface ICreateOrderResponseDto {
 		/** Identifier of the generated Customer Order. */

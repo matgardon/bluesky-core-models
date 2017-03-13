@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.customerOrder {
+﻿namespace bluesky.core.model.customerOrder {
 	/** Dto of a MovableTechnicalProduct */
 	export interface IMovableTechnicalProductDto extends IResourceBase {
 		/** Gets or sets the unique identifier. */

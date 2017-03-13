@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.quote {
+﻿namespace bluesky.core.model.quote {
 	/** Model for Rate Entry definition */
 	export interface IRateEntryDefinition {
 		/** Gets or sets the unique identifier. */

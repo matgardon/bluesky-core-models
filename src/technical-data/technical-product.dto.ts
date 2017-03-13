@@ -1,7 +1,7 @@
-﻿ namespace bluesky.core.models.technicalData {
+﻿ namespace bluesky.core.model.technicalData {
     /** A TechnicalProduct is the technical view of a CommercialProduct subscribed by a customer.
     * It can be atomic (one commercial product is corresponding to one technicalproduct) or composite (one commercial product is decomposed in severaltechnical products).If a Customer has several subscriptions for the same Technical Product, severalTechnical Products will be instantiated.A technical product has its own characteristics and values (thus overwritingDomain Characteristic values) */
-    export interface ITechnicalProductDto extends models.IResourceBase {
+    export interface ITechnicalProductDto extends IResourceBase {
         /** Gets or sets the unique identifier. */
         Id: number;
         /** Gets or sets Name of the Technical Product */

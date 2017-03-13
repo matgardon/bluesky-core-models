@@ -1,6 +1,6 @@
-﻿ namespace bluesky.core.models.account {
+﻿ namespace bluesky.core.model.account {
 	/** Dto of a contact view.Contains contact and address information. */
-	export interface IContactViewDto extends core.models.IResourceBase {
+	export interface IContactViewDto extends IResourceBase {
 		/** Gets or sets the name that may be filled in for invoicing further purposes. */
 		Name1: string;
 		/** Gets or sets the additionnal name that may be filled in for invoicing further purposes. */

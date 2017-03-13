@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.customerOrder {
+﻿namespace bluesky.core.model.customerOrder {
 	/** Information needed to send a welcome pack. */
 	export interface ISendWelcomePackInformationDto {
 		/** Identifier of the group subscription in MetraNet. */

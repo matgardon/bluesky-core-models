@@ -1,6 +1,6 @@
-﻿ namespace bluesky.core.models.account {
+﻿ namespace bluesky.core.model.account {
 	/** Dto of an access view.Contains technical information for each user's access instance. */
-	export interface IAccessViewDto extends core.models.IResourceBase {
+	export interface IAccessViewDto extends IResourceBase {
 		/** Gets or sets the login for Web products. */
 		AccessLogin: string;
 		/** Gets or sets the password for credential requirements on service platform (= pin moderator). */

@@ -1,5 +1,5 @@
-﻿namespace bluesky.core.models.customerOrder {
-    import BillingAccountDto = bluesky.core.models.account.IBillingAccountDto;
+﻿namespace bluesky.core.model.customerOrder {
+    import BillingAccountDto = bluesky.core.model.account.IBillingAccountDto;
 
     /** DTO header of a subscription order item. */
     export interface ISubscriptionOrderItemDto extends IResourceBase {

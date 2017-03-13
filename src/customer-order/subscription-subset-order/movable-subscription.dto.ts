@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.customerOrder {
+﻿namespace bluesky.core.model.customerOrder {
 	/** Movable subscription. */
 	export interface IMovableSubscriptionDto extends IResourceBase {
 		/** Gets or sets the unique identifier. */

@@ -1,6 +1,6 @@
-﻿ namespace bluesky.core.models.account {
+﻿ namespace bluesky.core.model.account {
 	/** Dto of IST IMA Information.ISTIMA information.IST: Invoice Suppression Threshold.IMA: Invoice Minimum Amount. */
-	export interface IIstimaInfoDto extends models.IResourceBase {
+	export interface IIstimaInfoDto extends IResourceBase {
 		/** Product offering MetraNet identifier. */
 		ProductOfferingMnId: number;
 		/** Invoice Suppression Threshold from. */

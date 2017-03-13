@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.quote {
+﻿namespace bluesky.core.model.quote {
 	/** Model for Quote definition */
 	export interface ISimpleQuoteCreation {
 		/** Gets or sets the label. */

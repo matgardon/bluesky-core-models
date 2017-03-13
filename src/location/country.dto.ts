@@ -1,4 +1,4 @@
-namespace bluesky.core.models.location {
+namespace bluesky.core.model.location {
     export interface ICountryDto extends IResourceBase {
         Name?: string;
         IsoCode?: string;

@@ -1,4 +1,4 @@
-﻿ namespace bluesky.core.models.userManagement {
+﻿ namespace bluesky.core.model.userManagement {
 	export interface IUserRoleEntryDto {
 		Name: string;
 		Role: string;

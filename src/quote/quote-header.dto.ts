@@ -1,6 +1,6 @@
-﻿namespace bluesky.core.models.quote {
+﻿namespace bluesky.core.model.quote {
 
-    import QuoteSubscriptionDto = models.subscription.IQuoteSubscriptionDto;
+    import QuoteSubscriptionDto = subscription.IQuoteSubscriptionDto;
 
     /** Header DTO of a quote. */
     export interface IQuoteHeaderDto extends IResourceBase {

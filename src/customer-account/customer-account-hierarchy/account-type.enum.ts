@@ -1,4 +1,4 @@
-namespace bluesky.core.models.account {
+namespace bluesky.core.model.account {
     export enum AccountTypeEnum {
         None = 0,
         Logo = 1,

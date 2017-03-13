@@ -1,6 +1,6 @@
-﻿ namespace bluesky.core.models.account {
+﻿ namespace bluesky.core.model.account {
 	/** Dto of an internal view.Contains the internal account information. */
-	export interface IInternalViewDto extends models.IResourceBase {
+	export interface IInternalViewDto extends IResourceBase {
 		/** Gets or sets a value indicating whether the is billable. */
 		IsBillable: boolean;
 		/** Gets or sets the name of the division associated with the account. */

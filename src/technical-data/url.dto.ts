@@ -1,6 +1,6 @@
-﻿ namespace bluesky.core.models.technicalData {
+﻿ namespace bluesky.core.model.technicalData {
 	/** This resource describes microsites for WebEx.It may be shared between several Logos or dedicated to one Logo. */
-	export interface IUrlDto extends models.IResourceBase {
+	export interface IUrlDto extends IResourceBase {
 		/** Gets or sets the unique identifier. */
 		Id: number;
 		/** Gets or sets value of the URL. */

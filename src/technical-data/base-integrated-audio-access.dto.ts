@@ -1,4 +1,4 @@
-﻿ namespace bluesky.core.models.technicalData {
+﻿ namespace bluesky.core.model.technicalData {
 	/** Integrated audio access */
 	export interface IBaseIntegratedAudioAccessDto extends technicalData.IAudioAccessDto {
 		/** Gets or sets AudioIntegrationIndex */

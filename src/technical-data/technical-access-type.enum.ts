@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.technicalData {
+﻿namespace bluesky.core.model.technicalData {
     export enum TechnicalAccessTypeEnum {
         None,
         AudioAccess,

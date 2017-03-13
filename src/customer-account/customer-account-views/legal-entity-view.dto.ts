@@ -1,6 +1,6 @@
-﻿ namespace bluesky.core.models.account {
+﻿ namespace bluesky.core.model.account {
 	/** Dto of a legal entity view.The Legal Entity view contains attributes related to Legal Entity setup. */
-	export interface ILegalEntityViewDto extends models.IResourceBase {
+	export interface ILegalEntityViewDto extends IResourceBase {
 		/** Gets or sets the company registration number to National Commercial Board (ex: SIREN in France). */
 		CommercialRegistrationNumber: string;
 		/** Gets or sets the equivalent to EU tax registration number. */

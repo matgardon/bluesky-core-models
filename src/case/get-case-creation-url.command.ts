@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.userCase {
+﻿namespace bluesky.core.command.userCase {
     export interface IGetCaseCreationUrlCommand {
         UserId: string;
         SalesForceAccountId: string;

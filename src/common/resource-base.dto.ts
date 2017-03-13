@@ -1,4 +1,4 @@
-﻿ namespace bluesky.core.models {
+﻿ namespace bluesky.core.model {
     /** Base class for all resources.TODO MGA : Move this class in a base API project */
     export interface IResourceBase {
         /** Links to related resources. */

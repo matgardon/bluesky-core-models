@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.customerOrder {
+﻿namespace bluesky.core.model.customerOrder {
 	/** A participant of a conference is related to a meet me secure access. */
 	export interface IParticipantDto extends IResourceBase {
 		/** Gets or sets the unique identifier. */

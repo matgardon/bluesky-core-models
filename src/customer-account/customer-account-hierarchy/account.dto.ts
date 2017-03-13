@@ -1,6 +1,6 @@
-﻿ namespace bluesky.core.models.account {
+﻿ namespace bluesky.core.model.account {
 	/** DTO of an account.Base class holding MetraNet core account properties and identifiers.TODO MGA : inheriting from OrderManagementEntityDto is a hack, as we do not have custom DTOs for Accounts comming from OrderManagement DB. TOFIX when we don't have these entities saved in OM. */
-	export interface IAccountDto extends models.IOrderManagementEntityDto {
+	export interface IAccountDto extends IOrderManagementEntityDto {
 		/** Gets or sets the account type. */
 		AccountType: string;
 		/** Gets or sets the MetraNet identifier of the account. */

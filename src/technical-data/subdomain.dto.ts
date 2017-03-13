@@ -1,6 +1,6 @@
-﻿ namespace bluesky.core.models.technicalData {
+﻿ namespace bluesky.core.model.technicalData {
 	/** A Subdomain is instantiated for a given Customer when subscribing to aTechnicalProduct.It is dedicated to a Customer and inherits the characteristics of the parentDomain.It can be of type Audio, Web or Video. */
-	export interface ISubdomainDto extends models.IResourceBase {
+	export interface ISubdomainDto extends IResourceBase {
 		/** Gets or sets the unique identifier. */
 		Id: number;
 		/** Gets or sets Unique name of the Subdomain */

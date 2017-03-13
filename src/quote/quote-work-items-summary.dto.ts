@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.quote {
+﻿namespace bluesky.core.model.quote {
 	/** Dto for quote work items summary.Returns information about the number of quotes for each type of action to perform. */
 	export interface IQuoteWorkItemsSummaryDto extends IResourceBase {
 		/** Gets or sets the number of quotes in pending status. */

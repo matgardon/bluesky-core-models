@@ -1,4 +1,4 @@
-﻿ namespace bluesky.core.models.account {
+﻿ namespace bluesky.core.model.account {
 	export interface IUserContactViewDto extends account.IContactViewDto {
 		/** Gets or sets the external language, needed by the TI and the Provisioning. */
 		ExternalLanguage: string;

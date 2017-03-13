@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.account {
+﻿namespace bluesky.core.command.account {
 	/** Command to authenticate a user account in BlueSky. */
 	export interface IAuthenticateUserAccountCommand {
 		/** User account's identifier in MetraNet. */

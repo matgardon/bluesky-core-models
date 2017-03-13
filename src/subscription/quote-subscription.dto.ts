@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.subscription {
+﻿namespace bluesky.core.model.subscription {
 	/** This entity links a quote, a billing account, and the resulting subscription */
 	export interface IQuoteSubscriptionDto extends IResourceBase {
 		/** Gets or sets the unique identifier. */

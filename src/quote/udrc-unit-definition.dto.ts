@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.quote {
+﻿namespace bluesky.core.model.quote {
 	/** Model for udrc unit definition */
 	export interface IUdrcUnitDefinition {
 		/** Gets or sets the unique identifier. */

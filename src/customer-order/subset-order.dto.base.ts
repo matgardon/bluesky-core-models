@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.customerOrder {
+﻿namespace bluesky.core.model.customerOrder {
 	/** Base class for the different types of subset orders:for subscriptionfor user/accessfor hierarchy */
 	export interface ISubsetOrderBaseDto extends IResourceBase {
 		/** Gets or sets the unique identifier. */

@@ -1,6 +1,6 @@
-﻿ namespace bluesky.core.models.technicalData {
+﻿ namespace bluesky.core.model.technicalData {
 	/** Defines specifications (templates) for TechnicalProducts. */
-	export interface ITechnicalProductSpecificationDto extends models.IResourceBase {
+	export interface ITechnicalProductSpecificationDto extends IResourceBase {
 		/** Gets or sets the unique identifier. */
 		Id: number;
 		/** Gets or sets name of the Technical Product Specification */

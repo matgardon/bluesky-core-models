@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.welcomePack {
+﻿namespace bluesky.core.model.welcomePack {
     export interface IWelcomePackHeaderDto {
         Id: string;
         TemplateId: string;

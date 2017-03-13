@@ -1,6 +1,6 @@
-﻿namespace bluesky.core.models.customerOrder {
-    import UserAccountDto = bluesky.core.models.account.IUserAccountDto;
-    import AccessAccountDto = bluesky.core.models.account.IAccessAccountDto;
+﻿namespace bluesky.core.model.customerOrder {
+    import UserAccountDto = bluesky.core.model.account.IUserAccountDto;
+    import AccessAccountDto = bluesky.core.model.account.IAccessAccountDto;
 
     /** DTO of a user order item. */
     export interface IUserOrderItemDto extends IResourceBase {

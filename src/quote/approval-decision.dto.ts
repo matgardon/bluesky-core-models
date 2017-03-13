@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.quote {
+﻿namespace bluesky.core.model.quote {
 
     /** DTO of an approval decision. */
 	interface IApprovalDecisionDto extends IResourceBase {

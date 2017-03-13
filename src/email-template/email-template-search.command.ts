@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.commands.emailTemplate {
+﻿namespace bluesky.core.command.emailTemplate {
     export interface IEmailTemplateSearchCommand {
         Name: string;
         Company: string;

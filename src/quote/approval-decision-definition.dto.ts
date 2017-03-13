@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.quote {
+﻿namespace bluesky.core.model.quote {
 	/** Model for the approval decision definition */
 	export interface IApprovalDecisionDefinition {
 		/** Gets or sets the unique identifier. */

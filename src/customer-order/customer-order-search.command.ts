@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.customerOrder {
+﻿namespace bluesky.core.command.customerOrder {
     export interface ICustomerOrderSearchCommand {
         CustomerOrderStatusFilter: string;
         UserAccountUid: string;

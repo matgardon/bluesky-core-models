@@ -1,5 +1,5 @@
-﻿namespace bluesky.core.models.customerOrder {
-    import TechnicalProductDto = bluesky.core.models.technicalData.ITechnicalProductDto;
+﻿namespace bluesky.core.model.customerOrder {
+    import TechnicalProductDto = bluesky.core.model.technicalData.ITechnicalProductDto;
 
     /** Dto of a subscriptionA subscription is product offering sold to a customer and applied to a singlesubscriber node. */
     export interface ICustomerOrderSubscriptionDto extends IResourceBase {

@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.quote {
+﻿namespace bluesky.core.model.quote {
 	/** Model for Rate Schedule definition */
 	export interface IRateScheduleDefinition {
 		/** Gets or sets the unique identifier. */

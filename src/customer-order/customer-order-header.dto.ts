@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.customerOrder {
+﻿namespace bluesky.core.model.customerOrder {
 	/** Header DTO of a customer order. */
 	export interface ICustomerOrderHeaderDto extends IResourceBase {
 		/** Gets or sets the unique identifier. */

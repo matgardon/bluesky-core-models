@@ -1,5 +1,5 @@
-﻿namespace bluesky.core.models.clientConfig {
-    import UserSsoDto = models.userManagement.IUserSsoDto;
+﻿namespace bluesky.core.model.clientConfig {
+    import UserSsoDto = userManagement.IUserSsoDto;
 
     export interface IBlueskyAjaxClientConfigurationDto {
         /**

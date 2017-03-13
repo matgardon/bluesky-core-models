@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.welcomePack {
+﻿namespace bluesky.core.command.welcomePack {
     export interface ISearchWelcomePackCommand {
         UserId?: string;
         Email?: string;

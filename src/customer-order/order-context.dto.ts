@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.customerOrder {
+﻿namespace bluesky.core.model.customerOrder {
     /** Context of the order. */
     export interface IOrderContextDto extends IResourceBase {
         /** Gets or sets a Flag to indicate if subscription modification must be applied to all existing accesses,in terms of options. Only required for a CustomerOrder "Update Subscription". */

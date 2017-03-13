@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models {
+﻿namespace bluesky.core.model {
 	/** Dto for MetraNet Enumerations */
 	export interface IMetraNetEnumerationDto {
 		Key: string;

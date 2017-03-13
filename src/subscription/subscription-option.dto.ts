@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.subscription {
+﻿namespace bluesky.core.model.subscription {
 	/** DTO of an option attached to a subscription. */
 	export interface ISubscriptionOptionDto {
 		/** Name of the Option. */

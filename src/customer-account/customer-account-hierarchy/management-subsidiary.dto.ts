@@ -1,6 +1,6 @@
-﻿ namespace bluesky.core.models.account {
+﻿ namespace bluesky.core.model.account {
 	/** Management Subsidiaries are used in the Platform Selection algorithms. */
-	export interface IManagementSubsidiaryDto extends bluesky.core.models.IResourceBase {
+	export interface IManagementSubsidiaryDto extends IResourceBase {
 		/** Gets or sets the unique identifier. */
 		Id: number;
 		/** Flag to identify the Management Subsidiary at Logo level. */

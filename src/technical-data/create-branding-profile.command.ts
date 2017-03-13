@@ -1,4 +1,4 @@
-﻿namespace bluesky.core.models.technicalData {
+﻿namespace bluesky.core.command.technicalData {
 	/** Command for branding profile's creation. */
 	export interface ICreateBrandingProfileCommand {
 		/** Gets or sets the identifier of the branding profil. */
