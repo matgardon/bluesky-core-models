@@ -1,12 +1,8 @@
 ﻿namespace bluesky.core.command.customerOrder {
-    export interface ICustomerOrderSearchCommand {
+    export interface ICustomerOrderSearchCommand extends IBasePaginatedSearchCommand {
         CustomerOrderStatusFilter: string;
         UserAccountUid: string;
         LogoId: string;
         OrderId: string;
-
-        //TODO MGA: common contract for Start / Limit params of all search commands ?
-        Start?: number;
-        Limit?:number;
     }
 }

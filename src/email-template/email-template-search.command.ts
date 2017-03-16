@@ -1,9 +1,7 @@
 ﻿namespace bluesky.core.command.emailTemplate {
-    export interface IEmailTemplateSearchCommand {
+    export interface IEmailTemplateSearchCommand extends IBasePaginatedSearchCommand {
         Name: string;
         Company: string;
         Skeleton: string;
-        Start: number;
-        Limit: number;
     }
 }

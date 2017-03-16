@@ -1,5 +1,5 @@
 ﻿namespace bluesky.core.command.quote {
-    export interface IQuoteSearchCommand {
+    export interface IQuoteSearchCommand extends IBasePaginatedSearchCommand {
         Name?: string;
         Label?: string;
         LogoUid?: string;
@@ -8,7 +8,5 @@
         Ids?: string;
         IncludeSubscriptions?: boolean;
         CurrentApprover?: string;
-        Start?: number;
-        Limit?: number;
     }
 }

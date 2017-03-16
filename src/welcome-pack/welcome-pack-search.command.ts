@@ -1,5 +1,5 @@
 ﻿namespace bluesky.core.command.welcomePack {
-    export interface ISearchWelcomePackCommand {
+    export interface ISearchWelcomePackCommand extends IBasePaginatedSearchCommand {
         UserId?: string;
         Email?: string;
         LogoName?: string;
@@ -9,10 +9,6 @@
         OrderId?: number;
         CreationDateFrom?: string;
         CreationDateTo?: string;
-        //TODO MGA: common contract for Start / Limit params of all search commands ?
-
         SendingDate?: string;
-        Start?: number;
-        Limit?: number;
     }
 }
