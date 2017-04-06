@@ -29,5 +29,11 @@
 		OrderStatus: string;
 		/** Gets the effective management subsidiary. */
 		EffectiveManagementSubsidiary: string;
+
+		/** Indicates if this customer belongs to the online segment. */
+		IsOnlineCustomer?: boolean;
+
+		/** The BlueSky userName (uid) of the silo this customer belongs to. */
+		SiloUserName?: string;
 	}
 }
