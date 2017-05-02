@@ -1,6 +1,6 @@
 namespace bluesky.core.model.quote {
 
-export enum QuoteStatusEnum {
+    export enum QuoteStatusEnum {
         Pending = 0,
         Submitted = 1,
         SignedOff = 2,
