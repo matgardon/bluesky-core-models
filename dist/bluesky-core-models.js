@@ -20,12 +20,6 @@
 
 
 
-
-
-
-
-
-
 var bluesky;
 (function (bluesky) {
     var core;
@@ -65,14 +59,6 @@ var bluesky;
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
-
-
-
-
-
-
-
-
 
 
 
@@ -191,6 +177,24 @@ var bluesky;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var bluesky;
 (function (bluesky) {
     var core;
@@ -226,71 +230,6 @@ var bluesky;
                 })(taxManagement.TaxExemptTypeEnum || (taxManagement.TaxExemptTypeEnum = {}));
                 var TaxExemptTypeEnum = taxManagement.TaxExemptTypeEnum;
             })(taxManagement = model.taxManagement || (model.taxManagement = {}));
-        })(model = core.model || (core.model = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var model;
-        (function (model) {
-            var technicalData;
-            (function (technicalData) {
-                (function (TechnicalAccessTypeEnum) {
-                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["None"] = 0] = "None";
-                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["AudioAccess"] = 1] = "AudioAccess";
-                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["WebAccess"] = 2] = "WebAccess";
-                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["IntegratedAudioAccess"] = 3] = "IntegratedAudioAccess";
-                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["GenericAccess"] = 4] = "GenericAccess";
-                })(technicalData.TechnicalAccessTypeEnum || (technicalData.TechnicalAccessTypeEnum = {}));
-                var TechnicalAccessTypeEnum = technicalData.TechnicalAccessTypeEnum;
-            })(technicalData = model.technicalData || (model.technicalData = {}));
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
@@ -363,6 +302,67 @@ var bluesky;
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var model;
+        (function (model) {
+            var technicalData;
+            (function (technicalData) {
+                (function (TechnicalAccessTypeEnum) {
+                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["None"] = 0] = "None";
+                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["AudioAccess"] = 1] = "AudioAccess";
+                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["WebAccess"] = 2] = "WebAccess";
+                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["IntegratedAudioAccess"] = 3] = "IntegratedAudioAccess";
+                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["GenericAccess"] = 4] = "GenericAccess";
+                })(technicalData.TechnicalAccessTypeEnum || (technicalData.TechnicalAccessTypeEnum = {}));
+                var TechnicalAccessTypeEnum = technicalData.TechnicalAccessTypeEnum;
+            })(technicalData = model.technicalData || (model.technicalData = {}));
+        })(model = core.model || (core.model = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -525,3 +525,28 @@ var bluesky;
 
 
 
+
+
+
+
+
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var model;
+        (function (model) {
+            var salesforce;
+            (function (salesforce) {
+                /**
+                 * List fo supported segment types for a SalesForce Account.
+                 */
+                (function (SegmentTypeEnum) {
+                    SegmentTypeEnum[SegmentTypeEnum["Premium"] = 0] = "Premium";
+                    SegmentTypeEnum[SegmentTypeEnum["Online"] = 1] = "Online";
+                })(salesforce.SegmentTypeEnum || (salesforce.SegmentTypeEnum = {}));
+                var SegmentTypeEnum = salesforce.SegmentTypeEnum;
+            })(salesforce = model.salesforce || (model.salesforce = {}));
+        })(model = core.model || (core.model = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));

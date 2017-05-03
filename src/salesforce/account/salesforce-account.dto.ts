@@ -1,16 +1,15 @@
 namespace bluesky.core.model.salesforce {
     /**
-     * Dto of a sales force account header.
+     * Dto of a sales force account.
      * TODO MGA: should be paginated in the long term (see SFDC DAL)
-     * TODO MGA: should be ligther vs. sf account dto
      */
-    export interface ISalesForceAccountHeaderDto extends IResourceBase {
+    export interface ISalesForceAccountDto extends IResourceBase {
         Id: string;
         Name: string;
+        CountryName: IMetraNetEnumerationDto;
         Segmentation: string;
         /** TODO MGA: ask CAPI to update to use Enum  */
         SegmentType: string;
-        CountryName: IMetraNetEnumerationDto;
         CustomerSize: IMetraNetEnumerationDto;
     }
 }

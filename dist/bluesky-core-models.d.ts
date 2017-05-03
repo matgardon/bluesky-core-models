@@ -1,46 +1,3 @@
-declare namespace bluesky.core.model.userCase {
-    interface ICaseCreationUrlDto {
-        CaseUrl: string;
-    }
-}
-
-declare namespace bluesky.core.command.userCase {
-    interface IGetCaseCreationUrlCommand {
-        UserId: string;
-        SalesForceAccountId: string;
-        PinCode: string;
-        WebLogin: string;
-    }
-}
-
-declare namespace bluesky.core.model.userCase {
-    /** Dto of a sales force case.
-    * A case is a description of a customer's feedback, problem, or question.
-    * Cases are used to track and solve customers' issues. */
-    interface ISalesforceCaseDto {
-        /** Identifier of the case. */
-        Id: string;
-        /** Case status.Example: New, Acknowledge, Pending customer, On going, Raised to Supplier, Raised, Closing, Pending completion, Update of supplier case, Closing of supplier case, Close. */
-        Status: string;
-        /** Case severity. */
-        Severity: string;
-        /** Unique number automatically assigned to the case. */
-        Number: string;
-        /** Record type name. */
-        RecordType: string;
-        /** Brief description of customer's issue. */
-        Subject: string;
-        /** Creation date of the case. */
-        CreatedDate: Date;
-        /** Case owner's name. */
-        OwnerName: string;
-        /** Case contact's name. */
-        ContactName: string;
-        /** Url to the case in SalesForce. */
-        CaseUrl: string;
-    }
-}
-
 declare namespace bluesky.core.model {
     /** Base information for a file upload. */
     interface IFileUploadBaseDto {
@@ -190,69 +147,46 @@ declare namespace bluesky.core.model.clientConfig {
     }
 }
 
-declare namespace bluesky.core.model.location {
-    interface IBillSoftLocationDto extends IResourceBase {
-        PCode: string;
-        IsPrimaryLocation: boolean;
-        County: string;
-        City: string;
-        BeginningZipCode: string;
-        EndingZipCode: string;
-        CountryIsoCode: string;
-        CountrySubdivision: ICountrySubdivisionDto;
+declare namespace bluesky.core.model.userCase {
+    interface ICaseCreationUrlDto {
+        CaseUrl: string;
     }
 }
 
-declare namespace bluesky.core.model.location {
-    interface ICountrySubdivisionDto extends IResourceBase {
-        CountryCode: string;
-        CountrySubdivisionCode: string;
-        CountrySubdivisionName: string;
+declare namespace bluesky.core.command.userCase {
+    interface IGetCaseCreationUrlCommand {
+        UserId: string;
+        SalesForceAccountId: string;
+        PinCode: string;
+        WebLogin: string;
     }
 }
 
-declare namespace bluesky.core.model.location {
-    interface ICountryDto extends IResourceBase {
-        Name?: string;
-        IsoCode?: string;
-        IcoCode?: string;
-        GeoRegion?: string;
-    }
-}
-
-declare namespace bluesky.core.command.location {
-    /** Search parameter used to retrieve a list of location. */
-    interface ISearchLocationCommand extends IBasePaginatedSearchCommand {
-        /** Gets or sets the zip or postal code. */
-        ZipCode?: string;
-        /** Gets or sets the city or town. */
-        City?: string;
-        /** Boolean indicating if the search on city should be an exact match or a contains() */
-        IsExactCitySearch?: boolean;
-        /** Gets or sets the the country code. */
-        CountryCode?: string;
-        /** Gets or sets the country subdivision code (state or province). */
-        CountrySubdivisionCode?: string;
-        /** Gets or sets the county. */
-        County?: string;
-        /** Boolean indicating if the search on county should be an exact match or a contains() */
-        IsExactCountySearch?: boolean;
-    }
-}
-
-declare namespace bluesky.core.command.location {
-    /** Search parameter used to retrieve a list of state (country subdivisions). */
-    interface ISearchStateCommand {
-        /** Country ISO code. */
-        CountryCode: string;
-    }
-}
-
-declare namespace bluesky.core.model.location {
-    interface IStateDto extends IResourceBase {
-        Name?: string;
-        Code?: string;
-        PCode?: number;
+declare namespace bluesky.core.model.userCase {
+    /** Dto of a sales force case.
+    * A case is a description of a customer's feedback, problem, or question.
+    * Cases are used to track and solve customers' issues. */
+    interface ISalesforceCaseDto {
+        /** Identifier of the case. */
+        Id: string;
+        /** Case status.Example: New, Acknowledge, Pending customer, On going, Raised to Supplier, Raised, Closing, Pending completion, Update of supplier case, Closing of supplier case, Close. */
+        Status: string;
+        /** Case severity. */
+        Severity: string;
+        /** Unique number automatically assigned to the case. */
+        Number: string;
+        /** Record type name. */
+        RecordType: string;
+        /** Brief description of customer's issue. */
+        Subject: string;
+        /** Creation date of the case. */
+        CreatedDate: Date;
+        /** Case owner's name. */
+        OwnerName: string;
+        /** Case contact's name. */
+        ContactName: string;
+        /** Url to the case in SalesForce. */
+        CaseUrl: string;
     }
 }
 
@@ -376,6 +310,70 @@ declare namespace bluesky.core.model.emailTemplate {
         Product3?: string;
         Playback?: boolean;
         SendingStrategy: string;
+    }
+}
+
+declare namespace bluesky.externals.smartTable {
+    /** Internal state of the smart-table component. Should not be exposed but is needed for server-side pagination.
+     * TODO MGA ongoing work, might not be needed.
+     */
+    interface ITableState {
+        sort?: {
+            predicate?: any;
+            reverse?: boolean;
+            functionName?: string;
+        };
+        search?: {
+            predicateObject?: any;
+        };
+        pagination?: {
+            /** default: 0. */
+            start?: number;
+            /** default: 0. */
+            totalItemCount?: number;
+            /** number of items displayed? */
+            number?: number;
+            /** total number of pages for current collection. */
+            numberOfPages?: number;
+        };
+    }
+    interface IStConfig {
+        pagination?: {
+            /** path to template partial as registered in $templateCache. */
+            template?: string;
+            /** displayed number of items per page. */
+            itemsByPage?: number;
+            /** number of pages displayed in the widget to scroll through. */
+            displayedPages?: number;
+        };
+        search?: {
+            /** in ms. default: 400ms */
+            delay?: number;
+            /** default: 'input' */
+            inputEvent?: string;
+        };
+        select?: {
+            /** default: 'single' */
+            mode?: string;
+            /** default: 'st-selected' */
+            selectedClass?: string;
+        };
+        sort?: {
+            /** default : 'st-sort-ascent' */
+            ascentClass?: string;
+            /** Default : 'st-sort-descent' */
+            descentClass?: string;
+            /** default: false */
+            descendingFirst?: boolean;
+            /** default: false */
+            skipNatural?: boolean;
+            /** default: 300 (ms) */
+            delay?: number;
+        };
+        pipe?: {
+            /** in ms. default: 100ms. */
+            delay?: number;
+        };
     }
 }
 
@@ -553,98 +551,6 @@ declare namespace bluesky.core.model.customerOrder {
         SubsetAction: string;
         /** Processing status of a SubsetOrder. */
         SubsetOrderStatus: string;
-    }
-}
-
-declare namespace bluesky.externals.smartTable {
-    /** Internal state of the smart-table component. Should not be exposed but is needed for server-side pagination.
-     * TODO MGA ongoing work, might not be needed.
-     */
-    interface ITableState {
-        sort?: {
-            predicate?: any;
-            reverse?: boolean;
-            functionName?: string;
-        };
-        search?: {
-            predicateObject?: any;
-        };
-        pagination?: {
-            /** default: 0. */
-            start?: number;
-            /** default: 0. */
-            totalItemCount?: number;
-            /** number of items displayed? */
-            number?: number;
-            /** total number of pages for current collection. */
-            numberOfPages?: number;
-        };
-    }
-    interface IStConfig {
-        pagination?: {
-            /** path to template partial as registered in $templateCache. */
-            template?: string;
-            /** displayed number of items per page. */
-            itemsByPage?: number;
-            /** number of pages displayed in the widget to scroll through. */
-            displayedPages?: number;
-        };
-        search?: {
-            /** in ms. default: 400ms */
-            delay?: number;
-            /** default: 'input' */
-            inputEvent?: string;
-        };
-        select?: {
-            /** default: 'single' */
-            mode?: string;
-            /** default: 'st-selected' */
-            selectedClass?: string;
-        };
-        sort?: {
-            /** default : 'st-sort-ascent' */
-            ascentClass?: string;
-            /** Default : 'st-sort-descent' */
-            descentClass?: string;
-            /** default: false */
-            descendingFirst?: boolean;
-            /** default: false */
-            skipNatural?: boolean;
-            /** default: 300 (ms) */
-            delay?: number;
-        };
-        pipe?: {
-            /** in ms. default: 100ms. */
-            delay?: number;
-        };
-    }
-}
-
-declare namespace bluesky.core.model.offer {
-    /**
-     * Product offering.
-     */
-    interface IProductOfferingDto {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets the Offer type. */
-        OfferType: string;
-        /** Gets or sets the name. */
-        Name: string;
-        /** Gets or sets the display name. */
-        DisplayName: string;
-        /** Gets or sets the description. */
-        Description: string;
-        /** Gets or sets the availability start date. */
-        AvailabilityStartDate: Date;
-        /** Gets or sets the availability end date. */
-        AvailabilityEndDate: Date;
-        /** Gets or sets the effective start date. */
-        EffectiveStartDate: Date;
-        /** Gets or sets the effective end date. */
-        EffectiveEndDate: Date;
-        /**Gets or sets the AggregateType enumeration. */
-        AggregateType: IMetraNetEnumerationDto;
     }
 }
 
@@ -1263,6 +1169,100 @@ declare namespace bluesky.core.model.quote {
     }
 }
 
+declare namespace bluesky.core.model.location {
+    interface IBillSoftLocationDto extends IResourceBase {
+        PCode: string;
+        IsPrimaryLocation: boolean;
+        County: string;
+        City: string;
+        BeginningZipCode: string;
+        EndingZipCode: string;
+        CountryIsoCode: string;
+        CountrySubdivision: ICountrySubdivisionDto;
+    }
+}
+
+declare namespace bluesky.core.model.location {
+    interface ICountrySubdivisionDto extends IResourceBase {
+        CountryCode: string;
+        CountrySubdivisionCode: string;
+        CountrySubdivisionName: string;
+    }
+}
+
+declare namespace bluesky.core.model.location {
+    interface ICountryDto extends IResourceBase {
+        Name?: string;
+        IsoCode?: string;
+        IcoCode?: string;
+        GeoRegion?: string;
+    }
+}
+
+declare namespace bluesky.core.command.location {
+    /** Search parameter used to retrieve a list of location. */
+    interface ISearchLocationCommand extends IBasePaginatedSearchCommand {
+        /** Gets or sets the zip or postal code. */
+        ZipCode?: string;
+        /** Gets or sets the city or town. */
+        City?: string;
+        /** Boolean indicating if the search on city should be an exact match or a contains() */
+        IsExactCitySearch?: boolean;
+        /** Gets or sets the the country code. */
+        CountryCode?: string;
+        /** Gets or sets the country subdivision code (state or province). */
+        CountrySubdivisionCode?: string;
+        /** Gets or sets the county. */
+        County?: string;
+        /** Boolean indicating if the search on county should be an exact match or a contains() */
+        IsExactCountySearch?: boolean;
+    }
+}
+
+declare namespace bluesky.core.command.location {
+    /** Search parameter used to retrieve a list of state (country subdivisions). */
+    interface ISearchStateCommand {
+        /** Country ISO code. */
+        CountryCode: string;
+    }
+}
+
+declare namespace bluesky.core.model.location {
+    interface IStateDto extends IResourceBase {
+        Name?: string;
+        Code?: string;
+        PCode?: number;
+    }
+}
+
+declare namespace bluesky.core.model.offer {
+    /**
+     * Product offering.
+     */
+    interface IProductOfferingDto {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets the Offer type. */
+        OfferType: string;
+        /** Gets or sets the name. */
+        Name: string;
+        /** Gets or sets the display name. */
+        DisplayName: string;
+        /** Gets or sets the description. */
+        Description: string;
+        /** Gets or sets the availability start date. */
+        AvailabilityStartDate: Date;
+        /** Gets or sets the availability end date. */
+        AvailabilityEndDate: Date;
+        /** Gets or sets the effective start date. */
+        EffectiveStartDate: Date;
+        /** Gets or sets the effective end date. */
+        EffectiveEndDate: Date;
+        /**Gets or sets the AggregateType enumeration. */
+        AggregateType: IMetraNetEnumerationDto;
+    }
+}
+
 declare namespace bluesky.core.command.subscription {
     interface IQuoteSubscriptionSearchCommand extends IBasePaginatedSearchCommand {
         QuoteId?: number;
@@ -1350,6 +1350,24 @@ declare namespace bluesky.core.model.subscription {
     }
 }
 
+declare namespace bluesky.core.model.systemInfo {
+    /** DTO of the API version. */
+    interface IApiVersionDto extends IResourceBase {
+        /** Version's number. */
+        Version: string;
+    }
+}
+
+declare namespace bluesky.core.model.systemInfo {
+    /** DTO of the Order Management Database Version. */
+    interface IDatabaseVersionDto {
+        /** Gets or sets version of the [OrderManagement] Database at a current date. */
+        Version: string;
+        /** Gets or sets date of the specified version of the [OrderManagement] Database. */
+        StartDate: Date;
+    }
+}
+
 declare namespace bluesky.core.model.taxManagement {
     interface INoramTaxExemptionDto extends IResourceBase {
         Level: TaxExemptTypeEnum;
@@ -1425,24 +1443,6 @@ declare namespace bluesky.core.model.taxManagement {
     enum TaxExemptTypeEnum {
         Federal = 0,
         State = 1,
-    }
-}
-
-declare namespace bluesky.core.model.systemInfo {
-    /** DTO of the API version. */
-    interface IApiVersionDto extends IResourceBase {
-        /** Version's number. */
-        Version: string;
-    }
-}
-
-declare namespace bluesky.core.model.systemInfo {
-    /** DTO of the Order Management Database Version. */
-    interface IDatabaseVersionDto {
-        /** Gets or sets version of the [OrderManagement] Database at a current date. */
-        Version: string;
-        /** Gets or sets date of the specified version of the [OrderManagement] Database. */
-        StartDate: Date;
     }
 }
 
@@ -1566,6 +1566,170 @@ declare namespace bluesky.core.model.userManagement {
         Name: string;
         /** Gets or sets the number of monitored elements. */
         Count: number;
+    }
+}
+
+declare namespace bluesky.core.model.welcomePack {
+    interface ICountryDdisDto {
+        Country: string;
+        TollDdis: string[];
+        TollFreeDdis: string[];
+        TollPlaybackDdis: string[];
+        TollFreePlaybackDdis: string[];
+    }
+}
+
+declare namespace bluesky.core.model.welcomePack {
+    interface IHierarchyDto {
+        BillingAccountDisplayName: string;
+        BillingAccountUid: string;
+        GlobalLogoDisplayName: string;
+        GlobalLogoUid: string;
+        LocalLogoDisplayName: string;
+        LocalLogoUid: string;
+    }
+}
+
+declare namespace bluesky.core.model.welcomePack {
+    interface IProductUrlDto {
+        Url: string;
+        Type: string;
+    }
+}
+
+declare namespace bluesky.core.model.welcomePack {
+    interface IProductDto {
+        TechnicalName: string;
+        TechnicalType: string;
+        ModeratorPin: string;
+        ParticipantPin: string;
+        ConferenceRef: string;
+        Login: string;
+        Password: string;
+        Urls: IProductUrlDto[];
+        LocalDdis: ICountryDdisDto;
+        OtherDdis: ICountryDdisDto[];
+    }
+}
+
+declare namespace bluesky.core.model.welcomePack {
+    interface IUserRecipientDto {
+        Country: string;
+        EmailAddress: string;
+        Language: string;
+        TimeZone: string;
+    }
+}
+
+declare namespace bluesky.core.model.welcomePack {
+    interface IWelcomePackDefinitionDto extends IWelcomePackDto {
+        WelcomePackCount: number;
+        SubmittedDate: Date;
+        Source: string;
+        SubscriptionMemberShipId: string;
+        SubmittedBy: string;
+        IsTrial: boolean;
+        TimeZone: string;
+        UserLanguage: string;
+        UserLocalSalutation: string;
+        CarbonCopyRecipients: string[];
+    }
+}
+
+declare namespace bluesky.core.model.welcomePack {
+    interface IWelcomePackHeaderDto {
+        Id: string;
+        TemplateId: string;
+        TemplateName: string;
+        EmailAddress: string;
+        State: string;
+        Queue: string;
+        ReceivedDate: Date;
+        SendingPriority: string;
+        AdminEmailAddress: string;
+        IsAdminRecipient: boolean;
+        ContactId: string;
+        Data: {
+            [key: string]: string;
+        };
+        LogoName: string;
+        OrderId: string;
+    }
+}
+
+declare namespace bluesky.core.command.welcomePack {
+    interface ISearchWelcomePackCommand extends IBasePaginatedSearchCommand {
+        UserId?: string;
+        Email?: string;
+        LogoName?: string;
+        BillingAccountName?: string;
+        Status?: string;
+        Queue?: string;
+        OrderId?: number;
+        CreationDateFrom?: string;
+        CreationDateTo?: string;
+        SendingDate?: string;
+    }
+}
+
+declare namespace bluesky.core.model.welcomePack {
+    enum WelcomePackStateEnum {
+        Submitted = 0,
+        Bounced = 1,
+        Success = 2,
+        Error = 3,
+        Empty = 4,
+        AwaitingAdmin = 5,
+        Unsubscribed = 6,
+        GlobalUnsubscribed = 7,
+        Excluded = 8,
+        Unknown = 9,
+    }
+    enum WelcomePackQueueEnum {
+        Submitted = 0,
+        Rejected = 1,
+        Pending = 2,
+        Read = 3,
+        Waiting = 4,
+        Imported = 5,
+        Complete = 6,
+        Empty = 7,
+        Unknown = 8,
+        Excluded = 9,
+    }
+    interface IWelcomePackDto {
+        Id: string;
+        TemplateId: string;
+        OrderManagementId: string;
+        TemplateName: string;
+        EmailAddress: string;
+        State: string;
+        Queue: string;
+        Message: string;
+        ReceivedDate: Date;
+        SendingDate: Date;
+        AdminEmailAddress: string;
+        IsAdminRecipient: boolean;
+        ContactId: string;
+        UserCountry: string;
+        Subsidiary: string;
+        XmlString: string;
+        FirstName: string;
+        LastName: string;
+        SendingPriority: string;
+        SelfCareRole: string;
+        BillingAccountName: string;
+        LogoName: string;
+        UserId: string;
+        Login: string;
+        OrderId: string;
+        CustomerServicePhone: string;
+        CustomerServiceEmail: string;
+        Hierarchy: IHierarchyDto;
+        UserRecipient: IUserRecipientDto;
+        Products: IProductDto[];
+        OfferName: string;
+        RecipientType: string;
     }
 }
 
@@ -2050,170 +2214,6 @@ declare namespace bluesky.core.model.technicalData {
         ParticipantOneClickURL: string;
         /** List of integrated audio accesses. */
         IntegratedAudioAccesses: technicalData.IIntegratedAudioAccessDto[];
-    }
-}
-
-declare namespace bluesky.core.model.welcomePack {
-    interface ICountryDdisDto {
-        Country: string;
-        TollDdis: string[];
-        TollFreeDdis: string[];
-        TollPlaybackDdis: string[];
-        TollFreePlaybackDdis: string[];
-    }
-}
-
-declare namespace bluesky.core.model.welcomePack {
-    interface IHierarchyDto {
-        BillingAccountDisplayName: string;
-        BillingAccountUid: string;
-        GlobalLogoDisplayName: string;
-        GlobalLogoUid: string;
-        LocalLogoDisplayName: string;
-        LocalLogoUid: string;
-    }
-}
-
-declare namespace bluesky.core.model.welcomePack {
-    interface IProductUrlDto {
-        Url: string;
-        Type: string;
-    }
-}
-
-declare namespace bluesky.core.model.welcomePack {
-    interface IProductDto {
-        TechnicalName: string;
-        TechnicalType: string;
-        ModeratorPin: string;
-        ParticipantPin: string;
-        ConferenceRef: string;
-        Login: string;
-        Password: string;
-        Urls: IProductUrlDto[];
-        LocalDdis: ICountryDdisDto;
-        OtherDdis: ICountryDdisDto[];
-    }
-}
-
-declare namespace bluesky.core.model.welcomePack {
-    interface IUserRecipientDto {
-        Country: string;
-        EmailAddress: string;
-        Language: string;
-        TimeZone: string;
-    }
-}
-
-declare namespace bluesky.core.model.welcomePack {
-    interface IWelcomePackDefinitionDto extends IWelcomePackDto {
-        WelcomePackCount: number;
-        SubmittedDate: Date;
-        Source: string;
-        SubscriptionMemberShipId: string;
-        SubmittedBy: string;
-        IsTrial: boolean;
-        TimeZone: string;
-        UserLanguage: string;
-        UserLocalSalutation: string;
-        CarbonCopyRecipients: string[];
-    }
-}
-
-declare namespace bluesky.core.model.welcomePack {
-    interface IWelcomePackHeaderDto {
-        Id: string;
-        TemplateId: string;
-        TemplateName: string;
-        EmailAddress: string;
-        State: string;
-        Queue: string;
-        ReceivedDate: Date;
-        SendingPriority: string;
-        AdminEmailAddress: string;
-        IsAdminRecipient: boolean;
-        ContactId: string;
-        Data: {
-            [key: string]: string;
-        };
-        LogoName: string;
-        OrderId: string;
-    }
-}
-
-declare namespace bluesky.core.command.welcomePack {
-    interface ISearchWelcomePackCommand extends IBasePaginatedSearchCommand {
-        UserId?: string;
-        Email?: string;
-        LogoName?: string;
-        BillingAccountName?: string;
-        Status?: string;
-        Queue?: string;
-        OrderId?: number;
-        CreationDateFrom?: string;
-        CreationDateTo?: string;
-        SendingDate?: string;
-    }
-}
-
-declare namespace bluesky.core.model.welcomePack {
-    enum WelcomePackStateEnum {
-        Submitted = 0,
-        Bounced = 1,
-        Success = 2,
-        Error = 3,
-        Empty = 4,
-        AwaitingAdmin = 5,
-        Unsubscribed = 6,
-        GlobalUnsubscribed = 7,
-        Excluded = 8,
-        Unknown = 9,
-    }
-    enum WelcomePackQueueEnum {
-        Submitted = 0,
-        Rejected = 1,
-        Pending = 2,
-        Read = 3,
-        Waiting = 4,
-        Imported = 5,
-        Complete = 6,
-        Empty = 7,
-        Unknown = 8,
-        Excluded = 9,
-    }
-    interface IWelcomePackDto {
-        Id: string;
-        TemplateId: string;
-        OrderManagementId: string;
-        TemplateName: string;
-        EmailAddress: string;
-        State: string;
-        Queue: string;
-        Message: string;
-        ReceivedDate: Date;
-        SendingDate: Date;
-        AdminEmailAddress: string;
-        IsAdminRecipient: boolean;
-        ContactId: string;
-        UserCountry: string;
-        Subsidiary: string;
-        XmlString: string;
-        FirstName: string;
-        LastName: string;
-        SendingPriority: string;
-        SelfCareRole: string;
-        BillingAccountName: string;
-        LogoName: string;
-        UserId: string;
-        Login: string;
-        OrderId: string;
-        CustomerServicePhone: string;
-        CustomerServiceEmail: string;
-        Hierarchy: IHierarchyDto;
-        UserRecipient: IUserRecipientDto;
-        Products: IProductDto[];
-        OfferName: string;
-        RecipientType: string;
     }
 }
 
@@ -2870,6 +2870,20 @@ declare namespace bluesky.core.model.customerOrder {
 }
 
 declare namespace bluesky.core.model.customerOrder {
+    /** Dto of a Merge Logo information. Contains information about merge logo action. */
+    interface IMergeLogoInformationDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Identifier of the source logo to merge. */
+        SourceLogoUid: string;
+        /** Identifier of the destination logo, under which all source logo hierarchy must be moved. */
+        DestinationLogoUid: string;
+        /** Indicates if the DDIs configured for the source logo must be merged in the target logo. */
+        MergeConfiguredDDIs: boolean;
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
     /** Access credential for generic accesses */
     interface IAccessCredentialsDto {
         /** Login for generic accesse */
@@ -2974,20 +2988,6 @@ declare namespace bluesky.core.model.customerOrder {
         Action: string;
         /** Gets or sets the Participant type. A participant can have a Moderator or Participant type. */
         ParticipantType: string;
-    }
-}
-
-declare namespace bluesky.core.model.customerOrder {
-    /** Dto of a Merge Logo information. Contains information about merge logo action. */
-    interface IMergeLogoInformationDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Identifier of the source logo to merge. */
-        SourceLogoUid: string;
-        /** Identifier of the destination logo, under which all source logo hierarchy must be moved. */
-        DestinationLogoUid: string;
-        /** Indicates if the DDIs configured for the source logo must be merged in the target logo. */
-        MergeConfiguredDDIs: boolean;
     }
 }
 
@@ -3164,30 +3164,6 @@ declare namespace bluesky.core.model.customerOrder {
     }
 }
 
-declare namespace bluesky.core.model.salesforce {
-    /**
-     * Dto of a sales force account.
-     * TODO MGA: should be paginated in the long term (see SFDC DAL)
-     */
-    interface ISalesForceAccountHeaderDto extends IResourceBase {
-        Id: string;
-        Name: string;
-        Segmentation: string;
-        CountryName: IMetraNetEnumerationDto;
-        SegmentType: string;
-        CustomerSize: IMetraNetEnumerationDto;
-    }
-}
-
-declare namespace bluesky.core.command.salesforce {
-    /**
-     * Search parameter used to retrieve a list of sales force account.
-     */
-    interface ISearchSalesForceAccountCommand extends IBasePaginatedSearchCommand {
-        Name: string;
-    }
-}
-
 declare namespace bluesky.core.model.customerOrder {
     /** Movable user. */
     interface IMovableUserDto extends IResourceBase {
@@ -3263,5 +3239,68 @@ declare namespace bluesky.core.model.customerOrder {
         UserOrderItems: IUserOrderItemHeaderDto[];
         /** List of movable subscriptions */
         MovableSubscriptions: IMovableSubscriptionDto[];
+    }
+}
+
+declare namespace bluesky.core.command.salesforce {
+    import SegmentTypeEnum = bluesky.core.model.salesforce.SegmentTypeEnum;
+    /**
+     * Command to change the segment of an sfdc account.
+     */
+    interface IChangeAccountSegmentTypeCommand {
+        Id: string;
+        SegmentType: SegmentTypeEnum;
+    }
+}
+
+declare namespace bluesky.core.model.salesforce {
+    /**
+     * Dto of a sales force account header.
+     * TODO MGA: should be paginated in the long term (see SFDC DAL)
+     * TODO MGA: should be ligther vs. sf account dto
+     */
+    interface ISalesForceAccountHeaderDto extends IResourceBase {
+        Id: string;
+        Name: string;
+        Segmentation: string;
+        /** TODO MGA: ask CAPI to update to use Enum  */
+        SegmentType: string;
+        CountryName: IMetraNetEnumerationDto;
+        CustomerSize: IMetraNetEnumerationDto;
+    }
+}
+
+declare namespace bluesky.core.model.salesforce {
+    /**
+     * Dto of a sales force account.
+     * TODO MGA: should be paginated in the long term (see SFDC DAL)
+     */
+    interface ISalesForceAccountDto extends IResourceBase {
+        Id: string;
+        Name: string;
+        CountryName: IMetraNetEnumerationDto;
+        Segmentation: string;
+        /** TODO MGA: ask CAPI to update to use Enum  */
+        SegmentType: string;
+        CustomerSize: IMetraNetEnumerationDto;
+    }
+}
+
+declare namespace bluesky.core.command.salesforce {
+    /**
+     * Search parameter used to retrieve a list of sales force account.
+     */
+    interface ISearchSalesForceAccountCommand extends IBasePaginatedSearchCommand {
+        Name: string;
+    }
+}
+
+declare namespace bluesky.core.model.salesforce {
+    /**
+     * List fo supported segment types for a SalesForce Account.
+     */
+    enum SegmentTypeEnum {
+        Premium = 0,
+        Online = 1,
     }
 }
