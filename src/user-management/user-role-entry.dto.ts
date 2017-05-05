@@ -3,5 +3,6 @@
 		Name: string;
 		Role: string;
 		Silo: string;
+		IsBlueSkyRole: boolean;
 	}
 }
