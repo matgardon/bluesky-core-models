@@ -27,5 +27,7 @@
 		OfferName: string;
 		/** Gets or sets the number of processed nodes */
 		ProcessedNodesCount: string;
+		/** Gets or sets Calling system of the order */
+		CallingSystem: string;
 	}
 }
