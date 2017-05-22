@@ -41,102 +41,6 @@ declare namespace bluesky.core.model.userCase {
     }
 }
 
-declare namespace bluesky.core.model {
-    /** Base information for a file upload. */
-    interface IFileUploadBaseDto {
-        /** File encoded in base 64. */
-        FileBase64Url: string;
-        /** Name of the file. */
-        FileName: string;
-        /** Content Type. */
-        ContentType: string;
-    }
-}
-
-declare namespace bluesky.core.model {
-    /** Json wrapper for boolean responses.TODO MGA: it must be made clear to external consumers how to read the value of the boolean response. */
-    interface IJsonBooleanResponseDto {
-        /** the status of the flag. */
-        BooleanResponse: boolean;
-        ErrorMessageList: string[];
-    }
-}
-
-declare namespace bluesky.core.model {
-    /** Dto for MetraNet Enumerations */
-    interface IMetraNetEnumerationDto {
-        Key: string;
-        Value: string;
-        DisplayValue: string;
-        ExportCode: string;
-        MetraNetNamespace: string;
-        NaturalEnglish: string;
-    }
-}
-
-declare namespace bluesky.core.model {
-    /** Base DTO class to give the Id of an entity existing in the OrderManagement Database. */
-    interface IOrderManagementEntityDto extends IResourceBase {
-        /** Entity Id of the item existing in OM DB. */
-        OrderManagementEntityId?: number;
-    }
-}
-
-declare namespace bluesky.core.model {
-    /** DTO for OM Enumerations. */
-    interface IOrderManagementEnumerationDto {
-        Key: number;
-        Value: string;
-        DisplayValue: string;
-    }
-}
-
-declare namespace bluesky.core.model {
-    interface IPagedResourceList<T extends IResourceBase> extends IResourceBase {
-        /** La liste interne concrète des ressources de type T de cette liste non paginée. */
-        Items: T[];
-        FirstItemOnPage: number;
-        HasNextPage: boolean;
-        HasPreviousPage: boolean;
-        IsFirstPage: boolean;
-        IsLastPage: boolean;
-        LastItemOnPage: number;
-        PageCount: number;
-        PageNumber: number;
-        PageSize: number;
-        TotalItemCount: number;
-    }
-}
-
-declare namespace bluesky.core.command {
-    /** Shared properties for paginated search commands. */
-    interface IBasePaginatedSearchCommand {
-        /** Start index for the paginated results (index of the nth item as the starting one to retrieve from). */
-        Start?: number;
-        /** Page size (number of items) to retrieve starting from the Start index. */
-        Limit?: number;
-    }
-}
-
-declare namespace bluesky.core.model {
-    /** Base class for all resources.TODO MGA : Move this class in a base API project */
-    interface IResourceBase {
-        /** Links to related resources. */
-        Links?: {
-            [key: string]: string;
-        };
-    }
-}
-
-declare namespace bluesky.core.model {
-    interface IResourceList<T extends IResourceBase> extends IResourceBase {
-        /** La liste interne concrète des ressources de type T de cette liste non paginée. */
-        Items: T[];
-        /** Le nombre d'éléments retournés dans cette liste non paginée. */
-        TotalCount: number;
-    }
-}
-
 declare namespace bluesky.core.model.clientConfig {
     interface IAjaxClientEndpointConfigurationDto {
         EndpointBaseURL: string;
@@ -371,6 +275,168 @@ declare namespace bluesky.core.model.customerOrder {
     }
 }
 
+declare namespace bluesky.core.model.location {
+    interface IBillSoftLocationDto extends IResourceBase {
+        PCode: string;
+        IsPrimaryLocation: boolean;
+        County: string;
+        City: string;
+        BeginningZipCode: string;
+        EndingZipCode: string;
+        CountryIsoCode: string;
+        CountrySubdivision: ICountrySubdivisionDto;
+    }
+}
+
+declare namespace bluesky.core.model.location {
+    interface ICountrySubdivisionDto extends IResourceBase {
+        CountryCode: string;
+        CountrySubdivisionCode: string;
+        CountrySubdivisionName: string;
+    }
+}
+
+declare namespace bluesky.core.model.location {
+    interface ICountryDto extends IResourceBase {
+        Name?: string;
+        IsoCode?: string;
+        IcoCode?: string;
+        GeoRegion?: string;
+    }
+}
+
+declare namespace bluesky.core.command.location {
+    /** Search parameter used to retrieve a list of location. */
+    interface ISearchLocationCommand extends IBasePaginatedSearchCommand {
+        /** Gets or sets the zip or postal code. */
+        ZipCode?: string;
+        /** Gets or sets the city or town. */
+        City?: string;
+        /** Boolean indicating if the search on city should be an exact match or a contains() */
+        IsExactCitySearch?: boolean;
+        /** Gets or sets the the country code. */
+        CountryCode?: string;
+        /** Gets or sets the country subdivision code (state or province). */
+        CountrySubdivisionCode?: string;
+        /** Gets or sets the county. */
+        County?: string;
+        /** Boolean indicating if the search on county should be an exact match or a contains() */
+        IsExactCountySearch?: boolean;
+    }
+}
+
+declare namespace bluesky.core.command.location {
+    /** Search parameter used to retrieve a list of state (country subdivisions). */
+    interface ISearchStateCommand {
+        /** Country ISO code. */
+        CountryCode: string;
+    }
+}
+
+declare namespace bluesky.core.model.location {
+    interface IStateDto extends IResourceBase {
+        Name?: string;
+        Code?: string;
+        PCode?: number;
+    }
+}
+
+declare namespace bluesky.core.model {
+    /** Base information for a file upload. */
+    interface IFileUploadBaseDto {
+        /** File encoded in base 64. */
+        FileBase64Url: string;
+        /** Name of the file. */
+        FileName: string;
+        /** Content Type. */
+        ContentType: string;
+    }
+}
+
+declare namespace bluesky.core.model {
+    /** Json wrapper for boolean responses.TODO MGA: it must be made clear to external consumers how to read the value of the boolean response. */
+    interface IJsonBooleanResponseDto {
+        /** the status of the flag. */
+        BooleanResponse: boolean;
+        ErrorMessageList: string[];
+    }
+}
+
+declare namespace bluesky.core.model {
+    /** Dto for MetraNet Enumerations */
+    interface IMetraNetEnumerationDto {
+        Key: string;
+        Value: string;
+        DisplayValue: string;
+        ExportCode: string;
+        MetraNetNamespace: string;
+        NaturalEnglish: string;
+    }
+}
+
+declare namespace bluesky.core.model {
+    /** Base DTO class to give the Id of an entity existing in the OrderManagement Database. */
+    interface IOrderManagementEntityDto extends IResourceBase {
+        /** Entity Id of the item existing in OM DB. */
+        OrderManagementEntityId?: number;
+    }
+}
+
+declare namespace bluesky.core.model {
+    /** DTO for OM Enumerations. */
+    interface IOrderManagementEnumerationDto {
+        Key: number;
+        Value: string;
+        DisplayValue: string;
+    }
+}
+
+declare namespace bluesky.core.model {
+    interface IPagedResourceList<T extends IResourceBase> extends IResourceBase {
+        /** La liste interne concrète des ressources de type T de cette liste non paginée. */
+        Items: T[];
+        FirstItemOnPage: number;
+        HasNextPage: boolean;
+        HasPreviousPage: boolean;
+        IsFirstPage: boolean;
+        IsLastPage: boolean;
+        LastItemOnPage: number;
+        PageCount: number;
+        PageNumber: number;
+        PageSize: number;
+        TotalItemCount: number;
+    }
+}
+
+declare namespace bluesky.core.command {
+    /** Shared properties for paginated search commands. */
+    interface IBasePaginatedSearchCommand {
+        /** Start index for the paginated results (index of the nth item as the starting one to retrieve from). */
+        Start?: number;
+        /** Page size (number of items) to retrieve starting from the Start index. */
+        Limit?: number;
+    }
+}
+
+declare namespace bluesky.core.model {
+    /** Base class for all resources.TODO MGA : Move this class in a base API project */
+    interface IResourceBase {
+        /** Links to related resources. */
+        Links?: {
+            [key: string]: string;
+        };
+    }
+}
+
+declare namespace bluesky.core.model {
+    interface IResourceList<T extends IResourceBase> extends IResourceBase {
+        /** La liste interne concrète des ressources de type T de cette liste non paginée. */
+        Items: T[];
+        /** Le nombre d'éléments retournés dans cette liste non paginée. */
+        TotalCount: number;
+    }
+}
+
 declare namespace bluesky.core.command.emailTemplate {
     interface IEmailTemplateBrandingData {
         Value: string;
@@ -555,100 +621,6 @@ declare namespace bluesky.externals.smartTable {
             /** in ms. default: 100ms. */
             delay?: number;
         };
-    }
-}
-
-declare namespace bluesky.core.model.location {
-    interface IBillSoftLocationDto extends IResourceBase {
-        PCode: string;
-        IsPrimaryLocation: boolean;
-        County: string;
-        City: string;
-        BeginningZipCode: string;
-        EndingZipCode: string;
-        CountryIsoCode: string;
-        CountrySubdivision: ICountrySubdivisionDto;
-    }
-}
-
-declare namespace bluesky.core.model.location {
-    interface ICountrySubdivisionDto extends IResourceBase {
-        CountryCode: string;
-        CountrySubdivisionCode: string;
-        CountrySubdivisionName: string;
-    }
-}
-
-declare namespace bluesky.core.model.location {
-    interface ICountryDto extends IResourceBase {
-        Name?: string;
-        IsoCode?: string;
-        IcoCode?: string;
-        GeoRegion?: string;
-    }
-}
-
-declare namespace bluesky.core.command.location {
-    /** Search parameter used to retrieve a list of location. */
-    interface ISearchLocationCommand extends IBasePaginatedSearchCommand {
-        /** Gets or sets the zip or postal code. */
-        ZipCode?: string;
-        /** Gets or sets the city or town. */
-        City?: string;
-        /** Boolean indicating if the search on city should be an exact match or a contains() */
-        IsExactCitySearch?: boolean;
-        /** Gets or sets the the country code. */
-        CountryCode?: string;
-        /** Gets or sets the country subdivision code (state or province). */
-        CountrySubdivisionCode?: string;
-        /** Gets or sets the county. */
-        County?: string;
-        /** Boolean indicating if the search on county should be an exact match or a contains() */
-        IsExactCountySearch?: boolean;
-    }
-}
-
-declare namespace bluesky.core.command.location {
-    /** Search parameter used to retrieve a list of state (country subdivisions). */
-    interface ISearchStateCommand {
-        /** Country ISO code. */
-        CountryCode: string;
-    }
-}
-
-declare namespace bluesky.core.model.location {
-    interface IStateDto extends IResourceBase {
-        Name?: string;
-        Code?: string;
-        PCode?: number;
-    }
-}
-
-declare namespace bluesky.core.model.offer {
-    /**
-     * Product offering.
-     */
-    interface IProductOfferingDto {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets the Offer type. */
-        OfferType: string;
-        /** Gets or sets the name. */
-        Name: string;
-        /** Gets or sets the display name. */
-        DisplayName: string;
-        /** Gets or sets the description. */
-        Description: string;
-        /** Gets or sets the availability start date. */
-        AvailabilityStartDate: Date;
-        /** Gets or sets the availability end date. */
-        AvailabilityEndDate: Date;
-        /** Gets or sets the effective start date. */
-        EffectiveStartDate: Date;
-        /** Gets or sets the effective end date. */
-        EffectiveEndDate: Date;
-        /**Gets or sets the AggregateType enumeration. */
-        AggregateType: IMetraNetEnumerationDto;
     }
 }
 
@@ -1379,84 +1351,6 @@ declare namespace bluesky.core.model.systemInfo {
     }
 }
 
-declare namespace bluesky.core.model.taxManagement {
-    interface INoramTaxExemptionDto extends IResourceBase {
-        Level: TaxExemptTypeEnum;
-        Location: number;
-        CertificateId: string;
-        StartDate: string;
-        ExpirationDate: string;
-        TaxExemptionTypes: Array<ITaxExemptionTypeDto>;
-        TaxAction: TaxActionEnum;
-        IsExpired: boolean;
-    }
-}
-
-declare namespace bluesky.core.model.taxManagement {
-    /** Informations about a PCode. */
-    interface IPCodeDto extends IResourceBase {
-        /** Gets or sets the code. */
-        Code: number;
-        /** Indicates if the tax pcode is primary for the given location. */
-        IsDefault: boolean;
-    }
-}
-
-declare namespace bluesky.core.model.taxManagement {
-    /** Information about the result of search tax pcodes. */
-    interface ISearchTaxPCodeResultDto extends IResourceBase {
-        /** List of Tax-PCodes available for the search input. */
-        AvailablePCodes: IPCodeDto[];
-        /** Indicates if the response is based on a partial search. */
-        IsResultBasedOnPartialSearch: boolean;
-        /** Message indicating the rule used during a partial search. */
-        PartialSearchMessage: string;
-    }
-}
-
-declare namespace bluesky.core.command.taxManagement {
-    /** Search parameter used to retrieve a list of PCode. */
-    interface ISearchPCodeCommand {
-        /** Gets or sets the zip or postal code. */
-        ZipCode?: string;
-        /** Gets or sets the city or town. */
-        City?: string;
-        /** Gets or sets the the country code.TODO MGA: the searchPCodeCommandDto should accept CountryCode with 2 or 3 letters (ISO alpha2 or alpha3). */
-        CountryCode?: string;
-        /** Gets or sets the country subdivision code (state or province). */
-        CountrySubdivisionCode?: string;
-        /** Gets or sets the county. */
-        County?: string;
-        /** Indicates if search using partial input parameters is allowed. */
-        IsPartialSearchAllowed?: boolean;
-    }
-}
-
-declare namespace bluesky.core.model.taxManagement {
-    enum TaxActionEnum {
-        Add = 0,
-        Modify = 1,
-        Cease = 2,
-    }
-}
-
-declare namespace bluesky.core.model.taxManagement {
-    /** Model for a noram tax exemption type. */
-    interface ITaxExemptionTypeDto extends IResourceBase {
-        Code: number;
-        Name: string;
-        MetranetTaxExemptionId?: number;
-        IsSelected: boolean;
-    }
-}
-
-declare namespace bluesky.core.model.taxManagement {
-    enum TaxExemptTypeEnum {
-        Federal = 0,
-        State = 1,
-    }
-}
-
 declare namespace bluesky.core.model.technicalData {
     /** AccessAccount characteristics */
     interface IAccessCharacteristicDto extends IOrderManagementEntityDto {
@@ -1941,6 +1835,84 @@ declare namespace bluesky.core.model.technicalData {
     }
 }
 
+declare namespace bluesky.core.model.taxManagement {
+    interface INoramTaxExemptionDto extends IResourceBase {
+        Level: TaxExemptTypeEnum;
+        Location: number;
+        CertificateId: string;
+        StartDate: string;
+        ExpirationDate: string;
+        TaxExemptionTypes: Array<ITaxExemptionTypeDto>;
+        TaxAction: TaxActionEnum;
+        IsExpired: boolean;
+    }
+}
+
+declare namespace bluesky.core.model.taxManagement {
+    /** Informations about a PCode. */
+    interface IPCodeDto extends IResourceBase {
+        /** Gets or sets the code. */
+        Code: number;
+        /** Indicates if the tax pcode is primary for the given location. */
+        IsDefault: boolean;
+    }
+}
+
+declare namespace bluesky.core.model.taxManagement {
+    /** Information about the result of search tax pcodes. */
+    interface ISearchTaxPCodeResultDto extends IResourceBase {
+        /** List of Tax-PCodes available for the search input. */
+        AvailablePCodes: IPCodeDto[];
+        /** Indicates if the response is based on a partial search. */
+        IsResultBasedOnPartialSearch: boolean;
+        /** Message indicating the rule used during a partial search. */
+        PartialSearchMessage: string;
+    }
+}
+
+declare namespace bluesky.core.command.taxManagement {
+    /** Search parameter used to retrieve a list of PCode. */
+    interface ISearchPCodeCommand {
+        /** Gets or sets the zip or postal code. */
+        ZipCode?: string;
+        /** Gets or sets the city or town. */
+        City?: string;
+        /** Gets or sets the the country code.TODO MGA: the searchPCodeCommandDto should accept CountryCode with 2 or 3 letters (ISO alpha2 or alpha3). */
+        CountryCode?: string;
+        /** Gets or sets the country subdivision code (state or province). */
+        CountrySubdivisionCode?: string;
+        /** Gets or sets the county. */
+        County?: string;
+        /** Indicates if search using partial input parameters is allowed. */
+        IsPartialSearchAllowed?: boolean;
+    }
+}
+
+declare namespace bluesky.core.model.taxManagement {
+    enum TaxActionEnum {
+        Add = 0,
+        Modify = 1,
+        Cease = 2,
+    }
+}
+
+declare namespace bluesky.core.model.taxManagement {
+    /** Model for a noram tax exemption type. */
+    interface ITaxExemptionTypeDto extends IResourceBase {
+        Code: number;
+        Name: string;
+        MetranetTaxExemptionId?: number;
+        IsSelected: boolean;
+    }
+}
+
+declare namespace bluesky.core.model.taxManagement {
+    enum TaxExemptTypeEnum {
+        Federal = 0,
+        State = 1,
+    }
+}
+
 declare namespace bluesky.core.model.userManagement {
     /** Dto of an application work items summary.The summary contains for a specific application a summarized view of the work items.Each work item contains the number of the elements to monitor for a specific type of action to perform. */
     interface IApplicationWorkItemsSummaryDto extends IResourceBase {
@@ -2226,6 +2198,34 @@ declare namespace bluesky.core.model.welcomePack {
         Products: IProductDto[];
         OfferName: string;
         RecipientType: string;
+    }
+}
+
+declare namespace bluesky.core.model.offer {
+    /**
+     * Product offering.
+     */
+    interface IProductOfferingDto {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets the Offer type. */
+        OfferType: string;
+        /** Gets or sets the name. */
+        Name: string;
+        /** Gets or sets the display name. */
+        DisplayName: string;
+        /** Gets or sets the description. */
+        Description: string;
+        /** Gets or sets the availability start date. */
+        AvailabilityStartDate: Date;
+        /** Gets or sets the availability end date. */
+        AvailabilityEndDate: Date;
+        /** Gets or sets the effective start date. */
+        EffectiveStartDate: Date;
+        /** Gets or sets the effective end date. */
+        EffectiveEndDate: Date;
+        /**Gets or sets the AggregateType enumeration. */
+        AggregateType: IMetraNetEnumerationDto;
     }
 }
 
