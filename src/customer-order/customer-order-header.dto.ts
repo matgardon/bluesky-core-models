@@ -21,5 +21,7 @@
 		ExecutionDate: Date;
 		/** Gets or sets Name of the Order Manager responsible for the fulfillment of thecustomer order. It is left empty by default, but it can be assigned throughOrder Tracking UI. */
 		TechnicalCoordinator: string;
+		/** Gets or sets Calling system of the order */
+		CallingSystem: string;
 	}
 }
