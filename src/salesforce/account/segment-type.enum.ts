@@ -4,6 +4,6 @@ namespace bluesky.core.model.salesforce {
      */
     export enum SegmentTypeEnum {
         Premium,
-        Online
+        OnLine
     }
 }
