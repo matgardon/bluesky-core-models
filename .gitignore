@@ -5,6 +5,7 @@ npm-debug.log*
 
 #VS project files
 .vs/
+.vscode/
 *.njsproj
 *.csproj
 *.sln

@@ -5,6 +5,7 @@ namespace bluesky.core.command.salesforce {
      */
     export interface IChangeAccountSegmentTypeCommand {
         Id: string;
+        //TODO MGA: capi is handling strings at the moment, TOFIX in capi (should be enum)
         SegmentType: SegmentTypeEnum;
     }
 }
