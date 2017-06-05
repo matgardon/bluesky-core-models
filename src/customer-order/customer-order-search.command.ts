@@ -8,6 +8,7 @@
         CallingSystem?: string;
         SubsidiaryName: string;
         OrderTypeFilter?: string;
-        SubmitDate?: string;
+        SubmitDateFrom?: string;
+        SubmitDateTo?: string;
     }
 }
