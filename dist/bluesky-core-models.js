@@ -8,26 +8,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var bluesky;
 (function (bluesky) {
     var core;
@@ -130,55 +110,6 @@ var bluesky;
 
 
 
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var model;
-        (function (model) {
-            var quote;
-            (function (quote) {
-                (function (QuoteStatusEnum) {
-                    QuoteStatusEnum[QuoteStatusEnum["Pending"] = 0] = "Pending";
-                    QuoteStatusEnum[QuoteStatusEnum["Submitted"] = 1] = "Submitted";
-                    QuoteStatusEnum[QuoteStatusEnum["SignedOff"] = 2] = "SignedOff";
-                    QuoteStatusEnum[QuoteStatusEnum["Allocated"] = 3] = "Allocated";
-                    QuoteStatusEnum[QuoteStatusEnum["Rejected"] = 4] = "Rejected";
-                    QuoteStatusEnum[QuoteStatusEnum["Canceled"] = 5] = "Canceled";
-                    QuoteStatusEnum[QuoteStatusEnum["Closed"] = 6] = "Closed";
-                    QuoteStatusEnum[QuoteStatusEnum["Initialized"] = 7] = "Initialized";
-                    QuoteStatusEnum[QuoteStatusEnum["Discarded"] = 8] = "Discarded";
-                    QuoteStatusEnum[QuoteStatusEnum["Available"] = 9] = "Available";
-                    QuoteStatusEnum[QuoteStatusEnum["Approval_In_Progress"] = 10] = "Approval_In_Progress";
-                    QuoteStatusEnum[QuoteStatusEnum["Approved"] = 11] = "Approved";
-                    QuoteStatusEnum[QuoteStatusEnum["Disapproved"] = 12] = "Disapproved";
-                })(quote.QuoteStatusEnum || (quote.QuoteStatusEnum = {}));
-                var QuoteStatusEnum = quote.QuoteStatusEnum;
-            })(quote = model.quote || (model.quote = {}));
-        })(model = core.model || (core.model = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -260,24 +191,6 @@ var bluesky;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var bluesky;
 (function (bluesky) {
     var core;
@@ -298,6 +211,20 @@ var bluesky;
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -367,6 +294,79 @@ var bluesky;
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var model;
+        (function (model) {
+            var quote;
+            (function (quote) {
+                (function (QuoteStatusEnum) {
+                    QuoteStatusEnum[QuoteStatusEnum["Pending"] = 0] = "Pending";
+                    QuoteStatusEnum[QuoteStatusEnum["Submitted"] = 1] = "Submitted";
+                    QuoteStatusEnum[QuoteStatusEnum["SignedOff"] = 2] = "SignedOff";
+                    QuoteStatusEnum[QuoteStatusEnum["Allocated"] = 3] = "Allocated";
+                    QuoteStatusEnum[QuoteStatusEnum["Rejected"] = 4] = "Rejected";
+                    QuoteStatusEnum[QuoteStatusEnum["Canceled"] = 5] = "Canceled";
+                    QuoteStatusEnum[QuoteStatusEnum["Closed"] = 6] = "Closed";
+                    QuoteStatusEnum[QuoteStatusEnum["Initialized"] = 7] = "Initialized";
+                    QuoteStatusEnum[QuoteStatusEnum["Discarded"] = 8] = "Discarded";
+                    QuoteStatusEnum[QuoteStatusEnum["Available"] = 9] = "Available";
+                    QuoteStatusEnum[QuoteStatusEnum["Approval_In_Progress"] = 10] = "Approval_In_Progress";
+                    QuoteStatusEnum[QuoteStatusEnum["Approved"] = 11] = "Approved";
+                    QuoteStatusEnum[QuoteStatusEnum["Disapproved"] = 12] = "Disapproved";
+                })(quote.QuoteStatusEnum || (quote.QuoteStatusEnum = {}));
+                var QuoteStatusEnum = quote.QuoteStatusEnum;
+            })(quote = model.quote || (model.quote = {}));
+        })(model = core.model || (core.model = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

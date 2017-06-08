@@ -18,7 +18,7 @@ var tsSrc = 'src/**/*.ts',
 
 gulp.task('clean', function () {
     // delete the files
-    return del(['dist/**']);
+    return del.sync(['dist/**']);
 });
 
 //TODO MGA: fix ts-lint task

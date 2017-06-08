@@ -8,7 +8,6 @@
         LogoName?: string;
         CallingSystem?: string;
         SubsidiaryFilter?: string;
-        OrderTypeFilter?: string;
         SubmitDateFrom?: string;
         SubmitDateTo?: string;
     }
