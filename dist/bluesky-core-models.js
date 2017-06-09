@@ -8,6 +8,26 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var bluesky;
 (function (bluesky) {
     var core;
@@ -47,38 +67,6 @@ var bluesky;
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -217,6 +205,18 @@ var bluesky;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 var bluesky;
 (function (bluesky) {
     var core;
@@ -251,6 +251,75 @@ var bluesky;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var model;
+        (function (model) {
+            var welcomePack;
+            (function (welcomePack) {
+                (function (WelcomePackStateEnum) {
+                    WelcomePackStateEnum[WelcomePackStateEnum["Submitted"] = 0] = "Submitted";
+                    WelcomePackStateEnum[WelcomePackStateEnum["Bounced"] = 1] = "Bounced";
+                    WelcomePackStateEnum[WelcomePackStateEnum["Success"] = 2] = "Success";
+                    WelcomePackStateEnum[WelcomePackStateEnum["Error"] = 3] = "Error";
+                    WelcomePackStateEnum[WelcomePackStateEnum["Empty"] = 4] = "Empty";
+                    WelcomePackStateEnum[WelcomePackStateEnum["AwaitingAdmin"] = 5] = "AwaitingAdmin";
+                    WelcomePackStateEnum[WelcomePackStateEnum["Unsubscribed"] = 6] = "Unsubscribed";
+                    WelcomePackStateEnum[WelcomePackStateEnum["GlobalUnsubscribed"] = 7] = "GlobalUnsubscribed";
+                    WelcomePackStateEnum[WelcomePackStateEnum["Excluded"] = 8] = "Excluded";
+                    WelcomePackStateEnum[WelcomePackStateEnum["Unknown"] = 9] = "Unknown";
+                })(welcomePack.WelcomePackStateEnum || (welcomePack.WelcomePackStateEnum = {}));
+                var WelcomePackStateEnum = welcomePack.WelcomePackStateEnum;
+                (function (WelcomePackQueueEnum) {
+                    WelcomePackQueueEnum[WelcomePackQueueEnum["Submitted"] = 0] = "Submitted";
+                    WelcomePackQueueEnum[WelcomePackQueueEnum["Rejected"] = 1] = "Rejected";
+                    WelcomePackQueueEnum[WelcomePackQueueEnum["Pending"] = 2] = "Pending";
+                    WelcomePackQueueEnum[WelcomePackQueueEnum["Read"] = 3] = "Read";
+                    WelcomePackQueueEnum[WelcomePackQueueEnum["Waiting"] = 4] = "Waiting";
+                    WelcomePackQueueEnum[WelcomePackQueueEnum["Imported"] = 5] = "Imported";
+                    WelcomePackQueueEnum[WelcomePackQueueEnum["Complete"] = 6] = "Complete";
+                    WelcomePackQueueEnum[WelcomePackQueueEnum["Empty"] = 7] = "Empty";
+                    WelcomePackQueueEnum[WelcomePackQueueEnum["Unknown"] = 8] = "Unknown";
+                    WelcomePackQueueEnum[WelcomePackQueueEnum["Excluded"] = 9] = "Excluded";
+                })(welcomePack.WelcomePackQueueEnum || (welcomePack.WelcomePackQueueEnum = {}));
+                var WelcomePackQueueEnum = welcomePack.WelcomePackQueueEnum;
+            })(welcomePack = model.welcomePack || (model.welcomePack = {}));
+        })(model = core.model || (core.model = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
 
 
 
@@ -329,41 +398,49 @@ var bluesky;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var bluesky;
 (function (bluesky) {
     var core;
     (function (core) {
         var model;
         (function (model) {
-            var welcomePack;
-            (function (welcomePack) {
-                (function (WelcomePackStateEnum) {
-                    WelcomePackStateEnum[WelcomePackStateEnum["Submitted"] = 0] = "Submitted";
-                    WelcomePackStateEnum[WelcomePackStateEnum["Bounced"] = 1] = "Bounced";
-                    WelcomePackStateEnum[WelcomePackStateEnum["Success"] = 2] = "Success";
-                    WelcomePackStateEnum[WelcomePackStateEnum["Error"] = 3] = "Error";
-                    WelcomePackStateEnum[WelcomePackStateEnum["Empty"] = 4] = "Empty";
-                    WelcomePackStateEnum[WelcomePackStateEnum["AwaitingAdmin"] = 5] = "AwaitingAdmin";
-                    WelcomePackStateEnum[WelcomePackStateEnum["Unsubscribed"] = 6] = "Unsubscribed";
-                    WelcomePackStateEnum[WelcomePackStateEnum["GlobalUnsubscribed"] = 7] = "GlobalUnsubscribed";
-                    WelcomePackStateEnum[WelcomePackStateEnum["Excluded"] = 8] = "Excluded";
-                    WelcomePackStateEnum[WelcomePackStateEnum["Unknown"] = 9] = "Unknown";
-                })(welcomePack.WelcomePackStateEnum || (welcomePack.WelcomePackStateEnum = {}));
-                var WelcomePackStateEnum = welcomePack.WelcomePackStateEnum;
-                (function (WelcomePackQueueEnum) {
-                    WelcomePackQueueEnum[WelcomePackQueueEnum["Submitted"] = 0] = "Submitted";
-                    WelcomePackQueueEnum[WelcomePackQueueEnum["Rejected"] = 1] = "Rejected";
-                    WelcomePackQueueEnum[WelcomePackQueueEnum["Pending"] = 2] = "Pending";
-                    WelcomePackQueueEnum[WelcomePackQueueEnum["Read"] = 3] = "Read";
-                    WelcomePackQueueEnum[WelcomePackQueueEnum["Waiting"] = 4] = "Waiting";
-                    WelcomePackQueueEnum[WelcomePackQueueEnum["Imported"] = 5] = "Imported";
-                    WelcomePackQueueEnum[WelcomePackQueueEnum["Complete"] = 6] = "Complete";
-                    WelcomePackQueueEnum[WelcomePackQueueEnum["Empty"] = 7] = "Empty";
-                    WelcomePackQueueEnum[WelcomePackQueueEnum["Unknown"] = 8] = "Unknown";
-                    WelcomePackQueueEnum[WelcomePackQueueEnum["Excluded"] = 9] = "Excluded";
-                })(welcomePack.WelcomePackQueueEnum || (welcomePack.WelcomePackQueueEnum = {}));
-                var WelcomePackQueueEnum = welcomePack.WelcomePackQueueEnum;
-            })(welcomePack = model.welcomePack || (model.welcomePack = {}));
+            var salesforce;
+            (function (salesforce) {
+                /**
+                 * List of supported segment types for a SalesForce Account.
+                 */
+                (function (SegmentTypeEnum) {
+                    SegmentTypeEnum[SegmentTypeEnum["Premium"] = 0] = "Premium";
+                    SegmentTypeEnum[SegmentTypeEnum["OnLine"] = 1] = "OnLine";
+                })(salesforce.SegmentTypeEnum || (salesforce.SegmentTypeEnum = {}));
+                var SegmentTypeEnum = salesforce.SegmentTypeEnum;
+            })(salesforce = model.salesforce || (model.salesforce = {}));
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
@@ -481,80 +558,3 @@ var bluesky;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var model;
-        (function (model) {
-            var salesforce;
-            (function (salesforce) {
-                /**
-                 * List of supported segment types for a SalesForce Account.
-                 */
-                (function (SegmentTypeEnum) {
-                    SegmentTypeEnum[SegmentTypeEnum["Premium"] = 0] = "Premium";
-                    SegmentTypeEnum[SegmentTypeEnum["OnLine"] = 1] = "OnLine";
-                })(salesforce.SegmentTypeEnum || (salesforce.SegmentTypeEnum = {}));
-                var SegmentTypeEnum = salesforce.SegmentTypeEnum;
-            })(salesforce = model.salesforce || (model.salesforce = {}));
-        })(model = core.model || (core.model = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
