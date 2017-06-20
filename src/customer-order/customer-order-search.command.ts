@@ -1,8 +1,14 @@
 ﻿namespace bluesky.core.command.customerOrder {
     export interface ICustomerOrderSearchCommand extends IBasePaginatedSearchCommand {
-        CustomerOrderStatusFilter: string;
-        UserAccountUid: string;
-        LogoId: string;
-        OrderId: string;
+        CustomerOrderStatusFilter?: string;
+        CustomerOrderTypeFilter?: string;
+        UserAccountUid?: string;
+        LogoUid?: string;
+        OrderId?: string;
+        LogoName?: string;
+        CallingSystem?: string;
+        SubsidiaryFilter?: string;
+        SubmitDateFrom?: string;
+        SubmitDateTo?: string;
     }
 }

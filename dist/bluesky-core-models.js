@@ -2,26 +2,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var bluesky;
 (function (bluesky) {
     var core;
@@ -65,6 +45,107 @@ var bluesky;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var model;
+        (function (model) {
+            var customerOrder;
+            (function (customerOrder) {
+                /**
+                 * Type of Arkadin.BlueSky.BSIC.Domain.OrderManagement.CustomerOrder
+                 */
+                (function (CustomerOrderTypeEnum) {
+                    // Initial an order
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["InitialOrder"] = 0] = "InitialOrder";
+                    // Initial a simple order
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["InitialSimplifiedOrder"] = 1] = "InitialSimplifiedOrder";
+                    // Create or update customer hierarchy
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["CreateUpdateCustomerHierarchy"] = 2] = "CreateUpdateCustomerHierarchy";
+                    // Update a Arkadin.BlueSky.BSIC.Domain.OrderManagement.Subscription
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["UpdateSubscription"] = 3] = "UpdateSubscription";
+                    // Change user's Arkadin.BlueSky.BSIC.Domain.OrderManagement.Subscription
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["ChangeUsersSubscription"] = 4] = "ChangeUsersSubscription";
+                    // Modify a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["ModifyUser"] = 5] = "ModifyUser";
+                    // Modify a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.Access
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["ModifyAccess"] = 6] = "ModifyAccess";
+                    // Disable a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["DisableUser"] = 7] = "DisableUser";
+                    // Reenable a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["ReenableUser"] = 8] = "ReenableUser";
+                    // Cease Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["CeaseUsers"] = 9] = "CeaseUsers";
+                    // Cease Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.Access
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["CeaseAccesses"] = 10] = "CeaseAccesses";
+                    // Terminate a Arkadin.BlueSky.BSIC.Domain.OrderManagement.Subscription
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["TerminateSubscription"] = 11] = "TerminateSubscription";
+                    // Cease a Node whose type is a class who inherite Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.Account
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["CeaseNode"] = 12] = "CeaseNode";
+                    // Schedule OTP conference
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["ScheduleOTPConference"] = 13] = "ScheduleOTPConference";
+                    // Update OTP conference
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["UpdateOTPConference"] = 14] = "UpdateOTPConference";
+                    // Cancel OTP conference
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["CancelOTPConference"] = 15] = "CancelOTPConference";
+                    // Add a Arkadin.BlueSky.BSIC.Domain.OrderManagement.Subscription
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["AddSubscription"] = 16] = "AddSubscription";
+                    // Add a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["AddUser"] = 17] = "AddUser";
+                    // Add a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.Access
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["AddAccess"] = 18] = "AddAccess";
+                    // Raise the miscellaneous charges
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["RaiseMiscellaneousCharges"] = 19] = "RaiseMiscellaneousCharges";
+                    // Move a set of users inside their hierarchy
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["MoveUsers"] = 20] = "MoveUsers";
+                    // Send welcome pack
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["SendWelcomePack"] = 21] = "SendWelcomePack";
+                    // Change offer
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["ChangeOffer"] = 22] = "ChangeOffer";
+                    // Move node
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["MoveNode"] = 23] = "MoveNode";
+                    // Apply Addendum
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["ApplyAddendum"] = 24] = "ApplyAddendum";
+                    // Merge Logo
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["MergeLogo"] = 25] = "MergeLogo";
+                })(customerOrder.CustomerOrderTypeEnum || (customerOrder.CustomerOrderTypeEnum = {}));
+                var CustomerOrderTypeEnum = customerOrder.CustomerOrderTypeEnum;
+            })(customerOrder = model.customerOrder || (model.customerOrder = {}));
+        })(model = core.model || (core.model = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
 
 
 
@@ -207,30 +288,6 @@ var bluesky;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var bluesky;
 (function (bluesky) {
     var core;
@@ -265,6 +322,53 @@ var bluesky;
 
 
 
+
+
+
+
+
+
+
+
+
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var model;
+        (function (model) {
+            var taxManagement;
+            (function (taxManagement) {
+                (function (TaxActionEnum) {
+                    TaxActionEnum[TaxActionEnum["Add"] = 0] = "Add";
+                    TaxActionEnum[TaxActionEnum["Modify"] = 1] = "Modify";
+                    TaxActionEnum[TaxActionEnum["Cease"] = 2] = "Cease";
+                })(taxManagement.TaxActionEnum || (taxManagement.TaxActionEnum = {}));
+                var TaxActionEnum = taxManagement.TaxActionEnum;
+            })(taxManagement = model.taxManagement || (model.taxManagement = {}));
+        })(model = core.model || (core.model = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
+
+
+
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var model;
+        (function (model) {
+            var taxManagement;
+            (function (taxManagement) {
+                (function (TaxExemptTypeEnum) {
+                    TaxExemptTypeEnum[TaxExemptTypeEnum["Federal"] = 0] = "Federal";
+                    TaxExemptTypeEnum[TaxExemptTypeEnum["State"] = 1] = "State";
+                })(taxManagement.TaxExemptTypeEnum || (taxManagement.TaxExemptTypeEnum = {}));
+                var TaxExemptTypeEnum = taxManagement.TaxExemptTypeEnum;
+            })(taxManagement = model.taxManagement || (model.taxManagement = {}));
+        })(model = core.model || (core.model = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
 
 
 
@@ -329,44 +433,11 @@ var bluesky;
 
 
 
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var model;
-        (function (model) {
-            var taxManagement;
-            (function (taxManagement) {
-                (function (TaxActionEnum) {
-                    TaxActionEnum[TaxActionEnum["Add"] = 0] = "Add";
-                    TaxActionEnum[TaxActionEnum["Modify"] = 1] = "Modify";
-                    TaxActionEnum[TaxActionEnum["Cease"] = 2] = "Cease";
-                })(taxManagement.TaxActionEnum || (taxManagement.TaxActionEnum = {}));
-                var TaxActionEnum = taxManagement.TaxActionEnum;
-            })(taxManagement = model.taxManagement || (model.taxManagement = {}));
-        })(model = core.model || (core.model = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
 
 
 
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var model;
-        (function (model) {
-            var taxManagement;
-            (function (taxManagement) {
-                (function (TaxExemptTypeEnum) {
-                    TaxExemptTypeEnum[TaxExemptTypeEnum["Federal"] = 0] = "Federal";
-                    TaxExemptTypeEnum[TaxExemptTypeEnum["State"] = 1] = "State";
-                })(taxManagement.TaxExemptTypeEnum || (taxManagement.TaxExemptTypeEnum = {}));
-                var TaxExemptTypeEnum = taxManagement.TaxExemptTypeEnum;
-            })(taxManagement = model.taxManagement || (model.taxManagement = {}));
-        })(model = core.model || (core.model = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
+
+
 
 
 
@@ -530,6 +601,14 @@ var bluesky;
 
 
 
+
+
+
+
+
+
+
+
 var bluesky;
 (function (bluesky) {
     var core;
@@ -550,9 +629,3 @@ var bluesky;
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
-
-
-
-
-
-
