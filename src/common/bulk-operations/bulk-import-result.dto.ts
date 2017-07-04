@@ -1,6 +1,6 @@
 ﻿module bluesky.core.model.bulk {
 
-    export interface IBulkImportResultDTO {
+    export interface IBulkImportResultDto {
         //TODO MGA: support generic types if needed to have buk-specific entries properties.
         //export interface IBulkImportResultDTO<T1 extends IBulkImportEntryErrorsDTO<T2>, T2 extends IBulkImportEntryErrorDTO > {
 
@@ -41,6 +41,6 @@
          * List of entries with specific errors (as opposed to global errors).
          * The format of <see cref="BulkImportEntryInErrorDTO{T}"/>"/> includes necessary informations to handle line-specific errors.
          */
-        EntriesInError: IBulkImportEntryErrorsDTO[];
+        EntriesInError: IBulkImportEntryErrorsDto[];
     }
 }

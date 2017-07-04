@@ -1,6 +1,6 @@
 ﻿namespace bluesky.core.model.bulk {
 
-    export interface IBulkImportEntryErrorDTO {
+    export interface IBulkImportEntryErrorDto {
 
         /**
          * The ErrorMessage
