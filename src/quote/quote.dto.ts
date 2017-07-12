@@ -67,5 +67,7 @@
         ConferencingAndCollaborationProductOfferingId: number;
         /** Gets or sets the export parameter id. */
         ExportParameterId?: number;
+        /** Gets or sets the automated deactivation at contract's end date. */
+        IsAutomatedDeactivation: boolean;
     }
 }
