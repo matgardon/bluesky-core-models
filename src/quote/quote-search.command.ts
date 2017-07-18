@@ -8,5 +8,8 @@
         Ids?: string;
         IncludeSubscriptions?: boolean;
         CurrentApprover?: string;
+        SegmentType?: string;
+        HasModifiedPrices?: boolean;
+        IsAutomatedDeactivation?: boolean
     }
 }

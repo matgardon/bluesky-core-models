@@ -1,5 +1,5 @@
 ﻿namespace bluesky.core.model.welcomePack {
-    export interface IWelcomePackHeaderDto {
+    export interface IWelcomePackHeaderDto extends IResourceBase {
         Id: string;
         TemplateId: string;
         TemplateName: string;

@@ -13,5 +13,7 @@
 		BillingAccountUserName: string;
 		/** BillingAccount customer node name */
 		BillingAccountCustomerNodeName: string;
+        /** Set to true when a disable user is sent by the OO */
+        IsUserDeactivationOrderSent:boolean;
 	}
 }
