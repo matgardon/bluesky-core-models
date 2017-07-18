@@ -13,6 +13,8 @@
 		UserDispatch1: string;
 		/** Gets or sets user second dispatch.Custom field used by the customer and displayed in One Portal (2nd field). */
 		UserDispatch2: string;
+		/** Gets or sets the email list to be sent as CC. */
+        WelcomePackCarbonCopyRecipients: string[];
 		/** Billing reference. */
 		BillingRef: string;
 		/** Gets the Selfcare admin level.Defines the hierarchy node under which the user is admin: Logo, Local Logo, Billing account, Primary Group, and None for simple users. */
