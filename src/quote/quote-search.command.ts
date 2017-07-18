@@ -10,5 +10,6 @@
         CurrentApprover?: string;
         SegmentType?: string;
         HasModifiedPrices?: boolean;
+        IsAutomatedDeactivation?: boolean
     }
 }
