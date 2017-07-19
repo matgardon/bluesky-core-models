@@ -8,7 +8,7 @@
   "private": true,
   "dependencies": { },
   "devDependencies": {
-    "typescript": "^2.4.1",
+    "typescript": "2.x.x",
     "gulp": "3.x.x",
     "gulp-typescript": "3.x.x",
     "gulp-sourcemaps": "1.x.x",
