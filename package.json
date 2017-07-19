@@ -8,8 +8,9 @@
   "private": true,
   "dependencies": { },
   "devDependencies": {
+    "typescript": "2.x.x",
     "gulp": "3.x.x",
-    "gulp-typescript": "2.x.x",
+    "gulp-typescript": "3.x.x",
     "gulp-sourcemaps": "1.x.x",
     "merge2": "1.x.x",
     "del": "2.x.x",
