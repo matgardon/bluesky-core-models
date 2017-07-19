@@ -23,14 +23,17 @@ gulp.task('clean', function () {
 
 //TODO MGA: fix ts-lint task
 gulp.task('ts-lint', function () {
-    return gulp.src([tsSrc]).pipe(tslint()).pipe(tslint.report('verbose'));
+    return gulp.src([tsSrc])
+        .pipe(tslint())
+        .pipe(tslint.report('verbose'));
     //return gulp.src(tsSrc).pipe(tslint({ configuration: require("./tslint.json")})).pipe(tslint.report('prose'));
 });
 
 gulp.task('compile-ts', ['clean'], function () {
     var tsResults = gulp.src([tsSrc, tsExternalDefinitions])
         // .pipe(sourcemaps.init()) // This means sourcemaps will be generated
-        .pipe(ts(tsProject));
+        // .pipe(ts(tsProject));
+        .pipe(tsProject())
                //.dts.pipe(concat('bluesky-core-models.d.ts'))
                //.pipe(gulp.dest('dist'));
 
