@@ -53,6 +53,17 @@ declare namespace bluesky.core.model {
     }
 }
 
+declare namespace bluesky.core.command {
+    /** Shared properties for formatted results of search commands. */
+    interface IFormattedResultCommand {
+        /** Specifies the format expected for the output response. Can be at the moment CSV & ??? TODO MGA StringEnum */
+        Format?: SupportedResponseFormatEnum;
+    }
+    enum SupportedResponseFormatEnum {
+        CSV = "csv",
+    }
+}
+
 declare namespace bluesky.core.model {
     /** Return DTO of an endpoint parsing input param for business validation. */
     interface IInputValidationResultDto {
@@ -206,240 +217,192 @@ declare namespace bluesky.core.model.clientConfig {
     }
 }
 
-declare namespace bluesky.core.model.customerOrder {
-    /** Response for a Create users command. */
-    interface ICreateOrderResponseDto {
-        /** Identifier of the generated Customer Order. */
-        OrderId: number;
-        /** Order check status. */
-        OrderCheckStatus: string;
-        /** Concurrent order, when the current order is frozen. */
-        ConcurrentOrder?: number;
+declare namespace bluesky.core.command.emailTemplate {
+    interface IEmailTemplateBrandingData {
+        Value: string;
     }
 }
 
-declare namespace bluesky.core.command.customerOrder {
-    /** Contains main information about the order to create. */
-    interface IBaseCreateOrderCommand {
-        /** Identifier of the company. */
-        CompanyId: string;
-        /** Gets or sets Name of the system which submitted the order in the first place. */
-        CallingSystem: string;
-        /** Gets or sets the login of the end user who creates the customer order. */
-        EndUser: string;
-        /** Indicates if the order must be submitted. */
-        IsSubmit: boolean;
-        /** When specified, the execution date is the date when the customer order will be executed. */
-        ExecutionDate?: Date;
+declare namespace bluesky.core.command.emailTemplate {
+    interface IEmailTemplateSearchCommand extends IBasePaginatedSearchCommand {
+        Name: string;
+        Company: string;
+        Skeleton: string;
     }
 }
 
-declare namespace bluesky.core.model.customerOrder {
-    /** Header DTO of a customer order. */
-    interface ICustomerOrderHeaderDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
+declare namespace bluesky.core.model.emailTemplate {
+    interface IEmailTemplateSkeletonDto {
         Id: number;
-        /** Gets or sets Customer order name */
-        OrderName: string;
-        /** Gets or sets Customer order status. */
-        CustomerOrderStatus: string;
-        /** Gets or sets the OrderType. */
-        OrderType: string;
-        /** Gets or sets Filled with the end-user who creates the order */
-        CreatedBy: string;
-        /** Gets or sets the Logo UserName, it is an unique identifier in the IS. */
-        LogoId: string;
-        /** Gets or sets the Logo display Name. It is the customer node name. */
-        LogoName: string;
-        /** Gets or sets Date of submission of the customer order. */
-        SubmitDate?: Date;
-        /** Gets or sets Effective date of order execution. */
-        ExecutionDate: Date;
-        /** Gets or sets Name of the Order Manager responsible for the fulfillment of thecustomer order. It is left empty by default, but it can be assigned throughOrder Tracking UI. */
-        TechnicalCoordinator: string;
-        /** Gets or sets Calling system of the order */
-        CallingSystem: string;
+        Name: string;
+        Description: string;
+        Type: string;
+        EloquaEmailTemplateId: string;
+        EloquaEmailTemplateName: string;
     }
 }
 
-declare namespace bluesky.core.command.customerOrder {
-    interface ICustomerOrderSearchCommand extends IBasePaginatedSearchCommand {
-        CustomerOrderStatusFilter?: string;
-        CustomerOrderTypeFilter?: string;
-        UserAccountUid?: string;
-        LogoUid?: string;
-        OrderId?: string;
-        LogoName?: string;
-        CallingSystem?: string;
-        SubsidiaryFilter?: string;
-        SubmitDateFrom?: string;
-        SubmitDateTo?: string;
+declare namespace bluesky.core.model.emailTemplate {
+    interface IMarketingApiResponseBase {
+        Status: "Ok";
     }
 }
 
-declare namespace bluesky.core.model.customerOrder {
+declare namespace bluesky.core.command.technicalData {
+    interface IEmailTemplateUpdateIdCommand {
+        NewTemplateId: string;
+        OldTemplateId: string;
+    }
+}
+
+declare namespace bluesky.core.model.emailTemplate {
+    interface IEmailTemplateUpdateIdResponse extends IMarketingApiResponseBase {
+        NewTemplateId: string;
+    }
+}
+
+declare namespace bluesky.core.model.emailTemplate {
     /**
-     * Type of Arkadin.BlueSky.BSIC.Domain.OrderManagement.CustomerOrder
+     * TODO MGA: which fields are mandatory and which aren't ? in hub, we only instantiate a few of them at first.
      */
-    enum CustomerOrderStatusEnum {
-        Created = 0,
-        Submitted = 1,
-        Pending = 2,
-        OnHold = 3,
-        ManualOp = 4,
-        Error = 5,
-        Completed = 6,
-        Canceled = 7,
+    interface IWelcomePackTemplateDto extends IResourceBase {
+        ID: string;
+        Name?: string;
+        Company?: string;
+        Create_Date?: Date;
+        Modified_Date?: Date;
+        Owner_ID?: string;
+        Preview?: string;
+        BrandData: string;
+        TopLeftCompanyLogo?: string;
+        TopRightBanner?: string;
+        TopTitle?: string;
+        DearText?: string;
+        YACPTitleFont?: string;
+        YACPTitleBG?: string;
+        YACPTitleUL?: string;
+        YACPSentence?: string;
+        OnePassTopLeftLogo?: string;
+        OnePassTopRightTitle?: string;
+        OnePassProdCombination?: string;
+        OnePassProd1?: string;
+        OnePassProd2?: string;
+        SYCTitleFont?: string;
+        SYCTitleBG?: string;
+        SYCTitleUL?: string;
+        Product1?: string;
+        Product2?: string;
+        MYALoungeTitleFont?: string;
+        MYALoungeTitleBG?: string;
+        MYALoungeTitleUL?: string;
+        NHTitleFont?: string;
+        NHTitleBG?: string;
+        NHTitleUL?: string;
+        Footer?: string;
+        TopRightBannerAlt?: string;
+        TopLeftCompanyLogoAlt?: string;
+        OnePassTopLeftLogoAlt?: string;
+        FooterAlt?: string;
+        Branding: string;
+        Skeleton?: string;
+        Master?: boolean;
+        OnePortal?: boolean;
+        ToolBarBlock?: string;
+        Salutation?: string;
+        WP___COMPANY_NAME?: string;
+        CLIENT_NAME?: string;
+        ASD_NUMBER?: string;
+        ARKADIN_COUNTRY?: string;
+        Arkadin_CS_Phone?: string;
+        Arladin_CS_EMail?: string;
+        T_NUMBER?: string;
+        TF_NUMBER?: string;
+        MOD_PIN?: string;
+        PART_PIN?: string;
+        WP___CONF_PB_NUM?: string;
+        CONF_PB_REF?: string;
+        WEBEX_USER?: string;
+        WEBEX_PSWD?: string;
+        NEED_Help?: string;
+        Language: string;
+        TG___NHBlock1?: string;
+        TG___NHBlock2?: string;
+        TG___NHBlock3?: string;
+        TG___NHBlock4?: string;
+        IsAdmin?: boolean;
+        WP___PROD2_URL?: string;
+        WP___PROD1_URL?: string;
+        WP___PROD1_USER?: string;
+        WP___PROD1_PSWD?: string;
+        Product3?: string;
+        Playback?: boolean;
+        SendingStrategy: string;
     }
 }
 
-declare namespace bluesky.core.model.customerOrder {
-    /**
-     * Type of Arkadin.BlueSky.BSIC.Domain.OrderManagement.CustomerOrder
-     */
-    enum CustomerOrderTypeEnum {
-        InitialOrder = 0,
-        InitialSimplifiedOrder = 1,
-        CreateUpdateCustomerHierarchy = 2,
-        UpdateSubscription = 3,
-        ChangeUsersSubscription = 4,
-        ModifyUser = 5,
-        ModifyAccess = 6,
-        DisableUser = 7,
-        ReenableUser = 8,
-        CeaseUsers = 9,
-        CeaseAccesses = 10,
-        TerminateSubscription = 11,
-        CeaseNode = 12,
-        ScheduleOTPConference = 13,
-        UpdateOTPConference = 14,
-        CancelOTPConference = 15,
-        AddSubscription = 16,
-        AddUser = 17,
-        AddAccess = 18,
-        RaiseMiscellaneousCharges = 19,
-        MoveUsers = 20,
-        SendWelcomePack = 21,
-        ChangeOffer = 22,
-        MoveNode = 23,
-        ApplyAddendum = 24,
-        MergeLogo = 25,
+declare namespace bluesky.core.model.location {
+    interface IBillSoftLocationDto extends IResourceBase {
+        PCode: string;
+        IsPrimaryLocation: boolean;
+        County: string;
+        City: string;
+        BeginningZipCode: string;
+        EndingZipCode: string;
+        CountryIsoCode: string;
+        CountrySubdivision: ICountrySubdivisionDto;
     }
 }
 
-declare namespace bluesky.core.model.customerOrder {
-    /** DTO of a customer order. */
-    interface ICustomerOrderDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets Customer (Logo) */
-        Customer: ICustomerDto;
-        /** Gets or sets Customer order name */
-        OrderName: string;
-        /** Gets or sets Customer order status. */
-        CustomerOrderStatus: string;
-        /** Gets or sets the OrderType. */
-        OrderType: string;
-        /** Identifier of the workflow, generated by Workflow Foundation. */
-        WorkflowId?: string;
-        /** Identifier of the related case in SalesForce.When an order is in error, a case can be created to report the issue. */
-        CaseId: string;
-        /** Gets or sets HierarchySubsetOrder: The customer order may contain a hierarchy subset order */
-        HierarchySubsetOrder: IHierarchySubsetOrderDto;
-        /** Gets or sets SubscriptionSubsetOrder: The customer order may contain a subscription subset order */
-        SubscriptionSubsetOrder: ISubscriptionSubsetOrderDto;
-        /** Gets or sets UserSubsetOrder: The customer order may contain a user subset order */
-        UserSubsetOrder: IUserSubsetOrderDto;
-        /** Gets or sets Customer order context */
-        OrderContext: IOrderContextDto;
-        /** Gets or sets Offer Name */
-        OfferName: string;
-        /** Gets or sets the number of processed nodes */
-        ProcessedNodesCount: string;
-        /** Gets or sets Calling system of the order */
-        CallingSystem: string;
+declare namespace bluesky.core.model.location {
+    interface ICountrySubdivisionDto extends IResourceBase {
+        CountryCode: string;
+        CountrySubdivisionCode: string;
+        CountrySubdivisionName: string;
     }
 }
 
-declare namespace bluesky.core.model.customerOrder {
-    /** DTO of a customer. */
-    interface ICustomerDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets the Logo UserName, it is an unique identifier in the IS. */
-        LogoId: string;
-        /** Gets or sets the Logo display Name. It is the customer node name. */
-        LogoName: string;
+declare namespace bluesky.core.model.location {
+    interface ICountryDto extends IResourceBase {
+        Name?: string;
+        IsoCode?: string;
+        IcoCode?: string;
+        GeoRegion?: string;
     }
 }
 
-declare namespace bluesky.core.model.customerOrder {
-    /** Context of the order. */
-    interface IOrderContextDto extends IResourceBase {
-        /** Gets or sets a Flag to indicate if subscription modification must be applied to all existing accesses,in terms of options. Only required for a CustomerOrder "Update Subscription". */
-        IsAppliedToAllAccesses?: boolean;
-        /** Gets or sets a Flag to indicate If the flag isAudioCustom is set to true, is filled with the path ofthe file containing the custom information. */
-        AudioCustomDetail: string;
-        /** Gets or sets Name of the system which submitted the order in the first place :OrderEntry, PartnerIS, Selfcare. */
-        CallingSystem: string;
-        /** Gets or sets Free text zone of 2048 char (text area). */
-        Comment: string;
-        /** Gets or sets Filled with the end-user who creates the order */
-        CreatedBy: string;
-        /** Gets or sets Date of creation */
-        CreatedDate: Date;
-        /** Gets or sets Filled with the end-user who loads the order */
-        EditingUserLogin: string;
-        /** Gets or sets Effective date of order execution */
-        ExecutionDate: Date;
-        /** Gets or sets It corresponds to the identifier of a concurrent Customer Order which must be terminated before processingcurrent order. */
-        FrozenBy?: number;
-        /** Gets or sets Flag to indicate if Domain Selection is done automatically ormanually. */
-        IsAudioCustom?: boolean;
-        /** Gets or sets a Flag to indicate if Subscriptions and Accesses are created as trialones. */
-        IsTrial: boolean;
-        /** Gets or sets the end-user who last modified the order */
-        ModifiedBy: string;
-        /** Gets or sets Date of last modification */
-        ModifiedDate?: Date;
-        /** Gets or sets OrderHistory : Read-only text area of 2048 char filled with the name of the end-user who saved the order and the date when it was saved */
-        OrderHistory: string;
-        /** Gets or sets Date of submission of the customer order. */
-        SubmitDate?: Date;
-        /** Gets or sets the end-user who submit the Order. Filled with PartnerName for orders with SalesChannel set to Partner, or with the Selfcare fororders coming from the Selfcare. */
-        SubmittedBy: string;
-        /** Gets or sets Name of the sales channel from which the order was submitted. Forexample: Arkadin-Direct */
-        SalesChannel: string;
-        /** Gets or sets Name of the Order Manager responsible for the fulfillment of thecustomer order. It is left empty by default, but it can be assigned throughOrder Tracking UI. */
-        TechnicalCoordinator: string;
-        /** This flag indicates if Welcome Packs are to be sent to the Users for which accesses were created/modified. */
-        IsUserRecipient?: boolean;
-        /** Status reason other. */
-        StatusReasonOther: string;
-        /** Gets or sets WelcomePack send date */
-        WelcomePackSendDate?: Date;
-        /** Gets or sets the Name of the subsidiary from which the order was submitted. */
-        Subsidiary: string;
-        /** Gets or sets the Status reason. */
-        StatusReason: string;
-        /** Gets or sets Welcome pack send mode */
-        WelcomePackSendMode: string;
-        /** Indicates if users' usages  must be corrected after a move user. */
-        IsUsageCorrected: boolean;
+declare namespace bluesky.core.command.location {
+    /** Search parameter used to retrieve a list of location. */
+    interface ISearchLocationCommand extends IBasePaginatedSearchCommand {
+        /** Gets or sets the zip or postal code. */
+        ZipCode?: string;
+        /** Gets or sets the city or town. */
+        City?: string;
+        /** Boolean indicating if the search on city should be an exact match or a contains() */
+        IsExactCitySearch?: boolean;
+        /** Gets or sets the the country code. */
+        CountryCode?: string;
+        /** Gets or sets the country subdivision code (state or province). */
+        CountrySubdivisionCode?: string;
+        /** Gets or sets the county. */
+        County?: string;
+        /** Boolean indicating if the search on county should be an exact match or a contains() */
+        IsExactCountySearch?: boolean;
     }
 }
 
-declare namespace bluesky.core.model.customerOrder {
-    /** Base class for the different types of subset orders:for subscriptionfor user/accessfor hierarchy */
-    interface ISubsetOrderBaseDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Indicates if the subset Order has warnings, its default value is "false".It is used when an Order Item raises an error that has to be ignored.In that case, the Order Item is in error and the attribute "HasWarnings" of the Subset Order is set to "true". */
-        HasWarnings: boolean;
-        /** Indicates the high-level functional action held by the subset. */
-        SubsetAction: string;
-        /** Processing status of a SubsetOrder. */
-        SubsetOrderStatus: string;
+declare namespace bluesky.core.command.location {
+    /** Search parameter used to retrieve a list of state (country subdivisions). */
+    interface ISearchStateCommand {
+        /** Country ISO code. */
+        CountryCode: string;
+    }
+}
+
+declare namespace bluesky.core.model.location {
+    interface IStateDto extends IResourceBase {
+        Name?: string;
+        Code?: string;
+        PCode?: number;
     }
 }
 
@@ -507,69 +470,31 @@ declare namespace bluesky.externals.smartTable {
     }
 }
 
-declare namespace bluesky.core.model.location {
-    interface IBillSoftLocationDto extends IResourceBase {
-        PCode: string;
-        IsPrimaryLocation: boolean;
-        County: string;
-        City: string;
-        BeginningZipCode: string;
-        EndingZipCode: string;
-        CountryIsoCode: string;
-        CountrySubdivision: ICountrySubdivisionDto;
-    }
-}
-
-declare namespace bluesky.core.model.location {
-    interface ICountrySubdivisionDto extends IResourceBase {
-        CountryCode: string;
-        CountrySubdivisionCode: string;
-        CountrySubdivisionName: string;
-    }
-}
-
-declare namespace bluesky.core.model.location {
-    interface ICountryDto extends IResourceBase {
-        Name?: string;
-        IsoCode?: string;
-        IcoCode?: string;
-        GeoRegion?: string;
-    }
-}
-
-declare namespace bluesky.core.command.location {
-    /** Search parameter used to retrieve a list of location. */
-    interface ISearchLocationCommand extends IBasePaginatedSearchCommand {
-        /** Gets or sets the zip or postal code. */
-        ZipCode?: string;
-        /** Gets or sets the city or town. */
-        City?: string;
-        /** Boolean indicating if the search on city should be an exact match or a contains() */
-        IsExactCitySearch?: boolean;
-        /** Gets or sets the the country code. */
-        CountryCode?: string;
-        /** Gets or sets the country subdivision code (state or province). */
-        CountrySubdivisionCode?: string;
-        /** Gets or sets the county. */
-        County?: string;
-        /** Boolean indicating if the search on county should be an exact match or a contains() */
-        IsExactCountySearch?: boolean;
-    }
-}
-
-declare namespace bluesky.core.command.location {
-    /** Search parameter used to retrieve a list of state (country subdivisions). */
-    interface ISearchStateCommand {
-        /** Country ISO code. */
-        CountryCode: string;
-    }
-}
-
-declare namespace bluesky.core.model.location {
-    interface IStateDto extends IResourceBase {
-        Name?: string;
-        Code?: string;
-        PCode?: number;
+declare namespace bluesky.core.model.offer {
+    /**
+     * Product offering.
+     */
+    interface IProductOfferingDto {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets the Offer type. */
+        OfferType: string;
+        /** Gets or sets the name. */
+        Name: string;
+        /** Gets or sets the display name. */
+        DisplayName: string;
+        /** Gets or sets the description. */
+        Description: string;
+        /** Gets or sets the availability start date. */
+        AvailabilityStartDate: Date;
+        /** Gets or sets the availability end date. */
+        AvailabilityEndDate: Date;
+        /** Gets or sets the effective start date. */
+        EffectiveStartDate: Date;
+        /** Gets or sets the effective end date. */
+        EffectiveEndDate: Date;
+        /**Gets or sets the AggregateType enumeration. */
+        AggregateType: IMetraNetEnumerationDto;
     }
 }
 
@@ -1200,126 +1125,39 @@ declare namespace bluesky.core.command.quote {
     }
 }
 
-declare namespace bluesky.core.command.emailTemplate {
-    interface IEmailTemplateBrandingData {
-        Value: string;
-    }
-}
-
-declare namespace bluesky.core.command.emailTemplate {
-    interface IEmailTemplateSearchCommand extends IBasePaginatedSearchCommand {
-        Name: string;
-        Company: string;
-        Skeleton: string;
-    }
-}
-
-declare namespace bluesky.core.model.emailTemplate {
-    interface IEmailTemplateSkeletonDto {
-        Id: number;
-        Name: string;
-        Description: string;
-        Type: string;
-        EloquaEmailTemplateId: string;
-        EloquaEmailTemplateName: string;
-    }
-}
-
-declare namespace bluesky.core.model.emailTemplate {
-    interface IMarketingApiResponseBase {
-        Status: "Ok";
-    }
-}
-
-declare namespace bluesky.core.command.technicalData {
-    interface IEmailTemplateUpdateIdCommand {
-        NewTemplateId: string;
-        OldTemplateId: string;
-    }
-}
-
-declare namespace bluesky.core.model.emailTemplate {
-    interface IEmailTemplateUpdateIdResponse extends IMarketingApiResponseBase {
-        NewTemplateId: string;
-    }
-}
-
-declare namespace bluesky.core.model.emailTemplate {
-    /**
-     * TODO MGA: which fields are mandatory and which aren't ? in hub, we only instantiate a few of them at first.
-     */
-    interface IWelcomePackTemplateDto extends IResourceBase {
-        ID: string;
-        Name?: string;
-        Company?: string;
-        Create_Date?: Date;
-        Modified_Date?: Date;
-        Owner_ID?: string;
-        Preview?: string;
-        BrandData: string;
-        TopLeftCompanyLogo?: string;
-        TopRightBanner?: string;
-        TopTitle?: string;
-        DearText?: string;
-        YACPTitleFont?: string;
-        YACPTitleBG?: string;
-        YACPTitleUL?: string;
-        YACPSentence?: string;
-        OnePassTopLeftLogo?: string;
-        OnePassTopRightTitle?: string;
-        OnePassProdCombination?: string;
-        OnePassProd1?: string;
-        OnePassProd2?: string;
-        SYCTitleFont?: string;
-        SYCTitleBG?: string;
-        SYCTitleUL?: string;
-        Product1?: string;
-        Product2?: string;
-        MYALoungeTitleFont?: string;
-        MYALoungeTitleBG?: string;
-        MYALoungeTitleUL?: string;
-        NHTitleFont?: string;
-        NHTitleBG?: string;
-        NHTitleUL?: string;
-        Footer?: string;
-        TopRightBannerAlt?: string;
-        TopLeftCompanyLogoAlt?: string;
-        OnePassTopLeftLogoAlt?: string;
-        FooterAlt?: string;
-        Branding: string;
-        Skeleton?: string;
-        Master?: boolean;
-        OnePortal?: boolean;
-        ToolBarBlock?: string;
-        Salutation?: string;
-        WP___COMPANY_NAME?: string;
-        CLIENT_NAME?: string;
-        ASD_NUMBER?: string;
-        ARKADIN_COUNTRY?: string;
-        Arkadin_CS_Phone?: string;
-        Arladin_CS_EMail?: string;
-        T_NUMBER?: string;
-        TF_NUMBER?: string;
-        MOD_PIN?: string;
-        PART_PIN?: string;
-        WP___CONF_PB_NUM?: string;
-        CONF_PB_REF?: string;
-        WEBEX_USER?: string;
-        WEBEX_PSWD?: string;
-        NEED_Help?: string;
-        Language: string;
-        TG___NHBlock1?: string;
-        TG___NHBlock2?: string;
-        TG___NHBlock3?: string;
-        TG___NHBlock4?: string;
-        IsAdmin?: boolean;
-        WP___PROD2_URL?: string;
-        WP___PROD1_URL?: string;
-        WP___PROD1_USER?: string;
-        WP___PROD1_PSWD?: string;
-        Product3?: string;
-        Playback?: boolean;
-        SendingStrategy: string;
+declare namespace bluesky.core.model {
+    enum SubsidiaryEnum {
+        _263_China = "_263_China",
+        Arkadin_Australia = "Arkadin_Australia",
+        Arkadin_Belux = "Arkadin_Belux",
+        Arkadin_Brazil = "Arkadin_Brazil",
+        Arkadin_Canada = "Arkadin_Canada",
+        Arkadin_China = "Arkadin_China",
+        Arkadin_Colombia = "Arkadin_Colombia",
+        Arkadin_France = "Arkadin_France",
+        Arkadin_Germany = "Arkadin_Germany",
+        Arkadin_Hong_Kong = "Arkadin_Hong_Kong",
+        Arkadin_India = "Arkadin_India",
+        Arkadin_Ireland = "Arkadin_Ireland",
+        Arkadin_Italy = "Arkadin_Italy",
+        Arkadin_Japan = "Arkadin_Japan",
+        Arkadin_Korea = "Arkadin_Korea",
+        Arkadin_Malaysia = "Arkadin_Malaysia",
+        Arkadin_Mexico = "Arkadin_Mexico",
+        Arkadin_Middle_East = "Arkadin_Middle_East",
+        Arkadin_Netherlands = "Arkadin_Netherlands",
+        Arkadin_New_Zealand = "Arkadin_New_Zealand",
+        Arkadin_Norway = "Arkadin_Norway",
+        Arkadin_Portugal = "Arkadin_Portugal",
+        Arkadin_Singapore = "Arkadin_Singapore",
+        Arkadin_South_Africa = "Arkadin_South_Africa",
+        Arkadin_Spain = "Arkadin_Spain",
+        Arkadin_Switzerland = "Arkadin_Switzerland",
+        Arkadin_Turkey = "Arkadin_Turkey",
+        Arkadin_UK = "Arkadin_UK",
+        Arkadin_US = "Arkadin_US",
+        Chunghwa_Taiwan = "Chunghwa_Taiwan",
+        NTTC_Japan = "NTTC_Japan",
     }
 }
 
@@ -1409,42 +1247,6 @@ declare namespace bluesky.core.model.subscription {
         Products: subscription.ISubscriptionProductDto[];
         /** subscription options. */
         Options: subscription.ISubscriptionOptionDto[];
-    }
-}
-
-declare namespace bluesky.core.model {
-    enum SubsidiaryEnum {
-        _263_China = "_263_China",
-        Arkadin_Australia = "Arkadin_Australia",
-        Arkadin_Belux = "Arkadin_Belux",
-        Arkadin_Brazil = "Arkadin_Brazil",
-        Arkadin_Canada = "Arkadin_Canada",
-        Arkadin_China = "Arkadin_China",
-        Arkadin_Colombia = "Arkadin_Colombia",
-        Arkadin_France = "Arkadin_France",
-        Arkadin_Germany = "Arkadin_Germany",
-        Arkadin_Hong_Kong = "Arkadin_Hong_Kong",
-        Arkadin_India = "Arkadin_India",
-        Arkadin_Ireland = "Arkadin_Ireland",
-        Arkadin_Italy = "Arkadin_Italy",
-        Arkadin_Japan = "Arkadin_Japan",
-        Arkadin_Korea = "Arkadin_Korea",
-        Arkadin_Malaysia = "Arkadin_Malaysia",
-        Arkadin_Mexico = "Arkadin_Mexico",
-        Arkadin_Middle_East = "Arkadin_Middle_East",
-        Arkadin_Netherlands = "Arkadin_Netherlands",
-        Arkadin_New_Zealand = "Arkadin_New_Zealand",
-        Arkadin_Norway = "Arkadin_Norway",
-        Arkadin_Portugal = "Arkadin_Portugal",
-        Arkadin_Singapore = "Arkadin_Singapore",
-        Arkadin_South_Africa = "Arkadin_South_Africa",
-        Arkadin_Spain = "Arkadin_Spain",
-        Arkadin_Switzerland = "Arkadin_Switzerland",
-        Arkadin_Turkey = "Arkadin_Turkey",
-        Arkadin_UK = "Arkadin_UK",
-        Arkadin_US = "Arkadin_US",
-        Chunghwa_Taiwan = "Chunghwa_Taiwan",
-        NTTC_Japan = "NTTC_Japan",
     }
 }
 
@@ -2028,130 +1830,6 @@ declare namespace bluesky.core.model.technicalData {
     }
 }
 
-declare namespace bluesky.core.model.userManagement {
-    /** Dto of an application work items summary.The summary contains for a specific application a summarized view of the work items.Each work item contains the number of the elements to monitor for a specific type of action to perform. */
-    interface IApplicationWorkItemsSummaryDto extends IResourceBase {
-        /** Gets or sets the list of work items to track. */
-        WorkItemHeaders: userManagement.IWorkItemHeaderDto[];
-        /** Gets or sets the total number of monitored elements. */
-        TotalCount: number;
-    }
-}
-
-declare namespace bluesky.core.model.userManagement {
-    /** DTO Header of a scope management (Aggregation of the BME CountryReference, SubsidiaryReference andCurrencyReference, defined in MN). */
-    interface IScopeManagementHeaderDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets the country name value. */
-        CountryNameValue: string;
-        /** Geo region enum value (EMEA, ...) from the BME CountryReference.  We miss this MetraNet enum, so for now, it is a string. */
-        GeoRegion: string;
-        /** Gets or sets the silo name from the BME SubsidiaryReference. */
-        SiloName: string;
-        /** Gets or sets the subsidiary code from the BME SubsidiaryReference. */
-        SubsidiaryCode: string;
-        /** Gets or sets the subsidiary name value. */
-        SubsidiaryNameValue: string;
-        /** Gets or sets the management subsidiary name value. */
-        ManagementSubsidiaryNameValue: string;
-    }
-}
-
-declare namespace bluesky.core.model.userManagement {
-    /** DTO of a scope management (Aggregation of the BME CountryReference, SubsidiaryReference andCurrencyReference, defined in MN). */
-    interface IScopeManagementDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets the country name. */
-        CountryName: string;
-        /** Gets or sets the country name value. */
-        CountryNameValue: number;
-        /** Gets or sets the currency. */
-        Currency: string;
-        /** Gets or sets the currency value. */
-        CurrencyValue: number;
-        /** Geo region enum value (EMEA, ...) from the BME CountryReference.  We miss this MetraNet enum, so for now, it is a string. */
-        GeoRegion: string;
-        /** Gets or sets the management's subsidiary name. */
-        ManagementSubsidiaryName: string;
-        /** Gets or sets the management's subsidiary name value. */
-        ManagementSubsidiaryNameValue: number;
-        /** Gets or sets the navision instance. */
-        NavisionInstance: string;
-        /** Gets or sets the navision instance value. */
-        NavisionInstanceValue: number;
-        /** Gets or sets the partner account name from the BME SubsidiaryReference. */
-        PartnerAccountName: string;
-        /** Gets or sets the silo name from the BME SubsidiaryReference. */
-        SiloName: string;
-        /** Gets or sets the subsidiary code from the BME SubsidiaryReference. */
-        SubsidiaryCode: string;
-        /** Gets or sets the subsidiary name. */
-        SubsidiaryName: string;
-        /** Gets or sets the subsidiary name value. */
-        SubsidiaryNameValue: number;
-        /** Gets or sets the tax vendor.. */
-        TaxVendor: string;
-        /** Gets or sets the tax vendor value. */
-        TaxVendorValue: number;
-    }
-}
-
-declare namespace bluesky.core.model.userManagement {
-    /** Informations about a user. */
-    interface IUserInformationDto {
-        /** File Name. */
-        FirstName: string;
-        /** Last Name. */
-        LastName: string;
-        /** DisplayName. */
-        DisplayName: string;
-        /** Identifier of the User. */
-        UserIdentifier: string;
-        /** Email. */
-        Email: string;
-        /** Phoe number. */
-        PhoneNumber: string;
-    }
-}
-
-declare namespace bluesky.core.model.userManagement {
-    interface IUserRoleEntryDto {
-        Name: string;
-        Role: string;
-        Silo: string;
-        IsBlueSkyRole: boolean;
-    }
-}
-
-declare namespace bluesky.core.model.userManagement {
-    interface IUserSsoDto extends IResourceBase {
-        Subsidiary: string;
-        Owners: string[];
-        UserRoleEntry: userManagement.IUserRoleEntryDto;
-        ActiveDirectoryGroups: userManagement.IUserRoleEntryDto[];
-        Regions: string[];
-        UserDisplayName: string;
-        /** Gets or sets the user's identifier in the active directory. */
-        UserIdentifier: string;
-        Countries: string[];
-        Subsidiaries: string[];
-    }
-}
-
-declare namespace bluesky.core.model.userManagement {
-    /** Header Dto of a work item.A work item contains a type and number of elements to be monitored for a connected user (e.g.: 7 quotes to approve). */
-    interface IWorkItemHeaderDto extends IResourceBase {
-        /** Gets or sets the identifier of the work item.Used to identify the action to be performed by the user. */
-        Identifier: string;
-        /** Gets or sets the name of the work item.The name is the displayed value of the identifier. */
-        Name: string;
-        /** Gets or sets the number of monitored elements. */
-        Count: number;
-    }
-}
-
 declare namespace bluesky.core.model.welcomePack {
     interface ICountryDdisDto {
         Country: string;
@@ -2331,31 +2009,368 @@ declare namespace bluesky.core.model.welcomePack {
     }
 }
 
-declare namespace bluesky.core.model.offer {
-    /**
-     * Product offering.
-     */
-    interface IProductOfferingDto {
+declare namespace bluesky.core.model.userManagement {
+    /** Dto of an application work items summary.The summary contains for a specific application a summarized view of the work items.Each work item contains the number of the elements to monitor for a specific type of action to perform. */
+    interface IApplicationWorkItemsSummaryDto extends IResourceBase {
+        /** Gets or sets the list of work items to track. */
+        WorkItemHeaders: userManagement.IWorkItemHeaderDto[];
+        /** Gets or sets the total number of monitored elements. */
+        TotalCount: number;
+    }
+}
+
+declare namespace bluesky.core.model.userManagement {
+    /** DTO Header of a scope management (Aggregation of the BME CountryReference, SubsidiaryReference andCurrencyReference, defined in MN). */
+    interface IScopeManagementHeaderDto extends IResourceBase {
         /** Gets or sets the unique identifier. */
         Id: number;
-        /** Gets or sets the Offer type. */
-        OfferType: string;
-        /** Gets or sets the name. */
-        Name: string;
-        /** Gets or sets the display name. */
+        /** Gets or sets the country name value. */
+        CountryNameValue: string;
+        /** Geo region enum value (EMEA, ...) from the BME CountryReference.  We miss this MetraNet enum, so for now, it is a string. */
+        GeoRegion: string;
+        /** Gets or sets the silo name from the BME SubsidiaryReference. */
+        SiloName: string;
+        /** Gets or sets the subsidiary code from the BME SubsidiaryReference. */
+        SubsidiaryCode: string;
+        /** Gets or sets the subsidiary name value. */
+        SubsidiaryNameValue: string;
+        /** Gets or sets the management subsidiary name value. */
+        ManagementSubsidiaryNameValue: string;
+    }
+}
+
+declare namespace bluesky.core.model.userManagement {
+    /** DTO of a scope management (Aggregation of the BME CountryReference, SubsidiaryReference andCurrencyReference, defined in MN). */
+    interface IScopeManagementDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets the country name. */
+        CountryName: string;
+        /** Gets or sets the country name value. */
+        CountryNameValue: number;
+        /** Gets or sets the currency. */
+        Currency: string;
+        /** Gets or sets the currency value. */
+        CurrencyValue: number;
+        /** Geo region enum value (EMEA, ...) from the BME CountryReference.  We miss this MetraNet enum, so for now, it is a string. */
+        GeoRegion: string;
+        /** Gets or sets the management's subsidiary name. */
+        ManagementSubsidiaryName: string;
+        /** Gets or sets the management's subsidiary name value. */
+        ManagementSubsidiaryNameValue: number;
+        /** Gets or sets the navision instance. */
+        NavisionInstance: string;
+        /** Gets or sets the navision instance value. */
+        NavisionInstanceValue: number;
+        /** Gets or sets the partner account name from the BME SubsidiaryReference. */
+        PartnerAccountName: string;
+        /** Gets or sets the silo name from the BME SubsidiaryReference. */
+        SiloName: string;
+        /** Gets or sets the subsidiary code from the BME SubsidiaryReference. */
+        SubsidiaryCode: string;
+        /** Gets or sets the subsidiary name. */
+        SubsidiaryName: string;
+        /** Gets or sets the subsidiary name value. */
+        SubsidiaryNameValue: number;
+        /** Gets or sets the tax vendor.. */
+        TaxVendor: string;
+        /** Gets or sets the tax vendor value. */
+        TaxVendorValue: number;
+    }
+}
+
+declare namespace bluesky.core.model.userManagement {
+    /** Informations about a user. */
+    interface IUserInformationDto {
+        /** File Name. */
+        FirstName: string;
+        /** Last Name. */
+        LastName: string;
+        /** DisplayName. */
         DisplayName: string;
-        /** Gets or sets the description. */
-        Description: string;
-        /** Gets or sets the availability start date. */
-        AvailabilityStartDate: Date;
-        /** Gets or sets the availability end date. */
-        AvailabilityEndDate: Date;
-        /** Gets or sets the effective start date. */
-        EffectiveStartDate: Date;
-        /** Gets or sets the effective end date. */
-        EffectiveEndDate: Date;
-        /**Gets or sets the AggregateType enumeration. */
-        AggregateType: IMetraNetEnumerationDto;
+        /** Identifier of the User. */
+        UserIdentifier: string;
+        /** Email. */
+        Email: string;
+        /** Phoe number. */
+        PhoneNumber: string;
+    }
+}
+
+declare namespace bluesky.core.model.userManagement {
+    interface IUserRoleEntryDto {
+        Name: string;
+        Role: string;
+        Silo: string;
+        IsBlueSkyRole: boolean;
+    }
+}
+
+declare namespace bluesky.core.model.userManagement {
+    interface IUserSsoDto extends IResourceBase {
+        Subsidiary: string;
+        Owners: string[];
+        UserRoleEntry: userManagement.IUserRoleEntryDto;
+        ActiveDirectoryGroups: userManagement.IUserRoleEntryDto[];
+        Regions: string[];
+        UserDisplayName: string;
+        /** Gets or sets the user's identifier in the active directory. */
+        UserIdentifier: string;
+        Countries: string[];
+        Subsidiaries: string[];
+    }
+}
+
+declare namespace bluesky.core.model.userManagement {
+    /** Header Dto of a work item.A work item contains a type and number of elements to be monitored for a connected user (e.g.: 7 quotes to approve). */
+    interface IWorkItemHeaderDto extends IResourceBase {
+        /** Gets or sets the identifier of the work item.Used to identify the action to be performed by the user. */
+        Identifier: string;
+        /** Gets or sets the name of the work item.The name is the displayed value of the identifier. */
+        Name: string;
+        /** Gets or sets the number of monitored elements. */
+        Count: number;
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /** Response for a Create users command. */
+    interface ICreateOrderResponseDto {
+        /** Identifier of the generated Customer Order. */
+        OrderId: number;
+        /** Order check status. */
+        OrderCheckStatus: string;
+        /** Concurrent order, when the current order is frozen. */
+        ConcurrentOrder?: number;
+    }
+}
+
+declare namespace bluesky.core.command.customerOrder {
+    /** Contains main information about the order to create. */
+    interface IBaseCreateOrderCommand {
+        /** Identifier of the company. */
+        CompanyId: string;
+        /** Gets or sets Name of the system which submitted the order in the first place. */
+        CallingSystem: string;
+        /** Gets or sets the login of the end user who creates the customer order. */
+        EndUser: string;
+        /** Indicates if the order must be submitted. */
+        IsSubmit: boolean;
+        /** When specified, the execution date is the date when the customer order will be executed. */
+        ExecutionDate?: Date;
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /** Header DTO of a customer order. */
+    interface ICustomerOrderHeaderDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets Customer order name */
+        OrderName: string;
+        /** Gets or sets Customer order status. */
+        CustomerOrderStatus: string;
+        /** Gets or sets the OrderType. */
+        OrderType: string;
+        /** Gets or sets Filled with the end-user who creates the order */
+        CreatedBy: string;
+        /** Gets or sets the Logo UserName, it is an unique identifier in the IS. */
+        LogoId: string;
+        /** Gets or sets the Logo display Name. It is the customer node name. */
+        LogoName: string;
+        /** Gets or sets Date of submission of the customer order. */
+        SubmitDate?: Date;
+        /** Gets or sets Effective date of order execution. */
+        ExecutionDate: Date;
+        /** Gets or sets Name of the Order Manager responsible for the fulfillment of thecustomer order. It is left empty by default, but it can be assigned throughOrder Tracking UI. */
+        TechnicalCoordinator: string;
+        /** Gets or sets Calling system of the order */
+        CallingSystem: string;
+    }
+}
+
+declare namespace bluesky.core.command.customerOrder {
+    interface ICustomerOrderSearchCommandBase {
+        CustomerOrderStatusFilter?: string;
+        CustomerOrderTypeFilter?: string;
+        UserAccountUid?: string;
+        LogoUid?: string;
+        OrderId?: string;
+        LogoName?: string;
+        CallingSystem?: string;
+        SubsidiaryFilter?: string;
+        SubmitDateFrom?: string;
+        SubmitDateTo?: string;
+    }
+    interface ICustomerOrderSearchFormattedResponseCommand extends ICustomerOrderSearchCommandBase, IFormattedResultCommand {
+    }
+    interface ICustomerOrderSearchCommand extends ICustomerOrderSearchCommandBase, IBasePaginatedSearchCommand {
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /**
+     * Type of Arkadin.BlueSky.BSIC.Domain.OrderManagement.CustomerOrder
+     */
+    enum CustomerOrderStatusEnum {
+        Created = 0,
+        Submitted = 1,
+        Pending = 2,
+        OnHold = 3,
+        ManualOp = 4,
+        Error = 5,
+        Completed = 6,
+        Canceled = 7,
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /**
+     * Type of Arkadin.BlueSky.BSIC.Domain.OrderManagement.CustomerOrder
+     */
+    enum CustomerOrderTypeEnum {
+        InitialOrder = 0,
+        InitialSimplifiedOrder = 1,
+        CreateUpdateCustomerHierarchy = 2,
+        UpdateSubscription = 3,
+        ChangeUsersSubscription = 4,
+        ModifyUser = 5,
+        ModifyAccess = 6,
+        DisableUser = 7,
+        ReenableUser = 8,
+        CeaseUsers = 9,
+        CeaseAccesses = 10,
+        TerminateSubscription = 11,
+        CeaseNode = 12,
+        ScheduleOTPConference = 13,
+        UpdateOTPConference = 14,
+        CancelOTPConference = 15,
+        AddSubscription = 16,
+        AddUser = 17,
+        AddAccess = 18,
+        RaiseMiscellaneousCharges = 19,
+        MoveUsers = 20,
+        SendWelcomePack = 21,
+        ChangeOffer = 22,
+        MoveNode = 23,
+        ApplyAddendum = 24,
+        MergeLogo = 25,
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /** DTO of a customer order. */
+    interface ICustomerOrderDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets Customer (Logo) */
+        Customer: ICustomerDto;
+        /** Gets or sets Customer order name */
+        OrderName: string;
+        /** Gets or sets Customer order status. */
+        CustomerOrderStatus: string;
+        /** Gets or sets the OrderType. */
+        OrderType: string;
+        /** Identifier of the workflow, generated by Workflow Foundation. */
+        WorkflowId?: string;
+        /** Identifier of the related case in SalesForce.When an order is in error, a case can be created to report the issue. */
+        CaseId: string;
+        /** Gets or sets HierarchySubsetOrder: The customer order may contain a hierarchy subset order */
+        HierarchySubsetOrder: IHierarchySubsetOrderDto;
+        /** Gets or sets SubscriptionSubsetOrder: The customer order may contain a subscription subset order */
+        SubscriptionSubsetOrder: ISubscriptionSubsetOrderDto;
+        /** Gets or sets UserSubsetOrder: The customer order may contain a user subset order */
+        UserSubsetOrder: IUserSubsetOrderDto;
+        /** Gets or sets Customer order context */
+        OrderContext: IOrderContextDto;
+        /** Gets or sets Offer Name */
+        OfferName: string;
+        /** Gets or sets the number of processed nodes */
+        ProcessedNodesCount: string;
+        /** Gets or sets Calling system of the order */
+        CallingSystem: string;
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /** DTO of a customer. */
+    interface ICustomerDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets the Logo UserName, it is an unique identifier in the IS. */
+        LogoId: string;
+        /** Gets or sets the Logo display Name. It is the customer node name. */
+        LogoName: string;
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /** Context of the order. */
+    interface IOrderContextDto extends IResourceBase {
+        /** Gets or sets a Flag to indicate if subscription modification must be applied to all existing accesses,in terms of options. Only required for a CustomerOrder "Update Subscription". */
+        IsAppliedToAllAccesses?: boolean;
+        /** Gets or sets a Flag to indicate If the flag isAudioCustom is set to true, is filled with the path ofthe file containing the custom information. */
+        AudioCustomDetail: string;
+        /** Gets or sets Name of the system which submitted the order in the first place :OrderEntry, PartnerIS, Selfcare. */
+        CallingSystem: string;
+        /** Gets or sets Free text zone of 2048 char (text area). */
+        Comment: string;
+        /** Gets or sets Filled with the end-user who creates the order */
+        CreatedBy: string;
+        /** Gets or sets Date of creation */
+        CreatedDate: Date;
+        /** Gets or sets Filled with the end-user who loads the order */
+        EditingUserLogin: string;
+        /** Gets or sets Effective date of order execution */
+        ExecutionDate: Date;
+        /** Gets or sets It corresponds to the identifier of a concurrent Customer Order which must be terminated before processingcurrent order. */
+        FrozenBy?: number;
+        /** Gets or sets Flag to indicate if Domain Selection is done automatically ormanually. */
+        IsAudioCustom?: boolean;
+        /** Gets or sets a Flag to indicate if Subscriptions and Accesses are created as trialones. */
+        IsTrial: boolean;
+        /** Gets or sets the end-user who last modified the order */
+        ModifiedBy: string;
+        /** Gets or sets Date of last modification */
+        ModifiedDate?: Date;
+        /** Gets or sets OrderHistory : Read-only text area of 2048 char filled with the name of the end-user who saved the order and the date when it was saved */
+        OrderHistory: string;
+        /** Gets or sets Date of submission of the customer order. */
+        SubmitDate?: Date;
+        /** Gets or sets the end-user who submit the Order. Filled with PartnerName for orders with SalesChannel set to Partner, or with the Selfcare fororders coming from the Selfcare. */
+        SubmittedBy: string;
+        /** Gets or sets Name of the sales channel from which the order was submitted. Forexample: Arkadin-Direct */
+        SalesChannel: string;
+        /** Gets or sets Name of the Order Manager responsible for the fulfillment of thecustomer order. It is left empty by default, but it can be assigned throughOrder Tracking UI. */
+        TechnicalCoordinator: string;
+        /** This flag indicates if Welcome Packs are to be sent to the Users for which accesses were created/modified. */
+        IsUserRecipient?: boolean;
+        /** Status reason other. */
+        StatusReasonOther: string;
+        /** Gets or sets WelcomePack send date */
+        WelcomePackSendDate?: Date;
+        /** Gets or sets the Name of the subsidiary from which the order was submitted. */
+        Subsidiary: string;
+        /** Gets or sets the Status reason. */
+        StatusReason: string;
+        /** Gets or sets Welcome pack send mode */
+        WelcomePackSendMode: string;
+        /** Indicates if users' usages  must be corrected after a move user. */
+        IsUsageCorrected: boolean;
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /** Base class for the different types of subset orders:for subscriptionfor user/accessfor hierarchy */
+    interface ISubsetOrderBaseDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Indicates if the subset Order has warnings, its default value is "false".It is used when an Order Item raises an error that has to be ignored.In that case, the Order Item is in error and the attribute "HasWarnings" of the Subset Order is set to "true". */
+        HasWarnings: boolean;
+        /** Indicates the high-level functional action held by the subset. */
+        SubsetAction: string;
+        /** Processing status of a SubsetOrder. */
+        SubsetOrderStatus: string;
     }
 }
 
@@ -2434,6 +2449,253 @@ declare namespace bluesky.core.model.bulk {
     interface IFileUploadContractDto {
         MaxFileSize: number;
         SupportedFileExtensionList: Array<string>;
+    }
+}
+
+declare namespace bluesky.core.model.account {
+    /** Dto of an access.The AccessAccount is the customer hierarchy node that represents the instance of asubscribed product for a given user (i.e. the use  of a particular Arkadin orArkadin's supplier resource).It holds access identifier that allows connection, CDR guidance.It is linked to a unique service platform.It represents service end point - access to Arkadin conferencing infrastructure,provisioned in the network. */
+    interface IAccessAccountDto extends IAccountDto {
+        /** Gets or sets the Alias of the access. */
+        Alias: string;
+        /** The AccessAccount view contains attributes storing technical information for each UserAccount's AccessAccount instance. */
+        AccessView: IAccessViewDto;
+    }
+}
+
+declare namespace bluesky.core.model.account {
+    /** Header DTO of an accountTODO MGA : inheriting from OrderManagementEntityDto is a hack, as we do not have custom DTOs for Accounts comming from OrderManagement DB. TOFIX when we don't have these entities saved in OM. */
+    interface IAccountHeaderDto extends IOrderManagementEntityDto {
+        /** Gets or sets the user name assigned to the account.TODO MGA : to be renamed to Uid : impacts on Proxies / HUB ? Is it acceptable or not ? */
+        UserName: string;
+        /** Gets or sets the account type. */
+        AccountType: string;
+        /** Gets or sets the customer node name. */
+        CustomerNodeName: string;
+        /** TODO MGA : to be renamed to Uid : impacts on Proxies / HUB ? Is it acceptable or not ? */
+        PayerUserName: string;
+        /** TODO MGA : to be renamed to Uid : impacts on Proxies / HUB ? Is it acceptable or not ? */
+        LogoUserName: string;
+        /** The status of the account.
+            TODO MGA: this should be migrated to an AccountStatusEnum type both here & server-side (enum value serialization works in TS) */
+        AccountStatus: string;
+    }
+}
+
+declare namespace bluesky.core.model.account {
+    interface IAccountHierarchyTreeNodeDto {
+        Uid: string;
+        UserName: string;
+        AccountType: string;
+        IsOnline: boolean;
+        Children: Array<IAccountHierarchyTreeNodeDto>;
+    }
+}
+
+declare namespace bluesky.core.model.account {
+    enum AccountStatusEnum {
+        Undefined = 0,
+        PendingActiveApproval = 1,
+        Active = 2,
+        Suspended = 3,
+        PendingFinalBill = 4,
+        Closed = 5,
+        Archived = 6,
+    }
+}
+
+declare namespace bluesky.core.model.account {
+    enum AccountTypeEnum {
+        None = 0,
+        Logo = 1,
+        LocalLogo = 2,
+        LegalEntity = 3,
+        ReportingGroup1 = 4,
+        ReportingGroup2 = 5,
+        BillingAccount = 6,
+        Group = 7,
+        PrimaryGroup = 8,
+        User = 9,
+        Access = 10,
+    }
+}
+
+declare namespace bluesky.core.model.account {
+    /** DTO of an account.Base class holding MetraNet core account properties and identifiers.TODO MGA : inheriting from OrderManagementEntityDto is a hack, as we do not have custom DTOs for Accounts comming from OrderManagement DB. TOFIX when we don't have these entities saved in OM. */
+    interface IAccountDto extends IOrderManagementEntityDto {
+        /** Gets or sets the account type. */
+        AccountType: string;
+        /** Gets or sets the MetraNet identifier of the account. */
+        MNId?: number;
+        /** Gets or sets the user name assigned to the account.TODO MGA : to be renamed to Uid : impacts on Proxies / HUB ? Is it acceptable or not ? */
+        UserName: string;
+        /** Gets or sets the parent account.TODO MGA : to be renamed to AncestorAccountUid : impacts on Proxies / HUB ? Is it acceptable or not ? */
+        AncestorAccountUserName: string;
+        /** Gets or sets the account status value.
+            TODO MGA: this should be migrated to an AccountStatusEnum type both here & server-side (enum value serialization works in TS) */
+        AccountStatus: string;
+        /** Gets or sets the payer username.TODO MGA : to be renamed to PayerUid : impacts on Proxies / HUB ? Is it acceptable or not ? */
+        PayerUserName: string;
+        /** Gets or sets the start date of the account. */
+        AccountStartDate: Date;
+        /** Gets or sets the end date of the account. */
+        AccountEndDate?: Date;
+        /** Gets or sets the start date of the association with the current parent account (ancestor). */
+        HierarchyStartDate?: Date;
+        /** Gets or sets the end date of the association with the current parent account (ancestor). */
+        HierarchyEndDate?: Date;
+        /** Gets or sets the password used by the account to access MetraView site. */
+        Password: string;
+        /** Gets or sets the start date of the payment redirection with the current payer account. */
+        PaymentStartDate?: Date;
+        /** Gets or sets the end date of the payment redirection with the current payer account. */
+        PaymentEndDate?: Date;
+        /** Gets or sets the Internal view contains the Internal account information.It is required for all types of accounts. */
+        InternalView: account.IInternalViewDto;
+        /** Gets or sets the Common view gathers attributes shared by all of the Accounts. */
+        CommonView: account.ICommonViewDto;
+    }
+}
+
+declare namespace bluesky.core.command.account {
+    /** Command to authenticate a user account in BlueSky. */
+    interface IAuthenticateUserAccountCommand {
+        /** User account's identifier in MetraNet. */
+        UserUid: string;
+        /** User account's password, used by the user to access MetraView. */
+        Password: string;
+    }
+}
+
+declare namespace bluesky.core.model.account {
+    /** Dto of a billing account.The Billing account represents the billing point in the hierarchy.This is the account which collects all charges from itself and all sub-accounts.Billing account defines invoice currency, billing frequency and receives theinvoice.It is linked to an Arkadin subsidiary (this allows to identify the uniqueNavision instance that support the Billing account).By default the Billing account is the entity that support the subscriptions(exception for Event, trial accounts ...).Please note that in the Wholesaler case, the Billing account is a dummy(unknown by Navision, no invoice sent).Please note that in the trial account case, the Billing account is a dummy (forinternal use only). */
+    interface IBillingAccountDto extends account.IAccountDto {
+        /** Billing account view */
+        BillingView: account.IBillingViewDto;
+        /** The Contact view of type Bill-to contains the contact and address of a billable entity. */
+        BillToView: account.IBillToContactViewDto;
+        /** The  Contact view of type Ship-to contains the contact and address where the invoice is sent to. */
+        ShipToView: account.IContactViewDto;
+        /** The Contact view of type Technical-Admin contains the contact and address of a technical administrator, responsible for a group of Users. */
+        TechnicalAdminContactView: account.ITechnicalAdminContactViewDto;
+        /** The Contact view of type invoice carbon copy contains the additional contacts who will receive the invoice. */
+        InvoiceCarbonCopyRecipients: account.IContactViewDto[];
+        /** The Contact view of type welcome pack carbon copy contains the additional contacts who will receive the welcome packs. */
+        WelcomePackCarbonCopyRecipients: account.IContactViewDto[];
+    }
+}
+
+declare namespace bluesky.core.model.account {
+    /** Dto of a group.The Group is an optional node in the customer hierarchy.It is used for invoicing structure and reporting purposes. */
+    interface IGroupDto extends IAccountDto {
+        /** The Primary Group view contains attributes specific to Group and Primary Group account. These attributes include specifics of physical platform to which children accounts (Users and their Accesses) were provisioned. */
+        PrimaryGroupView: IPrimaryGroupViewDto;
+        /** The Contact view of type Technical-Admin contains the contact and address of a technical administrator, responsible for a group of Users. */
+        TechnicalAdminContactView: ITechnicalAdminContactViewDto;
+    }
+}
+
+declare namespace bluesky.core.model.account {
+    /** Dto of a Legal Entity.The Legal Entity is a node acting as a Payer template for the Billing account. */
+    interface ILegalEntityDto extends IAccountDto {
+        /** The Contact view of type Bill-to contains the contact and address of a billable entity. */
+        BillToView: IBillToContactViewDto;
+        /** The Legal Entity view contains attributes related to Legal Entity setup. */
+        LegalEntityView: ILegalEntityViewDto;
+    }
+}
+
+declare namespace bluesky.core.model.account {
+    /** Dto of a local logo.The Local Logo is an optional node in the customer hierarchy, used for groupingor representing subsidiaries or geolocations of the Customer organization. */
+    interface ILocalLogoDto extends IAccountDto {
+        /** The Local Logo view contains attributes related to Local Logo setup. */
+        LocalLogoView: ILocalLogoViewDto;
+        /** The Contact view of type Technical-Admin contains the contact and address of a technical administrator, responsible for a group of Users. */
+        TechnicalAdminContactView: ITechnicalAdminContactViewDto;
+    }
+}
+
+declare namespace bluesky.core.model.account {
+    /** Dto of a logo.A Logo represents the Customer which is in relation with Arkadin or Arkadin'spartner. It's the root of any customer hierarchy.In the case of WholeSale the Logo is a dummy node (Arkadin IS hasn't got thecomplete view of the wholesaler's customer).In the case of trial account the Logo is a dummy node.A logo is associated to a Arkadin subsidiary (or to Arkadin SAS). */
+    interface ILogoDto extends IAccountDto {
+        /** Logo view */
+        LogoView: ILogoViewDto;
+        /** The Contact view of type Technical-Admin contains the contact and address of a technical administrator, responsible for a group of Users. */
+        TechnicalAdminContactView: ITechnicalAdminContactViewDto;
+    }
+}
+
+declare namespace bluesky.core.model.account {
+    /** Management Subsidiaries are used in the Platform Selection algorithms. */
+    interface IManagementSubsidiaryDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Flag to identify the Management Subsidiary at Logo level. */
+        IsMain: boolean;
+        /** Subsidiary code. */
+        SubsidiaryCode: string;
+        /** Name of the management subsidiary to be used for AudioClassicplatform selection. */
+        SubsidiaryName: string;
+    }
+}
+
+declare namespace bluesky.core.model.account {
+    /** Dto of a primary group.The Primary group is a mandatory group of Users.It represents Customer's organizational physical Site, Department, Office orLocation or used purely for grouping purposes.The Primary group is linked to all services platforms used by the users. */
+    interface IPrimaryGroupDto extends IAccountDto {
+        /** The Primary Group view contains attributes specific to Group and Primary Group account. These attributes include specifics of physical platform to which children accounts (Users and their Accesses) were provisioned. */
+        PrimaryGroupView: IPrimaryGroupViewDto;
+        /** Dispatching viewContains attributes related to account segmentation and dispatching. */
+        DispatchingView: IDispatchingViewDto;
+        /** The Contact view of type Technical-Admin contains the contact and address of a technical administrator, responsible for a group of Users. */
+        TechnicalAdminContactView: ITechnicalAdminContactViewDto;
+    }
+}
+
+declare namespace bluesky.core.model.account {
+    /** Dto of a reporting group 1.The Reporting Group has no functional requirement for billing, rating,...It is only used for Reporting issues. */
+    interface IReportingGroup1Dto extends IAccountDto {
+    }
+}
+
+declare namespace bluesky.core.model.account {
+    /** Dto of a reporting group 2.The Reporting Group has no functional requirement for billing, rating,...It is only used for Reporting issues. */
+    interface IReportingGroup2Dto extends IAccountDto {
+    }
+}
+
+declare namespace bluesky.core.command.account {
+    /** Command to search UserAccounts in BlueSky. */
+    interface ISearchUserAccountCommand extends IBasePaginatedSearchCommand {
+        LogoUid?: string;
+        Email?: string;
+        CustomerNodeName?: string;
+        PrimaryGroupUid?: string;
+        BillingAccountUid?: string;
+        SelfCareRole?: string;
+        AccountStatusList?: string;
+        LastName?: string;
+    }
+}
+
+declare namespace bluesky.core.model.account {
+    /** Header DTO of a UserAccount. */
+    interface IUserAccountHeaderDto extends IAccountHeaderDto {
+        Email: string;
+        Login: string;
+        SelfCareRelation: string;
+        SelfCareRole: string;
+        HasExtendedScope: boolean;
+    }
+}
+
+declare namespace bluesky.core.model.account {
+    /** DTO of a user.The UserAccount represents individual (person) or inanimate entity that that receivesand consumes services provided by Arkadin. */
+    interface IUserAccountDto extends IAccountDto {
+        /** The UserAccount-Contact view contains the contact and address of a physical user of Arkadin services. */
+        UserContactView: IUserContactViewDto;
+        /** The UserAccount view contains attributes related to UserAccount setup. */
+        UserView: IUserViewDto;
+        /** The Contact view of type Technical-Admin contains the contact and address of a technical administrator, responsible for a group of Users. */
+        TechnicalAdminContactView: ITechnicalAdminContactViewDto;
     }
 }
 
@@ -2818,6 +3080,69 @@ declare namespace bluesky.core.model.account {
     }
 }
 
+declare namespace bluesky.core.command.salesforce {
+    import SegmentTypeEnum = bluesky.core.model.salesforce.SegmentTypeEnum;
+    /**
+     * Command to change the segment of an sfdc account.
+     */
+    interface IChangeAccountSegmentTypeCommand {
+        Id: string;
+        SegmentType: SegmentTypeEnum;
+    }
+}
+
+declare namespace bluesky.core.model.salesforce {
+    /**
+     * Dto of a sales force account header.
+     * TODO MGA: should be paginated in the long term (see SFDC DAL)
+     * TODO MGA: should be ligther vs. sf account dto
+     */
+    interface ISalesForceAccountHeaderDto extends IResourceBase {
+        Id: string;
+        Name: string;
+        Segmentation: string;
+        /** TODO MGA: ask CAPI to update to use Enum  */
+        SegmentType: string;
+        CountryName: IMetraNetEnumerationDto;
+        CustomerSize: IMetraNetEnumerationDto;
+    }
+}
+
+declare namespace bluesky.core.model.salesforce {
+    /**
+     * Dto of a sales force account.
+     * TODO MGA: should be paginated in the long term (see SFDC DAL)
+     */
+    interface ISalesForceAccountDto extends IResourceBase {
+        Id: string;
+        Name: string;
+        CountryName: IMetraNetEnumerationDto;
+        Segmentation: string;
+        /** TODO MGA: ask CAPI to update to use Enum  */
+        SegmentType: string;
+        CustomerSize: IMetraNetEnumerationDto;
+    }
+}
+
+declare namespace bluesky.core.command.salesforce {
+    /**
+     * Search parameter used to retrieve a list of sales force account.
+     */
+    interface ISearchSalesForceAccountCommand extends IBasePaginatedSearchCommand {
+        Name: string;
+    }
+}
+
+declare namespace bluesky.core.model.salesforce {
+    /**
+     * List of supported segment types for a SalesForce Account.
+     */
+    enum SegmentTypeEnum {
+        Premium = 0,
+        OnLine = 1,
+    }
+}
+
 declare namespace bluesky.core.model.customerOrder {
     /** Access credential for generic accesses */
     interface IAccessCredentialsDto {
@@ -2923,56 +3248,6 @@ declare namespace bluesky.core.model.customerOrder {
         Action: string;
         /** Gets or sets the Participant type. A participant can have a Moderator or Participant type. */
         ParticipantType: string;
-    }
-}
-
-declare namespace bluesky.core.model.customerOrder {
-    /** DTO header of a hierarchy order item. */
-    interface IHierarchyOrderItemHeaderDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets Processing status of an OrderItem. */
-        OrderItemStatus: string;
-        /** This describes the action held by the Hierarchy OrderItem */
-        HierarchyAction: string;
-        /** Gets or sets the UserName of the account linked to the hierarchy order item. */
-        AccountUserName: string;
-        /** Gets or sets the Type of the account linked to the hierarchy order item. */
-        AccountType: string;
-        /** Gets or sets the id of the account linked to the hierarchy order item. */
-        AccountId: number;
-        /** Information needed to merge a logo in another one. */
-        MergeLogoInformation: IMergeLogoInformationDto;
-        /** A hierarchy order item contains at most one movable account. */
-        movableAccount: IMovableAccountDto;
-    }
-}
-
-declare namespace bluesky.core.model.customerOrder {
-    /** DTO of a hierarchy subset order. */
-    interface IHierarchySubsetOrderDto extends ISubsetOrderBaseDto {
-        /** A hierarchy subset order is composed of at least one hierarchy order item. */
-        hierarchyOrderItems: IHierarchyOrderItemHeaderDto[];
-    }
-}
-
-declare namespace bluesky.core.model.customerOrder {
-    /** Dto of a Movable account. */
-    interface IMovableAccountDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets the Target payer user name. */
-        PayerUserName: string;
-        /** Gets or sets the User name of the node to move. */
-        SourceName: string;
-        /** Gets or sets the New user name. */
-        TargetName: string;
-        /** Gets or sets the User name of the target parent. */
-        TargetParentName: string;
-        /** Gets or sets the New password. */
-        NewPassword: string;
-        /** Gets or sets new currency */
-        NewCurrency: string;
     }
 }
 
@@ -3094,253 +3369,6 @@ declare namespace bluesky.core.model.customerOrder {
     }
 }
 
-declare namespace bluesky.core.model.account {
-    /** Dto of an access.The AccessAccount is the customer hierarchy node that represents the instance of asubscribed product for a given user (i.e. the use  of a particular Arkadin orArkadin's supplier resource).It holds access identifier that allows connection, CDR guidance.It is linked to a unique service platform.It represents service end point - access to Arkadin conferencing infrastructure,provisioned in the network. */
-    interface IAccessAccountDto extends IAccountDto {
-        /** Gets or sets the Alias of the access. */
-        Alias: string;
-        /** The AccessAccount view contains attributes storing technical information for each UserAccount's AccessAccount instance. */
-        AccessView: IAccessViewDto;
-    }
-}
-
-declare namespace bluesky.core.model.account {
-    /** Header DTO of an accountTODO MGA : inheriting from OrderManagementEntityDto is a hack, as we do not have custom DTOs for Accounts comming from OrderManagement DB. TOFIX when we don't have these entities saved in OM. */
-    interface IAccountHeaderDto extends IOrderManagementEntityDto {
-        /** Gets or sets the user name assigned to the account.TODO MGA : to be renamed to Uid : impacts on Proxies / HUB ? Is it acceptable or not ? */
-        UserName: string;
-        /** Gets or sets the account type. */
-        AccountType: string;
-        /** Gets or sets the customer node name. */
-        CustomerNodeName: string;
-        /** TODO MGA : to be renamed to Uid : impacts on Proxies / HUB ? Is it acceptable or not ? */
-        PayerUserName: string;
-        /** TODO MGA : to be renamed to Uid : impacts on Proxies / HUB ? Is it acceptable or not ? */
-        LogoUserName: string;
-        /** The status of the account.
-            TODO MGA: this should be migrated to an AccountStatusEnum type both here & server-side (enum value serialization works in TS) */
-        AccountStatus: string;
-    }
-}
-
-declare namespace bluesky.core.model.account {
-    interface IAccountHierarchyTreeNodeDto {
-        Uid: string;
-        UserName: string;
-        AccountType: string;
-        IsOnline: boolean;
-        Children: Array<IAccountHierarchyTreeNodeDto>;
-    }
-}
-
-declare namespace bluesky.core.model.account {
-    enum AccountStatusEnum {
-        Undefined = 0,
-        PendingActiveApproval = 1,
-        Active = 2,
-        Suspended = 3,
-        PendingFinalBill = 4,
-        Closed = 5,
-        Archived = 6,
-    }
-}
-
-declare namespace bluesky.core.model.account {
-    enum AccountTypeEnum {
-        None = 0,
-        Logo = 1,
-        LocalLogo = 2,
-        LegalEntity = 3,
-        ReportingGroup1 = 4,
-        ReportingGroup2 = 5,
-        BillingAccount = 6,
-        Group = 7,
-        PrimaryGroup = 8,
-        User = 9,
-        Access = 10,
-    }
-}
-
-declare namespace bluesky.core.model.account {
-    /** DTO of an account.Base class holding MetraNet core account properties and identifiers.TODO MGA : inheriting from OrderManagementEntityDto is a hack, as we do not have custom DTOs for Accounts comming from OrderManagement DB. TOFIX when we don't have these entities saved in OM. */
-    interface IAccountDto extends IOrderManagementEntityDto {
-        /** Gets or sets the account type. */
-        AccountType: string;
-        /** Gets or sets the MetraNet identifier of the account. */
-        MNId?: number;
-        /** Gets or sets the user name assigned to the account.TODO MGA : to be renamed to Uid : impacts on Proxies / HUB ? Is it acceptable or not ? */
-        UserName: string;
-        /** Gets or sets the parent account.TODO MGA : to be renamed to AncestorAccountUid : impacts on Proxies / HUB ? Is it acceptable or not ? */
-        AncestorAccountUserName: string;
-        /** Gets or sets the account status value.
-            TODO MGA: this should be migrated to an AccountStatusEnum type both here & server-side (enum value serialization works in TS) */
-        AccountStatus: string;
-        /** Gets or sets the payer username.TODO MGA : to be renamed to PayerUid : impacts on Proxies / HUB ? Is it acceptable or not ? */
-        PayerUserName: string;
-        /** Gets or sets the start date of the account. */
-        AccountStartDate: Date;
-        /** Gets or sets the end date of the account. */
-        AccountEndDate?: Date;
-        /** Gets or sets the start date of the association with the current parent account (ancestor). */
-        HierarchyStartDate?: Date;
-        /** Gets or sets the end date of the association with the current parent account (ancestor). */
-        HierarchyEndDate?: Date;
-        /** Gets or sets the password used by the account to access MetraView site. */
-        Password: string;
-        /** Gets or sets the start date of the payment redirection with the current payer account. */
-        PaymentStartDate?: Date;
-        /** Gets or sets the end date of the payment redirection with the current payer account. */
-        PaymentEndDate?: Date;
-        /** Gets or sets the Internal view contains the Internal account information.It is required for all types of accounts. */
-        InternalView: account.IInternalViewDto;
-        /** Gets or sets the Common view gathers attributes shared by all of the Accounts. */
-        CommonView: account.ICommonViewDto;
-    }
-}
-
-declare namespace bluesky.core.command.account {
-    /** Command to authenticate a user account in BlueSky. */
-    interface IAuthenticateUserAccountCommand {
-        /** User account's identifier in MetraNet. */
-        UserUid: string;
-        /** User account's password, used by the user to access MetraView. */
-        Password: string;
-    }
-}
-
-declare namespace bluesky.core.model.account {
-    /** Dto of a billing account.The Billing account represents the billing point in the hierarchy.This is the account which collects all charges from itself and all sub-accounts.Billing account defines invoice currency, billing frequency and receives theinvoice.It is linked to an Arkadin subsidiary (this allows to identify the uniqueNavision instance that support the Billing account).By default the Billing account is the entity that support the subscriptions(exception for Event, trial accounts ...).Please note that in the Wholesaler case, the Billing account is a dummy(unknown by Navision, no invoice sent).Please note that in the trial account case, the Billing account is a dummy (forinternal use only). */
-    interface IBillingAccountDto extends account.IAccountDto {
-        /** Billing account view */
-        BillingView: account.IBillingViewDto;
-        /** The Contact view of type Bill-to contains the contact and address of a billable entity. */
-        BillToView: account.IBillToContactViewDto;
-        /** The  Contact view of type Ship-to contains the contact and address where the invoice is sent to. */
-        ShipToView: account.IContactViewDto;
-        /** The Contact view of type Technical-Admin contains the contact and address of a technical administrator, responsible for a group of Users. */
-        TechnicalAdminContactView: account.ITechnicalAdminContactViewDto;
-        /** The Contact view of type invoice carbon copy contains the additional contacts who will receive the invoice. */
-        InvoiceCarbonCopyRecipients: account.IContactViewDto[];
-        /** The Contact view of type welcome pack carbon copy contains the additional contacts who will receive the welcome packs. */
-        WelcomePackCarbonCopyRecipients: account.IContactViewDto[];
-    }
-}
-
-declare namespace bluesky.core.model.account {
-    /** Dto of a group.The Group is an optional node in the customer hierarchy.It is used for invoicing structure and reporting purposes. */
-    interface IGroupDto extends IAccountDto {
-        /** The Primary Group view contains attributes specific to Group and Primary Group account. These attributes include specifics of physical platform to which children accounts (Users and their Accesses) were provisioned. */
-        PrimaryGroupView: IPrimaryGroupViewDto;
-        /** The Contact view of type Technical-Admin contains the contact and address of a technical administrator, responsible for a group of Users. */
-        TechnicalAdminContactView: ITechnicalAdminContactViewDto;
-    }
-}
-
-declare namespace bluesky.core.model.account {
-    /** Dto of a Legal Entity.The Legal Entity is a node acting as a Payer template for the Billing account. */
-    interface ILegalEntityDto extends IAccountDto {
-        /** The Contact view of type Bill-to contains the contact and address of a billable entity. */
-        BillToView: IBillToContactViewDto;
-        /** The Legal Entity view contains attributes related to Legal Entity setup. */
-        LegalEntityView: ILegalEntityViewDto;
-    }
-}
-
-declare namespace bluesky.core.model.account {
-    /** Dto of a local logo.The Local Logo is an optional node in the customer hierarchy, used for groupingor representing subsidiaries or geolocations of the Customer organization. */
-    interface ILocalLogoDto extends IAccountDto {
-        /** The Local Logo view contains attributes related to Local Logo setup. */
-        LocalLogoView: ILocalLogoViewDto;
-        /** The Contact view of type Technical-Admin contains the contact and address of a technical administrator, responsible for a group of Users. */
-        TechnicalAdminContactView: ITechnicalAdminContactViewDto;
-    }
-}
-
-declare namespace bluesky.core.model.account {
-    /** Dto of a logo.A Logo represents the Customer which is in relation with Arkadin or Arkadin'spartner. It's the root of any customer hierarchy.In the case of WholeSale the Logo is a dummy node (Arkadin IS hasn't got thecomplete view of the wholesaler's customer).In the case of trial account the Logo is a dummy node.A logo is associated to a Arkadin subsidiary (or to Arkadin SAS). */
-    interface ILogoDto extends IAccountDto {
-        /** Logo view */
-        LogoView: ILogoViewDto;
-        /** The Contact view of type Technical-Admin contains the contact and address of a technical administrator, responsible for a group of Users. */
-        TechnicalAdminContactView: ITechnicalAdminContactViewDto;
-    }
-}
-
-declare namespace bluesky.core.model.account {
-    /** Management Subsidiaries are used in the Platform Selection algorithms. */
-    interface IManagementSubsidiaryDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Flag to identify the Management Subsidiary at Logo level. */
-        IsMain: boolean;
-        /** Subsidiary code. */
-        SubsidiaryCode: string;
-        /** Name of the management subsidiary to be used for AudioClassicplatform selection. */
-        SubsidiaryName: string;
-    }
-}
-
-declare namespace bluesky.core.model.account {
-    /** Dto of a primary group.The Primary group is a mandatory group of Users.It represents Customer's organizational physical Site, Department, Office orLocation or used purely for grouping purposes.The Primary group is linked to all services platforms used by the users. */
-    interface IPrimaryGroupDto extends IAccountDto {
-        /** The Primary Group view contains attributes specific to Group and Primary Group account. These attributes include specifics of physical platform to which children accounts (Users and their Accesses) were provisioned. */
-        PrimaryGroupView: IPrimaryGroupViewDto;
-        /** Dispatching viewContains attributes related to account segmentation and dispatching. */
-        DispatchingView: IDispatchingViewDto;
-        /** The Contact view of type Technical-Admin contains the contact and address of a technical administrator, responsible for a group of Users. */
-        TechnicalAdminContactView: ITechnicalAdminContactViewDto;
-    }
-}
-
-declare namespace bluesky.core.model.account {
-    /** Dto of a reporting group 1.The Reporting Group has no functional requirement for billing, rating,...It is only used for Reporting issues. */
-    interface IReportingGroup1Dto extends IAccountDto {
-    }
-}
-
-declare namespace bluesky.core.model.account {
-    /** Dto of a reporting group 2.The Reporting Group has no functional requirement for billing, rating,...It is only used for Reporting issues. */
-    interface IReportingGroup2Dto extends IAccountDto {
-    }
-}
-
-declare namespace bluesky.core.command.account {
-    /** Command to search UserAccounts in BlueSky. */
-    interface ISearchUserAccountCommand extends IBasePaginatedSearchCommand {
-        LogoUid?: string;
-        Email?: string;
-        CustomerNodeName?: string;
-        PrimaryGroupUid?: string;
-        BillingAccountUid?: string;
-        SelfCareRole?: string;
-        AccountStatusList?: string;
-        LastName?: string;
-    }
-}
-
-declare namespace bluesky.core.model.account {
-    /** Header DTO of a UserAccount. */
-    interface IUserAccountHeaderDto extends IAccountHeaderDto {
-        Email: string;
-        Login: string;
-        SelfCareRelation: string;
-        SelfCareRole: string;
-        HasExtendedScope: boolean;
-    }
-}
-
-declare namespace bluesky.core.model.account {
-    /** DTO of a user.The UserAccount represents individual (person) or inanimate entity that that receivesand consumes services provided by Arkadin. */
-    interface IUserAccountDto extends IAccountDto {
-        /** The UserAccount-Contact view contains the contact and address of a physical user of Arkadin services. */
-        UserContactView: IUserContactViewDto;
-        /** The UserAccount view contains attributes related to UserAccount setup. */
-        UserView: IUserViewDto;
-        /** The Contact view of type Technical-Admin contains the contact and address of a technical administrator, responsible for a group of Users. */
-        TechnicalAdminContactView: ITechnicalAdminContactViewDto;
-    }
-}
-
 declare namespace bluesky.core.model.customerOrder {
     /** Dto of a Merge Logo information. Contains information about merge logo action. */
     interface IMergeLogoInformationDto extends IResourceBase {
@@ -3352,6 +3380,56 @@ declare namespace bluesky.core.model.customerOrder {
         DestinationLogoUid: string;
         /** Indicates if the DDIs configured for the source logo must be merged in the target logo. */
         MergeConfiguredDDIs: boolean;
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /** DTO header of a hierarchy order item. */
+    interface IHierarchyOrderItemHeaderDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets Processing status of an OrderItem. */
+        OrderItemStatus: string;
+        /** This describes the action held by the Hierarchy OrderItem */
+        HierarchyAction: string;
+        /** Gets or sets the UserName of the account linked to the hierarchy order item. */
+        AccountUserName: string;
+        /** Gets or sets the Type of the account linked to the hierarchy order item. */
+        AccountType: string;
+        /** Gets or sets the id of the account linked to the hierarchy order item. */
+        AccountId: number;
+        /** Information needed to merge a logo in another one. */
+        MergeLogoInformation: IMergeLogoInformationDto;
+        /** A hierarchy order item contains at most one movable account. */
+        movableAccount: IMovableAccountDto;
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /** DTO of a hierarchy subset order. */
+    interface IHierarchySubsetOrderDto extends ISubsetOrderBaseDto {
+        /** A hierarchy subset order is composed of at least one hierarchy order item. */
+        hierarchyOrderItems: IHierarchyOrderItemHeaderDto[];
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /** Dto of a Movable account. */
+    interface IMovableAccountDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets the Target payer user name. */
+        PayerUserName: string;
+        /** Gets or sets the User name of the node to move. */
+        SourceName: string;
+        /** Gets or sets the New user name. */
+        TargetName: string;
+        /** Gets or sets the User name of the target parent. */
+        TargetParentName: string;
+        /** Gets or sets the New password. */
+        NewPassword: string;
+        /** Gets or sets new currency */
+        NewCurrency: string;
     }
 }
 
@@ -3485,68 +3563,5 @@ declare namespace bluesky.core.model.customerOrder {
         UserOrderItems: IUserOrderItemHeaderDto[];
         /** List of movable subscriptions */
         MovableSubscriptions: IMovableSubscriptionDto[];
-    }
-}
-
-declare namespace bluesky.core.command.salesforce {
-    import SegmentTypeEnum = bluesky.core.model.salesforce.SegmentTypeEnum;
-    /**
-     * Command to change the segment of an sfdc account.
-     */
-    interface IChangeAccountSegmentTypeCommand {
-        Id: string;
-        SegmentType: SegmentTypeEnum;
-    }
-}
-
-declare namespace bluesky.core.model.salesforce {
-    /**
-     * Dto of a sales force account header.
-     * TODO MGA: should be paginated in the long term (see SFDC DAL)
-     * TODO MGA: should be ligther vs. sf account dto
-     */
-    interface ISalesForceAccountHeaderDto extends IResourceBase {
-        Id: string;
-        Name: string;
-        Segmentation: string;
-        /** TODO MGA: ask CAPI to update to use Enum  */
-        SegmentType: string;
-        CountryName: IMetraNetEnumerationDto;
-        CustomerSize: IMetraNetEnumerationDto;
-    }
-}
-
-declare namespace bluesky.core.model.salesforce {
-    /**
-     * Dto of a sales force account.
-     * TODO MGA: should be paginated in the long term (see SFDC DAL)
-     */
-    interface ISalesForceAccountDto extends IResourceBase {
-        Id: string;
-        Name: string;
-        CountryName: IMetraNetEnumerationDto;
-        Segmentation: string;
-        /** TODO MGA: ask CAPI to update to use Enum  */
-        SegmentType: string;
-        CustomerSize: IMetraNetEnumerationDto;
-    }
-}
-
-declare namespace bluesky.core.command.salesforce {
-    /**
-     * Search parameter used to retrieve a list of sales force account.
-     */
-    interface ISearchSalesForceAccountCommand extends IBasePaginatedSearchCommand {
-        Name: string;
-    }
-}
-
-declare namespace bluesky.core.model.salesforce {
-    /**
-     * List of supported segment types for a SalesForce Account.
-     */
-    enum SegmentTypeEnum {
-        Premium = 0,
-        OnLine = 1,
     }
 }
