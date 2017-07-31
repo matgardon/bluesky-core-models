@@ -1,3 +1,99 @@
+declare namespace bluesky.core.model.userCase {
+    interface ICaseCreationUrlDto {
+        CaseUrl: string;
+    }
+}
+
+declare namespace bluesky.core.command.userCase {
+    interface IGetCaseCreationUrlCommand {
+        UserId: string;
+        SalesForceAccountId: string;
+        PinCode: string;
+        WebLogin: string;
+    }
+}
+
+declare namespace bluesky.core.model.userCase {
+    /** Dto of a sales force case.
+    * A case is a description of a customer's feedback, problem, or question.
+    * Cases are used to track and solve customers' issues. */
+    interface ISalesforceCaseDto {
+        /** Identifier of the case. */
+        Id: string;
+        /** Case status.Example: New, Acknowledge, Pending customer, On going, Raised to Supplier, Raised, Closing, Pending completion, Update of supplier case, Closing of supplier case, Close. */
+        Status: string;
+        /** Case severity. */
+        Severity: string;
+        /** Unique number automatically assigned to the case. */
+        Number: string;
+        /** Record type name. */
+        RecordType: string;
+        /** Brief description of customer's issue. */
+        Subject: string;
+        /** Creation date of the case. */
+        CreatedDate: Date;
+        /** Case owner's name. */
+        OwnerName: string;
+        /** Case contact's name. */
+        ContactName: string;
+        /** Url to the case in SalesForce. */
+        CaseUrl: string;
+    }
+}
+
+declare namespace bluesky.core.model.clientConfig {
+    interface IAjaxClientEndpointConfigurationDto {
+        EndpointBaseURL: string;
+        EndpointSuffix: string;
+        AuthToken: string;
+        AuthTokenValidityEndDate: string;
+    }
+}
+
+declare namespace bluesky.core.model.clientConfig {
+    import UserSsoDto = userManagement.IUserSsoDto;
+    interface IBlueskyAjaxClientConfigurationDto {
+        /**
+         * Dictionnary of client configuration per-endpoint.
+         * @param endpointType : EndpoinTypeEnum type string representation. It cannot be strongly typed to the related enum (EndpointTypeEnum) due to TS not implementing it atm: https://github.com/Microsoft/TypeScript/issues/2491. So we use the string representation of the enum as key.
+         * @returns {}
+         *
+         * TODO MGA: C# json native json serializer doesn't handle dictionnaries with enum keys, so we use an array of endpoint config based on string representation. http://stackoverflow.com/questions/2892910/problems-with-json-serialize-dictionaryenum-int32
+         */
+        EndpointConfigurationDictionnary: {
+            [endpointType: string]: clientConfig.IAjaxClientEndpointConfigurationDto;
+        };
+        CurrentUserRole: string;
+        CurrentUser?: UserSsoDto;
+    }
+}
+
+declare namespace bluesky.core.model.clientConfig {
+    /**
+     * Enum generated from the server to know the list of supported endpoint configuration.
+     */
+    enum EndpointTypeEnum {
+        /**
+         * Origin domain from which the current client was loaded.
+         */
+        CurrentDomain = 0,
+        CoreApi = 1,
+        MarketingApi = 2,
+        SelfcareApi = 3,
+        QuoteWizard = 4,
+        OrderEntry = 5,
+        OrderTracking = 6,
+        Metranet = 7,
+        TechnicalInventory = 8,
+        TemplateGenerator = 9,
+        Salesforce = 10,
+        /**
+         * External URLs (not treatment applied, rejected if URL is not full)
+         */
+        External = 11,
+    }
+}
+
 declare namespace bluesky.core.model {
     /** Base information for a file upload. */
     interface IFileUploadBaseDto {
@@ -118,59 +214,6 @@ declare namespace bluesky.core.model {
         Items: T[];
         /** Le nombre d'éléments retournés dans cette liste non paginée. */
         TotalCount: number;
-    }
-}
-
-declare namespace bluesky.core.model.clientConfig {
-    interface IAjaxClientEndpointConfigurationDto {
-        EndpointBaseURL: string;
-        EndpointSuffix: string;
-        AuthToken: string;
-        AuthTokenValidityEndDate: string;
-    }
-}
-
-declare namespace bluesky.core.model.clientConfig {
-    import UserSsoDto = userManagement.IUserSsoDto;
-    interface IBlueskyAjaxClientConfigurationDto {
-        /**
-         * Dictionnary of client configuration per-endpoint.
-         * @param endpointType : EndpoinTypeEnum type string representation. It cannot be strongly typed to the related enum (EndpointTypeEnum) due to TS not implementing it atm: https://github.com/Microsoft/TypeScript/issues/2491. So we use the string representation of the enum as key.
-         * @returns {}
-         *
-         * TODO MGA: C# json native json serializer doesn't handle dictionnaries with enum keys, so we use an array of endpoint config based on string representation. http://stackoverflow.com/questions/2892910/problems-with-json-serialize-dictionaryenum-int32
-         */
-        EndpointConfigurationDictionnary: {
-            [endpointType: string]: clientConfig.IAjaxClientEndpointConfigurationDto;
-        };
-        CurrentUserRole: string;
-        CurrentUser?: UserSsoDto;
-    }
-}
-
-declare namespace bluesky.core.model.clientConfig {
-    /**
-     * Enum generated from the server to know the list of supported endpoint configuration.
-     */
-    enum EndpointTypeEnum {
-        /**
-         * Origin domain from which the current client was loaded.
-         */
-        CurrentDomain = 0,
-        CoreApi = 1,
-        MarketingApi = 2,
-        SelfcareApi = 3,
-        QuoteWizard = 4,
-        OrderEntry = 5,
-        OrderTracking = 6,
-        Metranet = 7,
-        TechnicalInventory = 8,
-        TemplateGenerator = 9,
-        Salesforce = 10,
-        /**
-         * External URLs (not treatment applied, rejected if URL is not full)
-         */
-        External = 11,
     }
 }
 
@@ -538,110 +581,31 @@ declare namespace bluesky.core.model.emailTemplate {
     }
 }
 
-declare namespace bluesky.externals.smartTable {
-    /** Internal state of the smart-table component. Should not be exposed but is needed for server-side pagination.
-     * TODO MGA ongoing work, might not be needed.
+declare namespace bluesky.core.model.offer {
+    /**
+     * Product offering.
      */
-    interface ITableState {
-        sort?: {
-            predicate?: any;
-            reverse?: boolean;
-            functionName?: string;
-        };
-        search?: {
-            predicateObject?: any;
-        };
-        pagination?: {
-            /** default: 0. */
-            start?: number;
-            /** default: 0. */
-            totalItemCount?: number;
-            /** number of items displayed? */
-            number?: number;
-            /** total number of pages for current collection. */
-            numberOfPages?: number;
-        };
-    }
-    interface IStConfig {
-        pagination?: {
-            /** path to template partial as registered in $templateCache. */
-            template?: string;
-            /** displayed number of items per page. */
-            itemsByPage?: number;
-            /** number of pages displayed in the widget to scroll through. */
-            displayedPages?: number;
-        };
-        search?: {
-            /** in ms. default: 400ms */
-            delay?: number;
-            /** default: 'input' */
-            inputEvent?: string;
-        };
-        select?: {
-            /** default: 'single' */
-            mode?: string;
-            /** default: 'st-selected' */
-            selectedClass?: string;
-        };
-        sort?: {
-            /** default : 'st-sort-ascent' */
-            ascentClass?: string;
-            /** Default : 'st-sort-descent' */
-            descentClass?: string;
-            /** default: false */
-            descendingFirst?: boolean;
-            /** default: false */
-            skipNatural?: boolean;
-            /** default: 300 (ms) */
-            delay?: number;
-        };
-        pipe?: {
-            /** in ms. default: 100ms. */
-            delay?: number;
-        };
-    }
-}
-
-declare namespace bluesky.core.model.userCase {
-    interface ICaseCreationUrlDto {
-        CaseUrl: string;
-    }
-}
-
-declare namespace bluesky.core.command.userCase {
-    interface IGetCaseCreationUrlCommand {
-        UserId: string;
-        SalesForceAccountId: string;
-        PinCode: string;
-        WebLogin: string;
-    }
-}
-
-declare namespace bluesky.core.model.userCase {
-    /** Dto of a sales force case.
-    * A case is a description of a customer's feedback, problem, or question.
-    * Cases are used to track and solve customers' issues. */
-    interface ISalesforceCaseDto {
-        /** Identifier of the case. */
-        Id: string;
-        /** Case status.Example: New, Acknowledge, Pending customer, On going, Raised to Supplier, Raised, Closing, Pending completion, Update of supplier case, Closing of supplier case, Close. */
-        Status: string;
-        /** Case severity. */
-        Severity: string;
-        /** Unique number automatically assigned to the case. */
-        Number: string;
-        /** Record type name. */
-        RecordType: string;
-        /** Brief description of customer's issue. */
-        Subject: string;
-        /** Creation date of the case. */
-        CreatedDate: Date;
-        /** Case owner's name. */
-        OwnerName: string;
-        /** Case contact's name. */
-        ContactName: string;
-        /** Url to the case in SalesForce. */
-        CaseUrl: string;
+    interface IProductOfferingDto {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets the Offer type. */
+        OfferType: string;
+        /** Gets or sets the name. */
+        Name: string;
+        /** Gets or sets the display name. */
+        DisplayName: string;
+        /** Gets or sets the description. */
+        Description: string;
+        /** Gets or sets the availability start date. */
+        AvailabilityStartDate: Date;
+        /** Gets or sets the availability end date. */
+        AvailabilityEndDate: Date;
+        /** Gets or sets the effective start date. */
+        EffectiveStartDate: Date;
+        /** Gets or sets the effective end date. */
+        EffectiveEndDate: Date;
+        /**Gets or sets the AggregateType enumeration. */
+        AggregateType: IMetraNetEnumerationDto;
     }
 }
 
@@ -708,6 +672,149 @@ declare namespace bluesky.core.model.location {
         Name?: string;
         Code?: string;
         PCode?: number;
+    }
+}
+
+declare namespace bluesky.core.command.subscription {
+    interface IQuoteSubscriptionSearchCommand extends IBasePaginatedSearchCommand {
+        QuoteId?: number;
+        SubscriptionId?: number;
+        GroupSubId?: number;
+        BillingAccountUserName?: string;
+    }
+}
+
+declare namespace bluesky.core.model.subscription {
+    /** This entity links a quote, a billing account, and the resulting subscription */
+    interface IQuoteSubscriptionDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Quote identifier */
+        QuoteId: number;
+        /** Subscription identifier */
+        SubscriptionId: number;
+        /** GroupSubscription identifier */
+        GroupSubId?: number;
+        /** BillingAccount identifier */
+        BillingAccountUserName: string;
+        /** BillingAccount customer node name */
+        BillingAccountCustomerNodeName: string;
+        /** Set to true when a disable user is sent by the OO */
+        IsUserDeactivationOrderSent: boolean;
+    }
+}
+
+declare namespace bluesky.core.model.subscription {
+    /** DTO of an option attached to a subscription. */
+    interface ISubscriptionOptionDto {
+        /** Name of the Option. */
+        Name: string;
+        /** Indicate in which product category the option is defined. */
+        ProductCategory: string;
+        /** Technical spec value of the Technical Option. */
+        TechnicalSpec: string;
+        /** Default value chosen for the option on the subscription. */
+        Value: string;
+        /** Type of the value */
+        ValueType: string;
+    }
+}
+
+declare namespace bluesky.core.model.subscription {
+    /** DTO of a product attached to a subscription. */
+    interface ISubscriptionProductDto {
+        /** Element name of the product. */
+        Name: string;
+        /** Name of the Technical Product Specification. */
+        TechnicalProductSpecName: string;
+        /** Identifier of the Technical Product in the Technical Inventory. */
+        TechnicalProductId: string;
+    }
+}
+
+declare namespace bluesky.core.model.subscription {
+    /** Header DTO of a subscription summary.
+    * A subscription is a product offering sold to a Customer and applied to a single subscriber Billing account. */
+    interface ISubscriptionSummaryHeaderDto extends IResourceBase {
+        /** Offer display name of the subscription. */
+        DisplayName: string;
+        /** Identifier of the subscription defined into MetraNet. */
+        GroupSubscriptionId: number;
+        /** List of products linked to the subscription. */
+        Products: subscription.ISubscriptionProductDto[];
+    }
+}
+
+declare namespace bluesky.core.model.subscription {
+    /** DTO of a subscription summary.
+    * A subscription is a product offering sold to a Customer and applied to a single subscriber Billing account. */
+    interface ISubscriptionSummaryDto extends IResourceBase {
+        /** Offer display name of the subscription. */
+        DisplayName: string;
+        /** Identifier of the subscription defined into MetraNet. */
+        GroupSubscriptionId: number;
+        /** Identifier of the billing account owner of the subscription. */
+        BillingAccountUid: string;
+        /** Identifier of the billing account's logo. */
+        LogoUid: string;
+        /** List of products linked to the subscription. */
+        Products: subscription.ISubscriptionProductDto[];
+        /** subscription options. */
+        Options: subscription.ISubscriptionOptionDto[];
+    }
+}
+
+declare namespace bluesky.core.model {
+    enum SubsidiaryEnum {
+        _263_China = "_263_China",
+        Arkadin_Australia = "Arkadin_Australia",
+        Arkadin_Belux = "Arkadin_Belux",
+        Arkadin_Brazil = "Arkadin_Brazil",
+        Arkadin_Canada = "Arkadin_Canada",
+        Arkadin_China = "Arkadin_China",
+        Arkadin_Colombia = "Arkadin_Colombia",
+        Arkadin_France = "Arkadin_France",
+        Arkadin_Germany = "Arkadin_Germany",
+        Arkadin_Hong_Kong = "Arkadin_Hong_Kong",
+        Arkadin_India = "Arkadin_India",
+        Arkadin_Ireland = "Arkadin_Ireland",
+        Arkadin_Italy = "Arkadin_Italy",
+        Arkadin_Japan = "Arkadin_Japan",
+        Arkadin_Korea = "Arkadin_Korea",
+        Arkadin_Malaysia = "Arkadin_Malaysia",
+        Arkadin_Mexico = "Arkadin_Mexico",
+        Arkadin_Middle_East = "Arkadin_Middle_East",
+        Arkadin_Netherlands = "Arkadin_Netherlands",
+        Arkadin_New_Zealand = "Arkadin_New_Zealand",
+        Arkadin_Norway = "Arkadin_Norway",
+        Arkadin_Portugal = "Arkadin_Portugal",
+        Arkadin_Singapore = "Arkadin_Singapore",
+        Arkadin_South_Africa = "Arkadin_South_Africa",
+        Arkadin_Spain = "Arkadin_Spain",
+        Arkadin_Switzerland = "Arkadin_Switzerland",
+        Arkadin_Turkey = "Arkadin_Turkey",
+        Arkadin_UK = "Arkadin_UK",
+        Arkadin_US = "Arkadin_US",
+        Chunghwa_Taiwan = "Chunghwa_Taiwan",
+        NTTC_Japan = "NTTC_Japan",
+    }
+}
+
+declare namespace bluesky.core.model.systemInfo {
+    /** DTO of the API version. */
+    interface IApiVersionDto extends IResourceBase {
+        /** Version's number. */
+        Version: string;
+    }
+}
+
+declare namespace bluesky.core.model.systemInfo {
+    /** DTO of the Order Management Database Version. */
+    interface IDatabaseVersionDto {
+        /** Gets or sets version of the [OrderManagement] Database at a current date. */
+        Version: string;
+        /** Gets or sets date of the specified version of the [OrderManagement] Database. */
+        StartDate: Date;
     }
 }
 
@@ -1338,177 +1445,6 @@ declare namespace bluesky.core.command.quote {
     }
 }
 
-declare namespace bluesky.core.command.subscription {
-    interface IQuoteSubscriptionSearchCommand extends IBasePaginatedSearchCommand {
-        QuoteId?: number;
-        SubscriptionId?: number;
-        GroupSubId?: number;
-        BillingAccountUserName?: string;
-    }
-}
-
-declare namespace bluesky.core.model.subscription {
-    /** This entity links a quote, a billing account, and the resulting subscription */
-    interface IQuoteSubscriptionDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Quote identifier */
-        QuoteId: number;
-        /** Subscription identifier */
-        SubscriptionId: number;
-        /** GroupSubscription identifier */
-        GroupSubId?: number;
-        /** BillingAccount identifier */
-        BillingAccountUserName: string;
-        /** BillingAccount customer node name */
-        BillingAccountCustomerNodeName: string;
-        /** Set to true when a disable user is sent by the OO */
-        IsUserDeactivationOrderSent: boolean;
-    }
-}
-
-declare namespace bluesky.core.model.subscription {
-    /** DTO of an option attached to a subscription. */
-    interface ISubscriptionOptionDto {
-        /** Name of the Option. */
-        Name: string;
-        /** Indicate in which product category the option is defined. */
-        ProductCategory: string;
-        /** Technical spec value of the Technical Option. */
-        TechnicalSpec: string;
-        /** Default value chosen for the option on the subscription. */
-        Value: string;
-        /** Type of the value */
-        ValueType: string;
-    }
-}
-
-declare namespace bluesky.core.model.subscription {
-    /** DTO of a product attached to a subscription. */
-    interface ISubscriptionProductDto {
-        /** Element name of the product. */
-        Name: string;
-        /** Name of the Technical Product Specification. */
-        TechnicalProductSpecName: string;
-        /** Identifier of the Technical Product in the Technical Inventory. */
-        TechnicalProductId: string;
-    }
-}
-
-declare namespace bluesky.core.model.subscription {
-    /** Header DTO of a subscription summary.
-    * A subscription is a product offering sold to a Customer and applied to a single subscriber Billing account. */
-    interface ISubscriptionSummaryHeaderDto extends IResourceBase {
-        /** Offer display name of the subscription. */
-        DisplayName: string;
-        /** Identifier of the subscription defined into MetraNet. */
-        GroupSubscriptionId: number;
-        /** List of products linked to the subscription. */
-        Products: subscription.ISubscriptionProductDto[];
-    }
-}
-
-declare namespace bluesky.core.model.subscription {
-    /** DTO of a subscription summary.
-    * A subscription is a product offering sold to a Customer and applied to a single subscriber Billing account. */
-    interface ISubscriptionSummaryDto extends IResourceBase {
-        /** Offer display name of the subscription. */
-        DisplayName: string;
-        /** Identifier of the subscription defined into MetraNet. */
-        GroupSubscriptionId: number;
-        /** Identifier of the billing account owner of the subscription. */
-        BillingAccountUid: string;
-        /** Identifier of the billing account's logo. */
-        LogoUid: string;
-        /** List of products linked to the subscription. */
-        Products: subscription.ISubscriptionProductDto[];
-        /** subscription options. */
-        Options: subscription.ISubscriptionOptionDto[];
-    }
-}
-
-declare namespace bluesky.core.model.systemInfo {
-    /** DTO of the API version. */
-    interface IApiVersionDto extends IResourceBase {
-        /** Version's number. */
-        Version: string;
-    }
-}
-
-declare namespace bluesky.core.model.systemInfo {
-    /** DTO of the Order Management Database Version. */
-    interface IDatabaseVersionDto {
-        /** Gets or sets version of the [OrderManagement] Database at a current date. */
-        Version: string;
-        /** Gets or sets date of the specified version of the [OrderManagement] Database. */
-        StartDate: Date;
-    }
-}
-
-declare namespace bluesky.core.model.offer {
-    /**
-     * Product offering.
-     */
-    interface IProductOfferingDto {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets the Offer type. */
-        OfferType: string;
-        /** Gets or sets the name. */
-        Name: string;
-        /** Gets or sets the display name. */
-        DisplayName: string;
-        /** Gets or sets the description. */
-        Description: string;
-        /** Gets or sets the availability start date. */
-        AvailabilityStartDate: Date;
-        /** Gets or sets the availability end date. */
-        AvailabilityEndDate: Date;
-        /** Gets or sets the effective start date. */
-        EffectiveStartDate: Date;
-        /** Gets or sets the effective end date. */
-        EffectiveEndDate: Date;
-        /**Gets or sets the AggregateType enumeration. */
-        AggregateType: IMetraNetEnumerationDto;
-    }
-}
-
-declare namespace bluesky.core.model {
-    enum SubsidiaryEnum {
-        _263_China = "_263_China",
-        Arkadin_Australia = "Arkadin_Australia",
-        Arkadin_Belux = "Arkadin_Belux",
-        Arkadin_Brazil = "Arkadin_Brazil",
-        Arkadin_Canada = "Arkadin_Canada",
-        Arkadin_China = "Arkadin_China",
-        Arkadin_Colombia = "Arkadin_Colombia",
-        Arkadin_France = "Arkadin_France",
-        Arkadin_Germany = "Arkadin_Germany",
-        Arkadin_Hong_Kong = "Arkadin_Hong_Kong",
-        Arkadin_India = "Arkadin_India",
-        Arkadin_Ireland = "Arkadin_Ireland",
-        Arkadin_Italy = "Arkadin_Italy",
-        Arkadin_Japan = "Arkadin_Japan",
-        Arkadin_Korea = "Arkadin_Korea",
-        Arkadin_Malaysia = "Arkadin_Malaysia",
-        Arkadin_Mexico = "Arkadin_Mexico",
-        Arkadin_Middle_East = "Arkadin_Middle_East",
-        Arkadin_Netherlands = "Arkadin_Netherlands",
-        Arkadin_New_Zealand = "Arkadin_New_Zealand",
-        Arkadin_Norway = "Arkadin_Norway",
-        Arkadin_Portugal = "Arkadin_Portugal",
-        Arkadin_Singapore = "Arkadin_Singapore",
-        Arkadin_South_Africa = "Arkadin_South_Africa",
-        Arkadin_Spain = "Arkadin_Spain",
-        Arkadin_Switzerland = "Arkadin_Switzerland",
-        Arkadin_Turkey = "Arkadin_Turkey",
-        Arkadin_UK = "Arkadin_UK",
-        Arkadin_US = "Arkadin_US",
-        Chunghwa_Taiwan = "Chunghwa_Taiwan",
-        NTTC_Japan = "NTTC_Japan",
-    }
-}
-
 declare namespace bluesky.core.model.technicalData {
     /** AccessAccount characteristics */
     interface IAccessCharacteristicDto extends IOrderManagementEntityDto {
@@ -1993,6 +1929,84 @@ declare namespace bluesky.core.model.technicalData {
     }
 }
 
+declare namespace bluesky.core.model.taxManagement {
+    interface INoramTaxExemptionDto extends IResourceBase {
+        Level: TaxExemptTypeEnum;
+        Location: number;
+        CertificateId: string;
+        StartDate: string;
+        ExpirationDate: string;
+        TaxExemptionTypes: Array<ITaxExemptionTypeDto>;
+        TaxAction: TaxActionEnum;
+        IsExpired: boolean;
+    }
+}
+
+declare namespace bluesky.core.model.taxManagement {
+    /** Informations about a PCode. */
+    interface IPCodeDto extends IResourceBase {
+        /** Gets or sets the code. */
+        Code: number;
+        /** Indicates if the tax pcode is primary for the given location. */
+        IsDefault: boolean;
+    }
+}
+
+declare namespace bluesky.core.model.taxManagement {
+    /** Information about the result of search tax pcodes. */
+    interface ISearchTaxPCodeResultDto extends IResourceBase {
+        /** List of Tax-PCodes available for the search input. */
+        AvailablePCodes: IPCodeDto[];
+        /** Indicates if the response is based on a partial search. */
+        IsResultBasedOnPartialSearch: boolean;
+        /** Message indicating the rule used during a partial search. */
+        PartialSearchMessage: string;
+    }
+}
+
+declare namespace bluesky.core.command.taxManagement {
+    /** Search parameter used to retrieve a list of PCode. */
+    interface ISearchPCodeCommand {
+        /** Gets or sets the zip or postal code. */
+        ZipCode?: string;
+        /** Gets or sets the city or town. */
+        City?: string;
+        /** Gets or sets the the country code.TODO MGA: the searchPCodeCommandDto should accept CountryCode with 2 or 3 letters (ISO alpha2 or alpha3). */
+        CountryCode?: string;
+        /** Gets or sets the country subdivision code (state or province). */
+        CountrySubdivisionCode?: string;
+        /** Gets or sets the county. */
+        County?: string;
+        /** Indicates if search using partial input parameters is allowed. */
+        IsPartialSearchAllowed?: boolean;
+    }
+}
+
+declare namespace bluesky.core.model.taxManagement {
+    enum TaxActionEnum {
+        Add = 0,
+        Modify = 1,
+        Cease = 2,
+    }
+}
+
+declare namespace bluesky.core.model.taxManagement {
+    /** Model for a noram tax exemption type. */
+    interface ITaxExemptionTypeDto extends IResourceBase {
+        Code: number;
+        Name: string;
+        MetranetTaxExemptionId?: number;
+        IsSelected: boolean;
+    }
+}
+
+declare namespace bluesky.core.model.taxManagement {
+    enum TaxExemptTypeEnum {
+        Federal = 0,
+        State = 1,
+    }
+}
+
 declare namespace bluesky.core.model.userManagement {
     /** Dto of an application work items summary.The summary contains for a specific application a summarized view of the work items.Each work item contains the number of the elements to monitor for a specific type of action to perform. */
     interface IApplicationWorkItemsSummaryDto extends IResourceBase {
@@ -2114,84 +2128,6 @@ declare namespace bluesky.core.model.userManagement {
         Name: string;
         /** Gets or sets the number of monitored elements. */
         Count: number;
-    }
-}
-
-declare namespace bluesky.core.model.taxManagement {
-    interface INoramTaxExemptionDto extends IResourceBase {
-        Level: TaxExemptTypeEnum;
-        Location: number;
-        CertificateId: string;
-        StartDate: string;
-        ExpirationDate: string;
-        TaxExemptionTypes: Array<ITaxExemptionTypeDto>;
-        TaxAction: TaxActionEnum;
-        IsExpired: boolean;
-    }
-}
-
-declare namespace bluesky.core.model.taxManagement {
-    /** Informations about a PCode. */
-    interface IPCodeDto extends IResourceBase {
-        /** Gets or sets the code. */
-        Code: number;
-        /** Indicates if the tax pcode is primary for the given location. */
-        IsDefault: boolean;
-    }
-}
-
-declare namespace bluesky.core.model.taxManagement {
-    /** Information about the result of search tax pcodes. */
-    interface ISearchTaxPCodeResultDto extends IResourceBase {
-        /** List of Tax-PCodes available for the search input. */
-        AvailablePCodes: IPCodeDto[];
-        /** Indicates if the response is based on a partial search. */
-        IsResultBasedOnPartialSearch: boolean;
-        /** Message indicating the rule used during a partial search. */
-        PartialSearchMessage: string;
-    }
-}
-
-declare namespace bluesky.core.command.taxManagement {
-    /** Search parameter used to retrieve a list of PCode. */
-    interface ISearchPCodeCommand {
-        /** Gets or sets the zip or postal code. */
-        ZipCode?: string;
-        /** Gets or sets the city or town. */
-        City?: string;
-        /** Gets or sets the the country code.TODO MGA: the searchPCodeCommandDto should accept CountryCode with 2 or 3 letters (ISO alpha2 or alpha3). */
-        CountryCode?: string;
-        /** Gets or sets the country subdivision code (state or province). */
-        CountrySubdivisionCode?: string;
-        /** Gets or sets the county. */
-        County?: string;
-        /** Indicates if search using partial input parameters is allowed. */
-        IsPartialSearchAllowed?: boolean;
-    }
-}
-
-declare namespace bluesky.core.model.taxManagement {
-    enum TaxActionEnum {
-        Add = 0,
-        Modify = 1,
-        Cease = 2,
-    }
-}
-
-declare namespace bluesky.core.model.taxManagement {
-    /** Model for a noram tax exemption type. */
-    interface ITaxExemptionTypeDto extends IResourceBase {
-        Code: number;
-        Name: string;
-        MetranetTaxExemptionId?: number;
-        IsSelected: boolean;
-    }
-}
-
-declare namespace bluesky.core.model.taxManagement {
-    enum TaxExemptTypeEnum {
-        Federal = 0,
-        State = 1,
     }
 }
 
@@ -2374,6 +2310,70 @@ declare namespace bluesky.core.model.welcomePack {
     }
 }
 
+declare namespace bluesky.externals.smartTable {
+    /** Internal state of the smart-table component. Should not be exposed but is needed for server-side pagination.
+     * TODO MGA ongoing work, might not be needed.
+     */
+    interface ITableState {
+        sort?: {
+            predicate?: any;
+            reverse?: boolean;
+            functionName?: string;
+        };
+        search?: {
+            predicateObject?: any;
+        };
+        pagination?: {
+            /** default: 0. */
+            start?: number;
+            /** default: 0. */
+            totalItemCount?: number;
+            /** number of items displayed? */
+            number?: number;
+            /** total number of pages for current collection. */
+            numberOfPages?: number;
+        };
+    }
+    interface IStConfig {
+        pagination?: {
+            /** path to template partial as registered in $templateCache. */
+            template?: string;
+            /** displayed number of items per page. */
+            itemsByPage?: number;
+            /** number of pages displayed in the widget to scroll through. */
+            displayedPages?: number;
+        };
+        search?: {
+            /** in ms. default: 400ms */
+            delay?: number;
+            /** default: 'input' */
+            inputEvent?: string;
+        };
+        select?: {
+            /** default: 'single' */
+            mode?: string;
+            /** default: 'st-selected' */
+            selectedClass?: string;
+        };
+        sort?: {
+            /** default : 'st-sort-ascent' */
+            ascentClass?: string;
+            /** Default : 'st-sort-descent' */
+            descentClass?: string;
+            /** default: false */
+            descendingFirst?: boolean;
+            /** default: false */
+            skipNatural?: boolean;
+            /** default: 300 (ms) */
+            delay?: number;
+        };
+        pipe?: {
+            /** in ms. default: 100ms. */
+            delay?: number;
+        };
+    }
+}
+
 declare namespace bluesky.core.model.bulk {
     interface IBulkImportEntryErrorDto {
         /**
@@ -2449,18 +2449,6 @@ declare namespace bluesky.core.model.bulk {
     interface IFileUploadContractDto {
         MaxFileSize: number;
         SupportedFileExtensionList: Array<string>;
-    }
-}
-
-declare namespace bluesky.core.command.customerOrder {
-    /** Command to create a merge logo order. */
-    interface ICreateMergeLogoCustomerOrderCommand extends IBaseCreateOrderCommand {
-        /** Identifier of the source logo to merge. */
-        SourceLogoUid: string;
-        /** Identifier of the destination logo, under which all source logo hierarchy must be moved. */
-        DestinationLogoUid: string;
-        /** Indicates if the DDIs configured for the source logo must be merged in the target logo. */
-        MergeConfiguredDDIs: boolean;
     }
 }
 
@@ -2569,6 +2557,18 @@ declare namespace bluesky.core.model.customerOrder {
         Action: string;
         /** Gets or sets the Participant type. A participant can have a Moderator or Participant type. */
         ParticipantType: string;
+    }
+}
+
+declare namespace bluesky.core.command.customerOrder {
+    /** Command to create a merge logo order. */
+    interface ICreateMergeLogoCustomerOrderCommand extends IBaseCreateOrderCommand {
+        /** Identifier of the source logo to merge. */
+        SourceLogoUid: string;
+        /** Identifier of the destination logo, under which all source logo hierarchy must be moved. */
+        DestinationLogoUid: string;
+        /** Indicates if the DDIs configured for the source logo must be merged in the target logo. */
+        MergeConfiguredDDIs: boolean;
     }
 }
 
@@ -2765,6 +2765,61 @@ declare namespace bluesky.core.model.customerOrder {
     }
 }
 
+declare namespace bluesky.core.command.customerOrder {
+    import ISendWelcomePackInformationDto = bluesky.core.model.customerOrder.ISendWelcomePackInformationDto;
+    import IWelcomePackSendingStrategyDto = bluesky.core.model.customerOrder.IWelcomePackSendingStrategyDto;
+    /** Command to create a send welcome packs order. */
+    interface ICreateSendWelcomePacksCustomerOrderCommand extends IBaseCreateOrderCommand {
+        /** For each welcome pack to send, provide information about the user and the subscription. */
+        SendWelcomePackInformationList: ISendWelcomePackInformationDto[];
+        /** Welcome pack sending strategy. */
+        WelcomePackSendingStrategy?: IWelcomePackSendingStrategyDto;
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /** Information needed to send a welcome pack. */
+    interface ISendWelcomePackInformationDto {
+        /** Identifier of the group subscription in MetraNet. */
+        GroupSubscriptionId: number;
+        /** Identifiers of the user for which the welcome pack will be sent. */
+        UserUid: string;
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /** Dto of WelcomePackInfo.
+    * It contains information to send to the Template Generator for the user recipient strategy. */
+    interface IWelcomePackInfoDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** The email of the target Technical Admin Contact. */
+        AdminEmail: string;
+        /** Language of the target Technical Admin Contact. */
+        AdminLanguage: string;
+        /** The CountryName of the target Technical Admin Contact. */
+        AdminCountryName: string;
+        /** The TimeZone of the target Technical Admin Contact. */
+        AdminTimeZone: string;
+        /** Priority of a Welcome Pack. */
+        WelcomePackPriority: string;
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /** Welcome pack sending strategy. */
+    interface IWelcomePackSendingStrategyDto {
+        /** Welcome Recipient Strategy :- to user (ToUser),- to technical admin ToTechnicalAdmin. */
+        WelcomePackRecipientStrategy: string;
+        /** Welcome Pack sending mode :- sent instantly (Instantly),- not sent (NoSending),- sent in the future, in a specific date (InTheFuture). */
+        WelcomePackSendMode: string;
+        /** Date when the welcome pack will be send if the sending mode is inthefuture. */
+        FutureSendDate?: Date;
+        /** Admin user id to whom the welcome pack is sent if the recipient strategy is technical admin. */
+        AdminUserUid: string;
+    }
+}
+
 declare namespace bluesky.core.model.customerOrder {
     /** Movable user. */
     interface IMovableUserDto extends IResourceBase {
@@ -2840,124 +2895,6 @@ declare namespace bluesky.core.model.customerOrder {
         UserOrderItems: IUserOrderItemHeaderDto[];
         /** List of movable subscriptions */
         MovableSubscriptions: IMovableSubscriptionDto[];
-    }
-}
-
-declare namespace bluesky.core.command.customerOrder {
-    import ISendWelcomePackInformationDto = bluesky.core.model.customerOrder.ISendWelcomePackInformationDto;
-    import IWelcomePackSendingStrategyDto = bluesky.core.model.customerOrder.IWelcomePackSendingStrategyDto;
-    /** Command to create a send welcome packs order. */
-    interface ICreateSendWelcomePacksCustomerOrderCommand extends IBaseCreateOrderCommand {
-        /** For each welcome pack to send, provide information about the user and the subscription. */
-        SendWelcomePackInformationList: ISendWelcomePackInformationDto[];
-        /** Welcome pack sending strategy. */
-        WelcomePackSendingStrategy?: IWelcomePackSendingStrategyDto;
-    }
-}
-
-declare namespace bluesky.core.model.customerOrder {
-    /** Information needed to send a welcome pack. */
-    interface ISendWelcomePackInformationDto {
-        /** Identifier of the group subscription in MetraNet. */
-        GroupSubscriptionId: number;
-        /** Identifiers of the user for which the welcome pack will be sent. */
-        UserUid: string;
-    }
-}
-
-declare namespace bluesky.core.model.customerOrder {
-    /** Dto of WelcomePackInfo.
-    * It contains information to send to the Template Generator for the user recipient strategy. */
-    interface IWelcomePackInfoDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** The email of the target Technical Admin Contact. */
-        AdminEmail: string;
-        /** Language of the target Technical Admin Contact. */
-        AdminLanguage: string;
-        /** The CountryName of the target Technical Admin Contact. */
-        AdminCountryName: string;
-        /** The TimeZone of the target Technical Admin Contact. */
-        AdminTimeZone: string;
-        /** Priority of a Welcome Pack. */
-        WelcomePackPriority: string;
-    }
-}
-
-declare namespace bluesky.core.model.customerOrder {
-    /** Welcome pack sending strategy. */
-    interface IWelcomePackSendingStrategyDto {
-        /** Welcome Recipient Strategy :- to user (ToUser),- to technical admin ToTechnicalAdmin. */
-        WelcomePackRecipientStrategy: string;
-        /** Welcome Pack sending mode :- sent instantly (Instantly),- not sent (NoSending),- sent in the future, in a specific date (InTheFuture). */
-        WelcomePackSendMode: string;
-        /** Date when the welcome pack will be send if the sending mode is inthefuture. */
-        FutureSendDate?: Date;
-        /** Admin user id to whom the welcome pack is sent if the recipient strategy is technical admin. */
-        AdminUserUid: string;
-    }
-}
-
-declare namespace bluesky.core.command.salesforce {
-    import SegmentTypeEnum = bluesky.core.model.salesforce.SegmentTypeEnum;
-    /**
-     * Command to change the segment of an sfdc account.
-     */
-    interface IChangeAccountSegmentTypeCommand {
-        Id: string;
-        SegmentType: SegmentTypeEnum;
-    }
-}
-
-declare namespace bluesky.core.model.salesforce {
-    /**
-     * Dto of a sales force account header.
-     * TODO MGA: should be paginated in the long term (see SFDC DAL)
-     * TODO MGA: should be ligther vs. sf account dto
-     */
-    interface ISalesForceAccountHeaderDto extends IResourceBase {
-        Id: string;
-        Name: string;
-        Segmentation: string;
-        /** TODO MGA: ask CAPI to update to use Enum  */
-        SegmentType: string;
-        CountryName: IMetraNetEnumerationDto;
-        CustomerSize: IMetraNetEnumerationDto;
-    }
-}
-
-declare namespace bluesky.core.model.salesforce {
-    /**
-     * Dto of a sales force account.
-     * TODO MGA: should be paginated in the long term (see SFDC DAL)
-     */
-    interface ISalesForceAccountDto extends IResourceBase {
-        Id: string;
-        Name: string;
-        CountryName: IMetraNetEnumerationDto;
-        Segmentation: string;
-        /** TODO MGA: ask CAPI to update to use Enum  */
-        SegmentType: string;
-        CustomerSize: IMetraNetEnumerationDto;
-    }
-}
-
-declare namespace bluesky.core.command.salesforce {
-    /**
-     * Search parameter used to retrieve a list of sales force account.
-     */
-    interface ISearchSalesForceAccountCommand extends IBasePaginatedSearchCommand {
-        Name: string;
-    }
-}
-
-declare namespace bluesky.core.model.salesforce {
-    /**
-     * List of supported segment types for a SalesForce Account.
-     */
-    enum SegmentTypeEnum {
-        Premium = 0,
-        OnLine = 1,
     }
 }
 
@@ -3586,5 +3523,68 @@ declare namespace bluesky.core.model.account {
         SelfCareRole: string;
         /** If specified, gets or sets the list of the identifiers of the accounts for which the user has admin privileges. */
         AdditionalAdministrationLevels: string[];
+    }
+}
+
+declare namespace bluesky.core.command.salesforce {
+    import SegmentTypeEnum = bluesky.core.model.salesforce.SegmentTypeEnum;
+    /**
+     * Command to change the segment of an sfdc account.
+     */
+    interface IChangeAccountSegmentTypeCommand {
+        Id: string;
+        SegmentType: SegmentTypeEnum;
+    }
+}
+
+declare namespace bluesky.core.model.salesforce {
+    /**
+     * Dto of a sales force account header.
+     * TODO MGA: should be paginated in the long term (see SFDC DAL)
+     * TODO MGA: should be ligther vs. sf account dto
+     */
+    interface ISalesForceAccountHeaderDto extends IResourceBase {
+        Id: string;
+        Name: string;
+        Segmentation: string;
+        /** TODO MGA: ask CAPI to update to use Enum  */
+        SegmentType: string;
+        CountryName: IMetraNetEnumerationDto;
+        CustomerSize: IMetraNetEnumerationDto;
+    }
+}
+
+declare namespace bluesky.core.model.salesforce {
+    /**
+     * Dto of a sales force account.
+     * TODO MGA: should be paginated in the long term (see SFDC DAL)
+     */
+    interface ISalesForceAccountDto extends IResourceBase {
+        Id: string;
+        Name: string;
+        CountryName: IMetraNetEnumerationDto;
+        Segmentation: string;
+        /** TODO MGA: ask CAPI to update to use Enum  */
+        SegmentType: string;
+        CustomerSize: IMetraNetEnumerationDto;
+    }
+}
+
+declare namespace bluesky.core.command.salesforce {
+    /**
+     * Search parameter used to retrieve a list of sales force account.
+     */
+    interface ISearchSalesForceAccountCommand extends IBasePaginatedSearchCommand {
+        Name: string;
+    }
+}
+
+declare namespace bluesky.core.model.salesforce {
+    /**
+     * List of supported segment types for a SalesForce Account.
+     */
+    enum SegmentTypeEnum {
+        Premium = 0,
+        OnLine = 1,
     }
 }

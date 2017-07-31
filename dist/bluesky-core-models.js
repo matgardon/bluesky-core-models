@@ -1,26 +1,4 @@
 
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var command;
-        (function (command) {
-            var SupportedResponseFormatEnum;
-            (function (SupportedResponseFormatEnum) {
-                SupportedResponseFormatEnum["CSV"] = "csv";
-            })(SupportedResponseFormatEnum = command.SupportedResponseFormatEnum || (command.SupportedResponseFormatEnum = {}));
-        })(command = core.command || (core.command = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
-
-
-
-
-
-
-
-
-
 
 
 
@@ -64,6 +42,31 @@ var bluesky;
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
+
+
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var command;
+        (function (command) {
+            var SupportedResponseFormatEnum;
+            (function (SupportedResponseFormatEnum) {
+                SupportedResponseFormatEnum["CSV"] = "csv";
+            })(SupportedResponseFormatEnum = command.SupportedResponseFormatEnum || (command.SupportedResponseFormatEnum = {}));
+        })(command = core.command || (core.command = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -199,57 +202,6 @@ var bluesky;
 
 
 
-
-
-
-
-
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var model;
-        (function (model) {
-            var quote;
-            (function (quote) {
-                var QuoteStatusEnum;
-                (function (QuoteStatusEnum) {
-                    QuoteStatusEnum[QuoteStatusEnum["Pending"] = 0] = "Pending";
-                    QuoteStatusEnum[QuoteStatusEnum["Submitted"] = 1] = "Submitted";
-                    QuoteStatusEnum[QuoteStatusEnum["SignedOff"] = 2] = "SignedOff";
-                    QuoteStatusEnum[QuoteStatusEnum["Allocated"] = 3] = "Allocated";
-                    QuoteStatusEnum[QuoteStatusEnum["Rejected"] = 4] = "Rejected";
-                    QuoteStatusEnum[QuoteStatusEnum["Canceled"] = 5] = "Canceled";
-                    QuoteStatusEnum[QuoteStatusEnum["Closed"] = 6] = "Closed";
-                    QuoteStatusEnum[QuoteStatusEnum["Initialized"] = 7] = "Initialized";
-                    QuoteStatusEnum[QuoteStatusEnum["Discarded"] = 8] = "Discarded";
-                    QuoteStatusEnum[QuoteStatusEnum["Available"] = 9] = "Available";
-                    QuoteStatusEnum[QuoteStatusEnum["Approval_In_Progress"] = 10] = "Approval_In_Progress";
-                    QuoteStatusEnum[QuoteStatusEnum["Approved"] = 11] = "Approved";
-                    QuoteStatusEnum[QuoteStatusEnum["Disapproved"] = 12] = "Disapproved";
-                })(QuoteStatusEnum = quote.QuoteStatusEnum || (quote.QuoteStatusEnum = {}));
-            })(quote = model.quote || (model.quote = {}));
-        })(model = core.model || (core.model = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var bluesky;
 (function (bluesky) {
     var core;
@@ -335,6 +287,53 @@ var bluesky;
 
 
 
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var model;
+        (function (model) {
+            var quote;
+            (function (quote) {
+                var QuoteStatusEnum;
+                (function (QuoteStatusEnum) {
+                    QuoteStatusEnum[QuoteStatusEnum["Pending"] = 0] = "Pending";
+                    QuoteStatusEnum[QuoteStatusEnum["Submitted"] = 1] = "Submitted";
+                    QuoteStatusEnum[QuoteStatusEnum["SignedOff"] = 2] = "SignedOff";
+                    QuoteStatusEnum[QuoteStatusEnum["Allocated"] = 3] = "Allocated";
+                    QuoteStatusEnum[QuoteStatusEnum["Rejected"] = 4] = "Rejected";
+                    QuoteStatusEnum[QuoteStatusEnum["Canceled"] = 5] = "Canceled";
+                    QuoteStatusEnum[QuoteStatusEnum["Closed"] = 6] = "Closed";
+                    QuoteStatusEnum[QuoteStatusEnum["Initialized"] = 7] = "Initialized";
+                    QuoteStatusEnum[QuoteStatusEnum["Discarded"] = 8] = "Discarded";
+                    QuoteStatusEnum[QuoteStatusEnum["Available"] = 9] = "Available";
+                    QuoteStatusEnum[QuoteStatusEnum["Approval_In_Progress"] = 10] = "Approval_In_Progress";
+                    QuoteStatusEnum[QuoteStatusEnum["Approved"] = 11] = "Approved";
+                    QuoteStatusEnum[QuoteStatusEnum["Disapproved"] = 12] = "Disapproved";
+                })(QuoteStatusEnum = quote.QuoteStatusEnum || (quote.QuoteStatusEnum = {}));
+            })(quote = model.quote || (model.quote = {}));
+        })(model = core.model || (core.model = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -358,13 +357,6 @@ var bluesky;
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
-
-
-
-
-
-
-
 
 
 
@@ -414,6 +406,13 @@ var bluesky;
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
+
+
+
+
+
+
+
 
 
 
@@ -539,30 +538,6 @@ var bluesky;
     (function (core) {
         var model;
         (function (model) {
-            var salesforce;
-            (function (salesforce) {
-                /**
-                 * List of supported segment types for a SalesForce Account.
-                 */
-                var SegmentTypeEnum;
-                (function (SegmentTypeEnum) {
-                    SegmentTypeEnum[SegmentTypeEnum["Premium"] = 0] = "Premium";
-                    SegmentTypeEnum[SegmentTypeEnum["OnLine"] = 1] = "OnLine";
-                })(SegmentTypeEnum = salesforce.SegmentTypeEnum || (salesforce.SegmentTypeEnum = {}));
-            })(salesforce = model.salesforce || (model.salesforce = {}));
-        })(model = core.model || (core.model = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
-
-
-
-
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var model;
-        (function (model) {
             var account;
             (function (account) {
                 var AccountStatusEnum;
@@ -635,3 +610,28 @@ var bluesky;
 
 
 
+
+
+
+
+
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var model;
+        (function (model) {
+            var salesforce;
+            (function (salesforce) {
+                /**
+                 * List of supported segment types for a SalesForce Account.
+                 */
+                var SegmentTypeEnum;
+                (function (SegmentTypeEnum) {
+                    SegmentTypeEnum[SegmentTypeEnum["Premium"] = 0] = "Premium";
+                    SegmentTypeEnum[SegmentTypeEnum["OnLine"] = 1] = "OnLine";
+                })(SegmentTypeEnum = salesforce.SegmentTypeEnum || (salesforce.SegmentTypeEnum = {}));
+            })(salesforce = model.salesforce || (model.salesforce = {}));
+        })(model = core.model || (core.model = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
