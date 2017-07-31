@@ -2,6 +2,31 @@
 
 
 
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var command;
+        (function (command) {
+            var SupportedResponseFormatEnum;
+            (function (SupportedResponseFormatEnum) {
+                SupportedResponseFormatEnum["CSV"] = "csv";
+            })(SupportedResponseFormatEnum = command.SupportedResponseFormatEnum || (command.SupportedResponseFormatEnum = {}));
+        })(command = core.command || (core.command = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
+
+
+
+
+
+
+
+
+
+
+
+
 
 var bluesky;
 (function (bluesky) {
@@ -42,31 +67,6 @@ var bluesky;
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
-
-
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var command;
-        (function (command) {
-            var SupportedResponseFormatEnum;
-            (function (SupportedResponseFormatEnum) {
-                SupportedResponseFormatEnum["CSV"] = "csv";
-            })(SupportedResponseFormatEnum = command.SupportedResponseFormatEnum || (command.SupportedResponseFormatEnum = {}));
-        })(command = core.command || (core.command = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -202,6 +202,48 @@ var bluesky;
 
 
 
+
+
+
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var model;
+        (function (model) {
+            var quote;
+            (function (quote) {
+                var QuoteStatusEnum;
+                (function (QuoteStatusEnum) {
+                    QuoteStatusEnum[QuoteStatusEnum["Pending"] = 0] = "Pending";
+                    QuoteStatusEnum[QuoteStatusEnum["Submitted"] = 1] = "Submitted";
+                    QuoteStatusEnum[QuoteStatusEnum["SignedOff"] = 2] = "SignedOff";
+                    QuoteStatusEnum[QuoteStatusEnum["Allocated"] = 3] = "Allocated";
+                    QuoteStatusEnum[QuoteStatusEnum["Rejected"] = 4] = "Rejected";
+                    QuoteStatusEnum[QuoteStatusEnum["Canceled"] = 5] = "Canceled";
+                    QuoteStatusEnum[QuoteStatusEnum["Closed"] = 6] = "Closed";
+                    QuoteStatusEnum[QuoteStatusEnum["Initialized"] = 7] = "Initialized";
+                    QuoteStatusEnum[QuoteStatusEnum["Discarded"] = 8] = "Discarded";
+                    QuoteStatusEnum[QuoteStatusEnum["Available"] = 9] = "Available";
+                    QuoteStatusEnum[QuoteStatusEnum["Approval_In_Progress"] = 10] = "Approval_In_Progress";
+                    QuoteStatusEnum[QuoteStatusEnum["Approved"] = 11] = "Approved";
+                    QuoteStatusEnum[QuoteStatusEnum["Disapproved"] = 12] = "Disapproved";
+                })(QuoteStatusEnum = quote.QuoteStatusEnum || (quote.QuoteStatusEnum = {}));
+            })(quote = model.quote || (model.quote = {}));
+        })(model = core.model || (core.model = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
+
+
+
+
+
+
+
+
+
+
+
 var bluesky;
 (function (bluesky) {
     var core;
@@ -281,10 +323,24 @@ var bluesky;
 
 
 
-
-
-
-
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var model;
+        (function (model) {
+            var taxManagement;
+            (function (taxManagement) {
+                var TaxActionEnum;
+                (function (TaxActionEnum) {
+                    TaxActionEnum[TaxActionEnum["Add"] = 0] = "Add";
+                    TaxActionEnum[TaxActionEnum["Modify"] = 1] = "Modify";
+                    TaxActionEnum[TaxActionEnum["Cease"] = 2] = "Cease";
+                })(TaxActionEnum = taxManagement.TaxActionEnum || (taxManagement.TaxActionEnum = {}));
+            })(taxManagement = model.taxManagement || (model.taxManagement = {}));
+        })(model = core.model || (core.model = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
 
 
 var bluesky;
@@ -293,30 +349,17 @@ var bluesky;
     (function (core) {
         var model;
         (function (model) {
-            var quote;
-            (function (quote) {
-                var QuoteStatusEnum;
-                (function (QuoteStatusEnum) {
-                    QuoteStatusEnum[QuoteStatusEnum["Pending"] = 0] = "Pending";
-                    QuoteStatusEnum[QuoteStatusEnum["Submitted"] = 1] = "Submitted";
-                    QuoteStatusEnum[QuoteStatusEnum["SignedOff"] = 2] = "SignedOff";
-                    QuoteStatusEnum[QuoteStatusEnum["Allocated"] = 3] = "Allocated";
-                    QuoteStatusEnum[QuoteStatusEnum["Rejected"] = 4] = "Rejected";
-                    QuoteStatusEnum[QuoteStatusEnum["Canceled"] = 5] = "Canceled";
-                    QuoteStatusEnum[QuoteStatusEnum["Closed"] = 6] = "Closed";
-                    QuoteStatusEnum[QuoteStatusEnum["Initialized"] = 7] = "Initialized";
-                    QuoteStatusEnum[QuoteStatusEnum["Discarded"] = 8] = "Discarded";
-                    QuoteStatusEnum[QuoteStatusEnum["Available"] = 9] = "Available";
-                    QuoteStatusEnum[QuoteStatusEnum["Approval_In_Progress"] = 10] = "Approval_In_Progress";
-                    QuoteStatusEnum[QuoteStatusEnum["Approved"] = 11] = "Approved";
-                    QuoteStatusEnum[QuoteStatusEnum["Disapproved"] = 12] = "Disapproved";
-                })(QuoteStatusEnum = quote.QuoteStatusEnum || (quote.QuoteStatusEnum = {}));
-            })(quote = model.quote || (model.quote = {}));
+            var taxManagement;
+            (function (taxManagement) {
+                var TaxExemptTypeEnum;
+                (function (TaxExemptTypeEnum) {
+                    TaxExemptTypeEnum[TaxExemptTypeEnum["Federal"] = 0] = "Federal";
+                    TaxExemptTypeEnum[TaxExemptTypeEnum["State"] = 1] = "State";
+                })(TaxExemptTypeEnum = taxManagement.TaxExemptTypeEnum || (taxManagement.TaxExemptTypeEnum = {}));
+            })(taxManagement = model.taxManagement || (model.taxManagement = {}));
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
-
-
 
 
 
@@ -364,48 +407,6 @@ var bluesky;
 
 
 
-
-
-
-
-
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var model;
-        (function (model) {
-            var taxManagement;
-            (function (taxManagement) {
-                var TaxActionEnum;
-                (function (TaxActionEnum) {
-                    TaxActionEnum[TaxActionEnum["Add"] = 0] = "Add";
-                    TaxActionEnum[TaxActionEnum["Modify"] = 1] = "Modify";
-                    TaxActionEnum[TaxActionEnum["Cease"] = 2] = "Cease";
-                })(TaxActionEnum = taxManagement.TaxActionEnum || (taxManagement.TaxActionEnum = {}));
-            })(taxManagement = model.taxManagement || (model.taxManagement = {}));
-        })(model = core.model || (core.model = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
-
-
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var model;
-        (function (model) {
-            var taxManagement;
-            (function (taxManagement) {
-                var TaxExemptTypeEnum;
-                (function (TaxExemptTypeEnum) {
-                    TaxExemptTypeEnum[TaxExemptTypeEnum["Federal"] = 0] = "Federal";
-                    TaxExemptTypeEnum[TaxExemptTypeEnum["State"] = 1] = "State";
-                })(TaxExemptTypeEnum = taxManagement.TaxExemptTypeEnum || (taxManagement.TaxExemptTypeEnum = {}));
-            })(taxManagement = model.taxManagement || (model.taxManagement = {}));
-        })(model = core.model || (core.model = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
 
 
 
@@ -532,6 +533,11 @@ var bluesky;
 
 
 
+
+
+
+
+
 var bluesky;
 (function (bluesky) {
     var core;
@@ -608,13 +614,6 @@ var bluesky;
 
 
 
-
-
-
-
-
-
-
 var bluesky;
 (function (bluesky) {
     var core;
@@ -635,3 +634,4 @@ var bluesky;
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
+
