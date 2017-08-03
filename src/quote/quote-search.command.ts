@@ -8,8 +8,11 @@
         Ids?: string;
         IncludeSubscriptions?: boolean;
         CurrentApprover?: string;
+        SalesAccountEmail?: string;
+        IsAutomatedDeactivation?: boolean
         SegmentType?: string;
         HasModifiedPrices?: boolean;
-        IsAutomatedDeactivation?: boolean
+        CreationDateFrom?: string;
+        CreationDateTo?: string;
     }
 }

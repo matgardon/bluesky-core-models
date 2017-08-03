@@ -6,6 +6,32 @@ var bluesky;
 (function (bluesky) {
     var core;
     (function (core) {
+        var command;
+        (function (command) {
+            var SupportedResponseFormatEnum;
+            (function (SupportedResponseFormatEnum) {
+                SupportedResponseFormatEnum["CSV"] = "csv";
+            })(SupportedResponseFormatEnum = command.SupportedResponseFormatEnum || (command.SupportedResponseFormatEnum = {}));
+        })(command = core.command || (core.command = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
+
+
+
+
+
+
+
+
+
+
+
+
+
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
         var model;
         (function (model) {
             var clientConfig;
@@ -13,6 +39,7 @@ var bluesky;
                 /**
                  * Enum generated from the server to know the list of supported endpoint configuration.
                  */
+                var EndpointTypeEnum;
                 (function (EndpointTypeEnum) {
                     /**
                      * Origin domain from which the current client was loaded.
@@ -35,22 +62,11 @@ var bluesky;
                      * External URLs (not treatment applied, rejected if URL is not full)
                      */
                     EndpointTypeEnum[EndpointTypeEnum["External"] = 11] = "External";
-                })(clientConfig.EndpointTypeEnum || (clientConfig.EndpointTypeEnum = {}));
-                var EndpointTypeEnum = clientConfig.EndpointTypeEnum;
+                })(EndpointTypeEnum = clientConfig.EndpointTypeEnum || (clientConfig.EndpointTypeEnum = {}));
             })(clientConfig = model.clientConfig || (model.clientConfig = {}));
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -67,6 +83,42 @@ var bluesky;
                 /**
                  * Type of Arkadin.BlueSky.BSIC.Domain.OrderManagement.CustomerOrder
                  */
+                var CustomerOrderStatusEnum;
+                (function (CustomerOrderStatusEnum) {
+                    // status created
+                    CustomerOrderStatusEnum[CustomerOrderStatusEnum["Created"] = 0] = "Created";
+                    // status  submitted
+                    CustomerOrderStatusEnum[CustomerOrderStatusEnum["Submitted"] = 1] = "Submitted";
+                    // status pending
+                    CustomerOrderStatusEnum[CustomerOrderStatusEnum["Pending"] = 2] = "Pending";
+                    // status on hold
+                    CustomerOrderStatusEnum[CustomerOrderStatusEnum["OnHold"] = 3] = "OnHold";
+                    // status Manual operation
+                    CustomerOrderStatusEnum[CustomerOrderStatusEnum["ManualOp"] = 4] = "ManualOp";
+                    // status error
+                    CustomerOrderStatusEnum[CustomerOrderStatusEnum["Error"] = 5] = "Error";
+                    // status completed
+                    CustomerOrderStatusEnum[CustomerOrderStatusEnum["Completed"] = 6] = "Completed";
+                    // status canceled
+                    CustomerOrderStatusEnum[CustomerOrderStatusEnum["Canceled"] = 7] = "Canceled";
+                })(CustomerOrderStatusEnum = customerOrder.CustomerOrderStatusEnum || (customerOrder.CustomerOrderStatusEnum = {}));
+            })(customerOrder = model.customerOrder || (model.customerOrder = {}));
+        })(model = core.model || (core.model = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
+
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var model;
+        (function (model) {
+            var customerOrder;
+            (function (customerOrder) {
+                /**
+                 * Type of Arkadin.BlueSky.BSIC.Domain.OrderManagement.CustomerOrder
+                 */
+                var CustomerOrderTypeEnum;
                 (function (CustomerOrderTypeEnum) {
                     // Initial an order
                     CustomerOrderTypeEnum[CustomerOrderTypeEnum["InitialOrder"] = 0] = "InitialOrder";
@@ -120,8 +172,7 @@ var bluesky;
                     CustomerOrderTypeEnum[CustomerOrderTypeEnum["ApplyAddendum"] = 24] = "ApplyAddendum";
                     // Merge Logo
                     CustomerOrderTypeEnum[CustomerOrderTypeEnum["MergeLogo"] = 25] = "MergeLogo";
-                })(customerOrder.CustomerOrderTypeEnum || (customerOrder.CustomerOrderTypeEnum = {}));
-                var CustomerOrderTypeEnum = customerOrder.CustomerOrderTypeEnum;
+                })(CustomerOrderTypeEnum = customerOrder.CustomerOrderTypeEnum || (customerOrder.CustomerOrderTypeEnum = {}));
             })(customerOrder = model.customerOrder || (model.customerOrder = {}));
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
@@ -154,52 +205,34 @@ var bluesky;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var model;
+        (function (model) {
+            var quote;
+            (function (quote) {
+                var QuoteStatusEnum;
+                (function (QuoteStatusEnum) {
+                    QuoteStatusEnum[QuoteStatusEnum["Pending"] = 0] = "Pending";
+                    QuoteStatusEnum[QuoteStatusEnum["Submitted"] = 1] = "Submitted";
+                    QuoteStatusEnum[QuoteStatusEnum["SignedOff"] = 2] = "SignedOff";
+                    QuoteStatusEnum[QuoteStatusEnum["Allocated"] = 3] = "Allocated";
+                    QuoteStatusEnum[QuoteStatusEnum["Rejected"] = 4] = "Rejected";
+                    QuoteStatusEnum[QuoteStatusEnum["Canceled"] = 5] = "Canceled";
+                    QuoteStatusEnum[QuoteStatusEnum["Closed"] = 6] = "Closed";
+                    QuoteStatusEnum[QuoteStatusEnum["Initialized"] = 7] = "Initialized";
+                    QuoteStatusEnum[QuoteStatusEnum["Discarded"] = 8] = "Discarded";
+                    QuoteStatusEnum[QuoteStatusEnum["Available"] = 9] = "Available";
+                    QuoteStatusEnum[QuoteStatusEnum["Approval_In_Progress"] = 10] = "Approval_In_Progress";
+                    QuoteStatusEnum[QuoteStatusEnum["Approved"] = 11] = "Approved";
+                    QuoteStatusEnum[QuoteStatusEnum["Disapproved"] = 12] = "Disapproved";
+                })(QuoteStatusEnum = quote.QuoteStatusEnum || (quote.QuoteStatusEnum = {}));
+            })(quote = model.quote || (model.quote = {}));
+        })(model = core.model || (core.model = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
 
 
 
@@ -217,19 +250,97 @@ var bluesky;
     (function (core) {
         var model;
         (function (model) {
+            var SubsidiaryEnum;
+            (function (SubsidiaryEnum) {
+                // 263 China
+                SubsidiaryEnum["_263_China"] = "_263_China";
+                // Arkadin Australia
+                SubsidiaryEnum["Arkadin_Australia"] = "Arkadin_Australia";
+                // Arkadin Belux
+                SubsidiaryEnum["Arkadin_Belux"] = "Arkadin_Belux";
+                // Arkadin Brazil
+                SubsidiaryEnum["Arkadin_Brazil"] = "Arkadin_Brazil";
+                // Arkadin Canada
+                SubsidiaryEnum["Arkadin_Canada"] = "Arkadin_Canada";
+                // Arkadin China
+                SubsidiaryEnum["Arkadin_China"] = "Arkadin_China";
+                // Arkadin Colombia
+                SubsidiaryEnum["Arkadin_Colombia"] = "Arkadin_Colombia";
+                // Arkadin France
+                SubsidiaryEnum["Arkadin_France"] = "Arkadin_France";
+                // Arkadin Germany
+                SubsidiaryEnum["Arkadin_Germany"] = "Arkadin_Germany";
+                // Arkadin Hong Kong
+                SubsidiaryEnum["Arkadin_Hong_Kong"] = "Arkadin_Hong_Kong";
+                // Arkadin India
+                SubsidiaryEnum["Arkadin_India"] = "Arkadin_India";
+                // Arkadin Ireland
+                SubsidiaryEnum["Arkadin_Ireland"] = "Arkadin_Ireland";
+                // Arkadin Italy
+                SubsidiaryEnum["Arkadin_Italy"] = "Arkadin_Italy";
+                // Arkadin Japan
+                SubsidiaryEnum["Arkadin_Japan"] = "Arkadin_Japan";
+                // Arkadin Korea
+                SubsidiaryEnum["Arkadin_Korea"] = "Arkadin_Korea";
+                // Arkadin Malaysia
+                SubsidiaryEnum["Arkadin_Malaysia"] = "Arkadin_Malaysia";
+                // Arkadin Mexico
+                SubsidiaryEnum["Arkadin_Mexico"] = "Arkadin_Mexico";
+                // Arkadin Middle East
+                SubsidiaryEnum["Arkadin_Middle_East"] = "Arkadin_Middle_East";
+                // Arkadin Netherlands
+                SubsidiaryEnum["Arkadin_Netherlands"] = "Arkadin_Netherlands";
+                // Arkadin New Zealand
+                SubsidiaryEnum["Arkadin_New_Zealand"] = "Arkadin_New_Zealand";
+                // Arkadin Norway
+                SubsidiaryEnum["Arkadin_Norway"] = "Arkadin_Norway";
+                // Arkadin Portugal
+                SubsidiaryEnum["Arkadin_Portugal"] = "Arkadin_Portugal";
+                // Arkadin Singapore
+                SubsidiaryEnum["Arkadin_Singapore"] = "Arkadin_Singapore";
+                // Arkadin South Africa
+                SubsidiaryEnum["Arkadin_South_Africa"] = "Arkadin_South_Africa";
+                // Arkadin Spain
+                SubsidiaryEnum["Arkadin_Spain"] = "Arkadin_Spain";
+                // Arkadin Switzerland
+                SubsidiaryEnum["Arkadin_Switzerland"] = "Arkadin_Switzerland";
+                // Arkadin Turkey
+                SubsidiaryEnum["Arkadin_Turkey"] = "Arkadin_Turkey";
+                // Arkadin UK
+                SubsidiaryEnum["Arkadin_UK"] = "Arkadin_UK";
+                // Arkadin US
+                SubsidiaryEnum["Arkadin_US"] = "Arkadin_US";
+                // Chunghwa Taiwan
+                SubsidiaryEnum["Chunghwa_Taiwan"] = "Chunghwa_Taiwan";
+                // NTTC Japan
+                SubsidiaryEnum["NTTC_Japan"] = "NTTC_Japan";
+            })(SubsidiaryEnum = model.SubsidiaryEnum || (model.SubsidiaryEnum = {}));
+        })(model = core.model || (core.model = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
+
+
+
+
+
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var model;
+        (function (model) {
             var taxManagement;
             (function (taxManagement) {
+                var TaxActionEnum;
                 (function (TaxActionEnum) {
                     TaxActionEnum[TaxActionEnum["Add"] = 0] = "Add";
                     TaxActionEnum[TaxActionEnum["Modify"] = 1] = "Modify";
                     TaxActionEnum[TaxActionEnum["Cease"] = 2] = "Cease";
-                })(taxManagement.TaxActionEnum || (taxManagement.TaxActionEnum = {}));
-                var TaxActionEnum = taxManagement.TaxActionEnum;
+                })(TaxActionEnum = taxManagement.TaxActionEnum || (taxManagement.TaxActionEnum = {}));
             })(taxManagement = model.taxManagement || (model.taxManagement = {}));
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
-
 
 
 var bluesky;
@@ -240,22 +351,15 @@ var bluesky;
         (function (model) {
             var taxManagement;
             (function (taxManagement) {
+                var TaxExemptTypeEnum;
                 (function (TaxExemptTypeEnum) {
                     TaxExemptTypeEnum[TaxExemptTypeEnum["Federal"] = 0] = "Federal";
                     TaxExemptTypeEnum[TaxExemptTypeEnum["State"] = 1] = "State";
-                })(taxManagement.TaxExemptTypeEnum || (taxManagement.TaxExemptTypeEnum = {}));
-                var TaxExemptTypeEnum = taxManagement.TaxExemptTypeEnum;
+                })(TaxExemptTypeEnum = taxManagement.TaxExemptTypeEnum || (taxManagement.TaxExemptTypeEnum = {}));
             })(taxManagement = model.taxManagement || (model.taxManagement = {}));
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
-
-
-
-
-
-
-
 
 
 
@@ -284,14 +388,14 @@ var bluesky;
         (function (model) {
             var technicalData;
             (function (technicalData) {
+                var TechnicalAccessTypeEnum;
                 (function (TechnicalAccessTypeEnum) {
                     TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["None"] = 0] = "None";
                     TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["AudioAccess"] = 1] = "AudioAccess";
                     TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["WebAccess"] = 2] = "WebAccess";
                     TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["IntegratedAudioAccess"] = 3] = "IntegratedAudioAccess";
                     TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["GenericAccess"] = 4] = "GenericAccess";
-                })(technicalData.TechnicalAccessTypeEnum || (technicalData.TechnicalAccessTypeEnum = {}));
-                var TechnicalAccessTypeEnum = technicalData.TechnicalAccessTypeEnum;
+                })(TechnicalAccessTypeEnum = technicalData.TechnicalAccessTypeEnum || (technicalData.TechnicalAccessTypeEnum = {}));
             })(technicalData = model.technicalData || (model.technicalData = {}));
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
@@ -319,28 +423,6 @@ var bluesky;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var bluesky;
 (function (bluesky) {
     var core;
@@ -349,12 +431,12 @@ var bluesky;
         (function (model) {
             var welcomePack;
             (function (welcomePack) {
+                var WelcomePackSendingModeEnum;
                 (function (WelcomePackSendingModeEnum) {
                     WelcomePackSendingModeEnum[WelcomePackSendingModeEnum["Instantly"] = 0] = "Instantly";
                     WelcomePackSendingModeEnum[WelcomePackSendingModeEnum["NoSending"] = 1] = "NoSending";
                     WelcomePackSendingModeEnum[WelcomePackSendingModeEnum["InTheFuture"] = 2] = "InTheFuture";
-                })(welcomePack.WelcomePackSendingModeEnum || (welcomePack.WelcomePackSendingModeEnum = {}));
-                var WelcomePackSendingModeEnum = welcomePack.WelcomePackSendingModeEnum;
+                })(WelcomePackSendingModeEnum = welcomePack.WelcomePackSendingModeEnum || (welcomePack.WelcomePackSendingModeEnum = {}));
             })(welcomePack = model.welcomePack || (model.welcomePack = {}));
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
@@ -368,11 +450,11 @@ var bluesky;
         (function (model) {
             var welcomePack;
             (function (welcomePack) {
+                var WelcomePackSendingStrategyEnum;
                 (function (WelcomePackSendingStrategyEnum) {
                     WelcomePackSendingStrategyEnum[WelcomePackSendingStrategyEnum["ToUser"] = 0] = "ToUser";
                     WelcomePackSendingStrategyEnum[WelcomePackSendingStrategyEnum["ToSingleUserRecipient"] = 1] = "ToSingleUserRecipient";
-                })(welcomePack.WelcomePackSendingStrategyEnum || (welcomePack.WelcomePackSendingStrategyEnum = {}));
-                var WelcomePackSendingStrategyEnum = welcomePack.WelcomePackSendingStrategyEnum;
+                })(WelcomePackSendingStrategyEnum = welcomePack.WelcomePackSendingStrategyEnum || (welcomePack.WelcomePackSendingStrategyEnum = {}));
             })(welcomePack = model.welcomePack || (model.welcomePack = {}));
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
@@ -386,6 +468,7 @@ var bluesky;
         (function (model) {
             var welcomePack;
             (function (welcomePack) {
+                var WelcomePackStateEnum;
                 (function (WelcomePackStateEnum) {
                     WelcomePackStateEnum[WelcomePackStateEnum["Submitted"] = 0] = "Submitted";
                     WelcomePackStateEnum[WelcomePackStateEnum["Bounced"] = 1] = "Bounced";
@@ -397,8 +480,8 @@ var bluesky;
                     WelcomePackStateEnum[WelcomePackStateEnum["GlobalUnsubscribed"] = 7] = "GlobalUnsubscribed";
                     WelcomePackStateEnum[WelcomePackStateEnum["Excluded"] = 8] = "Excluded";
                     WelcomePackStateEnum[WelcomePackStateEnum["Unknown"] = 9] = "Unknown";
-                })(welcomePack.WelcomePackStateEnum || (welcomePack.WelcomePackStateEnum = {}));
-                var WelcomePackStateEnum = welcomePack.WelcomePackStateEnum;
+                })(WelcomePackStateEnum = welcomePack.WelcomePackStateEnum || (welcomePack.WelcomePackStateEnum = {}));
+                var WelcomePackQueueEnum;
                 (function (WelcomePackQueueEnum) {
                     WelcomePackQueueEnum[WelcomePackQueueEnum["Submitted"] = 0] = "Submitted";
                     WelcomePackQueueEnum[WelcomePackQueueEnum["Rejected"] = 1] = "Rejected";
@@ -410,8 +493,7 @@ var bluesky;
                     WelcomePackQueueEnum[WelcomePackQueueEnum["Empty"] = 7] = "Empty";
                     WelcomePackQueueEnum[WelcomePackQueueEnum["Unknown"] = 8] = "Unknown";
                     WelcomePackQueueEnum[WelcomePackQueueEnum["Excluded"] = 9] = "Excluded";
-                })(welcomePack.WelcomePackQueueEnum || (welcomePack.WelcomePackQueueEnum = {}));
-                var WelcomePackQueueEnum = welcomePack.WelcomePackQueueEnum;
+                })(WelcomePackQueueEnum = welcomePack.WelcomePackQueueEnum || (welcomePack.WelcomePackQueueEnum = {}));
             })(welcomePack = model.welcomePack || (model.welcomePack = {}));
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
@@ -433,34 +515,6 @@ var bluesky;
 
 
 
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var model;
-        (function (model) {
-            var quote;
-            (function (quote) {
-                (function (QuoteStatusEnum) {
-                    QuoteStatusEnum[QuoteStatusEnum["Pending"] = 0] = "Pending";
-                    QuoteStatusEnum[QuoteStatusEnum["Submitted"] = 1] = "Submitted";
-                    QuoteStatusEnum[QuoteStatusEnum["SignedOff"] = 2] = "SignedOff";
-                    QuoteStatusEnum[QuoteStatusEnum["Allocated"] = 3] = "Allocated";
-                    QuoteStatusEnum[QuoteStatusEnum["Rejected"] = 4] = "Rejected";
-                    QuoteStatusEnum[QuoteStatusEnum["Canceled"] = 5] = "Canceled";
-                    QuoteStatusEnum[QuoteStatusEnum["Closed"] = 6] = "Closed";
-                    QuoteStatusEnum[QuoteStatusEnum["Initialized"] = 7] = "Initialized";
-                    QuoteStatusEnum[QuoteStatusEnum["Discarded"] = 8] = "Discarded";
-                    QuoteStatusEnum[QuoteStatusEnum["Available"] = 9] = "Available";
-                    QuoteStatusEnum[QuoteStatusEnum["Approval_In_Progress"] = 10] = "Approval_In_Progress";
-                    QuoteStatusEnum[QuoteStatusEnum["Approved"] = 11] = "Approved";
-                    QuoteStatusEnum[QuoteStatusEnum["Disapproved"] = 12] = "Disapproved";
-                })(quote.QuoteStatusEnum || (quote.QuoteStatusEnum = {}));
-                var QuoteStatusEnum = quote.QuoteStatusEnum;
-            })(quote = model.quote || (model.quote = {}));
-        })(model = core.model || (core.model = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
 
 
 
@@ -492,6 +546,7 @@ var bluesky;
         (function (model) {
             var account;
             (function (account) {
+                var AccountStatusEnum;
                 (function (AccountStatusEnum) {
                     AccountStatusEnum[AccountStatusEnum["Undefined"] = 0] = "Undefined";
                     AccountStatusEnum[AccountStatusEnum["PendingActiveApproval"] = 1] = "PendingActiveApproval";
@@ -500,8 +555,7 @@ var bluesky;
                     AccountStatusEnum[AccountStatusEnum["PendingFinalBill"] = 4] = "PendingFinalBill";
                     AccountStatusEnum[AccountStatusEnum["Closed"] = 5] = "Closed";
                     AccountStatusEnum[AccountStatusEnum["Archived"] = 6] = "Archived";
-                })(account.AccountStatusEnum || (account.AccountStatusEnum = {}));
-                var AccountStatusEnum = account.AccountStatusEnum;
+                })(AccountStatusEnum = account.AccountStatusEnum || (account.AccountStatusEnum = {}));
             })(account = model.account || (model.account = {}));
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
@@ -515,6 +569,7 @@ var bluesky;
         (function (model) {
             var account;
             (function (account) {
+                var AccountTypeEnum;
                 (function (AccountTypeEnum) {
                     AccountTypeEnum[AccountTypeEnum["None"] = 0] = "None";
                     AccountTypeEnum[AccountTypeEnum["Logo"] = 1] = "Logo";
@@ -527,98 +582,11 @@ var bluesky;
                     AccountTypeEnum[AccountTypeEnum["PrimaryGroup"] = 8] = "PrimaryGroup";
                     AccountTypeEnum[AccountTypeEnum["User"] = 9] = "User";
                     AccountTypeEnum[AccountTypeEnum["Access"] = 10] = "Access";
-                })(account.AccountTypeEnum || (account.AccountTypeEnum = {}));
-                var AccountTypeEnum = account.AccountTypeEnum;
+                })(AccountTypeEnum = account.AccountTypeEnum || (account.AccountTypeEnum = {}));
             })(account = model.account || (model.account = {}));
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -657,22 +625,13 @@ var bluesky;
                 /**
                  * List of supported segment types for a SalesForce Account.
                  */
+                var SegmentTypeEnum;
                 (function (SegmentTypeEnum) {
                     SegmentTypeEnum[SegmentTypeEnum["Premium"] = 0] = "Premium";
                     SegmentTypeEnum[SegmentTypeEnum["OnLine"] = 1] = "OnLine";
-                })(salesforce.SegmentTypeEnum || (salesforce.SegmentTypeEnum = {}));
-                var SegmentTypeEnum = salesforce.SegmentTypeEnum;
+                })(SegmentTypeEnum = salesforce.SegmentTypeEnum || (salesforce.SegmentTypeEnum = {}));
             })(salesforce = model.salesforce || (model.salesforce = {}));
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
-
-
-
-
-
-
-
-
-
 

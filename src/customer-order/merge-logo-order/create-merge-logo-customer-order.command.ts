@@ -1,8 +1,6 @@
-﻿namespace bluesky.core.model.customerOrder {
-	/** Dto of a Merge Logo information. Contains information about merge logo action. */
-	export interface IMergeLogoInformationDto extends IResourceBase {
-		/** Gets or sets the unique identifier. */
-		Id: number;
+namespace bluesky.core.command.customerOrder {
+	/** Command to create a merge logo order. */
+	export interface ICreateMergeLogoCustomerOrderCommand extends IBaseCreateOrderCommand {
 		/** Identifier of the source logo to merge. */
 		SourceLogoUid: string;
 		/** Identifier of the destination logo, under which all source logo hierarchy must be moved. */

@@ -14,8 +14,10 @@
 		/** Gets or sets the id of the account linked to the hierarchy order item. */
 		AccountId: number;
 		/** Information needed to merge a logo in another one. */
-		MergeLogoInformation: IMergeLogoInformationDto;
+
+		//TODO MGA: these 2 fields are unused as far as I can see, to remove if nothing is broken.
+		// MergeLogoInformation: IMergeLogoInformationDto;
 		/** A hierarchy order item contains at most one movable account. */
-		movableAccount: IMovableAccountDto;
+		// movableAccount: IMovableAccountDto;
 	}
 }
