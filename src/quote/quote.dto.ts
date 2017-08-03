@@ -69,5 +69,7 @@
         ExportParameterId?: number;
         /** Gets or sets the automated deactivation at contract's end date. */
         IsAutomatedDeactivation: boolean;
+        /** Gets or sets the Sales Force Account online segment  */
+        SFAIsOnlineCustomer: boolean;
     }
 }
