@@ -16,16 +16,16 @@ namespace bluesky.core.model.account {
     };
 
     export enum AccountTypeStringEnum {
-        'None',
-        'Logo',
-        'LocalLogo',
-        'LegalEntity',
-        'ReportingGroup1',
-        'ReportingGroup2',
-        'BillingAccount',
-        'Group',
-        'PrimaryGroup',
-        'User',
-        'Access'
+        None = 'None',
+        Logo = 'Logo',
+        LocalLogo = 'LocalLogo',
+        LegalEntity = 'LegalEntity',
+        ReportingGroup1 = 'ReportingGroup1',
+        ReportingGroup2 = 'ReportingGroup2',
+        BillingAccount = 'BillingAccount',
+        Group = 'Group',
+        PrimaryGroup = 'PrimaryGroup',
+        User = 'User',
+        Access = 'Access'
     };
 }

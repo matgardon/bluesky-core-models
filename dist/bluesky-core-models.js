@@ -1,32 +1,4 @@
 
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var command;
-        (function (command) {
-            var SupportedResponseFormatEnum;
-            (function (SupportedResponseFormatEnum) {
-                SupportedResponseFormatEnum["CSV"] = "csv";
-            })(SupportedResponseFormatEnum = command.SupportedResponseFormatEnum || (command.SupportedResponseFormatEnum = {}));
-        })(command = core.command || (core.command = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 var bluesky;
 (function (bluesky) {
@@ -69,56 +41,24 @@ var bluesky;
 })(bluesky || (bluesky = {}));
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var bluesky;
 (function (bluesky) {
     var core;
     (function (core) {
-        var model;
-        (function (model) {
-            var quote;
-            (function (quote) {
-                var QuoteStatusEnum;
-                (function (QuoteStatusEnum) {
-                    QuoteStatusEnum[QuoteStatusEnum["Pending"] = 0] = "Pending";
-                    QuoteStatusEnum[QuoteStatusEnum["Submitted"] = 1] = "Submitted";
-                    QuoteStatusEnum[QuoteStatusEnum["SignedOff"] = 2] = "SignedOff";
-                    QuoteStatusEnum[QuoteStatusEnum["Allocated"] = 3] = "Allocated";
-                    QuoteStatusEnum[QuoteStatusEnum["Rejected"] = 4] = "Rejected";
-                    QuoteStatusEnum[QuoteStatusEnum["Canceled"] = 5] = "Canceled";
-                    QuoteStatusEnum[QuoteStatusEnum["Closed"] = 6] = "Closed";
-                    QuoteStatusEnum[QuoteStatusEnum["Initialized"] = 7] = "Initialized";
-                    QuoteStatusEnum[QuoteStatusEnum["Discarded"] = 8] = "Discarded";
-                    QuoteStatusEnum[QuoteStatusEnum["Available"] = 9] = "Available";
-                    QuoteStatusEnum[QuoteStatusEnum["Approval_In_Progress"] = 10] = "Approval_In_Progress";
-                    QuoteStatusEnum[QuoteStatusEnum["Approved"] = 11] = "Approved";
-                    QuoteStatusEnum[QuoteStatusEnum["Disapproved"] = 12] = "Disapproved";
-                })(QuoteStatusEnum = quote.QuoteStatusEnum || (quote.QuoteStatusEnum = {}));
-            })(quote = model.quote || (model.quote = {}));
-        })(model = core.model || (core.model = {}));
+        var command;
+        (function (command) {
+            var SupportedResponseFormatEnum;
+            (function (SupportedResponseFormatEnum) {
+                SupportedResponseFormatEnum["CSV"] = "csv";
+            })(SupportedResponseFormatEnum = command.SupportedResponseFormatEnum || (command.SupportedResponseFormatEnum = {}));
+        })(command = core.command || (core.command = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
+
+
+
+
+
 
 
 
@@ -175,21 +115,21 @@ var bluesky;
                 var CustomerOrderStatusStringEnum;
                 (function (CustomerOrderStatusStringEnum) {
                     // status created
-                    CustomerOrderStatusStringEnum[CustomerOrderStatusStringEnum["Created"] = 0] = "Created";
+                    CustomerOrderStatusStringEnum["Created"] = "Created";
                     // status  submitted
-                    CustomerOrderStatusStringEnum[CustomerOrderStatusStringEnum["Submitted"] = 1] = "Submitted";
+                    CustomerOrderStatusStringEnum["Submitted"] = "Submitted";
                     // status pending
-                    CustomerOrderStatusStringEnum[CustomerOrderStatusStringEnum["Pending"] = 2] = "Pending";
+                    CustomerOrderStatusStringEnum["Pending"] = "Pending";
                     // status on hold
-                    CustomerOrderStatusStringEnum[CustomerOrderStatusStringEnum["OnHold"] = 3] = "OnHold";
+                    CustomerOrderStatusStringEnum["OnHold"] = "OnHold";
                     // status Manual operation
-                    CustomerOrderStatusStringEnum[CustomerOrderStatusStringEnum["ManualOp"] = 4] = "ManualOp";
+                    CustomerOrderStatusStringEnum["ManualOp"] = "ManualOp";
                     // status error
-                    CustomerOrderStatusStringEnum[CustomerOrderStatusStringEnum["Error"] = 5] = "Error";
+                    CustomerOrderStatusStringEnum["Error"] = "Error";
                     // status completed
-                    CustomerOrderStatusStringEnum[CustomerOrderStatusStringEnum["Completed"] = 6] = "Completed";
+                    CustomerOrderStatusStringEnum["Completed"] = "Completed";
                     // status canceled
-                    CustomerOrderStatusStringEnum[CustomerOrderStatusStringEnum["Canceled"] = 7] = "Canceled";
+                    CustomerOrderStatusStringEnum["Canceled"] = "Canceled";
                 })(CustomerOrderStatusStringEnum = customerOrder.CustomerOrderStatusStringEnum || (customerOrder.CustomerOrderStatusStringEnum = {}));
                 ;
             })(customerOrder = model.customerOrder || (model.customerOrder = {}));
@@ -268,63 +208,121 @@ var bluesky;
                 var CustomerOrderTypeStringEnum;
                 (function (CustomerOrderTypeStringEnum) {
                     // Initial an order
-                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["InitialOrder"] = 0] = "InitialOrder";
+                    CustomerOrderTypeStringEnum["InitialOrder"] = "InitialOrder";
                     // Initial a simple order
-                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["InitialSimplifiedOrder"] = 1] = "InitialSimplifiedOrder";
+                    CustomerOrderTypeStringEnum["InitialSimplifiedOrder"] = "InitialSimplifiedOrder";
                     // Create or update customer hierarchy
-                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["CreateUpdateCustomerHierarchy"] = 2] = "CreateUpdateCustomerHierarchy";
+                    CustomerOrderTypeStringEnum["CreateUpdateCustomerHierarchy"] = "CreateUpdateCustomerHierarchy";
                     // Update a Arkadin.BlueSky.BSIC.Domain.OrderManagement.Subscription
-                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["UpdateSubscription"] = 3] = "UpdateSubscription";
+                    CustomerOrderTypeStringEnum["UpdateSubscription"] = "UpdateSubscription";
                     // Change user's Arkadin.BlueSky.BSIC.Domain.OrderManagement.Subscription
-                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["ChangeUsersSubscription"] = 4] = "ChangeUsersSubscription";
+                    CustomerOrderTypeStringEnum["ChangeUsersSubscription"] = "ChangeUsersSubscription";
                     // Modify a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
-                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["ModifyUser"] = 5] = "ModifyUser";
+                    CustomerOrderTypeStringEnum["ModifyUser"] = "ModifyUser";
                     // Modify a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.Access
-                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["ModifyAccess"] = 6] = "ModifyAccess";
+                    CustomerOrderTypeStringEnum["ModifyAccess"] = "ModifyAccess";
                     // Disable a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
-                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["DisableUser"] = 7] = "DisableUser";
+                    CustomerOrderTypeStringEnum["DisableUser"] = "DisableUser";
                     // Reenable a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
-                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["ReenableUser"] = 8] = "ReenableUser";
+                    CustomerOrderTypeStringEnum["ReenableUser"] = "ReenableUser";
                     // Cease Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
-                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["CeaseUsers"] = 9] = "CeaseUsers";
+                    CustomerOrderTypeStringEnum["CeaseUsers"] = "CeaseUsers";
                     // Cease Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.Access
-                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["CeaseAccesses"] = 10] = "CeaseAccesses";
+                    CustomerOrderTypeStringEnum["CeaseAccesses"] = "CeaseAccesses";
                     // Terminate a Arkadin.BlueSky.BSIC.Domain.OrderManagement.Subscription
-                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["TerminateSubscription"] = 11] = "TerminateSubscription";
+                    CustomerOrderTypeStringEnum["TerminateSubscription"] = "TerminateSubscription";
                     // Cease a Node whose type is a class who inherite Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.Account
-                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["CeaseNode"] = 12] = "CeaseNode";
+                    CustomerOrderTypeStringEnum["CeaseNode"] = "CeaseNode";
                     // Schedule OTP conference
-                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["ScheduleOTPConference"] = 13] = "ScheduleOTPConference";
+                    CustomerOrderTypeStringEnum["ScheduleOTPConference"] = "ScheduleOTPConference";
                     // Update OTP conference
-                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["UpdateOTPConference"] = 14] = "UpdateOTPConference";
+                    CustomerOrderTypeStringEnum["UpdateOTPConference"] = "UpdateOTPConference";
                     // Cancel OTP conference
-                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["CancelOTPConference"] = 15] = "CancelOTPConference";
+                    CustomerOrderTypeStringEnum["CancelOTPConference"] = "CancelOTPConference";
                     // Add a Arkadin.BlueSky.BSIC.Domain.OrderManagement.Subscription
-                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["AddSubscription"] = 16] = "AddSubscription";
+                    CustomerOrderTypeStringEnum["AddSubscription"] = "AddSubscription";
                     // Add a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
-                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["AddUser"] = 17] = "AddUser";
+                    CustomerOrderTypeStringEnum["AddUser"] = "AddUser";
                     // Add a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.Access
-                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["AddAccess"] = 18] = "AddAccess";
+                    CustomerOrderTypeStringEnum["AddAccess"] = "AddAccess";
                     // Raise the miscellaneous charges
-                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["RaiseMiscellaneousCharges"] = 19] = "RaiseMiscellaneousCharges";
+                    CustomerOrderTypeStringEnum["RaiseMiscellaneousCharges"] = "RaiseMiscellaneousCharges";
                     // Move a set of users inside their hierarchy
-                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["MoveUsers"] = 20] = "MoveUsers";
+                    CustomerOrderTypeStringEnum["MoveUsers"] = "MoveUsers";
                     // Send welcome pack
-                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["SendWelcomePack"] = 21] = "SendWelcomePack";
+                    CustomerOrderTypeStringEnum["SendWelcomePack"] = "SendWelcomePack";
                     // Change offer
-                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["ChangeOffer"] = 22] = "ChangeOffer";
+                    CustomerOrderTypeStringEnum["ChangeOffer"] = "ChangeOffer";
                     // Move node
-                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["MoveNode"] = 23] = "MoveNode";
+                    CustomerOrderTypeStringEnum["MoveNode"] = "MoveNode";
                     // Apply Addendum
-                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["ApplyAddendum"] = 24] = "ApplyAddendum";
+                    CustomerOrderTypeStringEnum["ApplyAddendum"] = "ApplyAddendum";
                     // Merge Logo
-                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["MergeLogo"] = 25] = "MergeLogo";
+                    CustomerOrderTypeStringEnum["MergeLogo"] = "MergeLogo";
                 })(CustomerOrderTypeStringEnum = customerOrder.CustomerOrderTypeStringEnum || (customerOrder.CustomerOrderTypeStringEnum = {}));
                 ;
             })(customerOrder = model.customerOrder || (model.customerOrder = {}));
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var model;
+        (function (model) {
+            var quote;
+            (function (quote) {
+                var QuoteStatusEnum;
+                (function (QuoteStatusEnum) {
+                    QuoteStatusEnum[QuoteStatusEnum["Pending"] = 0] = "Pending";
+                    QuoteStatusEnum[QuoteStatusEnum["Submitted"] = 1] = "Submitted";
+                    QuoteStatusEnum[QuoteStatusEnum["SignedOff"] = 2] = "SignedOff";
+                    QuoteStatusEnum[QuoteStatusEnum["Allocated"] = 3] = "Allocated";
+                    QuoteStatusEnum[QuoteStatusEnum["Rejected"] = 4] = "Rejected";
+                    QuoteStatusEnum[QuoteStatusEnum["Canceled"] = 5] = "Canceled";
+                    QuoteStatusEnum[QuoteStatusEnum["Closed"] = 6] = "Closed";
+                    QuoteStatusEnum[QuoteStatusEnum["Initialized"] = 7] = "Initialized";
+                    QuoteStatusEnum[QuoteStatusEnum["Discarded"] = 8] = "Discarded";
+                    QuoteStatusEnum[QuoteStatusEnum["Available"] = 9] = "Available";
+                    QuoteStatusEnum[QuoteStatusEnum["Approval_In_Progress"] = 10] = "Approval_In_Progress";
+                    QuoteStatusEnum[QuoteStatusEnum["Approved"] = 11] = "Approved";
+                    QuoteStatusEnum[QuoteStatusEnum["Disapproved"] = 12] = "Disapproved";
+                })(QuoteStatusEnum = quote.QuoteStatusEnum || (quote.QuoteStatusEnum = {}));
+            })(quote = model.quote || (model.quote = {}));
+        })(model = core.model || (core.model = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
+
+
+
+
 
 
 
@@ -409,24 +407,22 @@ var bluesky;
 
 
 
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var model;
-        (function (model) {
-            var taxManagement;
-            (function (taxManagement) {
-                var TaxActionEnum;
-                (function (TaxActionEnum) {
-                    TaxActionEnum[TaxActionEnum["Add"] = 0] = "Add";
-                    TaxActionEnum[TaxActionEnum["Modify"] = 1] = "Modify";
-                    TaxActionEnum[TaxActionEnum["Cease"] = 2] = "Cease";
-                })(TaxActionEnum = taxManagement.TaxActionEnum || (taxManagement.TaxActionEnum = {}));
-            })(taxManagement = model.taxManagement || (model.taxManagement = {}));
-        })(model = core.model || (core.model = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 var bluesky;
@@ -435,17 +431,27 @@ var bluesky;
     (function (core) {
         var model;
         (function (model) {
-            var taxManagement;
-            (function (taxManagement) {
-                var TaxExemptTypeEnum;
-                (function (TaxExemptTypeEnum) {
-                    TaxExemptTypeEnum[TaxExemptTypeEnum["Federal"] = 0] = "Federal";
-                    TaxExemptTypeEnum[TaxExemptTypeEnum["State"] = 1] = "State";
-                })(TaxExemptTypeEnum = taxManagement.TaxExemptTypeEnum || (taxManagement.TaxExemptTypeEnum = {}));
-            })(taxManagement = model.taxManagement || (model.taxManagement = {}));
+            var technicalData;
+            (function (technicalData) {
+                var TechnicalAccessTypeEnum;
+                (function (TechnicalAccessTypeEnum) {
+                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["None"] = 0] = "None";
+                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["AudioAccess"] = 1] = "AudioAccess";
+                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["WebAccess"] = 2] = "WebAccess";
+                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["IntegratedAudioAccess"] = 3] = "IntegratedAudioAccess";
+                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["GenericAccess"] = 4] = "GenericAccess";
+                })(TechnicalAccessTypeEnum = technicalData.TechnicalAccessTypeEnum || (technicalData.TechnicalAccessTypeEnum = {}));
+            })(technicalData = model.technicalData || (model.technicalData = {}));
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
+
+
+
+
+
+
+
 
 
 
@@ -535,20 +541,24 @@ var bluesky;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var model;
+        (function (model) {
+            var taxManagement;
+            (function (taxManagement) {
+                var TaxActionEnum;
+                (function (TaxActionEnum) {
+                    TaxActionEnum[TaxActionEnum["Add"] = 0] = "Add";
+                    TaxActionEnum[TaxActionEnum["Modify"] = 1] = "Modify";
+                    TaxActionEnum[TaxActionEnum["Cease"] = 2] = "Cease";
+                })(TaxActionEnum = taxManagement.TaxActionEnum || (taxManagement.TaxActionEnum = {}));
+            })(taxManagement = model.taxManagement || (model.taxManagement = {}));
+        })(model = core.model || (core.model = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
 
 
 var bluesky;
@@ -557,31 +567,17 @@ var bluesky;
     (function (core) {
         var model;
         (function (model) {
-            var technicalData;
-            (function (technicalData) {
-                var TechnicalAccessTypeEnum;
-                (function (TechnicalAccessTypeEnum) {
-                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["None"] = 0] = "None";
-                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["AudioAccess"] = 1] = "AudioAccess";
-                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["WebAccess"] = 2] = "WebAccess";
-                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["IntegratedAudioAccess"] = 3] = "IntegratedAudioAccess";
-                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["GenericAccess"] = 4] = "GenericAccess";
-                })(TechnicalAccessTypeEnum = technicalData.TechnicalAccessTypeEnum || (technicalData.TechnicalAccessTypeEnum = {}));
-            })(technicalData = model.technicalData || (model.technicalData = {}));
+            var taxManagement;
+            (function (taxManagement) {
+                var TaxExemptTypeEnum;
+                (function (TaxExemptTypeEnum) {
+                    TaxExemptTypeEnum[TaxExemptTypeEnum["Federal"] = 0] = "Federal";
+                    TaxExemptTypeEnum[TaxExemptTypeEnum["State"] = 1] = "State";
+                })(TaxExemptTypeEnum = taxManagement.TaxExemptTypeEnum || (taxManagement.TaxExemptTypeEnum = {}));
+            })(taxManagement = model.taxManagement || (model.taxManagement = {}));
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -608,13 +604,13 @@ var bluesky;
                 ;
                 var AccountStatusStringEnum;
                 (function (AccountStatusStringEnum) {
-                    AccountStatusStringEnum[AccountStatusStringEnum["Undefined"] = 0] = "Undefined";
-                    AccountStatusStringEnum[AccountStatusStringEnum["PendingActiveApproval"] = 1] = "PendingActiveApproval";
-                    AccountStatusStringEnum[AccountStatusStringEnum["Active"] = 2] = "Active";
-                    AccountStatusStringEnum[AccountStatusStringEnum["Suspended"] = 3] = "Suspended";
-                    AccountStatusStringEnum[AccountStatusStringEnum["PendingFinalBill"] = 4] = "PendingFinalBill";
-                    AccountStatusStringEnum[AccountStatusStringEnum["Closed"] = 5] = "Closed";
-                    AccountStatusStringEnum[AccountStatusStringEnum["Archived"] = 6] = "Archived";
+                    AccountStatusStringEnum["Undefined"] = "Undefined";
+                    AccountStatusStringEnum["PendingActiveApproval"] = "PendingActiveApproval";
+                    AccountStatusStringEnum["Active"] = "Active";
+                    AccountStatusStringEnum["Suspended"] = "Suspended";
+                    AccountStatusStringEnum["PendingFinalBill"] = "PendingFinalBill";
+                    AccountStatusStringEnum["Closed"] = "Closed";
+                    AccountStatusStringEnum["Archived"] = "Archived";
                 })(AccountStatusStringEnum = account.AccountStatusStringEnum || (account.AccountStatusStringEnum = {}));
                 ;
             })(account = model.account || (model.account = {}));
@@ -648,23 +644,48 @@ var bluesky;
                 ;
                 var AccountTypeStringEnum;
                 (function (AccountTypeStringEnum) {
-                    AccountTypeStringEnum[AccountTypeStringEnum["None"] = 0] = "None";
-                    AccountTypeStringEnum[AccountTypeStringEnum["Logo"] = 1] = "Logo";
-                    AccountTypeStringEnum[AccountTypeStringEnum["LocalLogo"] = 2] = "LocalLogo";
-                    AccountTypeStringEnum[AccountTypeStringEnum["LegalEntity"] = 3] = "LegalEntity";
-                    AccountTypeStringEnum[AccountTypeStringEnum["ReportingGroup1"] = 4] = "ReportingGroup1";
-                    AccountTypeStringEnum[AccountTypeStringEnum["ReportingGroup2"] = 5] = "ReportingGroup2";
-                    AccountTypeStringEnum[AccountTypeStringEnum["BillingAccount"] = 6] = "BillingAccount";
-                    AccountTypeStringEnum[AccountTypeStringEnum["Group"] = 7] = "Group";
-                    AccountTypeStringEnum[AccountTypeStringEnum["PrimaryGroup"] = 8] = "PrimaryGroup";
-                    AccountTypeStringEnum[AccountTypeStringEnum["User"] = 9] = "User";
-                    AccountTypeStringEnum[AccountTypeStringEnum["Access"] = 10] = "Access";
+                    AccountTypeStringEnum["None"] = "None";
+                    AccountTypeStringEnum["Logo"] = "Logo";
+                    AccountTypeStringEnum["LocalLogo"] = "LocalLogo";
+                    AccountTypeStringEnum["LegalEntity"] = "LegalEntity";
+                    AccountTypeStringEnum["ReportingGroup1"] = "ReportingGroup1";
+                    AccountTypeStringEnum["ReportingGroup2"] = "ReportingGroup2";
+                    AccountTypeStringEnum["BillingAccount"] = "BillingAccount";
+                    AccountTypeStringEnum["Group"] = "Group";
+                    AccountTypeStringEnum["PrimaryGroup"] = "PrimaryGroup";
+                    AccountTypeStringEnum["User"] = "User";
+                    AccountTypeStringEnum["Access"] = "Access";
                 })(AccountTypeStringEnum = account.AccountTypeStringEnum || (account.AccountTypeStringEnum = {}));
                 ;
             })(account = model.account || (model.account = {}));
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -724,24 +745,3 @@ var bluesky;
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

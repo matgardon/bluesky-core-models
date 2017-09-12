@@ -25,20 +25,20 @@ namespace bluesky.core.model.customerOrder {
 
     export enum CustomerOrderStatusStringEnum {
         // status created
-        'Created',
+        Created = 'Created',
         // status  submitted
-        'Submitted',
+        Submitted = 'Submitted',
         // status pending
-        'Pending',
+        Pending = 'Pending',
         // status on hold
-        'OnHold',
+        OnHold = 'OnHold',
         // status Manual operation
-        'ManualOp',
+        ManualOp = 'ManualOp',
         // status error
-        'Error',
+        Error = 'Error',
         // status completed
-        'Completed',
+        Completed = 'Completed',
         // status canceled
-        'Canceled'
+        Canceled = 'Canceled'
     };
 }

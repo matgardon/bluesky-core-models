@@ -12,12 +12,12 @@ namespace bluesky.core.model.account {
     };
 
     export enum AccountStatusStringEnum {
-        'Undefined',
-        'PendingActiveApproval',
-        'Active',
-        'Suspended',
-        'PendingFinalBill',
-        'Closed',
-        'Archived'
+        Undefined = 'Undefined',
+        PendingActiveApproval = 'PendingActiveApproval',
+        Active = 'Active',
+        Suspended = 'Suspended',
+        PendingFinalBill = 'PendingFinalBill',
+        Closed = 'Closed',
+        Archived = 'Archived'
     };
 }
