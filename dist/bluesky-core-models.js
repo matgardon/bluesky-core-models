@@ -1,7 +1,4 @@
 
-
-
-
 var bluesky;
 (function (bluesky) {
     var core;
@@ -15,6 +12,9 @@ var bluesky;
         })(command = core.command || (core.command = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
+
+
+
 
 
 
@@ -67,120 +67,6 @@ var bluesky;
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
-
-
-
-
-
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var model;
-        (function (model) {
-            var customerOrder;
-            (function (customerOrder) {
-                /**
-                 * Type of Arkadin.BlueSky.BSIC.Domain.OrderManagement.CustomerOrder
-                 */
-                var CustomerOrderStatusEnum;
-                (function (CustomerOrderStatusEnum) {
-                    // status created
-                    CustomerOrderStatusEnum[CustomerOrderStatusEnum["Created"] = 0] = "Created";
-                    // status  submitted
-                    CustomerOrderStatusEnum[CustomerOrderStatusEnum["Submitted"] = 1] = "Submitted";
-                    // status pending
-                    CustomerOrderStatusEnum[CustomerOrderStatusEnum["Pending"] = 2] = "Pending";
-                    // status on hold
-                    CustomerOrderStatusEnum[CustomerOrderStatusEnum["OnHold"] = 3] = "OnHold";
-                    // status Manual operation
-                    CustomerOrderStatusEnum[CustomerOrderStatusEnum["ManualOp"] = 4] = "ManualOp";
-                    // status error
-                    CustomerOrderStatusEnum[CustomerOrderStatusEnum["Error"] = 5] = "Error";
-                    // status completed
-                    CustomerOrderStatusEnum[CustomerOrderStatusEnum["Completed"] = 6] = "Completed";
-                    // status canceled
-                    CustomerOrderStatusEnum[CustomerOrderStatusEnum["Canceled"] = 7] = "Canceled";
-                })(CustomerOrderStatusEnum = customerOrder.CustomerOrderStatusEnum || (customerOrder.CustomerOrderStatusEnum = {}));
-            })(customerOrder = model.customerOrder || (model.customerOrder = {}));
-        })(model = core.model || (core.model = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
-
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var model;
-        (function (model) {
-            var customerOrder;
-            (function (customerOrder) {
-                /**
-                 * Type of Arkadin.BlueSky.BSIC.Domain.OrderManagement.CustomerOrder
-                 */
-                var CustomerOrderTypeEnum;
-                (function (CustomerOrderTypeEnum) {
-                    // Initial an order
-                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["InitialOrder"] = 0] = "InitialOrder";
-                    // Initial a simple order
-                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["InitialSimplifiedOrder"] = 1] = "InitialSimplifiedOrder";
-                    // Create or update customer hierarchy
-                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["CreateUpdateCustomerHierarchy"] = 2] = "CreateUpdateCustomerHierarchy";
-                    // Update a Arkadin.BlueSky.BSIC.Domain.OrderManagement.Subscription
-                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["UpdateSubscription"] = 3] = "UpdateSubscription";
-                    // Change user's Arkadin.BlueSky.BSIC.Domain.OrderManagement.Subscription
-                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["ChangeUsersSubscription"] = 4] = "ChangeUsersSubscription";
-                    // Modify a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
-                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["ModifyUser"] = 5] = "ModifyUser";
-                    // Modify a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.Access
-                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["ModifyAccess"] = 6] = "ModifyAccess";
-                    // Disable a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
-                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["DisableUser"] = 7] = "DisableUser";
-                    // Reenable a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
-                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["ReenableUser"] = 8] = "ReenableUser";
-                    // Cease Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
-                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["CeaseUsers"] = 9] = "CeaseUsers";
-                    // Cease Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.Access
-                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["CeaseAccesses"] = 10] = "CeaseAccesses";
-                    // Terminate a Arkadin.BlueSky.BSIC.Domain.OrderManagement.Subscription
-                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["TerminateSubscription"] = 11] = "TerminateSubscription";
-                    // Cease a Node whose type is a class who inherite Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.Account
-                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["CeaseNode"] = 12] = "CeaseNode";
-                    // Schedule OTP conference
-                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["ScheduleOTPConference"] = 13] = "ScheduleOTPConference";
-                    // Update OTP conference
-                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["UpdateOTPConference"] = 14] = "UpdateOTPConference";
-                    // Cancel OTP conference
-                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["CancelOTPConference"] = 15] = "CancelOTPConference";
-                    // Add a Arkadin.BlueSky.BSIC.Domain.OrderManagement.Subscription
-                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["AddSubscription"] = 16] = "AddSubscription";
-                    // Add a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
-                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["AddUser"] = 17] = "AddUser";
-                    // Add a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.Access
-                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["AddAccess"] = 18] = "AddAccess";
-                    // Raise the miscellaneous charges
-                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["RaiseMiscellaneousCharges"] = 19] = "RaiseMiscellaneousCharges";
-                    // Move a set of users inside their hierarchy
-                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["MoveUsers"] = 20] = "MoveUsers";
-                    // Send welcome pack
-                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["SendWelcomePack"] = 21] = "SendWelcomePack";
-                    // Change offer
-                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["ChangeOffer"] = 22] = "ChangeOffer";
-                    // Move node
-                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["MoveNode"] = 23] = "MoveNode";
-                    // Apply Addendum
-                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["ApplyAddendum"] = 24] = "ApplyAddendum";
-                    // Merge Logo
-                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["MergeLogo"] = 25] = "MergeLogo";
-                })(CustomerOrderTypeEnum = customerOrder.CustomerOrderTypeEnum || (customerOrder.CustomerOrderTypeEnum = {}));
-            })(customerOrder = model.customerOrder || (model.customerOrder = {}));
-        })(model = core.model || (core.model = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
-
-
-
-
 
 
 
@@ -239,6 +125,206 @@ var bluesky;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var model;
+        (function (model) {
+            var customerOrder;
+            (function (customerOrder) {
+                //TODO MGA: remove once all migrated to string enum, or replace normal enum with strign enum without changing name ?
+                /**
+                 * Type of Arkadin.BlueSky.BSIC.Domain.OrderManagement.CustomerOrder
+                 */
+                var CustomerOrderStatusEnum;
+                (function (CustomerOrderStatusEnum) {
+                    // status created
+                    CustomerOrderStatusEnum[CustomerOrderStatusEnum["Created"] = 0] = "Created";
+                    // status  submitted
+                    CustomerOrderStatusEnum[CustomerOrderStatusEnum["Submitted"] = 1] = "Submitted";
+                    // status pending
+                    CustomerOrderStatusEnum[CustomerOrderStatusEnum["Pending"] = 2] = "Pending";
+                    // status on hold
+                    CustomerOrderStatusEnum[CustomerOrderStatusEnum["OnHold"] = 3] = "OnHold";
+                    // status Manual operation
+                    CustomerOrderStatusEnum[CustomerOrderStatusEnum["ManualOp"] = 4] = "ManualOp";
+                    // status error
+                    CustomerOrderStatusEnum[CustomerOrderStatusEnum["Error"] = 5] = "Error";
+                    // status completed
+                    CustomerOrderStatusEnum[CustomerOrderStatusEnum["Completed"] = 6] = "Completed";
+                    // status canceled
+                    CustomerOrderStatusEnum[CustomerOrderStatusEnum["Canceled"] = 7] = "Canceled";
+                })(CustomerOrderStatusEnum = customerOrder.CustomerOrderStatusEnum || (customerOrder.CustomerOrderStatusEnum = {}));
+                ;
+                var CustomerOrderStatusStringEnum;
+                (function (CustomerOrderStatusStringEnum) {
+                    // status created
+                    CustomerOrderStatusStringEnum[CustomerOrderStatusStringEnum["Created"] = 0] = "Created";
+                    // status  submitted
+                    CustomerOrderStatusStringEnum[CustomerOrderStatusStringEnum["Submitted"] = 1] = "Submitted";
+                    // status pending
+                    CustomerOrderStatusStringEnum[CustomerOrderStatusStringEnum["Pending"] = 2] = "Pending";
+                    // status on hold
+                    CustomerOrderStatusStringEnum[CustomerOrderStatusStringEnum["OnHold"] = 3] = "OnHold";
+                    // status Manual operation
+                    CustomerOrderStatusStringEnum[CustomerOrderStatusStringEnum["ManualOp"] = 4] = "ManualOp";
+                    // status error
+                    CustomerOrderStatusStringEnum[CustomerOrderStatusStringEnum["Error"] = 5] = "Error";
+                    // status completed
+                    CustomerOrderStatusStringEnum[CustomerOrderStatusStringEnum["Completed"] = 6] = "Completed";
+                    // status canceled
+                    CustomerOrderStatusStringEnum[CustomerOrderStatusStringEnum["Canceled"] = 7] = "Canceled";
+                })(CustomerOrderStatusStringEnum = customerOrder.CustomerOrderStatusStringEnum || (customerOrder.CustomerOrderStatusStringEnum = {}));
+                ;
+            })(customerOrder = model.customerOrder || (model.customerOrder = {}));
+        })(model = core.model || (core.model = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
+
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var model;
+        (function (model) {
+            var customerOrder;
+            (function (customerOrder) {
+                //TODO MGA: remove once all migrated to string enum, or replace normal enum with strign enum without changing name ?
+                /**
+                 * Type of Arkadin.BlueSky.BSIC.Domain.OrderManagement.CustomerOrder
+                 */
+                var CustomerOrderTypeEnum;
+                (function (CustomerOrderTypeEnum) {
+                    // Initial an order
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["InitialOrder"] = 0] = "InitialOrder";
+                    // Initial a simple order
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["InitialSimplifiedOrder"] = 1] = "InitialSimplifiedOrder";
+                    // Create or update customer hierarchy
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["CreateUpdateCustomerHierarchy"] = 2] = "CreateUpdateCustomerHierarchy";
+                    // Update a Arkadin.BlueSky.BSIC.Domain.OrderManagement.Subscription
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["UpdateSubscription"] = 3] = "UpdateSubscription";
+                    // Change user's Arkadin.BlueSky.BSIC.Domain.OrderManagement.Subscription
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["ChangeUsersSubscription"] = 4] = "ChangeUsersSubscription";
+                    // Modify a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["ModifyUser"] = 5] = "ModifyUser";
+                    // Modify a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.Access
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["ModifyAccess"] = 6] = "ModifyAccess";
+                    // Disable a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["DisableUser"] = 7] = "DisableUser";
+                    // Reenable a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["ReenableUser"] = 8] = "ReenableUser";
+                    // Cease Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["CeaseUsers"] = 9] = "CeaseUsers";
+                    // Cease Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.Access
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["CeaseAccesses"] = 10] = "CeaseAccesses";
+                    // Terminate a Arkadin.BlueSky.BSIC.Domain.OrderManagement.Subscription
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["TerminateSubscription"] = 11] = "TerminateSubscription";
+                    // Cease a Node whose type is a class who inherite Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.Account
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["CeaseNode"] = 12] = "CeaseNode";
+                    // Schedule OTP conference
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["ScheduleOTPConference"] = 13] = "ScheduleOTPConference";
+                    // Update OTP conference
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["UpdateOTPConference"] = 14] = "UpdateOTPConference";
+                    // Cancel OTP conference
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["CancelOTPConference"] = 15] = "CancelOTPConference";
+                    // Add a Arkadin.BlueSky.BSIC.Domain.OrderManagement.Subscription
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["AddSubscription"] = 16] = "AddSubscription";
+                    // Add a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["AddUser"] = 17] = "AddUser";
+                    // Add a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.Access
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["AddAccess"] = 18] = "AddAccess";
+                    // Raise the miscellaneous charges
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["RaiseMiscellaneousCharges"] = 19] = "RaiseMiscellaneousCharges";
+                    // Move a set of users inside their hierarchy
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["MoveUsers"] = 20] = "MoveUsers";
+                    // Send welcome pack
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["SendWelcomePack"] = 21] = "SendWelcomePack";
+                    // Change offer
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["ChangeOffer"] = 22] = "ChangeOffer";
+                    // Move node
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["MoveNode"] = 23] = "MoveNode";
+                    // Apply Addendum
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["ApplyAddendum"] = 24] = "ApplyAddendum";
+                    // Merge Logo
+                    CustomerOrderTypeEnum[CustomerOrderTypeEnum["MergeLogo"] = 25] = "MergeLogo";
+                })(CustomerOrderTypeEnum = customerOrder.CustomerOrderTypeEnum || (customerOrder.CustomerOrderTypeEnum = {}));
+                ;
+                var CustomerOrderTypeStringEnum;
+                (function (CustomerOrderTypeStringEnum) {
+                    // Initial an order
+                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["InitialOrder"] = 0] = "InitialOrder";
+                    // Initial a simple order
+                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["InitialSimplifiedOrder"] = 1] = "InitialSimplifiedOrder";
+                    // Create or update customer hierarchy
+                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["CreateUpdateCustomerHierarchy"] = 2] = "CreateUpdateCustomerHierarchy";
+                    // Update a Arkadin.BlueSky.BSIC.Domain.OrderManagement.Subscription
+                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["UpdateSubscription"] = 3] = "UpdateSubscription";
+                    // Change user's Arkadin.BlueSky.BSIC.Domain.OrderManagement.Subscription
+                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["ChangeUsersSubscription"] = 4] = "ChangeUsersSubscription";
+                    // Modify a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
+                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["ModifyUser"] = 5] = "ModifyUser";
+                    // Modify a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.Access
+                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["ModifyAccess"] = 6] = "ModifyAccess";
+                    // Disable a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
+                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["DisableUser"] = 7] = "DisableUser";
+                    // Reenable a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
+                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["ReenableUser"] = 8] = "ReenableUser";
+                    // Cease Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
+                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["CeaseUsers"] = 9] = "CeaseUsers";
+                    // Cease Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.Access
+                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["CeaseAccesses"] = 10] = "CeaseAccesses";
+                    // Terminate a Arkadin.BlueSky.BSIC.Domain.OrderManagement.Subscription
+                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["TerminateSubscription"] = 11] = "TerminateSubscription";
+                    // Cease a Node whose type is a class who inherite Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.Account
+                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["CeaseNode"] = 12] = "CeaseNode";
+                    // Schedule OTP conference
+                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["ScheduleOTPConference"] = 13] = "ScheduleOTPConference";
+                    // Update OTP conference
+                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["UpdateOTPConference"] = 14] = "UpdateOTPConference";
+                    // Cancel OTP conference
+                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["CancelOTPConference"] = 15] = "CancelOTPConference";
+                    // Add a Arkadin.BlueSky.BSIC.Domain.OrderManagement.Subscription
+                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["AddSubscription"] = 16] = "AddSubscription";
+                    // Add a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
+                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["AddUser"] = 17] = "AddUser";
+                    // Add a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.Access
+                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["AddAccess"] = 18] = "AddAccess";
+                    // Raise the miscellaneous charges
+                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["RaiseMiscellaneousCharges"] = 19] = "RaiseMiscellaneousCharges";
+                    // Move a set of users inside their hierarchy
+                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["MoveUsers"] = 20] = "MoveUsers";
+                    // Send welcome pack
+                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["SendWelcomePack"] = 21] = "SendWelcomePack";
+                    // Change offer
+                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["ChangeOffer"] = 22] = "ChangeOffer";
+                    // Move node
+                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["MoveNode"] = 23] = "MoveNode";
+                    // Apply Addendum
+                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["ApplyAddendum"] = 24] = "ApplyAddendum";
+                    // Merge Logo
+                    CustomerOrderTypeStringEnum[CustomerOrderTypeStringEnum["MergeLogo"] = 25] = "MergeLogo";
+                })(CustomerOrderTypeStringEnum = customerOrder.CustomerOrderTypeStringEnum || (customerOrder.CustomerOrderTypeStringEnum = {}));
+                ;
+            })(customerOrder = model.customerOrder || (model.customerOrder = {}));
+        })(model = core.model || (core.model = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
 
 
 
@@ -369,60 +455,6 @@ var bluesky;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var model;
-        (function (model) {
-            var technicalData;
-            (function (technicalData) {
-                var TechnicalAccessTypeEnum;
-                (function (TechnicalAccessTypeEnum) {
-                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["None"] = 0] = "None";
-                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["AudioAccess"] = 1] = "AudioAccess";
-                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["WebAccess"] = 2] = "WebAccess";
-                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["IntegratedAudioAccess"] = 3] = "IntegratedAudioAccess";
-                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["GenericAccess"] = 4] = "GenericAccess";
-                })(TechnicalAccessTypeEnum = technicalData.TechnicalAccessTypeEnum || (technicalData.TechnicalAccessTypeEnum = {}));
-            })(technicalData = model.technicalData || (model.technicalData = {}));
-        })(model = core.model || (core.model = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var bluesky;
 (function (bluesky) {
     var core;
@@ -519,10 +551,26 @@ var bluesky;
 
 
 
-
-
-
-
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var model;
+        (function (model) {
+            var technicalData;
+            (function (technicalData) {
+                var TechnicalAccessTypeEnum;
+                (function (TechnicalAccessTypeEnum) {
+                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["None"] = 0] = "None";
+                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["AudioAccess"] = 1] = "AudioAccess";
+                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["WebAccess"] = 2] = "WebAccess";
+                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["IntegratedAudioAccess"] = 3] = "IntegratedAudioAccess";
+                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["GenericAccess"] = 4] = "GenericAccess";
+                })(TechnicalAccessTypeEnum = technicalData.TechnicalAccessTypeEnum || (technicalData.TechnicalAccessTypeEnum = {}));
+            })(technicalData = model.technicalData || (model.technicalData = {}));
+        })(model = core.model || (core.model = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
 
 
 
@@ -546,6 +594,7 @@ var bluesky;
         (function (model) {
             var account;
             (function (account) {
+                //TODO MGA: remove once all migrated to string enum, or replace normal enum with strign enum without changing name ?
                 var AccountStatusEnum;
                 (function (AccountStatusEnum) {
                     AccountStatusEnum[AccountStatusEnum["Undefined"] = 0] = "Undefined";
@@ -556,6 +605,18 @@ var bluesky;
                     AccountStatusEnum[AccountStatusEnum["Closed"] = 5] = "Closed";
                     AccountStatusEnum[AccountStatusEnum["Archived"] = 6] = "Archived";
                 })(AccountStatusEnum = account.AccountStatusEnum || (account.AccountStatusEnum = {}));
+                ;
+                var AccountStatusStringEnum;
+                (function (AccountStatusStringEnum) {
+                    AccountStatusStringEnum[AccountStatusStringEnum["Undefined"] = 0] = "Undefined";
+                    AccountStatusStringEnum[AccountStatusStringEnum["PendingActiveApproval"] = 1] = "PendingActiveApproval";
+                    AccountStatusStringEnum[AccountStatusStringEnum["Active"] = 2] = "Active";
+                    AccountStatusStringEnum[AccountStatusStringEnum["Suspended"] = 3] = "Suspended";
+                    AccountStatusStringEnum[AccountStatusStringEnum["PendingFinalBill"] = 4] = "PendingFinalBill";
+                    AccountStatusStringEnum[AccountStatusStringEnum["Closed"] = 5] = "Closed";
+                    AccountStatusStringEnum[AccountStatusStringEnum["Archived"] = 6] = "Archived";
+                })(AccountStatusStringEnum = account.AccountStatusStringEnum || (account.AccountStatusStringEnum = {}));
+                ;
             })(account = model.account || (model.account = {}));
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
@@ -569,6 +630,7 @@ var bluesky;
         (function (model) {
             var account;
             (function (account) {
+                //TODO MGA: remove once all migrated to string enum, or replace normal enum with strign enum without changing name ?
                 var AccountTypeEnum;
                 (function (AccountTypeEnum) {
                     AccountTypeEnum[AccountTypeEnum["None"] = 0] = "None";
@@ -583,10 +645,38 @@ var bluesky;
                     AccountTypeEnum[AccountTypeEnum["User"] = 9] = "User";
                     AccountTypeEnum[AccountTypeEnum["Access"] = 10] = "Access";
                 })(AccountTypeEnum = account.AccountTypeEnum || (account.AccountTypeEnum = {}));
+                ;
+                var AccountTypeStringEnum;
+                (function (AccountTypeStringEnum) {
+                    AccountTypeStringEnum[AccountTypeStringEnum["None"] = 0] = "None";
+                    AccountTypeStringEnum[AccountTypeStringEnum["Logo"] = 1] = "Logo";
+                    AccountTypeStringEnum[AccountTypeStringEnum["LocalLogo"] = 2] = "LocalLogo";
+                    AccountTypeStringEnum[AccountTypeStringEnum["LegalEntity"] = 3] = "LegalEntity";
+                    AccountTypeStringEnum[AccountTypeStringEnum["ReportingGroup1"] = 4] = "ReportingGroup1";
+                    AccountTypeStringEnum[AccountTypeStringEnum["ReportingGroup2"] = 5] = "ReportingGroup2";
+                    AccountTypeStringEnum[AccountTypeStringEnum["BillingAccount"] = 6] = "BillingAccount";
+                    AccountTypeStringEnum[AccountTypeStringEnum["Group"] = 7] = "Group";
+                    AccountTypeStringEnum[AccountTypeStringEnum["PrimaryGroup"] = 8] = "PrimaryGroup";
+                    AccountTypeStringEnum[AccountTypeStringEnum["User"] = 9] = "User";
+                    AccountTypeStringEnum[AccountTypeStringEnum["Access"] = 10] = "Access";
+                })(AccountTypeStringEnum = account.AccountTypeStringEnum || (account.AccountTypeStringEnum = {}));
+                ;
             })(account = model.account || (model.account = {}));
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -634,4 +724,24 @@ var bluesky;
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
