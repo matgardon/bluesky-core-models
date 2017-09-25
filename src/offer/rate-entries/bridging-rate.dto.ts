@@ -2,25 +2,13 @@ namespace bluesky.core.model.offer {
 
         export interface IBridgingRateEntryDto extends IRateEntryWithPriceDto {
 
-                /// <summary>
-                /// Gets or sets Retail bridging rate per minute
-                /// </summary>
-                /// <remarks>Optional.</remarks>
+                // Gets or sets Retail bridging rate per minute
                 RetailBridgingRatePerMinute: number
-                /// <summary>
-                /// Gets or sets Partner bridging rate per minute
-                /// </summary>
-                /// <remarks>Optional.</remarks>
+                // Gets or sets Partner bridging rate per minute
                 PartnerBridgingRatePerMinute: number;
-
-                /// <summary>
-                /// Gets or sets the ServiceType.
-                /// </summary>
+                // Gets or sets the ServiceType.
                 ServiceType: IOrderManagementEnumerationDto
-
-                /// <summary>
-                /// Gets or sets the service unit.
-                /// </summary>
+                // Gets or sets the service unit.
                 ServiceUnit: IOrderManagementEnumerationDto;
         }
 }

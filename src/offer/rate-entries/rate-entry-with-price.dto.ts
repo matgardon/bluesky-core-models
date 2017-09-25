@@ -1,32 +1,18 @@
 namespace bluesky.core.model.offer {
         export interface IRateEntryWithPriceDto {
-        
-        /// <summary>
-        /// Gets or sets the rate entry audit.
-        /// </summary>
-        CustomPrice:number;
-        
-        ProductCategory:string;
-
-        /// <summary>
-        /// Gets or sets the rate entry audit.
-        /// </summary>
-        OfferPrice:number;
-
-        /// <summary>
-        /// Gets or sets the rate entry audit.
-        /// </summary>
-        PriceUnit:string;
-
-        /// <summary>
-        /// Gets or sets the SubsidiaryName.
-        /// </summary>
-        SubsidiaryName:string;
-
-        /// <summary>
-        /// Gets or sets the Currency.
-        /// </summary>
-        Currency:string;
-        RateEntryType:string;
-}
+                // Gets or sets the custom price.
+                CustomPrice: number;
+                // Gets or sets origin price.
+                ProductCategory: string;
+                // Gets or sets the price unit
+                OriginPrice: number;
+                // Gets or sets the SubsidiaryName.
+                PriceUnit: string;
+                // Gets or sets the SubsidiaryName.
+                SubsidiaryName: string;
+                // Gets or sets the Currency.
+                Currency: string;
+                // Get or set the product category, Can be null
+                RateEntryType: string;
+        }
 }

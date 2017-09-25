@@ -1,28 +1,14 @@
 namespace bluesky.core.model.offer {
 
-    export interface IBandRateEntryDto extends IRateEntryWithPriceDto{
+    export interface IBandRateEntryDto extends IRateEntryWithPriceDto {
 
-        /// <summary>
-        /// Gets or sets band
-        /// </summary>
-        /// <remarks>Optional.</remarks>
+        // Gets or sets band
         Band: string;
-
-        /// <summary>
-        /// Gets or sets Retail band rate per minute
-        /// </summary>
-        /// <remarks>Optional.</remarks>
+        // Gets or sets Retail band rate per minute
         RetailBandRatePerMinute: number;
-
-        /// <summary>
-        /// Gets or sets Partner band rate per minute
-        /// </summary>
-        /// <remarks>Optional.</remarks>
+        // Gets or sets Partner band rate per minute
         PartnerBandRatePerMinute: number;
-
-        /// <summary>
-        /// Gets or sets the ServiceType.
-        /// </summary>
+        // Gets or sets the ServiceType.
         ServiceType: IOrderManagementEnumerationDto;
     }
 }

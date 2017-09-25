@@ -1,6 +1,6 @@
 namespace bluesky.core.model.offer {
 
-        export interface ITariffGroupToBandMappingRateEntryDto extends IRateEntryWithPriceDto{
+        export interface ITariffGroupToBandMappingRateEntryDto extends IRateEntryWithPriceDto {
 
                 // Gets or sets Source region.
                 // Optional rating key to differentiate rates per minute depending on source region or city. 
@@ -41,19 +41,19 @@ namespace bluesky.core.model.offer {
                 // Gets or sets Use Tariff Group Retail / Partner Rate – used in conjunction with the rates described above. When set to TRUE 
                 // that rate will be used to calculate the amount for the Telecom part of the call
                 IsUseTariffGroupPartnerRate: boolean;
-
+                // Gets or sets the SourceCountryCode.
                 SourceCountryCode: IOrderManagementEnumerationDto;
 
-                /// Gets or sets the DestinationCountryCode.
+                // Gets or sets the DestinationCountryCode.
                 DestinationCountryCode: IOrderManagementEnumerationDto;
 
-                /// Gets or sets the DirectDialInType.
+                // Gets or sets the DirectDialInType.
                 DirectDialInType: IOrderManagementEnumerationDto;
 
-                /// Gets or sets the PhoneKind.
+                // Gets or sets the PhoneKind.
                 PhoneKind: IOrderManagementEnumerationDto;
 
-                /// Gets or sets the ServiceType.
+                // Gets or sets the ServiceType.
                 ServiceType: IOrderManagementEnumerationDto;
         }
 }

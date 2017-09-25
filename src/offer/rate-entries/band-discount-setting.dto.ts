@@ -1,40 +1,26 @@
 namespace bluesky.core.model.offer {
         export interface IBandDiscountSettingRateEntryDto extends IRateEntryWithPriceDto {
-                /// <summary>
-                /// Gets or sets tax band.
-                /// </summary>        
-                /// <remarks>Mandatory.</remarks>
+
+                // Gets or sets tax band.
                 Band: string;
 
-                /// <summary>
-                /// Gets or sets Minute threshold start.
-                /// Required start thresholds of minutes within given Band that must be reached in order to be entitled to the discount.
-                /// </summary>
-                /// <remarks>Mandatory.</remarks>
+                // Gets or sets Minute threshold start.
+                // Required start thresholds of minutes within given Band that must be reached in order to be entitled to the discount.
                 MinuteThresholdStart: number;
 
-                /// <summary>
-                /// Gets or sets Minute threshold end.
-                /// Required end thresholds of minutes within given Band that must be reached in order to be entitled to the discount.
-                /// </summary>
-                /// <remarks>Mandatory.</remarks>
+                // Gets or sets Minute threshold end.
+                // Required end thresholds of minutes within given Band that must be reached in order to be entitled to the discount.
+
+                // <remarks>Mandatory.</remarks>
                 MinuteThresholdEnd: number;
 
-                /// <summary>
-                /// Gets or sets Retail discount percentage
-                /// </summary>
-                /// <remarks>Optional.</remarks>
+                // Gets or sets Retail discount percentage
                 RetailDiscountPercentage: number;
 
-                /// <summary>
-                /// Gets or sets Partner discount percentage
-                /// </summary>
-                /// <remarks>Optional.</remarks>
+                // Gets or sets Partner discount percentage
                 PartnerDiscountPercentage: number;
 
-                /// <summary>
-                /// Gets or sets rating key
-                /// </summary>
+                // Gets or sets rating key
                 RatingKey: string;
         }
 }

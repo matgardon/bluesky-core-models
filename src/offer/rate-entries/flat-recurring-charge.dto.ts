@@ -1,16 +1,11 @@
 namespace bluesky.core.model.offer {
 
-        export interface IFlatRecurringChargeRateEntryDtoDto extends IRateEntryWithPriceDto{
-       
-        /// <summary>
-        /// Gets or sets Recurring charge amount
-        /// </summary>
-        /// <remarks>Mandatory.</remarks>
-        RCAmount:number;
+        export interface IFlatRecurringChargeRateEntryDtoDto extends IRateEntryWithPriceDto {
 
-        /// <summary>
-        /// Gets or sets rating key
-        /// </summary>
-        /// <remarks>Optional.</remarks>
-        RatingKey:string;
-}}
+                // Gets or sets Recurring charge amount
+                RCAmount: number;
+
+                // Gets or sets rating key
+                RatingKey: string;
+        }
+}
