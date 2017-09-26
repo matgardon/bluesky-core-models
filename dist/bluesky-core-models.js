@@ -2,6 +2,31 @@
 
 
 
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var command;
+        (function (command) {
+            var SupportedResponseFormatEnum;
+            (function (SupportedResponseFormatEnum) {
+                SupportedResponseFormatEnum["CSV"] = "csv";
+            })(SupportedResponseFormatEnum = command.SupportedResponseFormatEnum || (command.SupportedResponseFormatEnum = {}));
+        })(command = core.command || (core.command = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
+
+
+
+
+
+
+
+
+
+
+
+
 
 var bluesky;
 (function (bluesky) {
@@ -42,24 +67,6 @@ var bluesky;
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
-
-
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var command;
-        (function (command) {
-            var SupportedResponseFormatEnum;
-            (function (SupportedResponseFormatEnum) {
-                SupportedResponseFormatEnum["CSV"] = "csv";
-            })(SupportedResponseFormatEnum = command.SupportedResponseFormatEnum || (command.SupportedResponseFormatEnum = {}));
-        })(command = core.command || (core.command = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
-
-
-
 
 
 
@@ -278,13 +285,6 @@ var bluesky;
 
 
 
-
-
-
-
-
-
-
 var bluesky;
 (function (bluesky) {
     var core;
@@ -313,6 +313,8 @@ var bluesky;
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
+
+
 
 
 
@@ -403,6 +405,10 @@ var bluesky;
 
 
 
+
+
+
+
 var bluesky;
 (function (bluesky) {
     var core;
@@ -440,60 +446,6 @@ var bluesky;
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var model;
-        (function (model) {
-            var technicalData;
-            (function (technicalData) {
-                var TechnicalAccessTypeEnum;
-                (function (TechnicalAccessTypeEnum) {
-                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["None"] = 0] = "None";
-                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["AudioAccess"] = 1] = "AudioAccess";
-                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["WebAccess"] = 2] = "WebAccess";
-                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["IntegratedAudioAccess"] = 3] = "IntegratedAudioAccess";
-                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["GenericAccess"] = 4] = "GenericAccess";
-                })(TechnicalAccessTypeEnum = technicalData.TechnicalAccessTypeEnum || (technicalData.TechnicalAccessTypeEnum = {}));
-            })(technicalData = model.technicalData || (model.technicalData = {}));
-        })(model = core.model || (core.model = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -582,6 +534,73 @@ var bluesky;
 
 
 
+
+
+
+
+
+
+
+
+
+
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var model;
+        (function (model) {
+            var technicalData;
+            (function (technicalData) {
+                var TechnicalAccessTypeEnum;
+                (function (TechnicalAccessTypeEnum) {
+                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["None"] = 0] = "None";
+                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["AudioAccess"] = 1] = "AudioAccess";
+                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["WebAccess"] = 2] = "WebAccess";
+                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["IntegratedAudioAccess"] = 3] = "IntegratedAudioAccess";
+                    TechnicalAccessTypeEnum[TechnicalAccessTypeEnum["GenericAccess"] = 4] = "GenericAccess";
+                })(TechnicalAccessTypeEnum = technicalData.TechnicalAccessTypeEnum || (technicalData.TechnicalAccessTypeEnum = {}));
+            })(technicalData = model.technicalData || (model.technicalData = {}));
+        })(model = core.model || (core.model = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var bluesky;
 (function (bluesky) {
     var core;
@@ -661,15 +680,6 @@ var bluesky;
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
-
-
-
-
-
-
-
-
-
 
 
 
