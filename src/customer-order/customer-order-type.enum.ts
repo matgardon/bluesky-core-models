@@ -1,4 +1,6 @@
 namespace bluesky.core.model.customerOrder {
+    
+    //TODO MGA: remove once all migrated to string enum, or replace normal enum with strign enum without changing name ?
     /**
      * Type of Arkadin.BlueSky.BSIC.Domain.OrderManagement.CustomerOrder
      */
@@ -55,5 +57,60 @@ namespace bluesky.core.model.customerOrder {
         ApplyAddendum = 24,
         // Merge Logo
         MergeLogo = 25
-    }
+    };
+
+    export enum CustomerOrderTypeStringEnum {
+        // Initial an order
+        InitialOrder = 'InitialOrder',
+        // Initial a simple order
+        InitialSimplifiedOrder = 'InitialSimplifiedOrder',
+        // Create or update customer hierarchy
+        CreateUpdateCustomerHierarchy = 'CreateUpdateCustomerHierarchy',
+        // Update a Arkadin.BlueSky.BSIC.Domain.OrderManagement.Subscription
+        UpdateSubscription = 'UpdateSubscription',
+        // Change user's Arkadin.BlueSky.BSIC.Domain.OrderManagement.Subscription
+        ChangeUsersSubscription = 'ChangeUsersSubscription',
+        // Modify a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
+        ModifyUser = 'ModifyUser',
+        // Modify a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.Access
+        ModifyAccess = 'ModifyAccess',
+        // Disable a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
+        DisableUser = 'DisableUser',
+        // Reenable a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
+        ReenableUser = 'ReenableUser',
+        // Cease Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
+        CeaseUsers = 'CeaseUsers',
+        // Cease Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.Access
+        CeaseAccesses = 'CeaseAccesses',
+        // Terminate a Arkadin.BlueSky.BSIC.Domain.OrderManagement.Subscription
+        TerminateSubscription = 'TerminateSubscription',
+        // Cease a Node whose type is a class who inherite Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.Account
+        CeaseNode = 'CeaseNode',
+        // Schedule OTP conference
+        ScheduleOTPConference = 'ScheduleOTPConference',
+        // Update OTP conference
+        UpdateOTPConference = 'UpdateOTPConference',
+        // Cancel OTP conference
+        CancelOTPConference = 'CancelOTPConference',
+        // Add a Arkadin.BlueSky.BSIC.Domain.OrderManagement.Subscription
+        AddSubscription = 'AddSubscription',
+        // Add a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.User
+        AddUser = 'AddUser',
+        // Add a Arkadin.BlueSky.BSIC.Domain.CustomerAccount.HierarchyNode.Access
+        AddAccess = 'AddAccess',
+        // Raise the miscellaneous charges
+        RaiseMiscellaneousCharges = 'RaiseMiscellaneousCharges',
+        // Move a set of users inside their hierarchy
+        MoveUsers = 'MoveUsers',
+        // Send welcome pack
+        SendWelcomePack = 'SendWelcomePack',
+        // Change offer
+        ChangeOffer = 'ChangeOffer',
+        // Move node
+        MoveNode = 'MoveNode',
+        // Apply Addendum
+        ApplyAddendum = 'ApplyAddendum',
+        // Merge Logo
+        MergeLogo = 'MergeLogo'
+    };
 }
