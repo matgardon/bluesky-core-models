@@ -1,5 +1,5 @@
 namespace bluesky.core.model.offer {
-        export interface IRateEntryWithPriceDto {
+        export interface IRateEntryWithPriceDto extends IRateEntryDto {
                 // Gets or sets the custom price.
                 CustomPrice: number;
                 // Gets or sets origin price.
@@ -13,6 +13,6 @@ namespace bluesky.core.model.offer {
                 // Gets or sets the Currency.
                 Currency: string;
                 // Get or set the product category, Can be null
-                RateEntryType: string;
+                RateEntryType: RateEntryTypeEnum;
         }
 }

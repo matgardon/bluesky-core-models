@@ -1,5 +1,5 @@
 namespace bluesky.core.model.offer {
-        export interface IOptionChargeRateReDto extends IRateEntryWithPriceDto{
+        export interface IOptionChargeRateEntryDto extends IRateEntryWithPriceDto{
         // Gets or sets Rate per unit
         RatePerUnit :number;
         // Gets or sets Flat rate
