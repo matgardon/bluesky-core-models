@@ -28,48 +28,6 @@ var bluesky;
 
 
 
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var model;
-        (function (model) {
-            var clientConfig;
-            (function (clientConfig) {
-                /**
-                 * Enum generated from the server to know the list of supported endpoint configuration.
-                 */
-                var EndpointTypeEnum;
-                (function (EndpointTypeEnum) {
-                    /**
-                     * Origin domain from which the current client was loaded.
-                     */
-                    EndpointTypeEnum[EndpointTypeEnum["CurrentDomain"] = 0] = "CurrentDomain";
-                    // APIs
-                    EndpointTypeEnum[EndpointTypeEnum["CoreApi"] = 1] = "CoreApi";
-                    EndpointTypeEnum[EndpointTypeEnum["MarketingApi"] = 2] = "MarketingApi";
-                    EndpointTypeEnum[EndpointTypeEnum["SelfcareApi"] = 3] = "SelfcareApi";
-                    // OM apps
-                    EndpointTypeEnum[EndpointTypeEnum["QuoteWizard"] = 4] = "QuoteWizard";
-                    EndpointTypeEnum[EndpointTypeEnum["OrderEntry"] = 5] = "OrderEntry";
-                    EndpointTypeEnum[EndpointTypeEnum["OrderTracking"] = 6] = "OrderTracking";
-                    // Internal apps
-                    EndpointTypeEnum[EndpointTypeEnum["Metranet"] = 7] = "Metranet";
-                    EndpointTypeEnum[EndpointTypeEnum["TechnicalInventory"] = 8] = "TechnicalInventory";
-                    EndpointTypeEnum[EndpointTypeEnum["TemplateGenerator"] = 9] = "TemplateGenerator";
-                    EndpointTypeEnum[EndpointTypeEnum["Salesforce"] = 10] = "Salesforce";
-                    /**
-                     * External URLs (not treatment applied, rejected if URL is not full)
-                     */
-                    EndpointTypeEnum[EndpointTypeEnum["External"] = 11] = "External";
-                })(EndpointTypeEnum = clientConfig.EndpointTypeEnum || (clientConfig.EndpointTypeEnum = {}));
-            })(clientConfig = model.clientConfig || (model.clientConfig = {}));
-        })(model = core.model || (core.model = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
-
-
-
 
 
 var bluesky;
@@ -271,15 +229,46 @@ var bluesky;
 
 
 
-
-
-
-
-
-
-
-
-
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var model;
+        (function (model) {
+            var clientConfig;
+            (function (clientConfig) {
+                /**
+                 * Enum generated from the server to know the list of supported endpoint configuration.
+                 */
+                var EndpointTypeEnum;
+                (function (EndpointTypeEnum) {
+                    /**
+                     * Origin domain from which the current client was loaded.
+                     */
+                    EndpointTypeEnum[EndpointTypeEnum["CurrentDomain"] = 0] = "CurrentDomain";
+                    // APIs
+                    EndpointTypeEnum[EndpointTypeEnum["CoreApi"] = 1] = "CoreApi";
+                    EndpointTypeEnum[EndpointTypeEnum["MarketingApi"] = 2] = "MarketingApi";
+                    EndpointTypeEnum[EndpointTypeEnum["SelfcareApi"] = 3] = "SelfcareApi";
+                    EndpointTypeEnum[EndpointTypeEnum["MetraNetApi"] = 4] = "MetraNetApi";
+                    // OM apps
+                    EndpointTypeEnum[EndpointTypeEnum["QuoteWizard"] = 5] = "QuoteWizard";
+                    EndpointTypeEnum[EndpointTypeEnum["OrderEntry"] = 6] = "OrderEntry";
+                    EndpointTypeEnum[EndpointTypeEnum["OrderTracking"] = 7] = "OrderTracking";
+                    // Internal apps
+                    EndpointTypeEnum[EndpointTypeEnum["Metranet"] = 8] = "Metranet";
+                    EndpointTypeEnum[EndpointTypeEnum["TechnicalInventory"] = 9] = "TechnicalInventory";
+                    EndpointTypeEnum[EndpointTypeEnum["TemplateGenerator"] = 10] = "TemplateGenerator";
+                    EndpointTypeEnum[EndpointTypeEnum["Salesforce"] = 11] = "Salesforce";
+                    /**
+                     * External URLs (not treatment applied, rejected if URL is not full)
+                     */
+                    EndpointTypeEnum[EndpointTypeEnum["External"] = 12] = "External";
+                })(EndpointTypeEnum = clientConfig.EndpointTypeEnum || (clientConfig.EndpointTypeEnum = {}));
+            })(clientConfig = model.clientConfig || (model.clientConfig = {}));
+        })(model = core.model || (core.model = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
 
 
 
@@ -319,6 +308,12 @@ var bluesky;
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
+
+
+
+
+
+
 
 
 
@@ -406,6 +401,52 @@ var bluesky;
 
 
 
+//TODO MGA disabling from UI following TFS id:http://frmtptfs01:8080/tfs/Arkadin/BlueSky/_workitems#id=116176 pending full removal ?
+// namespace bluesky.core.model.taxManagement {
+//     export interface INoramTaxExemptionDto extends IResourceBase {
+//         Level: TaxExemptTypeEnum;
+//         Location: number;
+//         CertificateId: string;
+//         StartDate: string;
+//         ExpirationDate: string;
+//         TaxExemptionTypes: Array<ITaxExemptionTypeDto>;
+//         TaxAction: TaxActionEnum;
+//         IsExpired: boolean;
+//     }
+// } 
+
+
+
+
+//TODO MGA disabling from UI following TFS id:http://frmtptfs01:8080/tfs/Arkadin/BlueSky/_workitems#id=116176 pending full removal ?
+// namespace bluesky.core.model.taxManagement {
+//     export enum TaxActionEnum {
+//         Add = 0,
+//         Modify = 1,
+//         Cease = 2
+//     }
+// } 
+
+//TODO MGA disabling from UI following TFS id:http://frmtptfs01:8080/tfs/Arkadin/BlueSky/_workitems#id=116176 pending full removal ?
+// namespace bluesky.core.model.taxManagement {
+// 	/** Model for a noram tax exemption type. */
+// 	// TODO MGA: model only used by OE at the moment, to mutualize
+// 	export interface ITaxExemptionTypeDto extends IResourceBase {
+// 		Code: number;
+// 		Name: string;
+// 		MetranetTaxExemptionId?: number;
+// 		IsSelected: boolean;
+// 	}
+// }
+
+//TODO MGA disabling from UI following TFS id:http://frmtptfs01:8080/tfs/Arkadin/BlueSky/_workitems#id=116176 pending full removal ?
+// namespace bluesky.core.model.taxManagement {
+//     export enum TaxExemptTypeEnum {
+//         Federal = 0,
+//         State   = 1
+//     }
+// } 
+
 
 
 
@@ -451,43 +492,7 @@ var bluesky;
 
 
 
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var model;
-        (function (model) {
-            var taxManagement;
-            (function (taxManagement) {
-                var TaxActionEnum;
-                (function (TaxActionEnum) {
-                    TaxActionEnum[TaxActionEnum["Add"] = 0] = "Add";
-                    TaxActionEnum[TaxActionEnum["Modify"] = 1] = "Modify";
-                    TaxActionEnum[TaxActionEnum["Cease"] = 2] = "Cease";
-                })(TaxActionEnum = taxManagement.TaxActionEnum || (taxManagement.TaxActionEnum = {}));
-            })(taxManagement = model.taxManagement || (model.taxManagement = {}));
-        })(model = core.model || (core.model = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
 
-
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var model;
-        (function (model) {
-            var taxManagement;
-            (function (taxManagement) {
-                var TaxExemptTypeEnum;
-                (function (TaxExemptTypeEnum) {
-                    TaxExemptTypeEnum[TaxExemptTypeEnum["Federal"] = 0] = "Federal";
-                    TaxExemptTypeEnum[TaxExemptTypeEnum["State"] = 1] = "State";
-                })(TaxExemptTypeEnum = taxManagement.TaxExemptTypeEnum || (taxManagement.TaxExemptTypeEnum = {}));
-            })(taxManagement = model.taxManagement || (model.taxManagement = {}));
-        })(model = core.model || (core.model = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
 
 
 
