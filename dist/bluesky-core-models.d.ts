@@ -164,59 +164,6 @@ declare namespace bluesky.core.model {
     }
 }
 
-declare namespace bluesky.core.model.clientConfig {
-    interface IAjaxClientEndpointConfigurationDto {
-        EndpointBaseURL: string;
-        EndpointSuffix: string;
-        AuthToken: string;
-        AuthTokenValidityEndDate: string;
-    }
-}
-
-declare namespace bluesky.core.model.clientConfig {
-    import UserSsoDto = userManagement.IUserSsoDto;
-    interface IBlueskyAjaxClientConfigurationDto {
-        /**
-         * Dictionnary of client configuration per-endpoint.
-         * @param endpointType : EndpoinTypeEnum type string representation. It cannot be strongly typed to the related enum (EndpointTypeEnum) due to TS not implementing it atm: https://github.com/Microsoft/TypeScript/issues/2491. So we use the string representation of the enum as key.
-         * @returns {}
-         *
-         * TODO MGA: C# json native json serializer doesn't handle dictionnaries with enum keys, so we use an array of endpoint config based on string representation. http://stackoverflow.com/questions/2892910/problems-with-json-serialize-dictionaryenum-int32
-         */
-        EndpointConfigurationDictionnary: {
-            [endpointType: string]: clientConfig.IAjaxClientEndpointConfigurationDto;
-        };
-        CurrentUserRole: string;
-        CurrentUser?: UserSsoDto;
-    }
-}
-
-declare namespace bluesky.core.model.clientConfig {
-    /**
-     * Enum generated from the server to know the list of supported endpoint configuration.
-     */
-    enum EndpointTypeEnum {
-        /**
-         * Origin domain from which the current client was loaded.
-         */
-        CurrentDomain = 0,
-        CoreApi = 1,
-        MarketingApi = 2,
-        SelfcareApi = 3,
-        QuoteWizard = 4,
-        OrderEntry = 5,
-        OrderTracking = 6,
-        Metranet = 7,
-        TechnicalInventory = 8,
-        TemplateGenerator = 9,
-        Salesforce = 10,
-        /**
-         * External URLs (not treatment applied, rejected if URL is not full)
-         */
-        External = 11,
-    }
-}
-
 declare namespace bluesky.core.model.customerOrder {
     /** Response for a Create users command. */
     interface ICreateOrderResponseDto {
@@ -619,31 +566,57 @@ declare namespace bluesky.core.model.emailTemplate {
     }
 }
 
-declare namespace bluesky.core.model.offer {
+declare namespace bluesky.core.model.clientConfig {
+    interface IAjaxClientEndpointConfigurationDto {
+        EndpointBaseURL: string;
+        EndpointSuffix: string;
+        AuthToken: string;
+        AuthTokenValidityEndDate: string;
+    }
+}
+
+declare namespace bluesky.core.model.clientConfig {
+    import UserSsoDto = userManagement.IUserSsoDto;
+    interface IBlueskyAjaxClientConfigurationDto {
+        /**
+         * Dictionnary of client configuration per-endpoint.
+         * @param endpointType : EndpoinTypeEnum type string representation. It cannot be strongly typed to the related enum (EndpointTypeEnum) due to TS not implementing it atm: https://github.com/Microsoft/TypeScript/issues/2491. So we use the string representation of the enum as key.
+         * @returns {}
+         *
+         * TODO MGA: C# json native json serializer doesn't handle dictionnaries with enum keys, so we use an array of endpoint config based on string representation. http://stackoverflow.com/questions/2892910/problems-with-json-serialize-dictionaryenum-int32
+         */
+        EndpointConfigurationDictionnary: {
+            [endpointType: string]: clientConfig.IAjaxClientEndpointConfigurationDto;
+        };
+        CurrentUserRole: string;
+        CurrentUser?: UserSsoDto;
+    }
+}
+
+declare namespace bluesky.core.model.clientConfig {
     /**
-     * Product offering.
+     * Enum generated from the server to know the list of supported endpoint configuration.
      */
-    interface IProductOfferingDto {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets the Offer type. */
-        OfferType: string;
-        /** Gets or sets the name. */
-        Name: string;
-        /** Gets or sets the display name. */
-        DisplayName: string;
-        /** Gets or sets the description. */
-        Description: string;
-        /** Gets or sets the availability start date. */
-        AvailabilityStartDate: Date;
-        /** Gets or sets the availability end date. */
-        AvailabilityEndDate: Date;
-        /** Gets or sets the effective start date. */
-        EffectiveStartDate: Date;
-        /** Gets or sets the effective end date. */
-        EffectiveEndDate: Date;
-        /**Gets or sets the AggregateType enumeration. */
-        AggregateType: IMetraNetEnumerationDto;
+    enum EndpointTypeEnum {
+        /**
+         * Origin domain from which the current client was loaded.
+         */
+        CurrentDomain = 0,
+        CoreApi = 1,
+        MarketingApi = 2,
+        SelfcareApi = 3,
+        MetraNetApi = 4,
+        QuoteWizard = 5,
+        OrderEntry = 6,
+        OrderTracking = 7,
+        Metranet = 8,
+        TechnicalInventory = 9,
+        TemplateGenerator = 10,
+        Salesforce = 11,
+        /**
+         * External URLs (not treatment applied, rejected if URL is not full)
+         */
+        External = 12,
     }
 }
 
@@ -711,158 +684,31 @@ declare namespace bluesky.externals.smartTable {
     }
 }
 
-declare namespace bluesky.core.model.location {
-    interface IBillSoftLocationDto extends IResourceBase {
-        PCode: string;
-        IsPrimaryLocation: boolean;
-        County: string;
-        City: string;
-        BeginningZipCode: string;
-        EndingZipCode: string;
-        CountryIsoCode: string;
-        CountrySubdivision: ICountrySubdivisionDto;
-    }
-}
-
-declare namespace bluesky.core.model.location {
-    interface ICountrySubdivisionDto extends IResourceBase {
-        CountryCode: string;
-        CountrySubdivisionCode: string;
-        CountrySubdivisionName: string;
-    }
-}
-
-declare namespace bluesky.core.model.location {
-    interface ICountryDto extends IResourceBase {
-        Name?: string;
-        IsoCode?: string;
-        IcoCode?: string;
-        GeoRegion?: string;
-    }
-}
-
-declare namespace bluesky.core.command.location {
-    /** Search parameter used to retrieve a list of location. */
-    interface ISearchLocationCommand extends IBasePaginatedSearchCommand {
-        /** Gets or sets the zip or postal code. */
-        ZipCode?: string;
-        /** Gets or sets the city or town. */
-        City?: string;
-        /** Boolean indicating if the search on city should be an exact match or a contains() */
-        IsExactCitySearch?: boolean;
-        /** Gets or sets the the country code. */
-        CountryCode?: string;
-        /** Gets or sets the country subdivision code (state or province). */
-        CountrySubdivisionCode?: string;
-        /** Gets or sets the county. */
-        County?: string;
-        /** Boolean indicating if the search on county should be an exact match or a contains() */
-        IsExactCountySearch?: boolean;
-    }
-}
-
-declare namespace bluesky.core.command.location {
-    /** Search parameter used to retrieve a list of state (country subdivisions). */
-    interface ISearchStateCommand {
-        /** Country ISO code. */
-        CountryCode: string;
-    }
-}
-
-declare namespace bluesky.core.model.location {
-    interface IStateDto extends IResourceBase {
-        Name?: string;
-        Code?: string;
-        PCode?: number;
-    }
-}
-
-declare namespace bluesky.core.command.subscription {
-    interface IQuoteSubscriptionSearchCommand extends IBasePaginatedSearchCommand {
-        QuoteId?: number;
-        SubscriptionId?: number;
-        GroupSubId?: number;
-        BillingAccountUserName?: string;
-    }
-}
-
-declare namespace bluesky.core.model.subscription {
-    /** This entity links a quote, a billing account, and the resulting subscription */
-    interface IQuoteSubscriptionDto extends IResourceBase {
+declare namespace bluesky.core.model.offer {
+    /**
+     * Product offering.
+     */
+    interface IProductOfferingDto {
         /** Gets or sets the unique identifier. */
         Id: number;
-        /** Quote identifier */
-        QuoteId: number;
-        /** Subscription identifier */
-        SubscriptionId: number;
-        /** GroupSubscription identifier */
-        GroupSubId?: number;
-        /** BillingAccount identifier */
-        BillingAccountUserName: string;
-        /** BillingAccount customer node name */
-        BillingAccountCustomerNodeName: string;
-        /** Set to true when a disable user is sent by the OO */
-        IsUserDeactivationOrderSent: boolean;
-    }
-}
-
-declare namespace bluesky.core.model.subscription {
-    /** DTO of an option attached to a subscription. */
-    interface ISubscriptionOptionDto {
-        /** Name of the Option. */
+        /** Gets or sets the Offer type. */
+        OfferType: string;
+        /** Gets or sets the name. */
         Name: string;
-        /** Indicate in which product category the option is defined. */
-        ProductCategory: string;
-        /** Technical spec value of the Technical Option. */
-        TechnicalSpec: string;
-        /** Default value chosen for the option on the subscription. */
-        Value: string;
-        /** Type of the value */
-        ValueType: string;
-    }
-}
-
-declare namespace bluesky.core.model.subscription {
-    /** DTO of a product attached to a subscription. */
-    interface ISubscriptionProductDto {
-        /** Element name of the product. */
-        Name: string;
-        /** Name of the Technical Product Specification. */
-        TechnicalProductSpecName: string;
-        /** Identifier of the Technical Product in the Technical Inventory. */
-        TechnicalProductId: string;
-    }
-}
-
-declare namespace bluesky.core.model.subscription {
-    /** Header DTO of a subscription summary.
-    * A subscription is a product offering sold to a Customer and applied to a single subscriber Billing account. */
-    interface ISubscriptionSummaryHeaderDto extends IResourceBase {
-        /** Offer display name of the subscription. */
+        /** Gets or sets the display name. */
         DisplayName: string;
-        /** Identifier of the subscription defined into MetraNet. */
-        GroupSubscriptionId: number;
-        /** List of products linked to the subscription. */
-        Products: subscription.ISubscriptionProductDto[];
-    }
-}
-
-declare namespace bluesky.core.model.subscription {
-    /** DTO of a subscription summary.
-    * A subscription is a product offering sold to a Customer and applied to a single subscriber Billing account. */
-    interface ISubscriptionSummaryDto extends IResourceBase {
-        /** Offer display name of the subscription. */
-        DisplayName: string;
-        /** Identifier of the subscription defined into MetraNet. */
-        GroupSubscriptionId: number;
-        /** Identifier of the billing account owner of the subscription. */
-        BillingAccountUid: string;
-        /** Identifier of the billing account's logo. */
-        LogoUid: string;
-        /** List of products linked to the subscription. */
-        Products: subscription.ISubscriptionProductDto[];
-        /** subscription options. */
-        Options: subscription.ISubscriptionOptionDto[];
+        /** Gets or sets the description. */
+        Description: string;
+        /** Gets or sets the availability start date. */
+        AvailabilityStartDate: Date;
+        /** Gets or sets the availability end date. */
+        AvailabilityEndDate: Date;
+        /** Gets or sets the effective start date. */
+        EffectiveStartDate: Date;
+        /** Gets or sets the effective end date. */
+        EffectiveEndDate: Date;
+        /**Gets or sets the AggregateType enumeration. */
+        AggregateType: IMetraNetEnumerationDto;
     }
 }
 
@@ -1496,6 +1342,72 @@ declare namespace bluesky.core.command.quote {
     }
 }
 
+declare namespace bluesky.core.model.location {
+    interface IBillSoftLocationDto extends IResourceBase {
+        PCode: string;
+        IsPrimaryLocation: boolean;
+        County: string;
+        City: string;
+        BeginningZipCode: string;
+        EndingZipCode: string;
+        CountryIsoCode: string;
+        CountrySubdivision: ICountrySubdivisionDto;
+    }
+}
+
+declare namespace bluesky.core.model.location {
+    interface ICountrySubdivisionDto extends IResourceBase {
+        CountryCode: string;
+        CountrySubdivisionCode: string;
+        CountrySubdivisionName: string;
+    }
+}
+
+declare namespace bluesky.core.model.location {
+    interface ICountryDto extends IResourceBase {
+        Name?: string;
+        IsoCode?: string;
+        IcoCode?: string;
+        GeoRegion?: string;
+    }
+}
+
+declare namespace bluesky.core.command.location {
+    /** Search parameter used to retrieve a list of location. */
+    interface ISearchLocationCommand extends IBasePaginatedSearchCommand {
+        /** Gets or sets the zip or postal code. */
+        ZipCode?: string;
+        /** Gets or sets the city or town. */
+        City?: string;
+        /** Boolean indicating if the search on city should be an exact match or a contains() */
+        IsExactCitySearch?: boolean;
+        /** Gets or sets the the country code. */
+        CountryCode?: string;
+        /** Gets or sets the country subdivision code (state or province). */
+        CountrySubdivisionCode?: string;
+        /** Gets or sets the county. */
+        County?: string;
+        /** Boolean indicating if the search on county should be an exact match or a contains() */
+        IsExactCountySearch?: boolean;
+    }
+}
+
+declare namespace bluesky.core.command.location {
+    /** Search parameter used to retrieve a list of state (country subdivisions). */
+    interface ISearchStateCommand {
+        /** Country ISO code. */
+        CountryCode: string;
+    }
+}
+
+declare namespace bluesky.core.model.location {
+    interface IStateDto extends IResourceBase {
+        Name?: string;
+        Code?: string;
+        PCode?: number;
+    }
+}
+
 declare namespace bluesky.core.model {
     enum SubsidiaryEnum {
         _263_China = "_263_China",
@@ -1557,6 +1469,50 @@ declare namespace bluesky.core.model.systemInfo {
         AppVersion: string;
     }
 }
+
+
+declare namespace bluesky.core.model.taxManagement {
+    /** Informations about a PCode. */
+    interface IPCodeDto extends IResourceBase {
+        /** Gets or sets the code. */
+        Code: number;
+        /** Indicates if the tax pcode is primary for the given location. */
+        IsDefault: boolean;
+    }
+}
+
+declare namespace bluesky.core.model.taxManagement {
+    /** Information about the result of search tax pcodes. */
+    interface ISearchTaxPCodeResultDto extends IResourceBase {
+        /** List of Tax-PCodes available for the search input. */
+        AvailablePCodes: IPCodeDto[];
+        /** Indicates if the response is based on a partial search. */
+        IsResultBasedOnPartialSearch: boolean;
+        /** Message indicating the rule used during a partial search. */
+        PartialSearchMessage: string;
+    }
+}
+
+declare namespace bluesky.core.command.taxManagement {
+    /** Search parameter used to retrieve a list of PCode. */
+    interface ISearchPCodeCommand {
+        /** Gets or sets the zip or postal code. */
+        ZipCode?: string;
+        /** Gets or sets the city or town. */
+        City?: string;
+        /** Gets or sets the the country code.TODO MGA: the searchPCodeCommandDto should accept CountryCode with 2 or 3 letters (ISO alpha2 or alpha3). */
+        CountryCode?: string;
+        /** Gets or sets the country subdivision code (state or province). */
+        CountrySubdivisionCode?: string;
+        /** Gets or sets the county. */
+        County?: string;
+        /** Indicates if search using partial input parameters is allowed. */
+        IsPartialSearchAllowed?: boolean;
+    }
+}
+
+
+
 
 declare namespace bluesky.core.model.technicalData {
     /** AccessAccount characteristics */
@@ -2042,81 +1998,92 @@ declare namespace bluesky.core.model.technicalData {
     }
 }
 
-declare namespace bluesky.core.model.taxManagement {
-    interface INoramTaxExemptionDto extends IResourceBase {
-        Level: TaxExemptTypeEnum;
-        Location: number;
-        CertificateId: string;
-        StartDate: string;
-        ExpirationDate: string;
-        TaxExemptionTypes: Array<ITaxExemptionTypeDto>;
-        TaxAction: TaxActionEnum;
-        IsExpired: boolean;
+declare namespace bluesky.core.command.subscription {
+    interface IQuoteSubscriptionSearchCommand extends IBasePaginatedSearchCommand {
+        QuoteId?: number;
+        SubscriptionId?: number;
+        GroupSubId?: number;
+        BillingAccountUserName?: string;
     }
 }
 
-declare namespace bluesky.core.model.taxManagement {
-    /** Informations about a PCode. */
-    interface IPCodeDto extends IResourceBase {
-        /** Gets or sets the code. */
-        Code: number;
-        /** Indicates if the tax pcode is primary for the given location. */
-        IsDefault: boolean;
+declare namespace bluesky.core.model.subscription {
+    /** This entity links a quote, a billing account, and the resulting subscription */
+    interface IQuoteSubscriptionDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Quote identifier */
+        QuoteId: number;
+        /** Subscription identifier */
+        SubscriptionId: number;
+        /** GroupSubscription identifier */
+        GroupSubId?: number;
+        /** BillingAccount identifier */
+        BillingAccountUserName: string;
+        /** BillingAccount customer node name */
+        BillingAccountCustomerNodeName: string;
+        /** Set to true when a disable user is sent by the OO */
+        IsUserDeactivationOrderSent: boolean;
     }
 }
 
-declare namespace bluesky.core.model.taxManagement {
-    /** Information about the result of search tax pcodes. */
-    interface ISearchTaxPCodeResultDto extends IResourceBase {
-        /** List of Tax-PCodes available for the search input. */
-        AvailablePCodes: IPCodeDto[];
-        /** Indicates if the response is based on a partial search. */
-        IsResultBasedOnPartialSearch: boolean;
-        /** Message indicating the rule used during a partial search. */
-        PartialSearchMessage: string;
-    }
-}
-
-declare namespace bluesky.core.command.taxManagement {
-    /** Search parameter used to retrieve a list of PCode. */
-    interface ISearchPCodeCommand {
-        /** Gets or sets the zip or postal code. */
-        ZipCode?: string;
-        /** Gets or sets the city or town. */
-        City?: string;
-        /** Gets or sets the the country code.TODO MGA: the searchPCodeCommandDto should accept CountryCode with 2 or 3 letters (ISO alpha2 or alpha3). */
-        CountryCode?: string;
-        /** Gets or sets the country subdivision code (state or province). */
-        CountrySubdivisionCode?: string;
-        /** Gets or sets the county. */
-        County?: string;
-        /** Indicates if search using partial input parameters is allowed. */
-        IsPartialSearchAllowed?: boolean;
-    }
-}
-
-declare namespace bluesky.core.model.taxManagement {
-    enum TaxActionEnum {
-        Add = 0,
-        Modify = 1,
-        Cease = 2,
-    }
-}
-
-declare namespace bluesky.core.model.taxManagement {
-    /** Model for a noram tax exemption type. */
-    interface ITaxExemptionTypeDto extends IResourceBase {
-        Code: number;
+declare namespace bluesky.core.model.subscription {
+    /** DTO of an option attached to a subscription. */
+    interface ISubscriptionOptionDto {
+        /** Name of the Option. */
         Name: string;
-        MetranetTaxExemptionId?: number;
-        IsSelected: boolean;
+        /** Indicate in which product category the option is defined. */
+        ProductCategory: string;
+        /** Technical spec value of the Technical Option. */
+        TechnicalSpec: string;
+        /** Default value chosen for the option on the subscription. */
+        Value: string;
+        /** Type of the value */
+        ValueType: string;
     }
 }
 
-declare namespace bluesky.core.model.taxManagement {
-    enum TaxExemptTypeEnum {
-        Federal = 0,
-        State = 1,
+declare namespace bluesky.core.model.subscription {
+    /** DTO of a product attached to a subscription. */
+    interface ISubscriptionProductDto {
+        /** Element name of the product. */
+        Name: string;
+        /** Name of the Technical Product Specification. */
+        TechnicalProductSpecName: string;
+        /** Identifier of the Technical Product in the Technical Inventory. */
+        TechnicalProductId: string;
+    }
+}
+
+declare namespace bluesky.core.model.subscription {
+    /** Header DTO of a subscription summary.
+    * A subscription is a product offering sold to a Customer and applied to a single subscriber Billing account. */
+    interface ISubscriptionSummaryHeaderDto extends IResourceBase {
+        /** Offer display name of the subscription. */
+        DisplayName: string;
+        /** Identifier of the subscription defined into MetraNet. */
+        GroupSubscriptionId: number;
+        /** List of products linked to the subscription. */
+        Products: subscription.ISubscriptionProductDto[];
+    }
+}
+
+declare namespace bluesky.core.model.subscription {
+    /** DTO of a subscription summary.
+    * A subscription is a product offering sold to a Customer and applied to a single subscriber Billing account. */
+    interface ISubscriptionSummaryDto extends IResourceBase {
+        /** Offer display name of the subscription. */
+        DisplayName: string;
+        /** Identifier of the subscription defined into MetraNet. */
+        GroupSubscriptionId: number;
+        /** Identifier of the billing account owner of the subscription. */
+        BillingAccountUid: string;
+        /** Identifier of the billing account's logo. */
+        LogoUid: string;
+        /** List of products linked to the subscription. */
+        Products: subscription.ISubscriptionProductDto[];
+        /** subscription options. */
+        Options: subscription.ISubscriptionOptionDto[];
     }
 }
 
@@ -2692,159 +2659,6 @@ declare namespace bluesky.core.model.account {
     }
 }
 
-declare namespace bluesky.core.model.bulk {
-    interface IBulkImportEntryErrorDto {
-        /**
-         * The ErrorMessage
-         */
-        ErrorMessage: string;
-        /**
-         * The field that is causing an error (corresponds to the column in the excel file)
-         */
-        FieldName: string;
-        /**
-         * The Value that is causing the error
-         */
-        AttemptedValue: string;
-    }
-}
-
-declare namespace bluesky.core.model.bulk {
-    interface IBulkImportEntryErrorsDto {
-        /**
-         * The line number in the excel file this entry corresponds to.
-         */
-        LineNumber: number;
-        /**
-         * List of error messages each concerning a specific validation error of this entry.
-         */
-        Errors: IBulkImportEntryErrorDto[];
-        /**
-         * Shortcut to display a concatenation of all errors concerning this line entry.
-         */
-        ErrorMessage: string;
-    }
-}
-
-declare module bluesky.core.model.bulk {
-    interface IBulkImportResultDto {
-        /**
-         * The total number of lines processed during import.
-         */
-        TotalLinesCount: number;
-        /**
-         * The number of valid lines in the file.
-         */
-        ValidLinesCount: number;
-        /**
-         * The number of lines that didn't match all validation criterias.
-         * This is a shortcut to TotalLinesCount - ValidLinesCount.
-         */
-        LinesInErrorCount: number;
-        /**
-         * Global flag to indicate if the file is conform to contracts and could be processe.
-         * A file can be processed without all its entries being valid, this flag indicates a well-formed file.
-         */
-        IsValid: boolean;
-        /**
-         * The filename (with extension) of the processed file.
-         */
-        Filename: string;
-        /**
-         * List of global errors not specific to a single line in the file.
-         * These errors can concern global validations of data (double entries for expl.) or problems with the file itself.
-         */
-        GlobalErrors: string[];
-        /**
-         * List of entries with specific errors (as opposed to global errors).
-         * The format of <see cref="BulkImportEntryInErrorDTO{T}"/>"/> includes necessary informations to handle line-specific errors.
-         */
-        EntriesInError: IBulkImportEntryErrorsDto[];
-    }
-}
-
-declare namespace bluesky.core.model.bulk {
-    interface IFileUploadContractDto {
-        MaxFileSize: number;
-        SupportedFileExtensionList: Array<string>;
-    }
-}
-
-declare namespace bluesky.core.command.customerOrder {
-}
-
-declare namespace bluesky.core.command.customerOrder {
-    /** Contact information used in Create Hierarchy light order */
-    interface IHierarchyLightContactDto {
-        /** Contact First Name */
-        FirstName: string;
-        /** Contact Last name */
-        LastName: string;
-        /** Contact address */
-        Address: string;
-        /** Contact City */
-        City: string;
-        /** Contact Zip Code */
-        ZipCode: string;
-        /** Contact country */
-        Country: string;
-        /** Contact state */
-        State: string;
-        /** Contact County (US Only) */
-        County: string;
-        /** Contact Phone Number */
-        PhoneNumber: string;
-        /** Contact Email */
-        Email: string;
-    }
-}
-
-declare namespace bluesky.core.model.customerOrder {
-    /** DTO header of a hierarchy order item. */
-    interface IHierarchyOrderItemHeaderDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets Processing status of an OrderItem. */
-        OrderItemStatus: string;
-        /** This describes the action held by the Hierarchy OrderItem */
-        HierarchyAction: string;
-        /** Gets or sets the UserName of the account linked to the hierarchy order item. */
-        AccountUserName: string;
-        /** Gets or sets the Type of the account linked to the hierarchy order item. */
-        AccountType: string;
-        /** Gets or sets the id of the account linked to the hierarchy order item. */
-        AccountId: number;
-    }
-}
-
-declare namespace bluesky.core.model.customerOrder {
-    /** DTO of a hierarchy subset order. */
-    interface IHierarchySubsetOrderDto extends ISubsetOrderBaseDto {
-        /** A hierarchy subset order is composed of at least one hierarchy order item. */
-        hierarchyOrderItems: IHierarchyOrderItemHeaderDto[];
-    }
-}
-
-declare namespace bluesky.core.model.customerOrder {
-    /** Dto of a Movable account. */
-    interface IMovableAccountDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets the Target payer user name. */
-        PayerUserName: string;
-        /** Gets or sets the User name of the node to move. */
-        SourceName: string;
-        /** Gets or sets the New user name. */
-        TargetName: string;
-        /** Gets or sets the User name of the target parent. */
-        TargetParentName: string;
-        /** Gets or sets the New password. */
-        NewPassword: string;
-        /** Gets or sets new currency */
-        NewCurrency: string;
-    }
-}
-
 declare namespace bluesky.core.model.customerOrder {
     /** Access credential for generic accesses */
     interface IAccessCredentialsDto {
@@ -2950,371 +2764,6 @@ declare namespace bluesky.core.model.customerOrder {
         Action: string;
         /** Gets or sets the Participant type. A participant can have a Moderator or Participant type. */
         ParticipantType: string;
-    }
-}
-
-declare namespace bluesky.core.command.customerOrder {
-    /** Command to create a merge logo order. */
-    interface ICreateMergeLogoCustomerOrderCommand extends IBaseCreateOrderCommand {
-        /** Identifier of the source logo to merge. */
-        SourceLogoUid: string;
-        /** Identifier of the destination logo, under which all source logo hierarchy must be moved. */
-        DestinationLogoUid: string;
-        /** Indicates if the DDIs configured for the source logo must be merged in the target logo. */
-        MergeConfiguredDDIs: boolean;
-    }
-}
-
-declare namespace bluesky.core.model.customerOrder {
-    /** Movable user. */
-    interface IMovableUserDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Payer user name. */
-        PayerUserName: string;
-        /** Source name. */
-        SourceName: string;
-        /** Target name. */
-        TargetName: string;
-        /** Target parent name. */
-        TargetParentName: string;
-        /** Gets or sets new currency */
-        NewCurrency: string;
-        /** List of movable accesses. */
-        MovableAccesses: IMovableAccessDto[];
-    }
-}
-
-declare namespace bluesky.core.model.customerOrder {
-    /** DTO header of a user order item. */
-    interface IUserOrderItemHeaderDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets Processing status of an OrderItem. */
-        OrderItemStatus: string;
-        /** This describes the action held by the user OrderItem */
-        UserAction: string;
-        /** Gets or sets the userName of the user linked to the user order item, if any. */
-        UserName: string;
-        /** Gets or sets the userName of the access linked to the user order item, if any. */
-        AccessUserName: string;
-        /** Gets or sets the offerName of the subscription linked to the user order item, if any. */
-        OfferName: string;
-    }
-}
-
-declare namespace bluesky.core.model.customerOrder {
-    import UserAccountDto = bluesky.core.model.account.IUserAccountDto;
-    import AccessAccountDto = bluesky.core.model.account.IAccessAccountDto;
-    /** DTO of a user order item. */
-    interface IUserOrderItemDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets Processing status of an OrderItem. */
-        OrderItemStatus: string;
-        /** This describes the action held by the User OrderItem */
-        UserAction: string;
-        /** UserAccount linked to the User Order Item.The UserAccount represents individual (person) or inanimate entity that receives and consumes services provided by Arkadin. */
-        UserAccount: UserAccountDto;
-        /** AccessAccount linked to the User Order Item.The AccessAccount is the customer hierarchy node that represents the instance of a subscribed product for a given user (i.e. the use  of a particular Arkadin or Arkadin's supplier resource). */
-        AccessAccount: AccessAccountDto;
-        /** Subscription linked to the User Order Item.A subscription is product offering sold to a customer and applied to a single subscriber node. */
-        Subscription: ICustomerOrderSubscriptionDto;
-        /** Additional information on a User used for audio and web accesses creation. */
-        AccessInfo: IAccessInfoDto;
-        /** Additional information for Send Welcome Pack. */
-        WelcomePackInfo: IWelcomePackInfoDto;
-        /** List of custom options. */
-        CustomOptions: ICustomOptionDto[];
-        /** List of movable users. */
-        MovableUsers: IMovableUserDto[];
-        /** List of participants. */
-        Participants: IParticipantDto[];
-    }
-}
-
-declare namespace bluesky.core.model.customerOrder {
-    /** DTO of a user subset order. */
-    interface IUserSubsetOrderDto extends ISubsetOrderBaseDto {
-        /** A user subset order is composed of at least one user order item. */
-        UserOrderItems: IUserOrderItemHeaderDto[];
-        /** List of movable subscriptions */
-        MovableSubscriptions: IMovableSubscriptionDto[];
-    }
-}
-
-declare namespace bluesky.core.model.customerOrder {
-    import TechnicalProductDto = bluesky.core.model.technicalData.ITechnicalProductDto;
-    /** Dto of a subscriptionA subscription is product offering sold to a customer and applied to a singlesubscriber node. */
-    interface ICustomerOrderSubscriptionDto extends IResourceBase {
-        /** Identifier of an existing subscription in MetraNet. It is null incase of a new subscription and therefore filled by Orchestration. */
-        SubId?: number;
-        /** Subscription Name, if required by the Customer. It will be availableon its invoice. */
-        DisplayName: string;
-        /** This will be filled by OrderEntry with the Product Offering 'Product Offering Display Name' attribute in MetraNet. */
-        OfferName: string;
-        /** Identifier of an existing group subscription. It is null in case ofa new subscription and therefore filled by Orchestration. It is null in case ofSupporting PO subscription too, as they are Individually Subscribed. */
-        GroupSubId?: number;
-        /** Identifies the parent subscription of the current subscription. Itis filled after subscription has been made. */
-        ParentSubId?: number;
-        /** Identifier of a Product Offering in MetraNet. */
-        POId: number;
-        /** Identifier of the parent product offering. */
-        ParentPOId?: number;
-        /** Quote identifier. */
-        QuoteId?: number;
-        /** Subscription start date. */
-        StartDate?: Date;
-        /** Subscription end date. */
-        EndDate?: Date;
-        /** Gets or sets the contract start date. */
-        ContractStartDate?: Date;
-        /** Gets or sets the duration (in months). */
-        Duration?: number;
-        /** Gets or sets the quote reference. */
-        QuoteReference: string;
-        /** Type of Product Offering. */
-        ProductOfferingType: string;
-        /** List of management subsidiaries. */
-        ManagementSubsidiaries: any[];
-        /** List of UdrcInfos */
-        UdrcInfos: IUdrcInfoDto[];
-        /** List of technical links */
-        TechnicalLinks: TechnicalProductDto[];
-    }
-}
-
-declare namespace bluesky.core.model.customerOrder {
-    /** Movable subscription. */
-    interface IMovableSubscriptionDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Source identifier. */
-        SourceId: number;
-        /** Target identifier. */
-        TargetId: number;
-        /** List of movable technical products. */
-        movableTechnicalProducts: IMovableTechnicalProductDto[];
-    }
-}
-
-declare namespace bluesky.core.model.customerOrder {
-    /** Dto of a MovableTechnicalProduct */
-    interface IMovableTechnicalProductDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets SourceName of the movable technical product. */
-        SourceName: string;
-        /** Gets or sets TargetName of the movable technical product. */
-        TargetName: string;
-    }
-}
-
-declare namespace bluesky.core.model.customerOrder {
-    /** DTO header of a subscription order item. */
-    interface ISubscriptionOrderItemHeaderDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets Processing status of an OrderItem. */
-        OrderItemStatus: string;
-        /** This describes the action held by the Subscription OrderItem */
-        SubscriptionAction: string;
-        /** Gets or sets the userName of the billing account linked to the subscription order item. */
-        BillingAccountUserName: string;
-        /** Gets or sets the offerName of the subscription linked to the subscription order item. */
-        OfferName: string;
-    }
-}
-
-declare namespace bluesky.core.model.customerOrder {
-    import BillingAccountDto = bluesky.core.model.account.IBillingAccountDto;
-    /** DTO header of a subscription order item. */
-    interface ISubscriptionOrderItemDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** Gets or sets Processing status of an OrderItem. */
-        OrderItemStatus: string;
-        /** This describes the action held by the Subscription OrderItem */
-        SubscriptionAction: string;
-        /** A subscription order item contains a BillingAccount */
-        BillingAccount: BillingAccountDto;
-        /** A subscription order item contains a Subscription */
-        Subscription: ICustomerOrderSubscriptionDto;
-    }
-}
-
-declare namespace bluesky.core.model.customerOrder {
-    /** DTO of a subscription subset order. */
-    interface ISubscriptionSubsetOrderDto extends ISubsetOrderBaseDto {
-        /** A subscription subset order is composed of at least one subscription order item. */
-        subscriptionOrderItems: ISubscriptionOrderItemHeaderDto[];
-    }
-}
-
-declare namespace bluesky.core.model.customerOrder {
-    /** UDRC information to handle UDRC values. */
-    interface IUdrcInfoDto extends IResourceBase {
-        /** Unit name. */
-        PriceableItemId: number;
-        /** Unit value. */
-        UdrcValue: number;
-    }
-}
-
-declare namespace bluesky.core.model.offer {
-    interface IBandDiscountSettingRateEntryDto extends IRateEntryWithPriceDto {
-        Band: string;
-        MinuteThresholdStart: number;
-        MinuteThresholdEnd: number;
-        RetailDiscountPercentage: number;
-        PartnerDiscountPercentage: number;
-        RatingKey: string;
-    }
-}
-
-declare namespace bluesky.core.model.offer {
-    interface IBandRateEntryDto extends IRateEntryWithPriceDto {
-        Band: string;
-        RetailBandRatePerMinute: number;
-        PartnerBandRatePerMinute: number;
-        ServiceType: IOrderManagementEnumerationDto;
-    }
-}
-
-declare namespace bluesky.core.model.offer {
-    interface IBridgingRateEntryDto extends IRateEntryWithPriceDto {
-        RetailBridgingRatePerMinute: number;
-        PartnerBridgingRatePerMinute: number;
-        ServiceType: IOrderManagementEnumerationDto;
-        ServiceUnit: IOrderManagementEnumerationDto;
-    }
-}
-
-declare namespace bluesky.core.model.offer {
-    interface IFlatRecurringChargeRateEntryDtoDto extends IRateEntryWithPriceDto {
-        RCAmount: number;
-        RatingKey: string;
-    }
-}
-
-declare namespace bluesky.core.model.offer {
-    interface INonRecurringChargesRateEntryDto extends IRateEntryWithPriceDto {
-        NRCAmount: number;
-        RatingKey: string;
-    }
-}
-
-declare namespace bluesky.core.model.offer {
-    interface IOptionChargeRateReDto extends IRateEntryWithPriceDto {
-        RatePerUnit: number;
-        FlatRate: number;
-        IsFlatRateUsed: boolean;
-        IsUnitRateUsed: string;
-        OptionChargeType: IOrderManagementEnumerationDto;
-    }
-}
-
-declare namespace bluesky.core.model.offer {
-    interface IRateEntryWithPriceDto {
-        CustomPrice: number;
-        ProductCategory: string;
-        OriginPrice: number;
-        PriceUnit: string;
-        SubsidiaryName: string;
-        Currency: string;
-        RateEntryType: string;
-    }
-}
-
-declare namespace bluesky.core.model.offer {
-    interface ITariffGroupToBandMappingRateEntryDto extends IRateEntryWithPriceDto {
-        SourceRegion: string;
-        Band: string;
-        Cluster: string;
-        TGRetailBandRatePerMinute: number;
-        IsUseTariffGroupRetailRate: boolean;
-        TGPartnerBandRatePerMinute: number;
-        IsUseTariffGroupPartnerRate: boolean;
-        SourceCountryCode: IOrderManagementEnumerationDto;
-        DestinationCountryCode: IOrderManagementEnumerationDto;
-        DirectDialInType: IOrderManagementEnumerationDto;
-        PhoneKind: IOrderManagementEnumerationDto;
-        ServiceType: IOrderManagementEnumerationDto;
-    }
-}
-
-declare namespace bluesky.core.model.offer {
-    interface IUdrcTaperedRateEntryDto extends IRateEntryWithPriceDto {
-        RoomSize: number;
-        UnitValue: number;
-        UnitAmount: number;
-        RatingKey: string;
-    }
-}
-
-declare namespace bluesky.core.model.offer {
-    interface IUdrcTieredRateEntryDto extends IRateEntryWithPriceDto {
-        RoomSize: number;
-        BaseAmount: number;
-        UnitAmount: number;
-        UnitValue: number;
-        RatingKey: string;
-        UnitValueOperator: string;
-    }
-}
-
-declare namespace bluesky.core.command.customerOrder {
-    import ISendWelcomePackInformationDto = bluesky.core.model.customerOrder.ISendWelcomePackInformationDto;
-    import IWelcomePackSendingStrategyDto = bluesky.core.model.customerOrder.IWelcomePackSendingStrategyDto;
-    /** Command to create a send welcome packs order. */
-    interface ICreateSendWelcomePacksCustomerOrderCommand extends IBaseCreateOrderCommand {
-        /** For each welcome pack to send, provide information about the user and the subscription. */
-        SendWelcomePackInformationList: ISendWelcomePackInformationDto[];
-        /** Welcome pack sending strategy. */
-        WelcomePackSendingStrategy?: IWelcomePackSendingStrategyDto;
-    }
-}
-
-declare namespace bluesky.core.model.customerOrder {
-    /** Information needed to send a welcome pack. */
-    interface ISendWelcomePackInformationDto {
-        /** Identifier of the group subscription in MetraNet. */
-        GroupSubscriptionId: number;
-        /** Identifiers of the user for which the welcome pack will be sent. */
-        UserUid: string;
-    }
-}
-
-declare namespace bluesky.core.model.customerOrder {
-    /** Dto of WelcomePackInfo.
-    * It contains information to send to the Template Generator for the user recipient strategy. */
-    interface IWelcomePackInfoDto extends IResourceBase {
-        /** Gets or sets the unique identifier. */
-        Id: number;
-        /** The email of the target Technical Admin Contact. */
-        AdminEmail: string;
-        /** Language of the target Technical Admin Contact. */
-        AdminLanguage: string;
-        /** The CountryName of the target Technical Admin Contact. */
-        AdminCountryName: string;
-        /** The TimeZone of the target Technical Admin Contact. */
-        AdminTimeZone: string;
-        /** Priority of a Welcome Pack. */
-        WelcomePackPriority: string;
-    }
-}
-
-declare namespace bluesky.core.model.customerOrder {
-    /** Welcome pack sending strategy. */
-    interface IWelcomePackSendingStrategyDto {
-        /** Welcome Recipient Strategy :- to user (ToUser),- to technical admin ToTechnicalAdmin. */
-        WelcomePackRecipientStrategy: string;
-        /** Welcome Pack sending mode :- sent instantly (Instantly),- not sent (NoSending),- sent in the future, in a specific date (InTheFuture). */
-        WelcomePackSendMode: string;
-        /** Date when the welcome pack will be send if the sending mode is inthefuture. */
-        FutureSendDate?: Date;
-        /** Admin user id to whom the welcome pack is sent if the recipient strategy is technical admin. */
-        AdminUserUid: string;
     }
 }
 
@@ -3696,6 +3145,524 @@ declare namespace bluesky.core.model.account {
         SelfCareRole: string;
         /** If specified, gets or sets the list of the identifiers of the accounts for which the user has admin privileges. */
         AdditionalAdministrationLevels: string[];
+    }
+}
+
+declare namespace bluesky.core.model.bulk {
+    interface IBulkImportEntryErrorDto {
+        /**
+         * The ErrorMessage
+         */
+        ErrorMessage: string;
+        /**
+         * The field that is causing an error (corresponds to the column in the excel file)
+         */
+        FieldName: string;
+        /**
+         * The Value that is causing the error
+         */
+        AttemptedValue: string;
+    }
+}
+
+declare namespace bluesky.core.model.bulk {
+    interface IBulkImportEntryErrorsDto {
+        /**
+         * The line number in the excel file this entry corresponds to.
+         */
+        LineNumber: number;
+        /**
+         * List of error messages each concerning a specific validation error of this entry.
+         */
+        Errors: IBulkImportEntryErrorDto[];
+        /**
+         * Shortcut to display a concatenation of all errors concerning this line entry.
+         */
+        ErrorMessage: string;
+    }
+}
+
+declare module bluesky.core.model.bulk {
+    interface IBulkImportResultDto {
+        /**
+         * The total number of lines processed during import.
+         */
+        TotalLinesCount: number;
+        /**
+         * The number of valid lines in the file.
+         */
+        ValidLinesCount: number;
+        /**
+         * The number of lines that didn't match all validation criterias.
+         * This is a shortcut to TotalLinesCount - ValidLinesCount.
+         */
+        LinesInErrorCount: number;
+        /**
+         * Global flag to indicate if the file is conform to contracts and could be processe.
+         * A file can be processed without all its entries being valid, this flag indicates a well-formed file.
+         */
+        IsValid: boolean;
+        /**
+         * The filename (with extension) of the processed file.
+         */
+        Filename: string;
+        /**
+         * List of global errors not specific to a single line in the file.
+         * These errors can concern global validations of data (double entries for expl.) or problems with the file itself.
+         */
+        GlobalErrors: string[];
+        /**
+         * List of entries with specific errors (as opposed to global errors).
+         * The format of <see cref="BulkImportEntryInErrorDTO{T}"/>"/> includes necessary informations to handle line-specific errors.
+         */
+        EntriesInError: IBulkImportEntryErrorsDto[];
+    }
+}
+
+declare namespace bluesky.core.model.bulk {
+    interface IFileUploadContractDto {
+        MaxFileSize: number;
+        SupportedFileExtensionList: Array<string>;
+    }
+}
+
+declare namespace bluesky.core.command.customerOrder {
+}
+
+declare namespace bluesky.core.command.customerOrder {
+    /** Contact information used in Create Hierarchy light order */
+    interface IHierarchyLightContactDto {
+        /** Contact First Name */
+        FirstName: string;
+        /** Contact Last name */
+        LastName: string;
+        /** Contact address */
+        Address: string;
+        /** Contact City */
+        City: string;
+        /** Contact Zip Code */
+        ZipCode: string;
+        /** Contact country */
+        Country: string;
+        /** Contact state */
+        State: string;
+        /** Contact County (US Only) */
+        County: string;
+        /** Contact Phone Number */
+        PhoneNumber: string;
+        /** Contact Email */
+        Email: string;
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /** DTO header of a hierarchy order item. */
+    interface IHierarchyOrderItemHeaderDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets Processing status of an OrderItem. */
+        OrderItemStatus: string;
+        /** This describes the action held by the Hierarchy OrderItem */
+        HierarchyAction: string;
+        /** Gets or sets the UserName of the account linked to the hierarchy order item. */
+        AccountUserName: string;
+        /** Gets or sets the Type of the account linked to the hierarchy order item. */
+        AccountType: string;
+        /** Gets or sets the id of the account linked to the hierarchy order item. */
+        AccountId: number;
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /** DTO of a hierarchy subset order. */
+    interface IHierarchySubsetOrderDto extends ISubsetOrderBaseDto {
+        /** A hierarchy subset order is composed of at least one hierarchy order item. */
+        hierarchyOrderItems: IHierarchyOrderItemHeaderDto[];
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /** Dto of a Movable account. */
+    interface IMovableAccountDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets the Target payer user name. */
+        PayerUserName: string;
+        /** Gets or sets the User name of the node to move. */
+        SourceName: string;
+        /** Gets or sets the New user name. */
+        TargetName: string;
+        /** Gets or sets the User name of the target parent. */
+        TargetParentName: string;
+        /** Gets or sets the New password. */
+        NewPassword: string;
+        /** Gets or sets new currency */
+        NewCurrency: string;
+    }
+}
+
+declare namespace bluesky.core.command.customerOrder {
+    /** Command to create a merge logo order. */
+    interface ICreateMergeLogoCustomerOrderCommand extends IBaseCreateOrderCommand {
+        /** Identifier of the source logo to merge. */
+        SourceLogoUid: string;
+        /** Identifier of the destination logo, under which all source logo hierarchy must be moved. */
+        DestinationLogoUid: string;
+        /** Indicates if the DDIs configured for the source logo must be merged in the target logo. */
+        MergeConfiguredDDIs: boolean;
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /** Movable user. */
+    interface IMovableUserDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Payer user name. */
+        PayerUserName: string;
+        /** Source name. */
+        SourceName: string;
+        /** Target name. */
+        TargetName: string;
+        /** Target parent name. */
+        TargetParentName: string;
+        /** Gets or sets new currency */
+        NewCurrency: string;
+        /** List of movable accesses. */
+        MovableAccesses: IMovableAccessDto[];
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /** DTO header of a user order item. */
+    interface IUserOrderItemHeaderDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets Processing status of an OrderItem. */
+        OrderItemStatus: string;
+        /** This describes the action held by the user OrderItem */
+        UserAction: string;
+        /** Gets or sets the userName of the user linked to the user order item, if any. */
+        UserName: string;
+        /** Gets or sets the userName of the access linked to the user order item, if any. */
+        AccessUserName: string;
+        /** Gets or sets the offerName of the subscription linked to the user order item, if any. */
+        OfferName: string;
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    import UserAccountDto = bluesky.core.model.account.IUserAccountDto;
+    import AccessAccountDto = bluesky.core.model.account.IAccessAccountDto;
+    /** DTO of a user order item. */
+    interface IUserOrderItemDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets Processing status of an OrderItem. */
+        OrderItemStatus: string;
+        /** This describes the action held by the User OrderItem */
+        UserAction: string;
+        /** UserAccount linked to the User Order Item.The UserAccount represents individual (person) or inanimate entity that receives and consumes services provided by Arkadin. */
+        UserAccount: UserAccountDto;
+        /** AccessAccount linked to the User Order Item.The AccessAccount is the customer hierarchy node that represents the instance of a subscribed product for a given user (i.e. the use  of a particular Arkadin or Arkadin's supplier resource). */
+        AccessAccount: AccessAccountDto;
+        /** Subscription linked to the User Order Item.A subscription is product offering sold to a customer and applied to a single subscriber node. */
+        Subscription: ICustomerOrderSubscriptionDto;
+        /** Additional information on a User used for audio and web accesses creation. */
+        AccessInfo: IAccessInfoDto;
+        /** Additional information for Send Welcome Pack. */
+        WelcomePackInfo: IWelcomePackInfoDto;
+        /** List of custom options. */
+        CustomOptions: ICustomOptionDto[];
+        /** List of movable users. */
+        MovableUsers: IMovableUserDto[];
+        /** List of participants. */
+        Participants: IParticipantDto[];
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /** DTO of a user subset order. */
+    interface IUserSubsetOrderDto extends ISubsetOrderBaseDto {
+        /** A user subset order is composed of at least one user order item. */
+        UserOrderItems: IUserOrderItemHeaderDto[];
+        /** List of movable subscriptions */
+        MovableSubscriptions: IMovableSubscriptionDto[];
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    import TechnicalProductDto = bluesky.core.model.technicalData.ITechnicalProductDto;
+    /** Dto of a subscriptionA subscription is product offering sold to a customer and applied to a singlesubscriber node. */
+    interface ICustomerOrderSubscriptionDto extends IResourceBase {
+        /** Identifier of an existing subscription in MetraNet. It is null incase of a new subscription and therefore filled by Orchestration. */
+        SubId?: number;
+        /** Subscription Name, if required by the Customer. It will be availableon its invoice. */
+        DisplayName: string;
+        /** This will be filled by OrderEntry with the Product Offering 'Product Offering Display Name' attribute in MetraNet. */
+        OfferName: string;
+        /** Identifier of an existing group subscription. It is null in case ofa new subscription and therefore filled by Orchestration. It is null in case ofSupporting PO subscription too, as they are Individually Subscribed. */
+        GroupSubId?: number;
+        /** Identifies the parent subscription of the current subscription. Itis filled after subscription has been made. */
+        ParentSubId?: number;
+        /** Identifier of a Product Offering in MetraNet. */
+        POId: number;
+        /** Identifier of the parent product offering. */
+        ParentPOId?: number;
+        /** Quote identifier. */
+        QuoteId?: number;
+        /** Subscription start date. */
+        StartDate?: Date;
+        /** Subscription end date. */
+        EndDate?: Date;
+        /** Gets or sets the contract start date. */
+        ContractStartDate?: Date;
+        /** Gets or sets the duration (in months). */
+        Duration?: number;
+        /** Gets or sets the quote reference. */
+        QuoteReference: string;
+        /** Type of Product Offering. */
+        ProductOfferingType: string;
+        /** List of management subsidiaries. */
+        ManagementSubsidiaries: any[];
+        /** List of UdrcInfos */
+        UdrcInfos: IUdrcInfoDto[];
+        /** List of technical links */
+        TechnicalLinks: TechnicalProductDto[];
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /** Movable subscription. */
+    interface IMovableSubscriptionDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Source identifier. */
+        SourceId: number;
+        /** Target identifier. */
+        TargetId: number;
+        /** List of movable technical products. */
+        movableTechnicalProducts: IMovableTechnicalProductDto[];
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /** Dto of a MovableTechnicalProduct */
+    interface IMovableTechnicalProductDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets SourceName of the movable technical product. */
+        SourceName: string;
+        /** Gets or sets TargetName of the movable technical product. */
+        TargetName: string;
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /** DTO header of a subscription order item. */
+    interface ISubscriptionOrderItemHeaderDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets Processing status of an OrderItem. */
+        OrderItemStatus: string;
+        /** This describes the action held by the Subscription OrderItem */
+        SubscriptionAction: string;
+        /** Gets or sets the userName of the billing account linked to the subscription order item. */
+        BillingAccountUserName: string;
+        /** Gets or sets the offerName of the subscription linked to the subscription order item. */
+        OfferName: string;
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    import BillingAccountDto = bluesky.core.model.account.IBillingAccountDto;
+    /** DTO header of a subscription order item. */
+    interface ISubscriptionOrderItemDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** Gets or sets Processing status of an OrderItem. */
+        OrderItemStatus: string;
+        /** This describes the action held by the Subscription OrderItem */
+        SubscriptionAction: string;
+        /** A subscription order item contains a BillingAccount */
+        BillingAccount: BillingAccountDto;
+        /** A subscription order item contains a Subscription */
+        Subscription: ICustomerOrderSubscriptionDto;
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /** DTO of a subscription subset order. */
+    interface ISubscriptionSubsetOrderDto extends ISubsetOrderBaseDto {
+        /** A subscription subset order is composed of at least one subscription order item. */
+        subscriptionOrderItems: ISubscriptionOrderItemHeaderDto[];
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /** UDRC information to handle UDRC values. */
+    interface IUdrcInfoDto extends IResourceBase {
+        /** Unit name. */
+        PriceableItemId: number;
+        /** Unit value. */
+        UdrcValue: number;
+    }
+}
+
+declare namespace bluesky.core.model.offer {
+    interface IBandDiscountSettingRateEntryDto extends IRateEntryWithPriceDto {
+        Band: string;
+        MinuteThresholdStart: number;
+        MinuteThresholdEnd: number;
+        RetailDiscountPercentage: number;
+        PartnerDiscountPercentage: number;
+        RatingKey: string;
+    }
+}
+
+declare namespace bluesky.core.model.offer {
+    interface IBandRateEntryDto extends IRateEntryWithPriceDto {
+        Band: string;
+        RetailBandRatePerMinute: number;
+        PartnerBandRatePerMinute: number;
+        ServiceType: IOrderManagementEnumerationDto;
+    }
+}
+
+declare namespace bluesky.core.model.offer {
+    interface IBridgingRateEntryDto extends IRateEntryWithPriceDto {
+        RetailBridgingRatePerMinute: number;
+        PartnerBridgingRatePerMinute: number;
+        ServiceType: IOrderManagementEnumerationDto;
+        ServiceUnit: IOrderManagementEnumerationDto;
+    }
+}
+
+declare namespace bluesky.core.model.offer {
+    interface IFlatRecurringChargeRateEntryDtoDto extends IRateEntryWithPriceDto {
+        RCAmount: number;
+        RatingKey: string;
+    }
+}
+
+declare namespace bluesky.core.model.offer {
+    interface INonRecurringChargesRateEntryDto extends IRateEntryWithPriceDto {
+        NRCAmount: number;
+        RatingKey: string;
+    }
+}
+
+declare namespace bluesky.core.model.offer {
+    interface IOptionChargeRateReDto extends IRateEntryWithPriceDto {
+        RatePerUnit: number;
+        FlatRate: number;
+        IsFlatRateUsed: boolean;
+        IsUnitRateUsed: string;
+        OptionChargeType: IOrderManagementEnumerationDto;
+    }
+}
+
+declare namespace bluesky.core.model.offer {
+    interface IRateEntryWithPriceDto {
+        CustomPrice: number;
+        ProductCategory: string;
+        OriginPrice: number;
+        PriceUnit: string;
+        SubsidiaryName: string;
+        Currency: string;
+        RateEntryType: string;
+    }
+}
+
+declare namespace bluesky.core.model.offer {
+    interface ITariffGroupToBandMappingRateEntryDto extends IRateEntryWithPriceDto {
+        SourceRegion: string;
+        Band: string;
+        Cluster: string;
+        TGRetailBandRatePerMinute: number;
+        IsUseTariffGroupRetailRate: boolean;
+        TGPartnerBandRatePerMinute: number;
+        IsUseTariffGroupPartnerRate: boolean;
+        SourceCountryCode: IOrderManagementEnumerationDto;
+        DestinationCountryCode: IOrderManagementEnumerationDto;
+        DirectDialInType: IOrderManagementEnumerationDto;
+        PhoneKind: IOrderManagementEnumerationDto;
+        ServiceType: IOrderManagementEnumerationDto;
+    }
+}
+
+declare namespace bluesky.core.model.offer {
+    interface IUdrcTaperedRateEntryDto extends IRateEntryWithPriceDto {
+        RoomSize: number;
+        UnitValue: number;
+        UnitAmount: number;
+        RatingKey: string;
+    }
+}
+
+declare namespace bluesky.core.model.offer {
+    interface IUdrcTieredRateEntryDto extends IRateEntryWithPriceDto {
+        RoomSize: number;
+        BaseAmount: number;
+        UnitAmount: number;
+        UnitValue: number;
+        RatingKey: string;
+        UnitValueOperator: string;
+    }
+}
+
+declare namespace bluesky.core.command.customerOrder {
+    import ISendWelcomePackInformationDto = bluesky.core.model.customerOrder.ISendWelcomePackInformationDto;
+    import IWelcomePackSendingStrategyDto = bluesky.core.model.customerOrder.IWelcomePackSendingStrategyDto;
+    /** Command to create a send welcome packs order. */
+    interface ICreateSendWelcomePacksCustomerOrderCommand extends IBaseCreateOrderCommand {
+        /** For each welcome pack to send, provide information about the user and the subscription. */
+        SendWelcomePackInformationList: ISendWelcomePackInformationDto[];
+        /** Welcome pack sending strategy. */
+        WelcomePackSendingStrategy?: IWelcomePackSendingStrategyDto;
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /** Information needed to send a welcome pack. */
+    interface ISendWelcomePackInformationDto {
+        /** Identifier of the group subscription in MetraNet. */
+        GroupSubscriptionId: number;
+        /** Identifiers of the user for which the welcome pack will be sent. */
+        UserUid: string;
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /** Dto of WelcomePackInfo.
+    * It contains information to send to the Template Generator for the user recipient strategy. */
+    interface IWelcomePackInfoDto extends IResourceBase {
+        /** Gets or sets the unique identifier. */
+        Id: number;
+        /** The email of the target Technical Admin Contact. */
+        AdminEmail: string;
+        /** Language of the target Technical Admin Contact. */
+        AdminLanguage: string;
+        /** The CountryName of the target Technical Admin Contact. */
+        AdminCountryName: string;
+        /** The TimeZone of the target Technical Admin Contact. */
+        AdminTimeZone: string;
+        /** Priority of a Welcome Pack. */
+        WelcomePackPriority: string;
+    }
+}
+
+declare namespace bluesky.core.model.customerOrder {
+    /** Welcome pack sending strategy. */
+    interface IWelcomePackSendingStrategyDto {
+        /** Welcome Recipient Strategy :- to user (ToUser),- to technical admin ToTechnicalAdmin. */
+        WelcomePackRecipientStrategy: string;
+        /** Welcome Pack sending mode :- sent instantly (Instantly),- not sent (NoSending),- sent in the future, in a specific date (InTheFuture). */
+        WelcomePackSendMode: string;
+        /** Date when the welcome pack will be send if the sending mode is inthefuture. */
+        FutureSendDate?: Date;
+        /** Admin user id to whom the welcome pack is sent if the recipient strategy is technical admin. */
+        AdminUserUid: string;
     }
 }
 

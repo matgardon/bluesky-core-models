@@ -11,6 +11,7 @@
         CoreApi,
         MarketingApi,
         SelfcareApi,
+        MetraNetApi,
         // OM apps
         QuoteWizard,
         OrderEntry,
