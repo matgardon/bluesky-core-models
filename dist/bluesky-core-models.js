@@ -28,6 +28,50 @@ var bluesky;
 
 
 
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var model;
+        (function (model) {
+            var clientConfig;
+            (function (clientConfig) {
+                /**
+                 * Enum generated from the server to know the list of supported endpoint configuration.
+                 */
+                var EndpointTypeEnum;
+                (function (EndpointTypeEnum) {
+                    /**
+                     * Origin domain from which the current client was loaded.
+                     */
+                    EndpointTypeEnum[EndpointTypeEnum["CurrentDomain"] = 0] = "CurrentDomain";
+                    // APIs
+                    EndpointTypeEnum[EndpointTypeEnum["CoreApi"] = 1] = "CoreApi";
+                    EndpointTypeEnum[EndpointTypeEnum["MarketingApi"] = 2] = "MarketingApi";
+                    EndpointTypeEnum[EndpointTypeEnum["SelfcareApi"] = 3] = "SelfcareApi";
+                    EndpointTypeEnum[EndpointTypeEnum["MetraNetApi"] = 4] = "MetraNetApi";
+                    EndpointTypeEnum[EndpointTypeEnum["ResourceApi"] = 5] = "ResourceApi";
+                    // OM apps
+                    EndpointTypeEnum[EndpointTypeEnum["QuoteWizard"] = 6] = "QuoteWizard";
+                    EndpointTypeEnum[EndpointTypeEnum["OrderEntry"] = 7] = "OrderEntry";
+                    EndpointTypeEnum[EndpointTypeEnum["OrderTracking"] = 8] = "OrderTracking";
+                    // Internal apps
+                    EndpointTypeEnum[EndpointTypeEnum["Metranet"] = 9] = "Metranet";
+                    EndpointTypeEnum[EndpointTypeEnum["TechnicalInventory"] = 10] = "TechnicalInventory";
+                    EndpointTypeEnum[EndpointTypeEnum["TemplateGenerator"] = 11] = "TemplateGenerator";
+                    EndpointTypeEnum[EndpointTypeEnum["Salesforce"] = 12] = "Salesforce";
+                    /**
+                     * External URLs (not treatment applied, rejected if URL is not full)
+                     */
+                    EndpointTypeEnum[EndpointTypeEnum["External"] = 13] = "External";
+                })(EndpointTypeEnum = clientConfig.EndpointTypeEnum || (clientConfig.EndpointTypeEnum = {}));
+            })(clientConfig = model.clientConfig || (model.clientConfig = {}));
+        })(model = core.model || (core.model = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
+
+
+
 
 
 var bluesky;
@@ -229,85 +273,6 @@ var bluesky;
 
 
 
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var model;
-        (function (model) {
-            var clientConfig;
-            (function (clientConfig) {
-                /**
-                 * Enum generated from the server to know the list of supported endpoint configuration.
-                 */
-                var EndpointTypeEnum;
-                (function (EndpointTypeEnum) {
-                    /**
-                     * Origin domain from which the current client was loaded.
-                     */
-                    EndpointTypeEnum[EndpointTypeEnum["CurrentDomain"] = 0] = "CurrentDomain";
-                    // APIs
-                    EndpointTypeEnum[EndpointTypeEnum["CoreApi"] = 1] = "CoreApi";
-                    EndpointTypeEnum[EndpointTypeEnum["MarketingApi"] = 2] = "MarketingApi";
-                    EndpointTypeEnum[EndpointTypeEnum["SelfcareApi"] = 3] = "SelfcareApi";
-                    EndpointTypeEnum[EndpointTypeEnum["MetraNetApi"] = 4] = "MetraNetApi";
-                    // OM apps
-                    EndpointTypeEnum[EndpointTypeEnum["QuoteWizard"] = 5] = "QuoteWizard";
-                    EndpointTypeEnum[EndpointTypeEnum["OrderEntry"] = 6] = "OrderEntry";
-                    EndpointTypeEnum[EndpointTypeEnum["OrderTracking"] = 7] = "OrderTracking";
-                    // Internal apps
-                    EndpointTypeEnum[EndpointTypeEnum["Metranet"] = 8] = "Metranet";
-                    EndpointTypeEnum[EndpointTypeEnum["TechnicalInventory"] = 9] = "TechnicalInventory";
-                    EndpointTypeEnum[EndpointTypeEnum["TemplateGenerator"] = 10] = "TemplateGenerator";
-                    EndpointTypeEnum[EndpointTypeEnum["Salesforce"] = 11] = "Salesforce";
-                    /**
-                     * External URLs (not treatment applied, rejected if URL is not full)
-                     */
-                    EndpointTypeEnum[EndpointTypeEnum["External"] = 12] = "External";
-                })(EndpointTypeEnum = clientConfig.EndpointTypeEnum || (clientConfig.EndpointTypeEnum = {}));
-            })(clientConfig = model.clientConfig || (model.clientConfig = {}));
-        })(model = core.model || (core.model = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
-
-
-
-
-
-
-
-
-
-
-
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var model;
-        (function (model) {
-            var quote;
-            (function (quote) {
-                var QuoteStatusEnum;
-                (function (QuoteStatusEnum) {
-                    QuoteStatusEnum[QuoteStatusEnum["Pending"] = 0] = "Pending";
-                    QuoteStatusEnum[QuoteStatusEnum["Submitted"] = 1] = "Submitted";
-                    QuoteStatusEnum[QuoteStatusEnum["SignedOff"] = 2] = "SignedOff";
-                    QuoteStatusEnum[QuoteStatusEnum["Allocated"] = 3] = "Allocated";
-                    QuoteStatusEnum[QuoteStatusEnum["Rejected"] = 4] = "Rejected";
-                    QuoteStatusEnum[QuoteStatusEnum["Canceled"] = 5] = "Canceled";
-                    QuoteStatusEnum[QuoteStatusEnum["Closed"] = 6] = "Closed";
-                    QuoteStatusEnum[QuoteStatusEnum["Initialized"] = 7] = "Initialized";
-                    QuoteStatusEnum[QuoteStatusEnum["Discarded"] = 8] = "Discarded";
-                    QuoteStatusEnum[QuoteStatusEnum["Available"] = 9] = "Available";
-                    QuoteStatusEnum[QuoteStatusEnum["Approval_In_Progress"] = 10] = "Approval_In_Progress";
-                    QuoteStatusEnum[QuoteStatusEnum["Approved"] = 11] = "Approved";
-                    QuoteStatusEnum[QuoteStatusEnum["Disapproved"] = 12] = "Disapproved";
-                })(QuoteStatusEnum = quote.QuoteStatusEnum || (quote.QuoteStatusEnum = {}));
-            })(quote = model.quote || (model.quote = {}));
-        })(model = core.model || (core.model = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
 
 
 
@@ -398,9 +363,6 @@ var bluesky;
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
 
-
-
-
 //TODO MGA disabling from UI following TFS id:http://frmtptfs01:8080/tfs/Arkadin/BlueSky/_workitems#id=116176 pending full removal ?
 // namespace bluesky.core.model.taxManagement {
 //     export interface INoramTaxExemptionDto extends IResourceBase {
@@ -480,6 +442,7 @@ var bluesky;
         })(model = core.model || (core.model = {}));
     })(core = bluesky.core || (bluesky.core = {}));
 })(bluesky || (bluesky = {}));
+
 
 
 
@@ -586,6 +549,124 @@ var bluesky;
 
 
 
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var model;
+        (function (model) {
+            var quote;
+            (function (quote) {
+                var QuoteStatusEnum;
+                (function (QuoteStatusEnum) {
+                    QuoteStatusEnum[QuoteStatusEnum["Pending"] = 0] = "Pending";
+                    QuoteStatusEnum[QuoteStatusEnum["Submitted"] = 1] = "Submitted";
+                    QuoteStatusEnum[QuoteStatusEnum["SignedOff"] = 2] = "SignedOff";
+                    QuoteStatusEnum[QuoteStatusEnum["Allocated"] = 3] = "Allocated";
+                    QuoteStatusEnum[QuoteStatusEnum["Rejected"] = 4] = "Rejected";
+                    QuoteStatusEnum[QuoteStatusEnum["Canceled"] = 5] = "Canceled";
+                    QuoteStatusEnum[QuoteStatusEnum["Closed"] = 6] = "Closed";
+                    QuoteStatusEnum[QuoteStatusEnum["Initialized"] = 7] = "Initialized";
+                    QuoteStatusEnum[QuoteStatusEnum["Discarded"] = 8] = "Discarded";
+                    QuoteStatusEnum[QuoteStatusEnum["Available"] = 9] = "Available";
+                    QuoteStatusEnum[QuoteStatusEnum["Approval_In_Progress"] = 10] = "Approval_In_Progress";
+                    QuoteStatusEnum[QuoteStatusEnum["Approved"] = 11] = "Approved";
+                    QuoteStatusEnum[QuoteStatusEnum["Disapproved"] = 12] = "Disapproved";
+                })(QuoteStatusEnum = quote.QuoteStatusEnum || (quote.QuoteStatusEnum = {}));
+            })(quote = model.quote || (model.quote = {}));
+        })(model = core.model || (core.model = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var bluesky;
+(function (bluesky) {
+    var core;
+    (function (core) {
+        var model;
+        (function (model) {
+            var salesforce;
+            (function (salesforce) {
+                /**
+                 * List of supported segment types for a SalesForce Account.
+                 */
+                var SegmentTypeEnum;
+                (function (SegmentTypeEnum) {
+                    SegmentTypeEnum[SegmentTypeEnum["Premium"] = 0] = "Premium";
+                    SegmentTypeEnum[SegmentTypeEnum["OnLine"] = 1] = "OnLine";
+                })(SegmentTypeEnum = salesforce.SegmentTypeEnum || (salesforce.SegmentTypeEnum = {}));
+            })(salesforce = model.salesforce || (model.salesforce = {}));
+        })(model = core.model || (core.model = {}));
+    })(core = bluesky.core || (bluesky.core = {}));
+})(bluesky || (bluesky = {}));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 var bluesky;
@@ -681,83 +762,3 @@ var bluesky;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var bluesky;
-(function (bluesky) {
-    var core;
-    (function (core) {
-        var model;
-        (function (model) {
-            var salesforce;
-            (function (salesforce) {
-                /**
-                 * List of supported segment types for a SalesForce Account.
-                 */
-                var SegmentTypeEnum;
-                (function (SegmentTypeEnum) {
-                    SegmentTypeEnum[SegmentTypeEnum["Premium"] = 0] = "Premium";
-                    SegmentTypeEnum[SegmentTypeEnum["OnLine"] = 1] = "OnLine";
-                })(SegmentTypeEnum = salesforce.SegmentTypeEnum || (salesforce.SegmentTypeEnum = {}));
-            })(salesforce = model.salesforce || (model.salesforce = {}));
-        })(model = core.model || (core.model = {}));
-    })(core = bluesky.core || (bluesky.core = {}));
-})(bluesky || (bluesky = {}));
