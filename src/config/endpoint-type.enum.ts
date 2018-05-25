@@ -13,6 +13,7 @@
         SelfcareApi,
         MetraNetApi,
         ResourceApi,
+        MonitoringApi,
         // OM apps
         QuoteWizard,
         OrderEntry,
